@@ -1,0 +1,15 @@
+# Generated files
+node_modules/
+.DS_Store
+.eslintcache
+*.log
+
+# Bundle build files
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment files
+.env

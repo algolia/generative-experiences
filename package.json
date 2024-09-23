@@ -1,0 +1,18 @@
+{
+  "name": "@algolia/generative-experiences",
+  "private": true,
+  "description": "Algolia GSE monorepo",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@algolia/client-search": "^5.5.2",
+    "algoliasearch": "^5.5.2",
+    "eslint": "^9.10.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "lerna": "^8.1.8"
+  }
+}
