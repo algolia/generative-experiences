@@ -1,0 +1,25 @@
+{
+  "name": "playground",
+  "version": "0.0.0",
+  "description": "playground for testing library",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algolia/generative-experiences.git"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite"
+  },
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "dependencies": {
+    "@algolia/generative-experiences-api-client": "0.0.0"
+  }
+}

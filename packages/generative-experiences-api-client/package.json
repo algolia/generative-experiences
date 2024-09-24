@@ -9,19 +9,19 @@
   "homepage": "https://github.com/algolia/generative-experiences#readme",
   "license": "MIT",
   "type": "module",
-  "main": "./build/index.js",
+  "main": "./dist/index.js",
   "files": [
-    "build"
+    "dist"
   ],
   "repository": "algolia/generative-experiences",
   "scripts": {
-    "build": "yarn tsc",
-    "prepack": "yarn build"
+    "build": "tsc && vite build"
   },
   "bugs": {
     "url": "https://github.com/algolia/generative-experiences/issues"
   },
   "devDependencies": {
-    "@algolia/client-search": "^5.5.2"
+    "@algolia/client-search": "^4.0.0",
+    "algoliasearch-helper": "^3.22.5"
   }
 }
