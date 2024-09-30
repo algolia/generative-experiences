@@ -2,6 +2,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import type { PluginOption, LibraryOptions } from "vite"
+import react from '@vitejs/plugin-react'
 
 const isExternal = (id: string) => !id.startsWith(".") && !path.isAbsolute(id);
 
@@ -12,7 +13,8 @@ type GetBaseConfig = {
 
 export const getBaseConfig = ({ plugins = [], lib = false }: GetBaseConfig) =>
     defineConfig({
-        plugins: [...plugins],
+        plugins: [react({ jsxRuntime: "automatic" }), ...plugins],
+        optimizeDeps: { esbuildOptions: { jsx: "transform" } },
         build: {
             lib,
             rollupOptions: {
