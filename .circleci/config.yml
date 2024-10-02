@@ -1,0 +1,18 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@6.1.0
+
+jobs: 
+  build:
+    docker:
+    - image: cimg/node:20.17.0
+    steps:
+      - checkout
+      - run: yarn install --frozen-lockfiles
+      - run: yarn run build
+
+workflows:
+  build:
+    jobs:
+      - build
