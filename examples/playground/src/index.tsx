@@ -1,17 +1,11 @@
-import {
-  ShoppingGuideHeadline,
-  createClient,
-} from '@algolia/generative-experiences-api-client';
-import React, {
-  Fragment,
-  createElement,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createClient } from '@algolia/generative-experiences-api-client';
+import React, { Fragment, createElement } from 'react';
 // @ts-expect-error
 import { createRoot } from 'react-dom/client';
-import { createShoppingGuidesHeadlinesButtonComponent } from '@algolia/generative-experiences-vdom';
+import { createShoppingGuidesHeadlinesComponent } from '@algolia/generative-experiences-vdom';
 
 const options = {
   source: {
@@ -45,142 +39,34 @@ commerceClient
 //   })
 //   .then((response) => console.log(response));
 
-export function useShoppingGuideHeadlines({
-  immediate = false,
-  ...defaultOptions
-}) {
-  const [error, setError] = useState<Error | undefined>(undefined);
-  const [headlines, setHeadlines] = useState<ShoppingGuideHeadline[]>([]);
-  const [isShowing, setIsShowing] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean | undefined>(undefined);
-  const abortController = useRef(new AbortController());
+const headlines = [
+  {
+    description:
+      "Discover the captivating landscapes of Jacob Sibrandi Mancadan, including 'Italian Landscape with Ruins'. Understand his style, influences, and the historical context of his work.",
+    objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+    title: 'The Artistic Landscape of Jacob Sibrandi Mancadan',
+  },
+  {
+    description:
+      'Experience the tranquility and grandeur of landscape art. From Italian ruins to serene countrysides, each painting is a journey.',
+    objectID: '64aa230b-22ab-43a6-8bf8-7d81bf7834e7',
+    title: 'The Allure of Landscape Art',
+  },
+];
 
-  async function showHeadlines(options = {}) {
-    const {
-      // @ts-expect-error
-      object,
-      // @ts-expect-error
-      category, // @ts-expect-error
-      breadcrumbs,
-      nbHeadlines = 4,
-      source = 'index',
-      // @ts-expect-error
-      searchParams,
-      // @ts-expect-error
-      generateParams,
-      // @ts-expect-error
-      onlyPublished,
-    } = {
-      ...defaultOptions,
-      ...options,
-    };
-
-    if (isLoading) {
-      abortController.current.abort();
-    }
-    const { signal } = abortController.current;
-
-    if (source === 'index' || source === 'combined') {
-      const hits = await commerceClient
-        .getHeadlines({
-          category,
-          object,
-          breadcrumbs,
-          nbHeadlines,
-          searchParams,
-          onlyPublished,
-        })
-        .catch(() => {
-          // eslint-disable-next-line no-console
-          console.warn(
-            '[commerce-ai]: error while fetching headlines from Algolia, falling back to generated headlines'
-          );
-        });
-
-      if (hits && hits.length === nbHeadlines) {
-        setIsShowing(true);
-        setIsLoading(false);
-        setHeadlines(hits);
-        return;
-      }
-    }
-
-    // @ts-expect-error
-    if (source === 'generated' || source === 'combined') {
-      setIsLoading(true);
-
-      if (!category) {
-        throw new Error('category is required when using generated headlines');
-      }
-
-      try {
-        const { data } = await commerceClient.generateHeadlines(
-          {
-            category,
-            nbHeadlines,
-            ...generateParams,
-          },
-          { signal }
-        );
-        setIsShowing(true);
-        setIsLoading(false);
-        setHeadlines(data);
-        abortController.current = new AbortController();
-      } catch (err) {
-        if ((err as Error).name !== 'AbortError') {
-          setIsShowing(true);
-          setIsLoading(false);
-          setError(err as Error);
-        }
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (immediate) {
-      showHeadlines();
-    }
-    return () => {
-      abortController.current.abort();
-      abortController.current = new AbortController();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- only run on mount
-  }, []);
-
-  return {
-    headlines,
-    error,
-    isShowing,
-    isLoading,
-    showHeadlines,
-    hideHeadlines: () => setIsShowing(false),
-    commerceClient,
-  };
-}
-
-const UncontrolledHeadlinesButton =
-  createShoppingGuidesHeadlinesButtonComponent({
-    // @ts-expect-error
-    createElement,
-    Fragment,
-  });
+const UncontrolledHeadlinesButton = createShoppingGuidesHeadlinesComponent({
+  // @ts-expect-error
+  createElement,
+  Fragment,
+});
 
 function ComponentTest() {
-  //   const { isShowing, isLoading, showHeadlines, hideHeadlines, headlines } =
-  //     useShoppingGuideHeadlines({
-  //       category: 'On view in Gallery Prince Willem V',
-  //     });
-
-  //   console.log('vdom works', headlines);
   return (
-    // <div>Hi</div>
     <UncontrolledHeadlinesButton
+      //   itemComponent={() => <div>Hi</div>}
+      status="idle"
+      items={headlines}
       //   {...props}
-      isShowing={true}
-      isLoading={false}
-      //@ts-expect-error
-      showHeadlines={() => {}}
-      hideHeadlines={() => {}}
     />
   );
 }

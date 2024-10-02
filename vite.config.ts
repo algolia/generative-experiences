@@ -13,8 +13,8 @@ type GetBaseConfig = {
 
 export const getBaseConfig = ({ plugins = [], lib = false }: GetBaseConfig) =>
     defineConfig({
-        plugins: [react({ jsxRuntime: "automatic" }), ...plugins],
-        optimizeDeps: { esbuildOptions: { jsx: "transform" } },
+        plugins: [react({ jsxRuntime: "classic" }), ...plugins],
+        optimizeDeps: { esbuildOptions: { jsx: "automatic" } },
         build: {
             lib,
             rollupOptions: {

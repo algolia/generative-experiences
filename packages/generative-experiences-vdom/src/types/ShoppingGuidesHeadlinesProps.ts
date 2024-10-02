@@ -1,61 +1,55 @@
 import { Renderer } from "./Renderer";
-import { GenerationSource, ShoppingGuideHeadlinesOptionsForCombined } from '@algolia/generative-experiences-api-client';
-
-export type ViewProps<
-    TClassNames extends Record<string, string>
-> = {
-    classNames: TClassNames;
-    label: string;
-    source?: GenerationSource;
-    isShowing: boolean;
-    isLoading: boolean | undefined;
-    showHeadlines: (
-        args?: Partial<Omit<ShoppingGuideHeadlinesOptionsForCombined, 'source'>> & {
-            source?: GenerationSource;
-        }
-    ) => Promise<void>;
-    hideHeadlines: () => void;
-};
-
 
 export type HeadlinesButtonClassNames = Partial<{
-    root?: string;
-    button?: string;
-    buttonLoading?: string;
-    icon?: string;
-    iconLoading?: string;
-    screenReaderOnly?: string;
+    wrapper?: string;
+    container?: string;
+    item?: string;
+    itemContent?: string;
+    itemTitle?: string;
+    itemImage?: string;
+    list?: string;
+    readMore?: string;
 }>;
+
+export type GSEHeadlineRecord = {
+    objectID: string;
+    title: string;
+    description: string;
+};
+
+export type ViewProps<
+    TItem extends GSEHeadlineRecord,
+    TClassNames extends Record<string, string>,
+> = {
+    classNames: TClassNames;
+    itemComponent<TComponentProps extends Record<string, unknown> = {}>(
+        props: { item: TItem } & Renderer & TComponentProps
+    ): JSX.Element;
+    items: Array<GSEHeadlineRecord>;
+};
+
+export type ItemComponentProps = {
+    item: GSEHeadlineRecord;
+    classNames: HeadlinesButtonClassNames;
+} & Renderer;
 
 export type ComponentProps = {
     classNames: HeadlinesButtonClassNames;
-    // headlines: TObject[];
+    headlines: GSEHeadlineRecord[];
 };
 
 export type ChildrenProps = ComponentProps & {
-    View(props: unknown & Renderer): JSX.Element;
+    status: 'loading' | 'stalled' | 'idle';
+    View(props: unknown): JSX.Element;
 };
 
-export type HeadlinesButtonComponentProps<
-    TComponentProps extends Record<string, unknown> = {}
-> = {
+export type HeadlinesComponentProps = {
+    itemComponent?(props: ItemComponentProps): JSX.Element;
+    items: Array<GSEHeadlineRecord>;
     classNames?: HeadlinesButtonClassNames;
-    label?: string;
-    source?: GenerationSource;
-    children?(props: ChildrenProps & TComponentProps): JSX.Element;
-    isShowing: boolean;
-    isLoading: boolean | undefined;
-    showHeadlines: (
-        args?: Partial<Omit<ShoppingGuideHeadlinesOptionsForCombined, 'source'>> & {
-            source?: GenerationSource;
-        }
-    ) => Promise<void>;
-    hideHeadlines: () => void;
+    children?(props: ChildrenProps): JSX.Element;
+    status: 'loading' | 'stalled' | 'idle';
     view?(
-        props: ViewProps<
-            Record<string, string>
-        > &
-            Renderer &
-            TComponentProps
+        props: ViewProps<GSEHeadlineRecord, Record<string, string>> & Renderer
     ): JSX.Element;
 };

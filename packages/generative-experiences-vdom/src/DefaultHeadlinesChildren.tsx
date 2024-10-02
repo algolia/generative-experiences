@@ -1,22 +1,21 @@
-/** @jsxRuntime automatic */
+/** @jsxRuntime classic */
 /** @jsx createElement */
 
 import { ChildrenProps, Renderer } from './types';
 import { cx } from './utils';
 
-export function createDefaultHeadlinesButtonChildrenComponent({
+export function createDefaultHeadlinesChildrenComponent({
   createElement,
-  Fragment,
 }: Renderer) {
   return function DefaultChildren(props: ChildrenProps) {
     return (
       <section
         className={cx(
-          'ais-ShoppingGuideHeadlinesButtonSection',
-          props.classNames.root
+          'ais-ShoppingGuidesHeadlinesSection',
+          props.classNames.wrapper
         )}
       >
-        <props.View createElement={createElement} Fragment={Fragment} />
+        <props.View />
       </section>
     );
   };

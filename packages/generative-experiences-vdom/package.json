@@ -15,7 +15,8 @@
   ],
   "repository": "algolia/generative-experiences",
   "scripts": {
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "dev": "vite"
   },
   "bugs": {
     "url": "https://github.com/algolia/generative-experiences/issues"

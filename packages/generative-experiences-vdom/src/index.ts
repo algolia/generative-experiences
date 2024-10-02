@@ -1,1 +1,1 @@
-export * from './ShoppingGuidesHeadlinesButton'
+export * from './ShoppingGuidesHeadlinesWidget'
