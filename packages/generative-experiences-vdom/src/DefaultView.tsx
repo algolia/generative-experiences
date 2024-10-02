@@ -18,24 +18,21 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
         className={cx('ais-Headlines-container', props.classNames.container)}
       >
         <ol className={cx('ais-Headlines-list', props.classNames.list)}>
-          {props.items.map(
-            (item) =>
-              //@ts-ignore
-              console.log('in list view', item) || (
-                <li
-                  key={item.objectID}
-                  className={cx('auc-Headlines-item', props.classNames.item)}
-                >
-                  <props.itemComponent
-                    createElement={createElement}
-                    Fragment={Fragment}
-                    classNames={props.classNames}
-                    // @ts-expect-error
-                    item={item}
-                  />
-                </li>
-              )
-          )}
+          {props.items.map((item) => (
+            <li
+              key={item.objectID}
+              className={cx('auc-Headlines-item', props.classNames.item)}
+            >
+              <props.itemComponent
+                createElement={createElement}
+                Fragment={Fragment}
+                classNames={props.classNames}
+                // @ts-expect-error
+                item={item}
+              />
+            </li>
+          ))}
+          ``
         </ol>
       </div>
     );

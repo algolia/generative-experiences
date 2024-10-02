@@ -6,7 +6,6 @@ import { cx } from './utils';
 
 export function createDefaultHeadlineComponent({ createElement }: Renderer) {
   return function HeadlineComponent(props: ItemComponentProps) {
-    console.log('in component', props);
     return (
       <div
         key={props.item.objectID}

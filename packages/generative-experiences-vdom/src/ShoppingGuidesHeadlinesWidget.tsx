@@ -23,7 +23,7 @@ export function createShoppingGuidesHeadlinesComponent({
     const itemComponent =
       props.itemComponent ??
       createDefaultHeadlineComponent({ createElement, Fragment });
-    console.log('in view', props.items);
+
     const ViewComponent =
       props.view ?? createListViewComponent({ createElement, Fragment });
     const View = (viewProps: any) => (
