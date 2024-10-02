@@ -5,6 +5,7 @@ orbs:
 
 jobs: 
   build:
+    working_directory: ~/generative-experiences
     docker:
     - image: cimg/node:20.17.0
     steps:
