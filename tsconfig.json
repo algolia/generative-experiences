@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "jsx": "preserve",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "**/__fixtures__/**/*",
+    "**/__mocks__/**/*",
+    "**/__tests__/**/*",
+    "**/dist",
+    "**/node_modules"
+  ]
+}

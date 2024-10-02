@@ -1,0 +1,36 @@
+{
+  "name": "@algolia/generative-experiences-vdom",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": {
+    "name": "Algolia, Inc.",
+    "url": "https://www.algolia.com"
+  },
+  "homepage": "https://github.com/algolia/generative-experiences#readme",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "repository": "algolia/generative-experiences",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite"
+  },
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.17"
+  },
+  "devDependencies": {
+    "@algolia/client-search": "^5.5.2",
+    "algoliasearch-helper": "^3.22.5",
+    "@algolia/generative-experiences-api-client": "0.0.0"
+  }
+}
