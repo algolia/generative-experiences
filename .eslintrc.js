@@ -30,6 +30,8 @@ module.exports = {
     'no-unused-expressions': OFF,
     'no-lonely-if': OFF,
     'react/prop-types': OFF,
+    // disabled until figure out issue with type improrts
+    'import/no-duplicates': OFF,
     // disabled until I figure out how to exclude the API params
     '@typescript-eslint/camelcase': OFF,
     'import/order': [
