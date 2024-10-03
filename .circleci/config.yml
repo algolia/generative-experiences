@@ -26,8 +26,8 @@ aliases:
       mkdir -p packages/generative-experiences-api-client/dist
       mkdir -p packages/generative-experiences-vdom/dist
 
-      cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/
-      cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/
+      cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/dist
+      cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/dist
 
 defaults: &defaults
   working_directory: ~/generative-experiences
@@ -60,8 +60,8 @@ jobs:
             mkdir -p /tmp/workspace/packages/generative-experiences-api-client/dist
             mkdir -p /tmp/workspace/packages/generative-experiences-vdom/dist
 
-            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client
-            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-vdom
+            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client/dist
+            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-vdom/dist
       - persist_to_workspace:
           root: *workspace_root
           paths:
