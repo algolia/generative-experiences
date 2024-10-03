@@ -17,10 +17,7 @@
   "files": [
     "build"
   ],
-  "scripts": {
-    "build": "yarn tsc",
-    "prepack": "yarn build"
-  },
+  "scripts": {},
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0"
   },
