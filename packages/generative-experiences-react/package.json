@@ -2,24 +2,24 @@
   "name": "@algolia/generative-experiences-react",
   "version": "0.0.0",
   "description": "GSE React components",
+  "license": "MIT",
+  "repository": "algolia/generative-experiences",
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "homepage": "https://github.com/algolia/generative-experiences#readme",
   "author": {
     "name": "Algolia, Inc.",
     "url": "https://www.algolia.com"
   },
-  "homepage": "https://github.com/algolia/generative-experiences#readme",
-  "license": "MIT",
   "type": "module",
   "main": "./build/index.js",
   "files": [
     "build"
   ],
-  "repository": "algolia/generative-experiences",
   "scripts": {
     "build": "yarn tsc",
     "prepack": "yarn build"
-  },
-  "bugs": {
-    "url": "https://github.com/algolia/generative-experiences/issues"
   },
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0"
