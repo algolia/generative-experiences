@@ -2,7 +2,6 @@
   "name": "@algolia/generative-experiences",
   "description": "Algolia GSE monorepo",
   "private": true,
-  "type": "module",
   "workspaces": [
     "packages/*",
     "examples/*"
