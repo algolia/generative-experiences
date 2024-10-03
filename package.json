@@ -6,6 +6,9 @@
     "packages/*",
     "examples/*"
   ],
+  "scripts": {
+    "build": "lerna run build --scope @algolia/generative-experiences-* --no-private"
+  },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
     "@types/react": "^18.3.9",
