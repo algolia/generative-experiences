@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "test": "yarn vitest --run"
+    "test": "yarn vitest --run",
+    "test:ci": "yarn vitest --run --reporter=junit --outputFile ../../test_results/generative-experiences-vdom.xml"
   },
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0"

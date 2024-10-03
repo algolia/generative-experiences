@@ -5,6 +5,7 @@ node_modules/
 *.log
 
 coverage/
+test_results/
 
 # Bundle build files
 dist/

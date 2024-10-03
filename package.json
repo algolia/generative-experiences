@@ -15,7 +15,8 @@
     "playground:build": "lerna run build --scope playground",
     "playground:dev": "lerna run dev --scope playground",
     "test:types": "tsc --noEmit",
-    "test": "lerna run test --scope @algolia/generative-experiences-* --no-private"
+    "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
+    "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private"
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
