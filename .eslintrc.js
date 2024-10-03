@@ -30,12 +30,8 @@ module.exports = {
     'no-unused-expressions': OFF,
     'no-lonely-if': OFF,
     'react/prop-types': OFF,
-    '@typescript-eslint/camelcase': [
-      ERROR,
-      {
-        allow: ['hierarchical_categories'],
-      },
-    ],
+    // disabled until I figure out how to exclude the API params
+    '@typescript-eslint/camelcase': OFF,
     'import/order': [
       ERROR,
       {
@@ -64,7 +60,7 @@ module.exports = {
       },
     },
     {
-      files: ['test/**', '**/__tests__/**', '*.config.js'],
+      files: ['test/**', '**/__tests__/**', '*.config.js', '*.config.ts'],
       rules: {
         'import/no-extraneous-dependencies': OFF,
       },

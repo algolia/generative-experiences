@@ -1,17 +1,23 @@
+import * as path from 'path';
 
-import * as path from "path";
-import { getBaseConfig } from "../../vite.config";
-import dts from 'vite-plugin-dts'
-// import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-export default getBaseConfig({
-    plugins: [dts({
-        outDir: ['dist'],
-        rollupTypes: true,
-    })],
+export default defineConfig({
+  plugins: [
+    dts({
+      outDir: ['dist'],
+      rollupTypes: true,
+    }),
+    react({ jsxRuntime: 'classic' }),
+  ],
+  optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
+  build: {
     lib: {
-        entry: path.resolve(__dirname, "src/index.tsx"),
-        name: "playground",
-        fileName: "index",
+      entry: path.resolve(__dirname, 'src/index.tsx'),
+      name: 'playground',
+      fileName: 'index',
     },
+  },
 });

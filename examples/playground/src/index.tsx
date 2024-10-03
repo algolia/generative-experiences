@@ -2,10 +2,10 @@
 /** @jsx createElement */
 
 import { createClient } from '@algolia/generative-experiences-api-client';
+import { createShoppingGuidesHeadlinesComponent } from '@algolia/generative-experiences-vdom';
 import React, { Fragment, createElement } from 'react';
 // @ts-expect-error
 import { createRoot } from 'react-dom/client';
-import { createShoppingGuidesHeadlinesComponent } from '@algolia/generative-experiences-vdom';
 
 const options = {
   source: {
@@ -29,6 +29,7 @@ commerceClient
     category: 'On view in Gallery Prince Willem V',
     nbHeadlines: 2,
   })
+  // eslint-disable-next-line no-console
   .then((response) => console.log(response));
 
 // test getContent method
@@ -70,8 +71,6 @@ function ComponentTest() {
     />
   );
 }
-
-export default ComponentTest();
 
 const container = document.getElementById('root');
 const root = createRoot(container!); // createRoot(container!) if you use TypeScript
