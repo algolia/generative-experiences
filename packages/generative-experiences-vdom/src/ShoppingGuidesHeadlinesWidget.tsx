@@ -1,10 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
-import { createListViewComponent } from './DefaultView';
-import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
-import { HeadlinesComponentProps, Renderer } from './types';
 import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
+import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
+import { createListViewComponent } from './DefaultView';
+import { HeadlinesComponentProps, Renderer } from './types';
 
 export function createShoppingGuidesHeadlinesComponent({
   createElement,
