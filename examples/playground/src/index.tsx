@@ -9,15 +9,15 @@ import { createRoot } from 'react-dom/client';
 
 const options = {
   source: {
-    apiKey: '3822adc5fe3553a54bfde83232f4a531',
-    appId: '8FVG9T3219',
-    indexName: 'artwork',
+    apiKey: import.meta.env.VITE_EXAMPLES_API_KEY ?? '',
+    appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
+    indexName: import.meta.env.VITE_EXAMPLES_MAIN_INDEX_NAME ?? '',
     categoryAttribute: '',
   },
   content: {
-    apiKey: '22adca448c7ba70df7127cf74c0fdf0d',
-    appId: '8FVG9T3219',
-    indexName: `shopping_guides_artwork`,
+    apiKey: import.meta.env.VITE_EXAMPLES_GUIDES_API_KEY ?? '',
+    appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
+    indexName: import.meta.env.VITE_EXAMPLES_GUIDES_INDEX_NAME ?? '',
   },
 };
 
