@@ -1,19 +1,63 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@6.1.0
+aliases:
+  - &install_yarn_version
+    name: Install specific Yarn version
+    command: |
+      curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.19
+      echo 'export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"' >> $BASH_ENV
+  - &restore_yarn_cache
+    name: Restore Yarn cache
+    keys:
+      - yarn-{{ .Branch }}-packages-{{ checksum "yarn.lock" }}
+  - &save_yarn_cache
+    name: Save Yarn cache
+    key: yarn-{{ .Branch }}-packages-{{ checksum "yarn.lock" }}
+    paths:
+      - ~/.cache/yarn
+  - &run_yarn_install
+    name: Install dependencies
+    command: yarn install --frozen-lockfile
 
-jobs: 
-  build:
-    working_directory: ~/generative-experiences
-    docker:
+defaults: &defaults
+  working_directory: ~/generative-experiences
+  docker:
     - image: cimg/node:20.17.0
+
+references:
+  workspace_root: &workspace_root /tmp/workspace
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+jobs:
+  build:
+    <<: *defaults
     steps:
       - checkout
-      - run: yarn install --frozen-lockfiles
-      - run: yarn run build
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Build
+          command: yarn run build
+      - run:
+          name: Move dist folders to workspace
+          command: |
+            set -exu
+
+            mkdir -p /tmp/workspace/packages/generative-experiences-api-client/dist
+            mkdir -p /tmp/workspace/packages/generative-experiences-vdom/dist
+
+            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client
+            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-vdom
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - packages
 
 workflows:
-  build:
+  ci:
     jobs:
       - build
