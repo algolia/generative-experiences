@@ -66,6 +66,12 @@ jobs:
           root: *workspace_root
           paths:
             - packages
+      - store_artifacts:
+          path: packages/generative-experiences-api-client/dist
+          destination: generative-experiences-api-client
+      - store_artifacts:
+          path: packages/generative-experiences-vdom/dist
+          destination: generative-experiences-vdom
   test_lint:
     <<: *defaults
     steps:
