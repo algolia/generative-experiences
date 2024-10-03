@@ -18,10 +18,12 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "test": "yarn vitest --coverage --run"
   },
   "dependencies": {
     "algoliasearch": "^5.5.2",
-    "algoliasearch-helper": "^3.22.5"
+    "algoliasearch-helper": "^3.22.5",
+    "vitest": "^2.1.2"
   }
 }

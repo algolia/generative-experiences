@@ -10,7 +10,8 @@
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
-    "playground:dev": "lerna run dev --scope playground"
+    "playground:dev": "lerna run dev --scope playground",
+    "test": "lerna run test --scope @algolia/generative-experiences-* --no-private"
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
@@ -21,7 +22,9 @@
     "@types/react": "^18.3.9",
     "@typescript-eslint/eslint-plugin": "2.19.0",
     "@typescript-eslint/parser": "2.19.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^4.3.2",
+    "@vitest/coverage-istanbul": "^2.1.2",
+    "@vitest/coverage-v8": "^2.1.2",
     "algoliasearch-helper": "^3.22.5",
     "eslint": "6.8.0",
     "eslint-config-algolia": "15.0.0",
@@ -37,7 +40,8 @@
     "lerna": "^8.1.8",
     "prettier": "2.2.1",
     "typescript": "^5.6.2",
-    "vite": "^5.4.7",
-    "vite-plugin-dts": "^4.2.1"
+    "vite": "^5.4.8",
+    "vite-plugin-dts": "^4.2.3",
+    "vitest": "^2.1.2"
   }
 }

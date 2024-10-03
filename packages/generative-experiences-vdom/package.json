@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite"
+    "test": "yarn vitest --coverage --run"
   },
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0"
@@ -27,5 +27,8 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.2"
   }
 }
