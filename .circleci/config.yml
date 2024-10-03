@@ -111,6 +111,8 @@ jobs:
       - run:
           name: Unit tests
           command: yarn run test
+      - store_test_results:
+          path: test_results
 
 workflows:
   ci:
