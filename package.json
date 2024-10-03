@@ -1,7 +1,7 @@
 {
   "name": "@algolia/generative-experiences",
-  "private": true,
   "description": "Algolia GSE monorepo",
+  "private": true,
   "workspaces": [
     "packages/*",
     "examples/*"
@@ -11,19 +11,18 @@
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
-    "@types/react": "^18.3.9",
-    "algoliasearch": "^5.5.2",
-    "eslint": "^9.10.0",
-    "prettier": "^3.3.3",
-    "typescript": "^5.6.2"
+    "algoliasearch": "^5.5.2"
   },
   "devDependencies": {
+    "eslint": "^9.10.0",
+    "@types/react": "^18.3.9",
     "@types/node": "^22.5.5",
     "@vitejs/plugin-react": "^4.3.1",
     "algoliasearch-helper": "^3.22.5",
     "lerna": "^8.1.8",
-    "path": "^0.12.7",
     "vite": "^5.4.7",
-    "vite-plugin-dts": "^4.2.1"
+    "vite-plugin-dts": "^4.2.1",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
   }
 }
