@@ -18,6 +18,16 @@ aliases:
   - &run_yarn_install
     name: Install dependencies
     command: yarn install --frozen-lockfile
+  - &restore_dist_folders
+    name: Restore dist folders
+    command: |
+      set -exu
+
+      mkdir -p packages/generative-experiences-api-client/dist
+      mkdir -p packages/generative-experiences-vdom/dist
+
+      cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/
+      cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/
 
 defaults: &defaults
   working_directory: ~/generative-experiences
@@ -56,8 +66,23 @@ jobs:
           root: *workspace_root
           paths:
             - packages
-
+  test_lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *restore_dist_folders
+      - run:
+          name: Linting
+          command: yarn run lint
 workflows:
   ci:
     jobs:
       - build
+      - test_lint:
+          requires:
+            - build
