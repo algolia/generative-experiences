@@ -6,11 +6,15 @@
     "packages/*",
     "examples/*"
   ],
+  "engines": {
+    "node": ">=20.17.0 <22"
+  },
   "scripts": {
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
-    "playground:dev": "lerna run dev --scope playground"
+    "playground:dev": "lerna run dev --scope playground",
+    "test:types": "tsc --noEmit"
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
@@ -23,6 +27,7 @@
     "@typescript-eslint/parser": "2.19.0",
     "@vitejs/plugin-react": "^4.3.1",
     "algoliasearch-helper": "^3.22.5",
+    "bundlesize": "^0.18.2",
     "eslint": "6.8.0",
     "eslint-config-algolia": "15.0.0",
     "eslint-config-prettier": "6.15.0",
