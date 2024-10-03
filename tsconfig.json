@@ -13,7 +13,8 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "sourceMap": true
   },
   "exclude": [
     "**/__fixtures__/**/*",

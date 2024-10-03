@@ -98,6 +98,19 @@ jobs:
       - run:
           name: Test packages size
           command: yarn run bundlesize
+  test_unit:
+    <<: *defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *restore_dist_folders
+      - run:
+          name: Unit tests
+          command: yarn run test
 
 workflows:
   ci:
@@ -107,5 +120,8 @@ workflows:
           requires:
             - build
       - test_size:
+          requires:
+            - build
+      - test_unit:
           requires:
             - build
