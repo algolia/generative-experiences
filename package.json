@@ -6,6 +6,9 @@
     "packages/*",
     "examples/*"
   ],
+  "engines": {
+    "node": ">=20.17.0 <22"
+  },
   "scripts": {
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
     "lint": "eslint --ext .js,.ts,.tsx .",
