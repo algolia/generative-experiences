@@ -8,7 +8,6 @@
   ],
   "scripts": {
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
-    "format": "prettier --write .",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
     "playground:dev": "lerna run dev --scope playground"

@@ -1,5 +1,5 @@
 export type RequestParameters = {
-    signal?: AbortSignal;
+  signal?: AbortSignal;
 };
 
 export type GenerationSource = 'combined' | 'generated' | 'index';
