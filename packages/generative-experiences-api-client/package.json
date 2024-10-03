@@ -21,6 +21,7 @@
     "build": "tsc && vite build"
   },
   "dependencies": {
+    "algoliasearch": "^5.5.2",
     "algoliasearch-helper": "^3.22.5"
   }
 }
