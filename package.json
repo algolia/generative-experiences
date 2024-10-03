@@ -7,7 +7,9 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "lerna run build --scope @algolia/generative-experiences-* --no-private"
+    "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
+    "playground:build": "lerna run build --scope playground",
+    "playground:dev": "lerna run dev --scope playground"
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",
