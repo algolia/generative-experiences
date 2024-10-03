@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite"
+    "test": "yarn vitest --run"
   },
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0"

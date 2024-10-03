@@ -4,6 +4,8 @@ node_modules/
 .eslintcache
 *.log
 
+coverage/
+
 # Bundle build files
 dist/
 
