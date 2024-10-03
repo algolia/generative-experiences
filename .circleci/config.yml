@@ -110,7 +110,7 @@ jobs:
       - run: *restore_dist_folders
       - run:
           name: Unit tests
-          command: yarn run test
+          command: yarn run test:ci
       - store_test_results:
           path: test_results
 
