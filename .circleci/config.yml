@@ -85,11 +85,27 @@ jobs:
       - run:
           name: Linting
           command: yarn run lint
+  test_size:
+    <<: *defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *restore_dist_folders
+      - run:
+          name: Test packages size
+          command: yarn run bundlesize
 
 workflows:
   ci:
     jobs:
       - build
       - test_lint:
+          requires:
+            - build
+      - test_size:
           requires:
             - build
