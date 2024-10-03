@@ -10,7 +10,8 @@
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
-    "playground:dev": "lerna run dev --scope playground"
+    "playground:dev": "lerna run dev --scope playground",
+    "test:types": "tsc --noEmit"
   },
   "dependencies": {
     "@algolia/client-search": "^5.5.2",

@@ -26,8 +26,8 @@ aliases:
       mkdir -p packages/generative-experiences-api-client/dist
       mkdir -p packages/generative-experiences-vdom/dist
 
-      cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/dist
-      cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/dist
+      cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/
+      cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/
 
 defaults: &defaults
   working_directory: ~/generative-experiences
@@ -60,8 +60,8 @@ jobs:
             mkdir -p /tmp/workspace/packages/generative-experiences-api-client/dist
             mkdir -p /tmp/workspace/packages/generative-experiences-vdom/dist
 
-            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client/dist
-            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-vdom/dist
+            cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client
+            cp -R packages/generative-experiences-vdom/dist /tmp/workspace/packages/generative-experiences-vdom
       - persist_to_workspace:
           root: *workspace_root
           paths:
@@ -79,6 +79,17 @@ jobs:
       - run:
           name: Linting
           command: yarn run lint
+  test_types:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run:
+          name: Type checking
+          command: yarn run test:types
 workflows:
   ci:
     jobs:
@@ -86,3 +97,4 @@ workflows:
       - test_lint:
           requires:
             - build
+      - test_types
