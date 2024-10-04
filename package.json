@@ -2,21 +2,21 @@
   "name": "@algolia/generative-experiences",
   "description": "Algolia GSE monorepo",
   "private": true,
+  "engines": {
+    "node": ">=20.17.0 <22"
+  },
   "workspaces": [
     "packages/*",
     "examples/*"
   ],
-  "engines": {
-    "node": ">=20.17.0 <22"
-  },
   "scripts": {
     "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
     "playground:dev": "lerna run dev --scope playground",
-    "test:types": "tsc --noEmit",
     "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
-    "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private"
+    "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private",
+    "test:types": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "20.16.10",
@@ -39,6 +39,7 @@
     "typescript": "5.6.2",
     "vite": "5.4.7",
     "vite-plugin-dts": "^4.2.1",
-    "vitest": "2.1.2"
+    "vitest": "2.1.2",
+    "msw": "^2.4.9"
   }
 }

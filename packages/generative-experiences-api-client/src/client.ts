@@ -1,4 +1,5 @@
-import { FacetFilters, algoliasearch } from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
+import type { FacetFilters } from 'algoliasearch';
 import type { PlainSearchParameters } from 'algoliasearch-helper';
 
 import {
@@ -48,6 +49,9 @@ export const DEFAULT_HOST = 'https://generative-ai.algolia.com';
 export function createClient(opts: CreateClientOptions) {
   if (!opts.appId) {
     throw new Error('Missing appId');
+  }
+  if (!opts.indexName) {
+    throw new Error('Missing indexName');
   }
   if (!opts.searchOnlyAPIKey) {
     throw new Error('Missing searchOnlyAPIKey');
@@ -242,7 +246,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      return res.results[0].hits;
+      return res?.results?.at(0)?.hits ?? [];
     },
     async getContent(
       { objectID, onlyPublished = true }: ShoppingGuideContentOptions,
@@ -260,7 +264,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      const record = res.hits[0];
+      const record = res?.hits?.at(0);
       if (record?.content) {
         return record;
       }
@@ -341,7 +345,6 @@ export function createClient(opts: CreateClientOptions) {
 
       return null;
     },
-
     async vote({
       objectIDs,
       voteType,
