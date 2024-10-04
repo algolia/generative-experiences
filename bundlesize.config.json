@@ -2,19 +2,19 @@
   "files": [
     {
       "path": "packages/generative-experiences-api-client/dist/index.js",
-      "maxSize": "27.03 kB"
+      "maxSize": "27.43 kB"
     },
     {
       "path": "packages/generative-experiences-api-client/dist/index.umd.cjs",
-      "maxSize": "11.33 kB"
+      "maxSize": "11.38 kB"
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.js",
-      "maxSize": "687 B"
+      "maxSize": "686 B"
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.umd.cjs",
-      "maxSize": "681 B"
+      "maxSize": "682 B"
     }
   ]
 }
