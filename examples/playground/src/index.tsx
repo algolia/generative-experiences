@@ -8,17 +8,10 @@ import React, { Fragment, createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 
 const options = {
-  source: {
-    apiKey: import.meta.env.VITE_EXAMPLES_API_KEY ?? '',
-    appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
-    indexName: import.meta.env.VITE_EXAMPLES_MAIN_INDEX_NAME ?? '',
-    categoryAttribute: '',
-  },
-  content: {
-    apiKey: import.meta.env.VITE_EXAMPLES_GUIDES_API_KEY ?? '',
-    appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
-    indexName: import.meta.env.VITE_EXAMPLES_GUIDES_INDEX_NAME ?? '',
-  },
+  appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
+  indexName: import.meta.env.VITE_EXAMPLES_INDEX_NAME ?? '',
+  searchOnlyAPIKey: import.meta.env.VITE_EXAMPLES_SEARCH_ONLY_API_KEY ?? '',
+  writeAPIKey: import.meta.env.VITE_EXAMPLES_WRITE_API_KEY ?? '',
 };
 
 const commerceClient = createClient(options);
@@ -33,12 +26,23 @@ commerceClient
   .then((response) => console.log(response));
 
 // test getContent method
-// commerceClient
-//   .getContent({
-//     category: 'On view in Gallery Prince Willem V',
-//     nbHeadlines: 2,
-//   })
-//   .then((response) => console.log(response));
+commerceClient
+  .getContent({
+    objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+  })
+  .then((response) => console.log(response));
+
+// test generate headlines
+// commerceClient.generateHeadlines({
+//   category: 'Giovanni Antonio Pellegrini',
+//   tone: 'natural',
+//   language_code: 'en_US',
+// });
+
+// test generate content for a headline
+// commerceClient.generateContent({
+//   objectID: '2ec1d87e-9776-4103-af77-1c9ff960db68',
+// });
 
 const headlines = [
   {

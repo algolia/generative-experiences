@@ -235,7 +235,7 @@ export function createClient(opts: {
 
       const res = await searchClient.search<ShoppingGuideHeadline>([
         {
-          indexName: this.options.indexName,
+          indexName: `shopping_guides_${this.options.indexName}`,
           params: {
             facetFilters: [
               category ? [`category:${category}`] : undefined,
@@ -269,7 +269,7 @@ export function createClient(opts: {
     ) {
       const res = await searchClient.search<ShoppingGuide>([
         {
-          indexName: this.options.indexName,
+          indexName: `shopping_guides_${this.options.indexName}`,
           params: {
             facetFilters: [
               `objectID:${objectID}`,
