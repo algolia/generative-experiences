@@ -18,10 +18,6 @@
     "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
     "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private"
   },
-  "dependencies": {
-    "@algolia/client-search": "^5.5.2",
-    "algoliasearch": "^5.5.2"
-  },
   "devDependencies": {
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.9",

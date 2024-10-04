@@ -25,7 +25,7 @@ export type ViewProps<
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: { item: TItem } & Renderer & TComponentProps
   ): JSX.Element;
-  items: GSEHeadlineRecord[];
+  items: TItem[];
 };
 
 export type ItemComponentProps = {

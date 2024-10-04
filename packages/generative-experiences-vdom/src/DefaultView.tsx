@@ -15,9 +15,9 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
   ) {
     return (
       <div
-        className={cx('ais-Headlines-container', props.classNames.container)}
+        className={cx('auc-Headlines-container', props.classNames.container)}
       >
-        <ol className={cx('ais-Headlines-list', props.classNames.list)}>
+        <ol className={cx('auc-Headlines-list', props.classNames.list)}>
           {props.items.map((item) => (
             <li
               key={item.objectID}
@@ -27,7 +27,6 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
                 createElement={createElement}
                 Fragment={Fragment}
                 classNames={props.classNames}
-                // @ts-expect-error
                 item={item}
               />
             </li>
