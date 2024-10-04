@@ -222,7 +222,7 @@ export function createClient(opts: CreateClientOptions) {
       }, []);
 
       const res = await this.searchSingleIndex<ShoppingGuideHeadline>({
-        indexName: this.options.indexName,
+        indexName: this._outputIndexName(),
         searchParams: {
           facetFilters: [
             category ? [`category:${category}`] : undefined,
@@ -249,7 +249,7 @@ export function createClient(opts: CreateClientOptions) {
       requestOptions?: PlainSearchParameters
     ) {
       const res = await this.searchSingleIndex<ShoppingGuide>({
-        indexName: this.options.indexName,
+        indexName: this._outputIndexName(),
         searchParams: {
           facetFilters: [
             `objectID:${objectID}`,
