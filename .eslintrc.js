@@ -3,7 +3,7 @@ const OFF = 0;
 const ERROR = 2;
 
 module.exports = {
-  extends: ['algolia', 'algolia/jest', 'algolia/react', 'algolia/typescript'],
+  extends: ['algolia', 'algolia/react', 'algolia/typescript'],
   globals: {
     __DEV__: false,
     __TEST__: false,

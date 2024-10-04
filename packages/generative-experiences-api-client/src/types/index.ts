@@ -1,3 +1,4 @@
+export * from './task';
 export * from './utils';
 export * from './shopping-guide';
 export * from './shopping-guides-content';
