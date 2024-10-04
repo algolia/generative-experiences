@@ -30,6 +30,7 @@ commerceClient
   .getContent({
     objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
   })
+  // eslint-disable-next-line no-console
   .then((response) => console.log(response));
 
 // test generate headlines
