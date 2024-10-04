@@ -1,4 +1,5 @@
-"files": [
+{
+  "files": [
     {
       "path": "packages/generative-experiences-api-client/dist/index.js",
       "maxSize": "27.06 kB"
