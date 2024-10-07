@@ -13,10 +13,17 @@
     "url": "https://www.algolia.com"
   },
   "type": "module",
-  "main": "./dist/index.js",
   "files": [
     "dist"
   ],
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "main": "dist/index.umd.cjs",
+  "umd:main": "dist/index.umd.cjs",
+  "unpkg": "dist/index.umd.cjs",
+  "jsdelivr": "dist/index.umd.cjs",
+  "sideEffects": false,
   "scripts": {
     "build": "tsc && vite build",
     "test": "yarn vitest",
