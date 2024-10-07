@@ -1,0 +1,45 @@
+{
+  "name": "@algolia/generative-experiences",
+  "description": "Algolia GSE monorepo",
+  "private": true,
+  "engines": {
+    "node": ">=20.17.0 <22"
+  },
+  "workspaces": [
+    "packages/*",
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "lerna run build --scope @algolia/generative-experiences-* --no-private",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "playground:build": "lerna run build --scope playground",
+    "playground:dev": "lerna run dev --scope playground",
+    "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
+    "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private",
+    "test:types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "20.16.10",
+    "@typescript-eslint/eslint-plugin": "2.19.0",
+    "@typescript-eslint/parser": "2.19.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "bundlesize": "^0.18.2",
+    "eslint": "6.8.0",
+    "eslint-config-algolia": "15.0.0",
+    "eslint-config-prettier": "6.15.0",
+    "eslint-plugin-cypress": "2.11.2",
+    "eslint-plugin-eslint-comments": "3.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jest": "24.1.3",
+    "eslint-plugin-prettier": "3.2.0",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "lerna": "8.1.8",
+    "prettier": "2.2.1",
+    "typescript": "5.6.2",
+    "vite": "5.4.7",
+    "vite-plugin-dts": "^4.2.1",
+    "vitest": "2.1.2",
+    "msw": "^2.4.9"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "@algolia/generative-experiences-api-client",
+  "version": "0.0.0",
+  "description": "GSE API client methods",
+  "license": "MIT",
+  "repository": "algolia/generative-experiences",
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "homepage": "https://github.com/algolia/generative-experiences#readme",
+  "author": {
+    "name": "Algolia, Inc.",
+    "url": "https://www.algolia.com"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "yarn vitest",
+    "test:ci": "yarn vitest --run --reporter=junit --outputFile ../../test_results/generative-experiences-api-client.xml"
+  },
+  "dependencies": {
+    "algoliasearch": "5.7.0",
+    "algoliasearch-helper": "3.22.5"
+  }
+}
