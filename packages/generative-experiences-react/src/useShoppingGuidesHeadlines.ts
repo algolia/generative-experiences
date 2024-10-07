@@ -1,5 +1,6 @@
 import { ShoppingGuideHeadline } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'react';
+
 import { UseShoppingGuidesHeadlinesProps } from './ShoppingGuidesHeadlines';
 
 export function useShoppingGuidesHeadlines({
