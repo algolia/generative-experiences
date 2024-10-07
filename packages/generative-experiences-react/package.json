@@ -13,16 +13,24 @@
     "url": "https://www.algolia.com"
   },
   "type": "module",
-  "main": "./build/index.js",
+  "main": "./dist/index.js",
   "files": [
-    "build"
+    "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "yarn vitest --run",
+    "test:ci": "yarn vitest --run --reporter=junit --outputFile ../../test_results/generative-experiences-vdom.xml"
+  },
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "0.0.0"
+    "@algolia/generative-experiences-api-client": "0.0.0",
+    "@algolia/generative-experiences-vdom": "0.0.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.9"
   }
 }

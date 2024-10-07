@@ -1,5 +1,9 @@
 import type { PlainSearchParameters } from 'algoliasearch-helper';
 
+import { CommerceClient } from '../client';
+
+import { GenerationSource } from './utils';
+
 export type ShoppingGuideHeadline = {
   objectID: string;
   title: string;
@@ -75,3 +79,11 @@ export type ShoppingGuideHeadlinesOptionsForCombined = {
    */
   onlyPublished?: boolean;
 };
+
+export type ShoppingGuideHeadlinesOptions =
+  // @TODO: revisit this type to be accurate
+  Omit<ShoppingGuideHeadlinesOptionsForCombined, 'source'> & {
+    source?: GenerationSource;
+    immediate?: boolean;
+    client: CommerceClient;
+  };
