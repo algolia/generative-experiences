@@ -1,0 +1,77 @@
+import type { PlainSearchParameters } from 'algoliasearch-helper';
+
+export type ShoppingGuideHeadline = {
+  objectID: string;
+  title: string;
+  description: string;
+  content?: Array<{ title: string; content: string }>;
+  objects: Array<{
+    objectID: string;
+    name: string;
+    description: string;
+    image: string;
+    category: string;
+  }>;
+  score_headline: number;
+};
+
+export type ShoppingGuideHeadlinesRequestParameters = {
+  category?: string;
+  nb_headlines?: number;
+  index_name?: string;
+  output_application_id?: string;
+  output_api_key?: string;
+  output_index_name?: string;
+  /**
+   * Parameters to pass to the Algolia search for the matching items.
+   */
+  search_parameters?: PlainSearchParameters;
+  /**
+   * @default 'en_US'
+   */
+  language_code?: string;
+  /**
+   * @default 'natural'
+   */
+  tone?: string;
+  content_to_avoid?: string;
+  wait?: boolean;
+};
+
+export type ShoppingGuideHeadlinesOptionsForIndex = {
+  source?: 'index';
+  nbHeadlines?: number;
+  category?: string;
+  object?: { objectID: string };
+  breadcrumbs?: string[];
+  /**
+   * Search parameters to pass to the Algolia search for headlines.
+   */
+  searchParams?: PlainSearchParameters;
+  /**
+   * Only return headlines that have had their content generated.
+   */
+  onlyPublished?: boolean;
+};
+export type ShoppingGuideHeadlinesOptionsForGenerated = Partial<ShoppingGuideHeadlinesRequestParameters> & {
+  source: 'generated';
+  nbHeadlines?: number;
+  category: string;
+};
+
+export type ShoppingGuideHeadlinesOptionsForCombined = {
+  source: 'combined';
+  nbHeadlines?: number;
+  category: string;
+  object?: { objectID: string };
+  breadcrumbs?: string[];
+  searchParams?: PlainSearchParameters;
+  generateParams?: ShoppingGuideHeadlinesRequestParameters;
+  /**
+   * Only return headlines that have had their content generated and published.
+   * This is only used when source is 'index' or 'combined'.
+   *
+   * @default true
+   */
+  onlyPublished?: boolean;
+};
