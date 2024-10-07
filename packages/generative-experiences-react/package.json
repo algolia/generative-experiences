@@ -27,7 +27,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "test": "yarn vitest --run --environment=happy-dom",
-    "test:ci": "yarn vitest --run --reporter=junit --outputFile ../../test_results/generative-experiences-react.xml"
+    "test:ci": "yarn vitest --run --environment=happy-dom --reporter=junit --outputFile ../../test_results/generative-experiences-react.xml"
   },
   "dependencies": {
     "@algolia/generative-experiences-api-client": "0.0.0",
