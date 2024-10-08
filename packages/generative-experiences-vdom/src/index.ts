@@ -1,1 +1,2 @@
-export * from './ShoppingGuidesHeadlinesWidget';
+export * from './ShoppingGuidesHeadlines';
+export * from './types';

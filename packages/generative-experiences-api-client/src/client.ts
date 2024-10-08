@@ -60,7 +60,7 @@ export function createClient(opts: CreateClientOptions) {
   const searchClient = algoliasearch(opts.appId, opts.searchOnlyAPIKey);
 
   // to-do make the npm version dynamic
-  searchClient.addAlgoliaAgent('commerce-ai', '1.0.0');
+  searchClient.addAlgoliaAgent('generative-experiences-api-client', '1.0.0');
 
   return {
     options: {
@@ -74,6 +74,7 @@ export function createClient(opts: CreateClientOptions) {
     async clearCache() {
       await searchClient.clearCache();
     },
+
     async request({
       path,
       body,
@@ -107,6 +108,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return content;
     },
+
     async waitTask(
       { taskID }: { taskID: string },
       requestOptions?: RequestParameters
@@ -129,6 +131,7 @@ export function createClient(opts: CreateClientOptions) {
         options: requestOptions,
       });
     },
+
     async generateHeadlines(
       options: Omit<ShoppingGuideHeadlinesOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
@@ -154,6 +157,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async generateContent(
       {
         objectID,
@@ -183,6 +187,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async generateComparison(
       { objectIDs, ...options }: ProductsComparisonOptions,
       requestOptions?: RequestParameters
@@ -209,6 +214,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async getHeadlines(
       {
         category,
@@ -246,8 +252,9 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      return res?.results?.at(0)?.hits ?? [];
+      return res?.hits ?? [];
     },
+
     async getContent(
       { objectID, onlyPublished = true }: ShoppingGuideContentOptions,
       requestOptions?: PlainSearchParameters
@@ -270,6 +277,7 @@ export function createClient(opts: CreateClientOptions) {
       }
       return null;
     },
+
     async getOrGenerateHeadlines<TSource extends GenerationSource>(
       params: {
         combined: ShoppingGuideHeadlinesOptionsForCombined;
@@ -313,6 +321,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return null;
     },
+
     async getOrGenerateContent<TSource extends GenerationSource>(
       {
         source,
@@ -345,6 +354,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return null;
     },
+
     async vote({
       objectIDs,
       voteType,
@@ -374,6 +384,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async deleteHeadlines(
       { objectIDs }: { objectIDs: string[] },
       requestOptions?: RequestParameters
@@ -396,6 +407,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async deleteContent(
       { objectIDs }: { objectIDs: string[] },
       requestOptions?: RequestParameters
@@ -418,7 +430,8 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
-    async update(
+
+    async updateShoppingGuide(
       {
         objectID,
         data,
@@ -447,7 +460,8 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
-    async create(
+
+    async createShoppingGuidesIndex(
       { indexName }: { indexName: string },
       requestOptions?: RequestParameters
     ) {
@@ -468,6 +482,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async tasks(
       _args: unknown,
       requestOptions?: RequestParameters
@@ -479,6 +494,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     _outputIndexName() {
       return `shopping_guides_${this.options.indexName}`;
     },
