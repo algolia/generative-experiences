@@ -1,3 +1,4 @@
+import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
 
 export type HeadlinesButtonClassNames = Partial<{
@@ -15,6 +16,13 @@ export type GSEHeadlineRecord = {
   objectID: string;
   title: string;
   description: string;
+  objects: Array<{
+    objectID: string;
+    name: string;
+    description: string;
+    image: string;
+    category: string;
+  }>;
 };
 
 export type ViewProps<
@@ -26,11 +34,13 @@ export type ViewProps<
     props: { item: TItem } & Renderer & TComponentProps
   ): JSX.Element;
   items: TItem[];
+  getters: CommerceGetters;
 };
 
 export type ItemComponentProps = {
   item: GSEHeadlineRecord;
   classNames: HeadlinesButtonClassNames;
+  getters: CommerceGetters;
 } & Renderer;
 
 export type ComponentProps = {
@@ -52,4 +62,5 @@ export type HeadlinesComponentProps = {
   view?(
     props: ViewProps<GSEHeadlineRecord, Record<string, string>> & Renderer
   ): JSX.Element;
+  getters: CommerceGetters;
 };

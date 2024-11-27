@@ -28,6 +28,7 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
                 Fragment={Fragment}
                 classNames={props.classNames}
                 item={item}
+                getters={props.getters}
               />
             </li>
           ))}

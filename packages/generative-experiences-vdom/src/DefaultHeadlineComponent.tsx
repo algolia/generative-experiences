@@ -6,6 +6,7 @@ import { cx } from './utils';
 
 export function createDefaultHeadlineComponent({ createElement }: Renderer) {
   return function HeadlineComponent(props: ItemComponentProps) {
+    const [image] = props.getters.images(props.item.objects[0]);
     return (
       <div
         key={props.item.objectID}
@@ -34,22 +35,21 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
               'ais-ShoppingGuideHeadlinesContent-readMore',
               props.classNames.readMore
             )}
-            // href={getters.guideURL(props.item.objectID)}
+            href={props.getters.guideURL(props.item.objectID)}
           >
             Read more
           </a>
         </div>
-        {/* {image && (
+        {image && (
           <div
             className={cx(
               'ais-ShoppingGuideHeadlinesContent-itemImage',
               props.classNames.itemImage
             )}
           >
-            eslint-disable-next-line @next/next/no-img-element
             <img src={image.src} alt={image.alt} />
           </div>
-        )} */}
+        )}
       </div>
     );
   };

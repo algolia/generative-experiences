@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
+import { defaultGetters } from './DefaultGetters';
 import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
 import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
 import { createListViewComponent } from './DefaultView';
@@ -26,6 +27,9 @@ export function createShoppingGuidesHeadlinesComponent({
 
     const ViewComponent =
       props.view ?? createListViewComponent({ createElement, Fragment });
+
+    const getters = props.getters ?? defaultGetters;
+
     const View = (viewProps: any) => (
       <ViewComponent
         classNames={classNames}
@@ -33,6 +37,7 @@ export function createShoppingGuidesHeadlinesComponent({
         itemComponent={itemComponent}
         items={props.items}
         createElement={createElement}
+        getters={getters}
         {...viewProps}
       />
     );
