@@ -5,8 +5,10 @@ export type ShoppingGuide = {
   title: string;
   description: string;
   category: string;
-  loading: false;
   status: 'draft' | 'generating' | 'headline' | 'published';
+  type: 'shopping_guide' | 'comparison' | 'category';
+  language: string;
+  tone: string;
   generated_at: number;
   score_content: number;
   score_headline: number;

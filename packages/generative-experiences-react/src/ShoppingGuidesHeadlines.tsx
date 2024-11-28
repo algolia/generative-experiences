@@ -7,9 +7,7 @@ import React, { createElement, Fragment } from 'react';
 
 import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
 
-export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions & {
-  showImmediate: boolean;
-};
+export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions;
 
 export type RelatedProductsProps = UseShoppingGuidesHeadlinesProps &
   Omit<

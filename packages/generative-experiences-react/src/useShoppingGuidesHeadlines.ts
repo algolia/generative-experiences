@@ -76,6 +76,7 @@ export function useShoppingGuidesHeadlines({
           },
           { signal }
         );
+        console.log('from hook', data);
         setIsLoading('idle');
         setHeadlines(data);
         abortController.current = new AbortController();

@@ -1,7 +1,8 @@
 import type { PlainSearchParameters } from 'algoliasearch-helper';
+import { CommerceClient } from '../client';
+import { GenerationSource } from './utils';
 
-export type ShoppingGuideContentOptions = {
-  objectID: string;
+export type ShoppingGuideContentRequestParameters = {
   /**
    * @default 'shopping_guide'
    */
@@ -30,3 +31,38 @@ export type ShoppingGuideContentOptions = {
   tone?: string;
   content_to_avoid?: string;
 };
+
+export type ShoppingGuideContentOptionsForIndex = {
+  objectID: string;
+  source?: 'index';
+  /**
+   * Only return headlines that have had their content generated.
+   */
+  onlyPublished?: boolean;
+};
+
+export type ShoppingGuideContentOptionsForGenerated = Partial<ShoppingGuideContentRequestParameters> & {
+  source: 'generated';
+  objectID: string;
+};
+
+export type ShoppingGuideContentOptionsForCombined = {
+  source: 'combined';
+  objectID: string;
+  generateParams?: ShoppingGuideContentRequestParameters;
+  /**
+   * Only return headlines that have had their content generated and published.
+   * This is only used when source is 'index' or 'combined'.
+   *
+   * @default true
+   */
+  onlyPublished?: boolean;
+};
+
+export type ShoppingGuideContentOptions =
+  // @TODO: revisit this type to be accurate
+  Omit<ShoppingGuideContentOptionsForCombined, 'source'> & {
+    source?: GenerationSource;
+    showImmediate?: boolean;
+    client: CommerceClient;
+  };

@@ -4,6 +4,7 @@
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
   ShoppingGuidesHeadlines,
+  useShoppingGuidesContent,
   useShoppingGuidesHeadlines,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
@@ -20,12 +21,12 @@ const options = {
 const commerceClient = createClient(options);
 
 // test getHeadlines method
-commerceClient
-  .getHeadlines({
-    category: 'On view in Gallery Prince Willem V',
-  })
-  // eslint-disable-next-line no-console
-  .then((response) => console.log(response));
+// commerceClient
+//   .getHeadlines({
+//     category: 'On view in Gallery Prince Willem V',
+//   })
+//   // eslint-disable-next-line no-console
+//   .then((response) => console.log(response));
 
 // test getContent method
 // commerceClient
@@ -54,8 +55,39 @@ function ComponentTest() {
     category: 'On view in Gallery Prince Willem V',
   });
 
+  const { content, status: contentStatus } = useShoppingGuidesContent({
+    client: commerceClient,
+    objectID: 'e4a55f48-19d9-49b0-aed9-2f1aca7e717a',
+    // objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+    showImmediate: true,
+    onlyPublished: false,
+  });
+
+  // const {
+  //   headlines: generatedHeadlines,
+  //   status: generatedHStatus,
+  // } = useShoppingGuidesHeadlines({
+  //   client: commerceClient,
+  //   showImmediate: true,
+  //   category: 'On view in Room 14',
+  //   source: 'generated',
+  // });
+  // const {
+  //   content: generatedContent,
+  //   status: generatedStatus,
+  // } = useShoppingGuidesContent({
+  //   client: commerceClient,
+  //   objectID: 'f47e71e5-44cd-49c9-97eb-8dc7b0527c1b',
+  //   source: 'generated',
+  //   onlyPublished: false,
+  //   showImmediate: true,
+  // });
+
   // eslint-disable-next-line no-console
-  console.log(headlines, status);
+  console.log('>>>>>>>>>>> content', content, contentStatus);
+  // eslint-disable-next-line no-console
+  console.log('>>>>>>>>>>> headlines', headlines, status);
+  // console.log('>>>>>>>>>>> generated', generatedHeadlines, generatedHStatus);
 
   return (
     <ShoppingGuidesHeadlines

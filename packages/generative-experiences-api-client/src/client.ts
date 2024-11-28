@@ -8,6 +8,8 @@ import {
   RequestParameters,
   ShoppingGuide,
   ShoppingGuideContentOptions,
+  ShoppingGuideContentOptionsForGenerated,
+  ShoppingGuideContentOptionsForIndex,
   ShoppingGuideHeadline,
   ShoppingGuideHeadlinesOptionsForCombined,
   ShoppingGuideHeadlinesOptionsForGenerated,
@@ -163,7 +165,7 @@ export function createClient(opts: CreateClientOptions) {
         objectID,
         type = 'shopping_guide',
         ...options
-      }: Omit<ShoppingGuideContentOptions, 'source'>,
+      }: Omit<ShoppingGuideContentOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
     ) {
       if (!this.options.writeAPIKey) {
@@ -256,7 +258,10 @@ export function createClient(opts: CreateClientOptions) {
     },
 
     async getContent(
-      { objectID, onlyPublished = true }: ShoppingGuideContentOptions,
+      {
+        objectID,
+        onlyPublished = true,
+      }: Omit<ShoppingGuideContentOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
       const res = await this.searchSingleIndex<ShoppingGuide>({
