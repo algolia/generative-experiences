@@ -4,7 +4,7 @@
 import { defaultGetters } from './DefaultGetters';
 import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
 import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
-import { createListViewComponent } from './DefaultView';
+import { createListViewComponent } from './DefaultListView';
 import { HeadlinesComponentProps, Renderer } from './types';
 
 export function createShoppingGuidesHeadlinesComponent({

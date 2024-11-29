@@ -9,7 +9,7 @@ import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
 
 export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions;
 
-export type RelatedProductsProps = UseShoppingGuidesHeadlinesProps &
+export type ShoppingGuidesHeadlinesProps = UseShoppingGuidesHeadlinesProps &
   Omit<
     HeadlinesComponentVDOMProps,
     'items' | 'status' | 'createElement' | 'Fragment'
@@ -23,7 +23,7 @@ const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesCompone
   }
 );
 
-export function ShoppingGuidesHeadlines(props: any) {
+export function ShoppingGuidesHeadlines(props: ShoppingGuidesHeadlinesProps) {
   const { headlines, status } = useShoppingGuidesHeadlines(props);
 
   return (

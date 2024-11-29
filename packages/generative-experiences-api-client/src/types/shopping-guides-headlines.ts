@@ -9,6 +9,7 @@ export type ShoppingGuideHeadline = {
   title: string;
   description: string;
   objects: any[];
+  category: string;
   status: 'draft' | 'generating' | 'headline' | 'published';
   score_headline: number;
 };

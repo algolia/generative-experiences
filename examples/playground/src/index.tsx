@@ -4,6 +4,7 @@
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
   ShoppingGuidesHeadlines,
+  ShoppingGuidesContent,
   useShoppingGuidesContent,
   useShoppingGuidesHeadlines,
 } from '@algolia/generative-experiences-react';
@@ -48,6 +49,10 @@ const commerceClient = createClient(options);
 //   objectID: '2ec1d87e-9776-4103-af77-1c9ff960db68',
 // });
 
+const HitComponent = ({ hit }: { hit: any }) => {
+  return <div>{hit.title}</div>;
+};
+
 function ComponentTest() {
   const { headlines, status } = useShoppingGuidesHeadlines({
     client: commerceClient,
@@ -90,10 +95,16 @@ function ComponentTest() {
   // console.log('>>>>>>>>>>> generated', generatedHeadlines, generatedHStatus);
 
   return (
-    <ShoppingGuidesHeadlines
+    // <ShoppingGuidesHeadlines
+    //   client={commerceClient}
+    //   category="On view in Gallery Prince Willem V"
+    //   showImmediate
+    // />
+    <ShoppingGuidesContent
       client={commerceClient}
-      category="On view in Gallery Prince Willem V"
-      showImmediate
+      objectID="e4a55f48-19d9-49b0-aed9-2f1aca7e717a"
+      onlyPublished={false}
+      itemComponent={({ hit }) => <HitComponent hit={hit} />}
     />
   );
 }

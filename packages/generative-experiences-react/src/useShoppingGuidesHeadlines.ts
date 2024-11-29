@@ -9,7 +9,9 @@ export function useShoppingGuidesHeadlines({
   ...defaultOptions
 }: UseShoppingGuidesHeadlinesProps) {
   const [headlines, setHeadlines] = useState<ShoppingGuideHeadline[]>([]);
-  const [isLoading, setIsLoading] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
+    'idle'
+  );
   const [error, setError] = useState<Error | undefined>(undefined);
 
   commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
@@ -76,7 +78,6 @@ export function useShoppingGuidesHeadlines({
           },
           { signal }
         );
-        console.log('from hook', data);
         setIsLoading('idle');
         setHeadlines(data);
         abortController.current = new AbortController();

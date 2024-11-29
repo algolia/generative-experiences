@@ -16,13 +16,7 @@ export type GSEHeadlineRecord = {
   objectID: string;
   title: string;
   description: string;
-  objects: Array<{
-    objectID: string;
-    name: string;
-    description: string;
-    image: string;
-    category: string;
-  }>;
+  objects: any[];
 };
 
 export type ViewProps<
@@ -39,7 +33,7 @@ export type ViewProps<
 
 export type ItemComponentProps = {
   item: GSEHeadlineRecord;
-  classNames: HeadlinesButtonClassNames;
+  classNames?: HeadlinesButtonClassNames;
   getters: CommerceGetters;
 } & Renderer;
 
@@ -62,5 +56,5 @@ export type HeadlinesComponentProps = {
   view?(
     props: ViewProps<GSEHeadlineRecord, Record<string, string>> & Renderer
   ): JSX.Element;
-  getters: CommerceGetters;
+  getters?: CommerceGetters;
 };

@@ -12,7 +12,7 @@ export function createDefaultHeadlinesChildrenComponent({
       <section
         className={cx(
           'ais-ShoppingGuidesHeadlinesSection',
-          props.classNames.wrapper
+          props.classNames?.wrapper
         )}
       >
         <props.View />
