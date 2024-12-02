@@ -377,7 +377,7 @@ export function createClient(opts: CreateClientOptions) {
           index_name: this.options.indexName,
           output_application_id: this.options.appId,
           // make sure it works with read key
-          output_api_key: this.options.searchOnlyAPIKey,
+          output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           object_ids: objectIDs,
           vote_type: voteType,

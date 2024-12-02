@@ -22,7 +22,6 @@ const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
 
 export function ShoppingGuidesContent(props: ShoppingGuidesContentProps) {
   const { content, status } = useShoppingGuidesContent(props);
-  console.log('>>>>>>>>>react', content);
 
   return (
     <UncontrolledShoppingGuidesContent

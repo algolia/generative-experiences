@@ -7,6 +7,7 @@ import {
   ShoppingGuidesContent,
   useShoppingGuidesContent,
   useShoppingGuidesHeadlines,
+  ShoppingGuidesFeedback,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
 // @ts-expect-error
@@ -100,12 +101,19 @@ function ComponentTest() {
     //   category="On view in Gallery Prince Willem V"
     //   showImmediate
     // />
-    <ShoppingGuidesContent
-      client={commerceClient}
-      objectID="e4a55f48-19d9-49b0-aed9-2f1aca7e717a"
-      onlyPublished={false}
-      itemComponent={({ hit }) => <HitComponent hit={hit} />}
-    />
+    <>
+      <ShoppingGuidesFeedback
+        client={commerceClient}
+        objectIDs={['e4a55f48-19d9-49b0-aed9-2f1aca7e717a']}
+        userToken="abc"
+      />
+      <ShoppingGuidesContent
+        client={commerceClient}
+        objectID="e4a55f48-19d9-49b0-aed9-2f1aca7e717a"
+        onlyPublished={false}
+        itemComponent={({ hit }) => <HitComponent hit={hit} />}
+      />
+    </>
   );
 }
 
