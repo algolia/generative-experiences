@@ -10,10 +10,7 @@ export function createDefaultFeedbackChildrenComponent({
   return function DefaultFeedbackChildren(props: FeedbackChildrenProps) {
     return (
       <section
-        className={cx(
-          'ais-ShoppingGuidesHeadlinesSection',
-          props.classNames?.wrapper
-        )}
+        className={cx('ais-Feedback-wrapper', props.classNames?.wrapper)}
       >
         <props.View />
       </section>

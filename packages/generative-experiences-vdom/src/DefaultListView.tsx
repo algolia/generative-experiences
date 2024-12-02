@@ -15,24 +15,28 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
   ) {
     return (
       <div
-        className={cx('auc-Headlines-container', props.classNames.container)}
+        className={cx(
+          'ais-ShoppingGuideHeadlinesContent-container',
+          props.classNames.container
+        )}
       >
-        <ol className={cx('auc-Headlines-list', props.classNames.list)}>
-          {props.items.map((item) => (
-            <li
-              key={item.objectID}
-              className={cx('auc-Headlines-item', props.classNames.item)}
-            >
-              <props.itemComponent
-                createElement={createElement}
-                Fragment={Fragment}
-                classNames={props.classNames}
-                item={item}
-                getters={props.getters}
-              />
-            </li>
-          ))}
-        </ol>
+        {props.items.map((item) => (
+          <div
+            key={item.objectID}
+            className={cx(
+              'ais-ShoppingGuideHeadlinesContent-item',
+              props.classNames.item
+            )}
+          >
+            <props.itemComponent
+              createElement={createElement}
+              Fragment={Fragment}
+              classNames={props.classNames}
+              item={item}
+              getters={props.getters}
+            />
+          </div>
+        ))}
       </div>
     );
   };

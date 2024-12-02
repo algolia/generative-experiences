@@ -8,13 +8,7 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
   return function HeadlineComponent(props: ItemComponentProps) {
     const [image] = props.getters.images(props.item.objects[0]);
     return (
-      <div
-        key={props.item.objectID}
-        className={cx(
-          'ais-ShoppingGuideHeadlinesContent-item',
-          props.classNames?.item
-        )}
-      >
+      <div>
         <div
           className={cx(
             'ais-ShoppingGuideHeadlinesContent-itemContent',

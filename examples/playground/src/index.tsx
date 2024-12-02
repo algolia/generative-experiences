@@ -12,6 +12,7 @@ import {
 import React, { createElement } from 'react';
 // @ts-expect-error
 import { createRoot } from 'react-dom/client';
+import '../index.css';
 
 const options = {
   appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
@@ -96,12 +97,12 @@ function ComponentTest() {
   // console.log('>>>>>>>>>>> generated', generatedHeadlines, generatedHStatus);
 
   return (
-    // <ShoppingGuidesHeadlines
-    //   client={commerceClient}
-    //   category="On view in Gallery Prince Willem V"
-    //   showImmediate
-    // />
     <>
+      <ShoppingGuidesHeadlines
+        client={commerceClient}
+        category="On view in Gallery Prince Willem V"
+        showImmediate
+      />
       <ShoppingGuidesFeedback
         client={commerceClient}
         objectIDs={['e4a55f48-19d9-49b0-aed9-2f1aca7e717a']}
