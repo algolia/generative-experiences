@@ -114,7 +114,7 @@ function ComponentTest() {
         client={commerceClient}
         showFeedback
         userToken="aabc"
-        objectID="e4a55f48-19d9-49b0-aed9-2f1aca7e717a"
+        objectID="5b176f34-2bb6-4fe5-b836-7aee7ea4007d"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

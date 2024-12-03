@@ -10,11 +10,19 @@
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.js",
-      "maxSize": "687 B"
+      "maxSize": "18.3 kB"
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.umd.cjs",
-      "maxSize": "683 B"
+      "maxSize": "14.8 kB"
+    },
+    {
+      "path": "packages/generative-experiences-react/dist/index.js",
+      "maxSize": "18.3 kB"
+    },
+    {
+      "path": "packages/generative-experiences-react/dist/index.umd.cjs",
+      "maxSize": "14.8 kB"
     }
   ]
 }
