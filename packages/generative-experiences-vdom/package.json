@@ -32,6 +32,7 @@
     "@heroicons/react": "^2.0.17"
   },
   "devDependencies": {
-    "@types/react": "^18.3.9"
+    "@types/react": "^18.3.9",
+    "@algolia/client-search": "^5.8.1"
   }
 }

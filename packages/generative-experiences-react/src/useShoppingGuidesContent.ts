@@ -3,6 +3,7 @@ import {
   ShoppingGuideType,
 } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'react';
+
 import { UseShoppingGuidesContentProps } from './ShoppingGuidesContent';
 
 const defaultState: ShoppingGuideType = {

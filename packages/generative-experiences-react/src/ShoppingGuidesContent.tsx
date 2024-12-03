@@ -4,8 +4,9 @@ import {
   ContentComponentProps as ContentComponentPropsVDOMProps,
 } from '@algolia/generative-experiences-vdom';
 import React, { createElement, Fragment } from 'react';
-import { useShoppingGuidesContent } from './useShoppingGuidesContent';
+
 import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
+import { useShoppingGuidesContent } from './useShoppingGuidesContent';
 import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
 
 export type UseShoppingGuidesContentProps = ShoppingGuideContentOptions;

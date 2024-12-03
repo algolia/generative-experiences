@@ -1,1 +1,1 @@
-export * from './initMSW'
+export * from './initMSW';

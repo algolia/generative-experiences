@@ -5,9 +5,9 @@ import {
 } from '@algolia/generative-experiences-vdom';
 import React, { createElement, Fragment } from 'react';
 
-import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
-import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
 import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
+import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
+import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
 
 export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions;
 

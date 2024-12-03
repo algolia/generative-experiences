@@ -29,14 +29,23 @@ export type ViewProps<
   ): JSX.Element;
   feedbackComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: {
-      castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+      castFeedback: (
+        voteType: 'upvote' | 'downvote',
+        objectIDs?: string[],
+        voteTarget?: 'content' | 'headline'
+      ) => void;
       alreadyCasted?: boolean;
-    } & Renderer & TComponentProps
+    } & Renderer &
+      TComponentProps
   ): JSX.Element;
   items: TItem[];
   getters: CommerceGetters;
   showFeedback?: boolean;
-  castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+  castFeedback: (
+    voteType: 'upvote' | 'downvote',
+    objectIDs?: string[],
+    voteTarget?: 'content' | 'headline'
+  ) => void;
   alreadyCasted?: boolean;
 };
 
@@ -59,7 +68,11 @@ export type ChildrenProps = ComponentProps & {
 export type HeadlinesComponentProps = {
   itemComponent?(props: ItemComponentProps): JSX.Element;
   items: GSEHeadlineRecord[];
-  castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+  castFeedback: (
+    voteType: 'upvote' | 'downvote',
+    objectIDs?: string[],
+    voteTarget?: 'content' | 'headline'
+  ) => void;
   alreadyCasted?: boolean;
   showFeedback?: boolean;
   classNames?: HeadlinesButtonClassNames;

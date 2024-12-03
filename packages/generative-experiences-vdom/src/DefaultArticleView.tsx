@@ -3,9 +3,11 @@
 
 import { ContentClassNames, ContentViewProps, Renderer } from './types';
 import { cx } from './utils';
-import { Fragment } from 'react';
 
-export function createArticleViewComponent({ createElement }: Renderer) {
+export function createArticleViewComponent({
+  createElement,
+  Fragment,
+}: Renderer) {
   return function ArticleView(props: ContentViewProps<ContentClassNames>) {
     if (props.item.type === 'comparison') {
       const { objectID, title, content, objects } = props.item;

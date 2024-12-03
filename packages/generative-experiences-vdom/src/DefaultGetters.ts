@@ -4,7 +4,9 @@ export const defaultGetters: CommerceGetters = {
   guideURL: (objectID) => `/shopping-guide/${objectID}`,
   objectURL: (objectID) => `/product/${objectID}`,
   images: (object) => {
-    if (!object) return [];
+    if (!object) {
+      return [];
+    }
     const images = object.images;
 
     if (

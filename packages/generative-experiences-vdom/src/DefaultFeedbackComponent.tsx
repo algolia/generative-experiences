@@ -6,6 +6,7 @@ import {
   HandThumbUpIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';
+
 import { FeedbackViewComponentProps, Renderer } from './types';
 import { cx } from './utils';
 

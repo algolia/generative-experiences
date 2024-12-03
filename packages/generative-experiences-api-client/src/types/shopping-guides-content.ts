@@ -1,5 +1,7 @@
 import type { PlainSearchParameters } from 'algoliasearch-helper';
+
 import { CommerceClient } from '../client';
+
 import { GenerationSource } from './utils';
 
 export type ShoppingGuideContentRequestParameters = {
