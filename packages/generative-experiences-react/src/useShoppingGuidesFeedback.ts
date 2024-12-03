@@ -4,8 +4,8 @@ import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
 
 export function useShoppingGuidesFeedback({
     client: commerceClient,
-    objectIDs,
-    voteTarget = 'content',
+    objectIDs: userObjectIDs = [],
+    voteTarget: userTarget = 'content',
     userToken
 }: UseShoppingGuidesFeedbackProps) {
     const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
@@ -16,7 +16,7 @@ export function useShoppingGuidesFeedback({
 
     commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
 
-    async function castFeedback(voteType: 'upvote' | 'downvote') {
+    async function castFeedback(voteType: 'upvote' | 'downvote', objectIDs: string[] = userObjectIDs, voteTarget: 'content' | 'headline' = userTarget) {
 
         setIsLoading('loading');
 

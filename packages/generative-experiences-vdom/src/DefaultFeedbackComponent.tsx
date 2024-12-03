@@ -52,7 +52,11 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                 type="button"
                 className={cx('ais-Feedback-button', props.classNames?.button)}
                 onClick={() => {
-                  props.castFeedback('upvote');
+                  props.castFeedback(
+                    'upvote',
+                    props.objectIDs,
+                    props.voteTarget
+                  );
                 }}
               >
                 <HandThumbUpIcon
@@ -74,7 +78,11 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                 type="button"
                 className={cx('ais-Feedback-button', props.classNames?.button)}
                 onClick={() => {
-                  props.castFeedback('downvote');
+                  props.castFeedback(
+                    'downvote',
+                    props.objectIDs,
+                    props.voteTarget
+                  );
                 }}
               >
                 <HandThumbDownIcon

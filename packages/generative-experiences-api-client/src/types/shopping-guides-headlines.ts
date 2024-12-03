@@ -40,6 +40,7 @@ export type ShoppingGuideHeadlinesRequestParameters = {
 export type ShoppingGuideHeadlinesOptionsForIndex = {
   source?: 'index';
   nbHeadlines?: number;
+  showFeedback?: boolean;
   category?: string;
   object?: { objectID: string };
   breadcrumbs?: string[];
@@ -56,12 +57,14 @@ export type ShoppingGuideHeadlinesOptionsForGenerated = Partial<ShoppingGuideHea
   source: 'generated';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
 };
 
 export type ShoppingGuideHeadlinesOptionsForCombined = {
   source: 'combined';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
   object?: { objectID: string };
   breadcrumbs?: string[];
   searchParams?: PlainSearchParameters;

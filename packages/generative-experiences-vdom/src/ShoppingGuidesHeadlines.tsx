@@ -1,6 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
+import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
 import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
 import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
@@ -28,6 +29,10 @@ export function createShoppingGuidesHeadlinesComponent({
     const ViewComponent =
       props.view ?? createListViewComponent({ createElement, Fragment });
 
+    const feedbackComponent =
+      props.showFeedback &&
+      createDefaultFeedbackComponent({ createElement, Fragment });
+
     const getters = props.getters ?? defaultGetters;
 
     const View = (viewProps: any) => (
@@ -37,6 +42,10 @@ export function createShoppingGuidesHeadlinesComponent({
         itemComponent={itemComponent}
         items={props.items}
         createElement={createElement}
+        castFeedback={props.castFeedback}
+        alreadyCasted={props.alreadyCasted}
+        showFeedback={props.showFeedback}
+        feedbackComponent={feedbackComponent}
         getters={getters}
         {...viewProps}
       />

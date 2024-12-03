@@ -6,14 +6,22 @@ import {
 import React, { createElement, Fragment } from 'react';
 
 import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
+import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
+import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
 
 export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions;
 
 export type ShoppingGuidesHeadlinesProps = UseShoppingGuidesHeadlinesProps &
   Omit<
     HeadlinesComponentVDOMProps,
-    'items' | 'status' | 'createElement' | 'Fragment'
-  >;
+    | 'items'
+    | 'status'
+    | 'createElement'
+    | 'Fragment'
+    | 'castFeedback'
+    | 'alreadyCasted'
+  > &
+  Omit<UseShoppingGuidesFeedbackProps, 'client'>;
 
 const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesComponent(
   {
@@ -25,11 +33,14 @@ const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesCompone
 
 export function ShoppingGuidesHeadlines(props: ShoppingGuidesHeadlinesProps) {
   const { headlines, status } = useShoppingGuidesHeadlines(props);
+  const { castFeedback, alreadyCasted } = useShoppingGuidesFeedback(props);
 
   return (
     <UncontrolledShoppingGuidesHeadlines
       {...props}
       items={headlines}
+      castFeedback={castFeedback}
+      alreadyCasted={alreadyCasted}
       status={status}
     />
   );

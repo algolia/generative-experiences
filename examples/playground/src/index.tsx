@@ -99,6 +99,8 @@ function ComponentTest() {
   return (
     <>
       <ShoppingGuidesHeadlines
+        showFeedback
+        userToken="aabc"
         client={commerceClient}
         category="On view in Gallery Prince Willem V"
         showImmediate

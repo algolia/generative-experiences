@@ -8,7 +8,7 @@ import React, { createElement, Fragment } from 'react';
 import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
 
 export type UseShoppingGuidesFeedbackProps = {
-  objectIDs: string[];
+  objectIDs?: string[];
   client: CommerceClient;
   voteTarget?: 'content' | 'headline';
   userToken: string;

@@ -21,20 +21,22 @@ export type FeedbackChildrenProps = {
 };
 
 export type FeedbackViewComponentProps = {
-    castFeedback: (voteType: 'upvote' | 'downvote') => void;
+    castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
     alreadyCasted?: boolean;
     classNames?: FeedbackClassNames;
+    objectIDs?: string[];
+    voteTarget?: 'content' | 'headline';
 } & Renderer;
 
 export type FeedbackViewProps<
     TClassNames extends Record<string, string>
 > = {
     classNames: TClassNames;
-    castFeedback: (voteType: 'upvote' | 'downvote') => void;
+    castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
 };
 
 export type FeedbackComponentProps = {
-    castFeedback: (voteType: 'upvote' | 'downvote') => void;
+    castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
     alreadyCasted?: boolean;
     classNames?: FeedbackClassNames;
     children?(props: FeedbackChildrenProps): JSX.Element;
