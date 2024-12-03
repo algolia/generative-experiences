@@ -1,33 +1,28 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
+import { createArticleViewComponent } from './DefaultArticleView';
+import { createDefaultContentChildrenComponent } from './DefaultContentChildren';
 import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
-import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
-import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
-import { createListViewComponent } from './DefaultListView';
-import { HeadlinesComponentProps, Renderer } from './types';
+import { ContentComponentProps, Renderer } from './types';
 
-export function createShoppingGuidesHeadlinesComponent({
+export function createShoppingGuideContentComponent({
   createElement,
   Fragment,
 }: Renderer) {
-  return function ShoppingGuidesHeadlines(props: HeadlinesComponentProps) {
+  return function ShoppingGuideContent(props: ContentComponentProps) {
     const classNames = props.classNames ?? {};
 
     const children =
       props.children ??
-      createDefaultHeadlinesChildrenComponent({
+      createDefaultContentChildrenComponent({
         createElement,
         Fragment,
       });
 
-    const itemComponent =
-      props.itemComponent ??
-      createDefaultHeadlineComponent({ createElement, Fragment });
-
     const ViewComponent =
-      props.view ?? createListViewComponent({ createElement, Fragment });
+      props.view ?? createArticleViewComponent({ createElement, Fragment });
 
     const feedbackComponent =
       props.showFeedback &&
@@ -39,8 +34,8 @@ export function createShoppingGuidesHeadlinesComponent({
       <ViewComponent
         classNames={classNames}
         Fragment={Fragment}
-        itemComponent={itemComponent}
-        items={props.items}
+        itemComponent={props.itemComponent}
+        item={props.item}
         createElement={createElement}
         castFeedback={props.castFeedback}
         alreadyCasted={props.alreadyCasted}
@@ -53,7 +48,8 @@ export function createShoppingGuidesHeadlinesComponent({
 
     return children({
       classNames,
-      headlines: [],
+      // @ts-expect-error
+      content: null,
       status: props.status,
       View,
     });

@@ -6,24 +6,19 @@ import { cx } from './utils';
 
 export function createDefaultHeadlineComponent({ createElement }: Renderer) {
   return function HeadlineComponent(props: ItemComponentProps) {
+    const [image] = props.getters.images(props.item.objects[0]);
     return (
-      <div
-        key={props.item.objectID}
-        className={cx(
-          'ais-ShoppingGuideHeadlinesContent-item',
-          props.classNames.item
-        )}
-      >
+      <div>
         <div
           className={cx(
             'ais-ShoppingGuideHeadlinesContent-itemContent',
-            props.classNames.itemContent
+            props.classNames?.itemContent
           )}
         >
           <h3
             className={cx(
               'ais-ShoppingGuideHeadlinesContent-itemTitle',
-              props.classNames.itemTitle
+              props.classNames?.itemTitle
             )}
           >
             {props.item.title}
@@ -32,24 +27,23 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
           <a
             className={cx(
               'ais-ShoppingGuideHeadlinesContent-readMore',
-              props.classNames.readMore
+              props.classNames?.readMore
             )}
-            // href={getters.guideURL(props.item.objectID)}
+            href={props.getters.guideURL(props.item.objectID)}
           >
             Read more
           </a>
         </div>
-        {/* {image && (
+        {image && (
           <div
             className={cx(
               'ais-ShoppingGuideHeadlinesContent-itemImage',
-              props.classNames.itemImage
+              props.classNames?.itemImage
             )}
           >
-            eslint-disable-next-line @next/next/no-img-element
             <img src={image.src} alt={image.alt} />
           </div>
-        )} */}
+        )}
       </div>
     );
   };

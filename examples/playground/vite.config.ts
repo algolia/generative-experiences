@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import react from '@vitejs/plugin-react';
+import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -12,6 +13,11 @@ export default defineConfig({
     }),
     react({ jsxRuntime: 'classic' }),
   ],
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {
     lib: {

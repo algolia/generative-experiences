@@ -1,3 +1,4 @@
+import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
 
 export type HeadlinesButtonClassNames = Partial<{
@@ -15,6 +16,7 @@ export type GSEHeadlineRecord = {
   objectID: string;
   title: string;
   description: string;
+  objects: any[];
 };
 
 export type ViewProps<
@@ -25,12 +27,32 @@ export type ViewProps<
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: { item: TItem } & Renderer & TComponentProps
   ): JSX.Element;
+  feedbackComponent<TComponentProps extends Record<string, unknown> = {}>(
+    props: {
+      castFeedback: (
+        voteType: 'upvote' | 'downvote',
+        objectIDs?: string[],
+        voteTarget?: 'content' | 'headline'
+      ) => void;
+      alreadyCasted?: boolean;
+    } & Renderer &
+      TComponentProps
+  ): JSX.Element;
   items: TItem[];
+  getters: CommerceGetters;
+  showFeedback?: boolean;
+  castFeedback: (
+    voteType: 'upvote' | 'downvote',
+    objectIDs?: string[],
+    voteTarget?: 'content' | 'headline'
+  ) => void;
+  alreadyCasted?: boolean;
 };
 
 export type ItemComponentProps = {
   item: GSEHeadlineRecord;
-  classNames: HeadlinesButtonClassNames;
+  classNames?: HeadlinesButtonClassNames;
+  getters: CommerceGetters;
 } & Renderer;
 
 export type ComponentProps = {
@@ -46,10 +68,18 @@ export type ChildrenProps = ComponentProps & {
 export type HeadlinesComponentProps = {
   itemComponent?(props: ItemComponentProps): JSX.Element;
   items: GSEHeadlineRecord[];
+  castFeedback: (
+    voteType: 'upvote' | 'downvote',
+    objectIDs?: string[],
+    voteTarget?: 'content' | 'headline'
+  ) => void;
+  alreadyCasted?: boolean;
+  showFeedback?: boolean;
   classNames?: HeadlinesButtonClassNames;
   children?(props: ChildrenProps): JSX.Element;
   status: 'loading' | 'stalled' | 'idle';
   view?(
     props: ViewProps<GSEHeadlineRecord, Record<string, string>> & Renderer
   ): JSX.Element;
+  getters?: CommerceGetters;
 };

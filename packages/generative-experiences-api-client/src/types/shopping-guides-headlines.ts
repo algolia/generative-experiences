@@ -8,14 +8,9 @@ export type ShoppingGuideHeadline = {
   objectID: string;
   title: string;
   description: string;
-  content?: Array<{ title: string; content: string }>;
-  objects: Array<{
-    objectID: string;
-    name: string;
-    description: string;
-    image: string;
-    category: string;
-  }>;
+  objects: any[];
+  category: string;
+  status: 'draft' | 'generating' | 'headline' | 'published';
   score_headline: number;
 };
 
@@ -45,6 +40,7 @@ export type ShoppingGuideHeadlinesRequestParameters = {
 export type ShoppingGuideHeadlinesOptionsForIndex = {
   source?: 'index';
   nbHeadlines?: number;
+  showFeedback?: boolean;
   category?: string;
   object?: { objectID: string };
   breadcrumbs?: string[];
@@ -61,12 +57,14 @@ export type ShoppingGuideHeadlinesOptionsForGenerated = Partial<ShoppingGuideHea
   source: 'generated';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
 };
 
 export type ShoppingGuideHeadlinesOptionsForCombined = {
   source: 'combined';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
   object?: { objectID: string };
   breadcrumbs?: string[];
   searchParams?: PlainSearchParameters;
@@ -84,6 +82,6 @@ export type ShoppingGuideHeadlinesOptions =
   // @TODO: revisit this type to be accurate
   Omit<ShoppingGuideHeadlinesOptionsForCombined, 'source'> & {
     source?: GenerationSource;
-    immediate?: boolean;
+    showImmediate?: boolean;
     client: CommerceClient;
   };

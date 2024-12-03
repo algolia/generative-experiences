@@ -5,17 +5,23 @@ import {
 } from '@algolia/generative-experiences-vdom';
 import React, { createElement, Fragment } from 'react';
 
+import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
+import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
 import { useShoppingGuidesHeadlines } from './useShoppingGuidesHeadlines';
 
-export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions & {
-  showImmediate: boolean;
-};
+export type UseShoppingGuidesHeadlinesProps = ShoppingGuideHeadlinesOptions;
 
-export type RelatedProductsProps = UseShoppingGuidesHeadlinesProps &
+export type ShoppingGuidesHeadlinesProps = UseShoppingGuidesHeadlinesProps &
   Omit<
     HeadlinesComponentVDOMProps,
-    'items' | 'status' | 'createElement' | 'Fragment'
-  >;
+    | 'items'
+    | 'status'
+    | 'createElement'
+    | 'Fragment'
+    | 'castFeedback'
+    | 'alreadyCasted'
+  > &
+  Omit<UseShoppingGuidesFeedbackProps, 'client'>;
 
 const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesComponent(
   {
@@ -25,13 +31,16 @@ const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesCompone
   }
 );
 
-export function ShoppingGuidesHeadlines(props: any) {
+export function ShoppingGuidesHeadlines(props: ShoppingGuidesHeadlinesProps) {
   const { headlines, status } = useShoppingGuidesHeadlines(props);
+  const { castFeedback, alreadyCasted } = useShoppingGuidesFeedback(props);
 
   return (
     <UncontrolledShoppingGuidesHeadlines
       {...props}
       items={headlines}
+      castFeedback={castFeedback}
+      alreadyCasted={alreadyCasted}
       status={status}
     />
   );

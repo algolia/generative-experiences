@@ -1,14 +1,36 @@
-import { ShoppingGuideHeadline } from '@algolia/generative-experiences-api-client';
+import {
+  ShoppingGuide,
+  ShoppingGuideType,
+} from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'react';
 
-import { UseShoppingGuidesHeadlinesProps } from './ShoppingGuidesHeadlines';
+import { UseShoppingGuidesContentProps } from './ShoppingGuidesContent';
 
-export function useShoppingGuidesHeadlines({
+const defaultState: ShoppingGuideType = {
+  objectID: '',
+  status: 'draft',
+  title: '',
+  score_content: 0,
+  generated_at: 0,
+  type: 'shopping_guide',
+  description: '',
+  category: '',
+  objects: [],
+  content: [
+    {
+      title: '',
+      content: [],
+    },
+  ],
+  score_headline: 0,
+};
+
+export function useShoppingGuidesContent({
   client: commerceClient,
-  showImmediate = false,
+  showImmediate = true,
   ...defaultOptions
-}: UseShoppingGuidesHeadlinesProps) {
-  const [headlines, setHeadlines] = useState<ShoppingGuideHeadline[]>([]);
+}: UseShoppingGuidesContentProps) {
+  const [content, setContent] = useState<ShoppingGuide>(defaultState);
   const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
     'idle'
   );
@@ -18,17 +40,8 @@ export function useShoppingGuidesHeadlines({
 
   const abortController = useRef(new AbortController());
 
-  async function showHeadlines(options = {}) {
-    const {
-      object,
-      category,
-      breadcrumbs,
-      nbHeadlines = 4,
-      source = 'index',
-      searchParams,
-      generateParams,
-      onlyPublished,
-    } = {
+  async function showContent(options = {}) {
+    const { objectID, source = 'index', onlyPublished, generateParams } = {
       ...defaultOptions,
       ...options,
     };
@@ -39,25 +52,15 @@ export function useShoppingGuidesHeadlines({
     const { signal } = abortController.current;
 
     if (source === 'index' || source === 'combined') {
-      const hits = await commerceClient
-        .getHeadlines({
-          category,
-          object,
-          breadcrumbs,
-          nbHeadlines,
-          searchParams,
-          onlyPublished,
-        })
-        .catch(() => {
-          // eslint-disable-next-line no-console
-          console.warn(
-            '[commerce-ai]: error while fetching headlines from Algolia, falling back to generated headlines'
-          );
+      const retrievedContent = await commerceClient
+        .getContent({ objectID, onlyPublished })
+        .catch((err) => {
+          setError(err as Error);
         });
 
-      if (hits && hits.length === nbHeadlines) {
+      if (retrievedContent) {
         setIsLoading('idle');
-        setHeadlines(hits);
+        setContent(retrievedContent);
         return;
       }
     }
@@ -65,21 +68,20 @@ export function useShoppingGuidesHeadlines({
     if (source === 'generated' || source === 'combined') {
       setIsLoading('loading');
 
-      if (!category) {
-        throw new Error('category is required when using generated headlines');
+      if (!objectID) {
+        throw new Error('objectID is required when using generated content');
       }
 
       try {
-        const { data } = await commerceClient.generateHeadlines(
+        const data = await commerceClient.generateContent(
           {
-            category,
-            nbHeadlines,
+            objectID,
             ...generateParams,
           },
           { signal }
         );
         setIsLoading('idle');
-        setHeadlines(data);
+        setContent(data);
         abortController.current = new AbortController();
       } catch (err) {
         if ((err as Error).name !== 'AbortError') {
@@ -92,7 +94,7 @@ export function useShoppingGuidesHeadlines({
 
   useEffect(() => {
     if (showImmediate) {
-      showHeadlines();
+      showContent();
     }
     return () => {
       abortController.current.abort();
@@ -102,9 +104,9 @@ export function useShoppingGuidesHeadlines({
   }, []);
 
   return {
-    headlines,
+    content,
     error,
     status: isLoading,
-    showHeadlines,
+    showContent,
   };
 }
