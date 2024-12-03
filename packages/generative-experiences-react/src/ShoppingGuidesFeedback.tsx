@@ -11,7 +11,7 @@ export type UseShoppingGuidesFeedbackProps = {
   objectIDs?: string[];
   client: CommerceClient;
   voteTarget?: 'content' | 'headline';
-  userToken: string;
+  userToken?: string;
 };
 
 export type ShoppingGuidesFeedbackProps = UseShoppingGuidesFeedbackProps &

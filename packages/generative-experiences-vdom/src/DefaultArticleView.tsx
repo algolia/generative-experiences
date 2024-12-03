@@ -8,7 +8,7 @@ import { Fragment } from 'react';
 export function createArticleViewComponent({ createElement }: Renderer) {
   return function ArticleView(props: ContentViewProps<ContentClassNames>) {
     if (props.item.type === 'comparison') {
-      const { title, content, objects } = props.item;
+      const { objectID, title, content, objects } = props.item;
       return (
         <article
           data-type="comparison"
@@ -54,6 +54,16 @@ export function createArticleViewComponent({ createElement }: Renderer) {
               );
             })}
           </section>
+          {props.showFeedback && (
+            <props.feedbackComponent
+              castFeedback={props.castFeedback}
+              objectIDs={[objectID]}
+              voteTarget="content"
+              alreadyCasted={props.alreadyCasted}
+              createElement={createElement}
+              Fragment={Fragment}
+            />
+          )}
           <section
             className={cx(
               'ais-ShoppingGuideContent-relatedItemsSection',
@@ -97,7 +107,7 @@ export function createArticleViewComponent({ createElement }: Renderer) {
     }
 
     if (props.item.type === 'shopping_guide') {
-      const { title, description, content, objects } = props.item;
+      const { objectID, title, description, content, objects } = props.item;
       const image = props.getters.images(objects[0])[0];
 
       return (
@@ -133,6 +143,16 @@ export function createArticleViewComponent({ createElement }: Renderer) {
               </section>
             ))}
           </section>
+          {props.showFeedback && (
+            <props.feedbackComponent
+              castFeedback={props.castFeedback}
+              objectIDs={[objectID]}
+              voteTarget="content"
+              alreadyCasted={props.alreadyCasted}
+              createElement={createElement}
+              Fragment={Fragment}
+            />
+          )}
           <section
             className={cx(
               'ais-ShoppingGuideContent-relatedItemsSection',
@@ -176,7 +196,7 @@ export function createArticleViewComponent({ createElement }: Renderer) {
     }
 
     if (props.item.type === 'category') {
-      const { title, description, content, objects } = props.item;
+      const { objectID, title, description, content, objects } = props.item;
       const image = props.getters.images(objects[0])[0];
 
       return (
@@ -229,6 +249,16 @@ export function createArticleViewComponent({ createElement }: Renderer) {
               </section>
             ))}
           </section>
+          {props.showFeedback && (
+            <props.feedbackComponent
+              castFeedback={props.castFeedback}
+              objectIDs={[objectID]}
+              voteTarget="content"
+              alreadyCasted={props.alreadyCasted}
+              createElement={createElement}
+              Fragment={Fragment}
+            />
+          )}
           <section
             className={cx(
               'ais-ShoppingGuideContent-relatedItemsSection',

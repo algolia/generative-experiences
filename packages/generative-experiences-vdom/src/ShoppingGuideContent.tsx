@@ -3,6 +3,7 @@
 
 import { createArticleViewComponent } from './DefaultArticleView';
 import { createDefaultContentChildrenComponent } from './DefaultContentChildren';
+import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
 import { ContentComponentProps, Renderer } from './types';
 
@@ -23,6 +24,10 @@ export function createShoppingGuideContentComponent({
     const ViewComponent =
       props.view ?? createArticleViewComponent({ createElement, Fragment });
 
+    const feedbackComponent =
+      props.showFeedback &&
+      createDefaultFeedbackComponent({ createElement, Fragment });
+
     const getters = props.getters ?? defaultGetters;
 
     const View = (viewProps: any) => (
@@ -32,6 +37,10 @@ export function createShoppingGuideContentComponent({
         itemComponent={props.itemComponent}
         item={props.item}
         createElement={createElement}
+        castFeedback={props.castFeedback}
+        alreadyCasted={props.alreadyCasted}
+        showFeedback={props.showFeedback}
+        feedbackComponent={feedbackComponent}
         getters={getters}
         {...viewProps}
       />

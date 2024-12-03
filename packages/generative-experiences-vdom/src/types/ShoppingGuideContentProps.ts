@@ -74,6 +74,15 @@ export type ContentViewProps<
     itemComponent<TComponentProps extends Record<string, unknown> = {}>(
         props: { hit: Hit } & Renderer & TComponentProps
     ): JSX.Element;
+    feedbackComponent<TComponentProps extends Record<string, unknown> = {}>(
+        props: {
+            castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+            alreadyCasted?: boolean;
+        } & Renderer & TComponentProps
+    ): JSX.Element;
+    showFeedback?: boolean;
+    castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+    alreadyCasted?: boolean;
     getters: CommerceGetters;
 };
 
@@ -88,6 +97,9 @@ export type ContentComponentProps = {
     item: GSEContentRecord;
     classNames?: ContentClassNames;
     children?(props: ContentChildrenProps): JSX.Element;
+    castFeedback: (voteType: 'upvote' | 'downvote', objectIDs?: string[], voteTarget?: 'content' | 'headline') => void;
+    alreadyCasted?: boolean;
+    showFeedback?: boolean;
     status: 'loading' | 'stalled' | 'idle';
     view?(
         props: ContentViewProps<Record<string, string>> & Renderer
