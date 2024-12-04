@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/npm/v/@algolia/generative-experiences-api-client.svg?style=flat-square)](https://www.npmjs.com/package/@algolia/generative-experiences-api-client) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
-A repository packaging the API client and UI components for Algolia Generative Experiences.
+A repository packaging the API client and UI components for Algolia Generative Experiences. For the full documentation of this feature, please check the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/)
 
 > Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
 
@@ -63,6 +63,51 @@ npm install @algolia/generative-experiences-react@0.0.0
 <!-- END PACKAGE SETUP -->
 
 ### Usage
+
+#### Example with [React](/packages/generative-experiences-react)
+
+Displaying a shopping guide:
+
+ ```JSX
+import React from 'react';
+import { createClient } from '@algolia/generative-experiences-api-client';
+import {
+  ShoppingGuidesContent,
+} from '@algolia/generative-experiences-react';
+
+const options = {
+  appId: 'YourApplicationID',
+  indexName: 'your_index_name',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+  writeAPIKey: 'YourWriteAPIKey',
+};
+
+const gseClient = createClient(options);
+
+function App({ currentObjectID, userToken }) {
+
+  // ...
+
+  return (
+    <ShoppingGuidesContent
+      client={gseClient}
+      showFeedback
+      userToken={userToken}
+      objectID={currentObjectID}
+      onlyPublished
+      itemComponent={({ hit }) => {
+        return (
+          <pre>
+            <code>{JSON.stringify(hit)}</code>
+          </pre>
+        );
+      }}
+    />
+  )
+}
+```
+
+You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package]((/packages/generative-experiences-react/README.md))
 
 ## 🙋 FAQ
 

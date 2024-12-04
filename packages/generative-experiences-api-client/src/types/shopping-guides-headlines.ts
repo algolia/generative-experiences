@@ -78,10 +78,11 @@ export type ShoppingGuideHeadlinesOptionsForCombined = {
   onlyPublished?: boolean;
 };
 
-export type ShoppingGuideHeadlinesOptions =
-  // @TODO: revisit this type to be accurate
-  Omit<ShoppingGuideHeadlinesOptionsForCombined, 'source'> & {
-    source?: GenerationSource;
-    showImmediate?: boolean;
-    client: CommerceClient;
-  };
+export type ShoppingGuideHeadlinesOptions = Omit<
+  ShoppingGuideHeadlinesOptionsForCombined,
+  'source'
+> & {
+  source?: GenerationSource;
+  showImmediate?: boolean;
+  client: CommerceClient;
+};
