@@ -70,7 +70,7 @@ function App({ currentObjectID, userToken, category }) {
 ```
 
 | Prop name | Type | Default | Description | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
 | `children` | `ReactNode` | N/A | The children to render. | - |
@@ -125,7 +125,7 @@ function App({ currentObjectID, userToken }) {
 ```
 
 | Prop name | Type | Default | Description | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectID` | `string` | N/A | The objectID for the guide to be retrieved/generated. | `required` |
 | `itemComponent` | `ReactNode` | N/A | Component to display items (from an algolia index) listed throughout the guide. | `required` |
@@ -170,7 +170,7 @@ function App({ currentObjectID, userToken, category }) {
 ```
 
 | Prop name | Type | Default | Description | Notes |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectIDs` | `string` | N/A | Array of objectIDs for gathering feedback. | `required` |
 | `children` | `ReactNode` | N/A | The children to render. | - |
