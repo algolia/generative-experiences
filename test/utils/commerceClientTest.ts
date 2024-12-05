@@ -1,5 +1,6 @@
 import { CommerceClient } from '@algolia/generative-experiences-api-client';
 import { vi } from 'vitest';
+
 import { GeneratedHeadline, SingleHeadline } from './mockData';
 
 export function createTestClient(args: any = {}): CommerceClient {
