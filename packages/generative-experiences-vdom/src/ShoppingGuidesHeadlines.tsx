@@ -43,7 +43,7 @@ export function createShoppingGuidesHeadlinesComponent({
         items={props.items}
         createElement={createElement}
         castFeedback={props.castFeedback}
-        alreadyCasted={props.alreadyCasted}
+        alreadyCast={props.alreadyCast}
         showFeedback={props.showFeedback}
         feedbackComponent={feedbackComponent}
         getters={getters}

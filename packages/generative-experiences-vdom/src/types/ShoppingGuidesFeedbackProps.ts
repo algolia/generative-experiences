@@ -15,7 +15,7 @@ export type FeedbackClassNames = Partial<{
 
 export type FeedbackChildrenProps = {
   classNames?: FeedbackClassNames;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   status: 'loading' | 'stalled' | 'idle';
   View(props: unknown): JSX.Element;
 };
@@ -26,7 +26,7 @@ export type FeedbackViewComponentProps = {
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   classNames?: FeedbackClassNames;
   objectIDs?: string[];
   voteTarget?: 'content' | 'headline';
@@ -47,7 +47,7 @@ export type FeedbackComponentProps = {
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   classNames?: FeedbackClassNames;
   children?(props: FeedbackChildrenProps): JSX.Element;
   status: 'loading' | 'stalled' | 'idle';

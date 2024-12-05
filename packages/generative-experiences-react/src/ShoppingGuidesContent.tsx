@@ -19,7 +19,7 @@ export type ShoppingGuidesContentProps = UseShoppingGuidesContentProps &
     | 'createElement'
     | 'Fragment'
     | 'castFeedback'
-    | 'alreadyCasted'
+    | 'alreadyCast'
   > &
   Omit<UseShoppingGuidesFeedbackProps, 'client'>;
 
@@ -31,14 +31,14 @@ const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
 
 export function ShoppingGuidesContent(props: ShoppingGuidesContentProps) {
   const { content, status } = useShoppingGuidesContent(props);
-  const { castFeedback, alreadyCasted } = useShoppingGuidesFeedback(props);
+  const { castFeedback, alreadyCast } = useShoppingGuidesFeedback(props);
 
   return (
     <UncontrolledShoppingGuidesContent
       {...props}
       item={content}
       castFeedback={castFeedback}
-      alreadyCasted={alreadyCasted}
+      alreadyCast={alreadyCast}
       status={status}
     />
   );

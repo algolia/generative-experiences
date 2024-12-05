@@ -10,9 +10,7 @@ export function useShoppingGuidesFeedback({
 }: UseShoppingGuidesFeedbackProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
-  const [alreadyCasted, setAlreadyCasted] = useState<boolean | undefined>(
-    false
-  );
+  const [alreadyCast, setAlreadyCast] = useState<boolean | undefined>(false);
 
   commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
 
@@ -40,7 +38,7 @@ export function useShoppingGuidesFeedback({
         userToken,
       });
       setStatus('idle');
-      setAlreadyCasted(true);
+      setAlreadyCast(true);
     } catch (err) {
       if ((err as Error).name !== 'AbortError') {
         setStatus('idle');
@@ -52,7 +50,7 @@ export function useShoppingGuidesFeedback({
   return {
     castFeedback,
     error,
-    alreadyCasted,
+    alreadyCast,
     status,
   };
 }

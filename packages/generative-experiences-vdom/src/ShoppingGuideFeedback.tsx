@@ -28,14 +28,14 @@ export function createShoppingGuidesFeedbackComponent({
         Fragment={Fragment}
         createElement={createElement}
         castFeedback={props.castFeedback}
-        alreadyCasted={props.alreadyCasted}
+        alreadyCast={props.alreadyCast}
         {...viewProps}
       />
     );
 
     return children({
       classNames,
-      alreadyCasted: false,
+      alreadyCast: false,
       status: props.status,
       View,
     });

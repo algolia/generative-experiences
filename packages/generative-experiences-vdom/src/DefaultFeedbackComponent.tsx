@@ -14,7 +14,7 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
   return function FeedbackComponent(props: FeedbackViewComponentProps) {
     return (
       <div className={cx('ais-Feedback', props.classNames?.container)}>
-        {props.alreadyCasted ? (
+        {props.alreadyCast ? (
           <div
             className={cx(
               'ais-Feedback-thanksWrapper',

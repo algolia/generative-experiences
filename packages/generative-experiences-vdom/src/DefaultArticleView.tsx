@@ -61,7 +61,7 @@ export function createArticleViewComponent({
               castFeedback={props.castFeedback}
               objectIDs={[objectID]}
               voteTarget="content"
-              alreadyCasted={props.alreadyCasted}
+              alreadyCast={props.alreadyCast}
               createElement={createElement}
               Fragment={Fragment}
             />
@@ -150,7 +150,7 @@ export function createArticleViewComponent({
               castFeedback={props.castFeedback}
               objectIDs={[objectID]}
               voteTarget="content"
-              alreadyCasted={props.alreadyCasted}
+              alreadyCast={props.alreadyCast}
               createElement={createElement}
               Fragment={Fragment}
             />
@@ -256,7 +256,7 @@ export function createArticleViewComponent({
               castFeedback={props.castFeedback}
               objectIDs={[objectID]}
               voteTarget="content"
-              alreadyCasted={props.alreadyCasted}
+              alreadyCast={props.alreadyCast}
               createElement={createElement}
               Fragment={Fragment}
             />

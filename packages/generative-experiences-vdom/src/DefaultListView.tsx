@@ -46,7 +46,7 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
             castFeedback={props.castFeedback}
             objectIDs={props.items.map((item) => item.objectID)}
             voteTarget="headline"
-            alreadyCasted={props.alreadyCasted}
+            alreadyCast={props.alreadyCast}
             createElement={createElement}
             Fragment={Fragment}
           />

@@ -1,8 +1,8 @@
 import { Hit } from '@algolia/client-search';
+import { ShoppingGuideType } from '@algolia/generative-experiences-api-client';
 
 import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
-import { ShoppingGuideType } from '@algolia/generative-experiences-api-client';
 
 export const defaultState: ShoppingGuideType = {
   objectID: '',
@@ -100,7 +100,7 @@ export type ContentViewProps<TClassNames extends Record<string, string>> = {
         objectIDs?: string[],
         voteTarget?: 'content' | 'headline'
       ) => void;
-      alreadyCasted?: boolean;
+      alreadyCast?: boolean;
     } & Renderer &
       TComponentProps
   ): JSX.Element;
@@ -110,7 +110,7 @@ export type ContentViewProps<TClassNames extends Record<string, string>> = {
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   getters: CommerceGetters;
 };
 
@@ -130,7 +130,7 @@ export type ContentComponentProps = {
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   showFeedback?: boolean;
   status: 'loading' | 'stalled' | 'idle';
   view?(

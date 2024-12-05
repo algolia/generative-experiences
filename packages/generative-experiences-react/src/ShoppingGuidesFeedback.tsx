@@ -17,7 +17,7 @@ export type UseShoppingGuidesFeedbackProps = {
 export type ShoppingGuidesFeedbackProps = UseShoppingGuidesFeedbackProps &
   Omit<
     FeedbackComponentVDOMProps,
-    'castFeedback' | 'status' | 'createElement' | 'Fragment' | 'alreadyCasted'
+    'castFeedback' | 'status' | 'createElement' | 'Fragment' | 'alreadyCast'
   >;
 
 const UncontrolledShoppingGuidesFeedback = createShoppingGuidesFeedbackComponent(
@@ -29,7 +29,7 @@ const UncontrolledShoppingGuidesFeedback = createShoppingGuidesFeedbackComponent
 );
 
 export function ShoppingGuidesFeedback(props: ShoppingGuidesFeedbackProps) {
-  const { castFeedback, alreadyCasted, status } = useShoppingGuidesFeedback(
+  const { castFeedback, alreadyCast, status } = useShoppingGuidesFeedback(
     props
   );
 
@@ -37,7 +37,7 @@ export function ShoppingGuidesFeedback(props: ShoppingGuidesFeedbackProps) {
     <UncontrolledShoppingGuidesFeedback
       {...props}
       castFeedback={castFeedback}
-      alreadyCasted={alreadyCasted}
+      alreadyCast={alreadyCast}
       status={status}
     />
   );

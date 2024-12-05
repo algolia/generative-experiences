@@ -34,7 +34,7 @@ export type ViewProps<
         objectIDs?: string[],
         voteTarget?: 'content' | 'headline'
       ) => void;
-      alreadyCasted?: boolean;
+      alreadyCast?: boolean;
     } & Renderer &
       TComponentProps
   ): JSX.Element;
@@ -46,7 +46,7 @@ export type ViewProps<
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
 };
 
 export type ItemComponentProps = {
@@ -73,7 +73,7 @@ export type HeadlinesComponentProps = {
     objectIDs?: string[],
     voteTarget?: 'content' | 'headline'
   ) => void;
-  alreadyCasted?: boolean;
+  alreadyCast?: boolean;
   showFeedback?: boolean;
   classNames?: HeadlinesButtonClassNames;
   children?(props: ChildrenProps): JSX.Element;
