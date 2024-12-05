@@ -2,6 +2,26 @@ import { Hit } from '@algolia/client-search';
 
 import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
+import { ShoppingGuideType } from '@algolia/generative-experiences-api-client';
+
+export const defaultState: ShoppingGuideType = {
+  objectID: '',
+  status: 'draft',
+  title: '',
+  score_content: 0,
+  generated_at: 0,
+  type: 'shopping_guide',
+  description: '',
+  category: '',
+  objects: [],
+  content: [
+    {
+      title: '',
+      content: [],
+    },
+  ],
+  score_headline: 0,
+};
 
 export type ContentClassNames = Partial<{
   wrapper?: string;

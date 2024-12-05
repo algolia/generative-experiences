@@ -8,9 +8,7 @@ export function useShoppingGuidesFeedback({
   voteTarget: userTarget = 'content',
   userToken,
 }: UseShoppingGuidesFeedbackProps) {
-  const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
-    'idle'
-  );
+  const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
   const [alreadyCasted, setAlreadyCasted] = useState<boolean | undefined>(
     false
@@ -23,7 +21,7 @@ export function useShoppingGuidesFeedback({
     objectIDs: string[] = userObjectIDs,
     voteTarget: 'content' | 'headline' = userTarget
   ) {
-    setIsLoading('loading');
+    setStatus('loading');
 
     if (!objectIDs) {
       throw new Error('objectIDs is required when casting a feedback vote');
@@ -34,18 +32,18 @@ export function useShoppingGuidesFeedback({
     }
 
     try {
-      setIsLoading('loading');
+      setStatus('loading');
       await commerceClient.vote({
         objectIDs,
         voteType,
         voteTarget,
         userToken,
       });
-      setIsLoading('idle');
+      setStatus('idle');
       setAlreadyCasted(true);
     } catch (err) {
       if ((err as Error).name !== 'AbortError') {
-        setIsLoading('idle');
+        setStatus('idle');
         setError(err as Error);
       }
     }
@@ -55,6 +53,6 @@ export function useShoppingGuidesFeedback({
     castFeedback,
     error,
     alreadyCasted,
-    status: isLoading,
+    status,
   };
 }

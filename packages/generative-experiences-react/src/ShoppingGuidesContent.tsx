@@ -24,7 +24,7 @@ export type ShoppingGuidesContentProps = UseShoppingGuidesContentProps &
   Omit<UseShoppingGuidesFeedbackProps, 'client'>;
 
 const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
-  // @ts-expect-error
+  // @ts-expect-error - Pragma issue
   createElement,
   Fragment,
 });

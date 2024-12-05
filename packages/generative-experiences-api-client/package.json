@@ -32,6 +32,6 @@
   "dependencies": {
     "algoliasearch": "5.7.0",
     "algoliasearch-helper": "3.22.5",
-    "@algolia/client-search": "^5.8.1"
+    "@algolia/client-search": "5.8.1"
   }
 }

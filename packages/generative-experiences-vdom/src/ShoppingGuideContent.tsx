@@ -5,7 +5,7 @@ import { createArticleViewComponent } from './DefaultArticleView';
 import { createDefaultContentChildrenComponent } from './DefaultContentChildren';
 import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
-import { ContentComponentProps, Renderer } from './types';
+import { ContentComponentProps, Renderer, defaultState } from './types';
 
 export function createShoppingGuideContentComponent({
   createElement,
@@ -48,8 +48,7 @@ export function createShoppingGuideContentComponent({
 
     return children({
       classNames,
-      // @ts-expect-error
-      content: null,
+      content: defaultState,
       status: props.status,
       View,
     });

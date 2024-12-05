@@ -31,9 +31,7 @@ export function useShoppingGuidesContent({
   ...defaultOptions
 }: UseShoppingGuidesContentProps) {
   const [content, setContent] = useState<ShoppingGuide>(defaultState);
-  const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
-    'idle'
-  );
+  const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
   commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
@@ -46,7 +44,7 @@ export function useShoppingGuidesContent({
       ...options,
     };
 
-    if (isLoading === 'loading') {
+    if (status === 'loading') {
       abortController.current.abort();
     }
     const { signal } = abortController.current;
@@ -59,14 +57,14 @@ export function useShoppingGuidesContent({
         });
 
       if (retrievedContent) {
-        setIsLoading('idle');
+        setStatus('idle');
         setContent(retrievedContent);
         return;
       }
     }
 
     if (source === 'generated' || source === 'combined') {
-      setIsLoading('loading');
+      setStatus('loading');
 
       if (!objectID) {
         throw new Error('objectID is required when using generated content');
@@ -80,12 +78,12 @@ export function useShoppingGuidesContent({
           },
           { signal }
         );
-        setIsLoading('idle');
+        setStatus('idle');
         setContent(data);
         abortController.current = new AbortController();
       } catch (err) {
         if ((err as Error).name !== 'AbortError') {
-          setIsLoading('idle');
+          setStatus('idle');
           setError(err as Error);
         }
       }
@@ -106,7 +104,7 @@ export function useShoppingGuidesContent({
   return {
     content,
     error,
-    status: isLoading,
+    status,
     showContent,
   };
 }

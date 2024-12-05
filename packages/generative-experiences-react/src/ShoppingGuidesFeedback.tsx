@@ -22,7 +22,7 @@ export type ShoppingGuidesFeedbackProps = UseShoppingGuidesFeedbackProps &
 
 const UncontrolledShoppingGuidesFeedback = createShoppingGuidesFeedbackComponent(
   {
-    // @ts-expect-error
+    // @ts-expect-error - Pragma issue
     createElement,
     Fragment,
   }

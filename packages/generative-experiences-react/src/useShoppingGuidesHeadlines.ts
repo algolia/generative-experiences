@@ -9,9 +9,7 @@ export function useShoppingGuidesHeadlines({
   ...defaultOptions
 }: UseShoppingGuidesHeadlinesProps) {
   const [headlines, setHeadlines] = useState<ShoppingGuideHeadline[]>([]);
-  const [isLoading, setIsLoading] = useState<'idle' | 'loading' | 'stalled'>(
-    'idle'
-  );
+  const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
   commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
@@ -33,7 +31,7 @@ export function useShoppingGuidesHeadlines({
       ...options,
     };
 
-    if (isLoading === 'loading') {
+    if (status === 'loading') {
       abortController.current.abort();
     }
     const { signal } = abortController.current;
@@ -56,14 +54,14 @@ export function useShoppingGuidesHeadlines({
         });
 
       if (hits && hits.length === nbHeadlines) {
-        setIsLoading('idle');
+        setStatus('idle');
         setHeadlines(hits);
         return;
       }
     }
 
     if (source === 'generated' || source === 'combined') {
-      setIsLoading('loading');
+      setStatus('loading');
 
       if (!category) {
         throw new Error('category is required when using generated headlines');
@@ -78,12 +76,12 @@ export function useShoppingGuidesHeadlines({
           },
           { signal }
         );
-        setIsLoading('idle');
+        setStatus('idle');
         setHeadlines(data);
         abortController.current = new AbortController();
       } catch (err) {
         if ((err as Error).name !== 'AbortError') {
-          setIsLoading('idle');
+          setStatus('idle');
           setError(err as Error);
         }
       }
@@ -104,7 +102,7 @@ export function useShoppingGuidesHeadlines({
   return {
     headlines,
     error,
-    status: isLoading,
+    status,
     showHeadlines,
   };
 }

@@ -25,7 +25,7 @@ export type ShoppingGuidesHeadlinesProps = UseShoppingGuidesHeadlinesProps &
 
 const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesComponent(
   {
-    // @ts-expect-error
+    // @ts-expect-error - Pragma issue
     createElement,
     Fragment,
   }
