@@ -21,3 +21,29 @@ export const GeneratedHeadline = [
     score_headline: 0,
   },
 ];
+
+export const ShoppingGuide = {
+  objectID: '1',
+  status: 'published',
+  title: 'Guide title',
+  score_content: 0,
+  type: 'shopping_guide',
+  description: 'I am a guide',
+  category: 'category-guide',
+  objects: [],
+  content: [{ title: 'Headline', content: 'Content' }],
+  score_headline: 0,
+};
+
+export const GeneratedShoppingGuide = {
+  objectID: '1',
+  status: 'published',
+  title: 'Generated Guide title',
+  score_content: 0,
+  type: 'shopping_guide',
+  description: 'I am a generated guide',
+  category: 'category-guide',
+  objects: [],
+  content: [{ title: 'Generated Headline', content: 'Generated Content' }],
+  score_headline: 0,
+};

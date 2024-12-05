@@ -38,7 +38,10 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/react": "^18.3.9",
-    "happy-dom": "^15.7.4"
+    "happy-dom": "^15.7.4",
+    "vitest": "2.1.2"
   }
 }
