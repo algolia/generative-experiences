@@ -1,17 +1,17 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
-import { ChildrenProps, Renderer } from './types';
+import { ContentChildrenProps, Renderer } from './types';
 import { cx } from './utils';
 
-export function createDefaultHeadlinesChildrenComponent({
+export function createDefaultContentChildrenComponent({
   createElement,
 }: Renderer) {
-  return function DefaultChildren(props: ChildrenProps) {
+  return function DefaultContentChildren(props: ContentChildrenProps) {
     return (
       <section
         className={cx(
-          'ais-ShoppingGuideHeadlinesContent-wrapper',
+          'ais-ShoppingGuidesContent-wrapper',
           props.classNames?.wrapper
         )}
       >

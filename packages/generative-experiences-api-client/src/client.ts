@@ -8,6 +8,8 @@ import {
   RequestParameters,
   ShoppingGuide,
   ShoppingGuideContentOptions,
+  ShoppingGuideContentOptionsForGenerated,
+  ShoppingGuideContentOptionsForIndex,
   ShoppingGuideHeadline,
   ShoppingGuideHeadlinesOptionsForCombined,
   ShoppingGuideHeadlinesOptionsForGenerated,
@@ -60,7 +62,7 @@ export function createClient(opts: CreateClientOptions) {
   const searchClient = algoliasearch(opts.appId, opts.searchOnlyAPIKey);
 
   // to-do make the npm version dynamic
-  searchClient.addAlgoliaAgent('commerce-ai', '1.0.0');
+  searchClient.addAlgoliaAgent('generative-experiences-api-client', '1.0.0');
 
   return {
     options: {
@@ -74,6 +76,7 @@ export function createClient(opts: CreateClientOptions) {
     async clearCache() {
       await searchClient.clearCache();
     },
+
     async request({
       path,
       body,
@@ -107,6 +110,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return content;
     },
+
     async waitTask(
       { taskID }: { taskID: string },
       requestOptions?: RequestParameters
@@ -129,6 +133,7 @@ export function createClient(opts: CreateClientOptions) {
         options: requestOptions,
       });
     },
+
     async generateHeadlines(
       options: Omit<ShoppingGuideHeadlinesOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
@@ -154,12 +159,13 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async generateContent(
       {
         objectID,
         type = 'shopping_guide',
         ...options
-      }: Omit<ShoppingGuideContentOptions, 'source'>,
+      }: Omit<ShoppingGuideContentOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
     ) {
       if (!this.options.writeAPIKey) {
@@ -183,6 +189,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async generateComparison(
       { objectIDs, ...options }: ProductsComparisonOptions,
       requestOptions?: RequestParameters
@@ -209,6 +216,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.waitTask({ taskID }, requestOptions);
     },
+
     async getHeadlines(
       {
         category,
@@ -246,10 +254,14 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      return res?.results?.at(0)?.hits ?? [];
+      return res?.hits ?? [];
     },
+
     async getContent(
-      { objectID, onlyPublished = true }: ShoppingGuideContentOptions,
+      {
+        objectID,
+        onlyPublished = true,
+      }: Omit<ShoppingGuideContentOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
       const res = await this.searchSingleIndex<ShoppingGuide>({
@@ -270,6 +282,7 @@ export function createClient(opts: CreateClientOptions) {
       }
       return null;
     },
+
     async getOrGenerateHeadlines<TSource extends GenerationSource>(
       params: {
         combined: ShoppingGuideHeadlinesOptionsForCombined;
@@ -307,12 +320,13 @@ export function createClient(opts: CreateClientOptions) {
             requestParams
           );
         }
-        // @ts-expect-error
+        // @ts-expect-error - types for params clash
         return await this.generateHeadlines(params, requestParams);
       }
 
       return null;
     },
+
     async getOrGenerateContent<TSource extends GenerationSource>(
       {
         source,
@@ -345,6 +359,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return null;
     },
+
     async vote({
       objectIDs,
       voteType,
@@ -362,7 +377,7 @@ export function createClient(opts: CreateClientOptions) {
           index_name: this.options.indexName,
           output_application_id: this.options.appId,
           // make sure it works with read key
-          output_api_key: this.options.searchOnlyAPIKey,
+          output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           object_ids: objectIDs,
           vote_type: voteType,
@@ -374,6 +389,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async deleteHeadlines(
       { objectIDs }: { objectIDs: string[] },
       requestOptions?: RequestParameters
@@ -396,6 +412,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async deleteContent(
       { objectIDs }: { objectIDs: string[] },
       requestOptions?: RequestParameters
@@ -418,7 +435,8 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
-    async update(
+
+    async updateShoppingGuide(
       {
         objectID,
         data,
@@ -447,7 +465,8 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
-    async create(
+
+    async createShoppingGuidesIndex(
       { indexName }: { indexName: string },
       requestOptions?: RequestParameters
     ) {
@@ -468,6 +487,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     async tasks(
       _args: unknown,
       requestOptions?: RequestParameters
@@ -479,6 +499,7 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
     },
+
     _outputIndexName() {
       return `shopping_guides_${this.options.indexName}`;
     },
