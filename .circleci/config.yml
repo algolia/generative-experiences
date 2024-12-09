@@ -132,7 +132,7 @@ jobs:
       - run: *restore_dist_folders
       - run:
           name: Release if needed
-          command: yarn run shipjs trigger --dry-run
+          command: yarn run shipjs trigger
 
 workflows:
   ci:

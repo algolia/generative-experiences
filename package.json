@@ -14,7 +14,7 @@
     "lint": "eslint --ext .js,.ts,.tsx .",
     "playground:build": "lerna run build --scope playground",
     "playground:dev": "lerna run dev --scope playground",
-    "release": "shipjs prepare --dry-run",
+    "release": "shipjs prepare",
     "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
     "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private",
     "test:types": "tsc --noEmit"
