@@ -1,11 +1,5 @@
-# `generative-experiences-vdom`
+# generative-experiences-vdom
 
-> TODO: description
+The `generative-experiences-vdom` package is the foundation for the generative-experiences UI libraries. It exposes primitives to build a frontend experience.
 
-## Usage
-
-```
-const generativeExperiencesVdom = require('generative-experiences-vdom');
-
-// TODO: DEMONSTRATE API
-```
+You likely don’t need to use this package directly.

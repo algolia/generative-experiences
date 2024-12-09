@@ -1,17 +1,16 @@
 import type { PlainSearchParameters } from 'algoliasearch-helper';
 
+import { CommerceClient } from '../client';
+
+import { GenerationSource } from './utils';
+
 export type ShoppingGuideHeadline = {
   objectID: string;
   title: string;
   description: string;
-  content?: Array<{ title: string; content: string }>;
-  objects: Array<{
-    objectID: string;
-    name: string;
-    description: string;
-    image: string;
-    category: string;
-  }>;
+  objects: any[];
+  category: string;
+  status: 'draft' | 'generating' | 'headline' | 'published';
   score_headline: number;
 };
 
@@ -41,6 +40,7 @@ export type ShoppingGuideHeadlinesRequestParameters = {
 export type ShoppingGuideHeadlinesOptionsForIndex = {
   source?: 'index';
   nbHeadlines?: number;
+  showFeedback?: boolean;
   category?: string;
   object?: { objectID: string };
   breadcrumbs?: string[];
@@ -57,12 +57,14 @@ export type ShoppingGuideHeadlinesOptionsForGenerated = Partial<ShoppingGuideHea
   source: 'generated';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
 };
 
 export type ShoppingGuideHeadlinesOptionsForCombined = {
   source: 'combined';
   nbHeadlines?: number;
   category: string;
+  showFeedback?: boolean;
   object?: { objectID: string };
   breadcrumbs?: string[];
   searchParams?: PlainSearchParameters;
@@ -74,4 +76,13 @@ export type ShoppingGuideHeadlinesOptionsForCombined = {
    * @default true
    */
   onlyPublished?: boolean;
+};
+
+export type ShoppingGuideHeadlinesOptions = Omit<
+  ShoppingGuideHeadlinesOptionsForCombined,
+  'source'
+> & {
+  source?: GenerationSource;
+  showImmediate?: boolean;
+  client: CommerceClient;
 };

@@ -2,10 +2,17 @@
 /** @jsx createElement */
 
 import { createClient } from '@algolia/generative-experiences-api-client';
-import { createShoppingGuidesHeadlinesComponent } from '@algolia/generative-experiences-vdom';
-import React, { Fragment, createElement } from 'react';
+import {
+  ShoppingGuidesHeadlines,
+  ShoppingGuidesContent,
+  useShoppingGuidesContent,
+  useShoppingGuidesHeadlines,
+  ShoppingGuidesFeedback,
+} from '@algolia/generative-experiences-react';
+import React, { createElement } from 'react';
 // @ts-expect-error
 import { createRoot } from 'react-dom/client';
+import '../index.css';
 
 const options = {
   appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
@@ -17,21 +24,20 @@ const options = {
 const commerceClient = createClient(options);
 
 // test getHeadlines method
-commerceClient
-  .getHeadlines({
-    category: 'On view in Gallery Prince Willem V',
-    nbHeadlines: 2,
-  })
-  // eslint-disable-next-line no-console
-  .then((response) => console.log(response));
+// commerceClient
+//   .getHeadlines({
+//     category: 'On view in Gallery Prince Willem V',
+//   })
+//   // eslint-disable-next-line no-console
+//   .then((response) => console.log(response));
 
 // test getContent method
-commerceClient
-  .getContent({
-    objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
-  })
-  // eslint-disable-next-line no-console
-  .then((response) => console.log(response));
+// commerceClient
+//   .getContent({
+//     objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+//   })
+//   // eslint-disable-next-line no-console
+//   .then((response) => console.log(response));
 
 // test generate headlines
 // commerceClient.generateHeadlines({
@@ -45,35 +51,74 @@ commerceClient
 //   objectID: '2ec1d87e-9776-4103-af77-1c9ff960db68',
 // });
 
-const headlines = [
-  {
-    description:
-      "Discover the captivating landscapes of Jacob Sibrandi Mancadan, including 'Italian Landscape with Ruins'. Understand his style, influences, and the historical context of his work.",
-    objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
-    title: 'The Artistic Landscape of Jacob Sibrandi Mancadan',
-  },
-  {
-    description:
-      'Experience the tranquility and grandeur of landscape art. From Italian ruins to serene countrysides, each painting is a journey.',
-    objectID: '64aa230b-22ab-43a6-8bf8-7d81bf7834e7',
-    title: 'The Allure of Landscape Art',
-  },
-];
-
-const UncontrolledHeadlinesButton = createShoppingGuidesHeadlinesComponent({
-  // @ts-expect-error
-  createElement,
-  Fragment,
-});
+const HitComponent = ({ hit }: { hit: any }) => {
+  return <div>{hit.title}</div>;
+};
 
 function ComponentTest() {
+  const { headlines, status } = useShoppingGuidesHeadlines({
+    client: commerceClient,
+    showImmediate: true,
+    category: 'On view in Gallery Prince Willem V',
+  });
+
+  const { content, status: contentStatus } = useShoppingGuidesContent({
+    client: commerceClient,
+    objectID: 'e4a55f48-19d9-49b0-aed9-2f1aca7e717a',
+    // objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+    showImmediate: true,
+    onlyPublished: false,
+  });
+
+  // const {
+  //   headlines: generatedHeadlines,
+  //   status: generatedHStatus,
+  // } = useShoppingGuidesHeadlines({
+  //   client: commerceClient,
+  //   showImmediate: true,
+  //   category: 'On view in Room 14',
+  //   source: 'generated',
+  // });
+  // const {
+  //   content: generatedContent,
+  //   status: generatedStatus,
+  // } = useShoppingGuidesContent({
+  //   client: commerceClient,
+  //   objectID: 'f47e71e5-44cd-49c9-97eb-8dc7b0527c1b',
+  //   source: 'generated',
+  //   onlyPublished: false,
+  //   showImmediate: true,
+  // });
+
+  // eslint-disable-next-line no-console
+  console.log('>>>>>>>>>>> content', content, contentStatus);
+  // eslint-disable-next-line no-console
+  console.log('>>>>>>>>>>> headlines', headlines, status);
+  // console.log('>>>>>>>>>>> generated', generatedHeadlines, generatedHStatus);
+
   return (
-    <UncontrolledHeadlinesButton
-      //   itemComponent={() => <div>Hi</div>}
-      status="idle"
-      items={headlines}
-      //   {...props}
-    />
+    <>
+      <ShoppingGuidesHeadlines
+        showFeedback
+        userToken="aabc"
+        client={commerceClient}
+        category="On view in Gallery Prince Willem V"
+        showImmediate
+      />
+      <ShoppingGuidesFeedback
+        client={commerceClient}
+        objectIDs={['e4a55f48-19d9-49b0-aed9-2f1aca7e717a']}
+        userToken="abc"
+      />
+      <ShoppingGuidesContent
+        client={commerceClient}
+        showFeedback
+        userToken="aabc"
+        objectID="5b176f34-2bb6-4fe5-b836-7aee7ea4007d"
+        onlyPublished={false}
+        itemComponent={({ hit }) => <HitComponent hit={hit} />}
+      />
+    </>
   );
 }
 
