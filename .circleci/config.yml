@@ -120,6 +120,19 @@ jobs:
           command: yarn run test:ci
       - store_test_results:
           path: test_results
+  release:
+    <<: *defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run: *install_yarn_version
+      - restore_cache: *restore_yarn_cache
+      - run: *run_yarn_install
+      - save_cache: *save_yarn_cache
+      - run: *restore_dist_folders
+      - run:
+          name: Release if needed
+          command: yarn run shipjs trigger
 
 workflows:
   ci:
@@ -134,3 +147,12 @@ workflows:
       - test_unit:
           requires:
             - build
+      - release:
+          requires:
+            - test_unit
+            - test_lint
+            - test_size
+            - build
+          filters:
+            branches:
+              only: main
