@@ -75,7 +75,6 @@ export function shoppingGuidesHeadlines({
   if (!container) {
     return vnode;
   }
-  console.log('>>>> props', props);
 
   render(vnode, getHTMLElement(container, environment));
 

@@ -41,7 +41,9 @@ export type FeedbackViewProps<TClassNames extends Record<string, string>> = {
   ) => void;
 };
 
-export type FeedbackComponentProps = {
+export type FeedbackComponentProps<
+  TComponentProps extends Record<string, unknown> = {}
+> = {
   castFeedback: (
     voteType: 'upvote' | 'downvote',
     objectIDs?: string[],
@@ -49,7 +51,7 @@ export type FeedbackComponentProps = {
   ) => void;
   alreadyCast?: boolean;
   classNames?: FeedbackClassNames;
-  children?(props: FeedbackChildrenProps): JSX.Element;
+  children?(props: FeedbackChildrenProps & TComponentProps): JSX.Element;
   status: 'loading' | 'stalled' | 'idle';
   view?(
     props: FeedbackViewProps<Record<string, string>> & Renderer
