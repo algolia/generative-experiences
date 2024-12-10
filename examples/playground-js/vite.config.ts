@@ -15,12 +15,9 @@ export default defineConfig({
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.ts'),
-      name: '@algolia/generative-experiences-js',
+      entry: path.resolve(__dirname, 'src/index.tsx'),
+      name: 'playground-js',
       fileName: 'index',
-    },
-    rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
     },
   },
 });

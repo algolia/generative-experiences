@@ -1,0 +1,20 @@
+import { createClient } from '@algolia/generative-experiences-api-client';
+import { shoppingGuidesHeadlines } from '@algolia/generative-experiences-js';
+
+const options = {
+  appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
+  indexName: import.meta.env.VITE_EXAMPLES_INDEX_NAME ?? '',
+  searchOnlyAPIKey: import.meta.env.VITE_EXAMPLES_SEARCH_ONLY_API_KEY ?? '',
+  writeAPIKey: import.meta.env.VITE_EXAMPLES_WRITE_API_KEY ?? '',
+};
+
+const commerceClient = createClient(options);
+
+shoppingGuidesHeadlines({
+  container: '#headlines',
+  client: commerceClient,
+  userToken: 'test-user',
+  showImmediate: true,
+  showFeedback: true,
+  category: 'On view in Gallery Prince Willem V',
+});

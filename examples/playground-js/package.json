@@ -23,5 +23,8 @@
     "@algolia/generative-experiences-api-client": "0.0.0",
     "@algolia/generative-experiences-js": "0.0.0",
     "@algolia/generative-experiences-vdom": "0.0.0"
+  },
+  "devDependencies": {
+    "preact": "^10.25.1"
   }
 }

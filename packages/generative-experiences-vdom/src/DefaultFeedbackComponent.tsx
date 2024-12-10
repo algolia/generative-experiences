@@ -1,11 +1,11 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
-import {
-  HandThumbDownIcon,
-  HandThumbUpIcon,
-  SparklesIcon,
-} from '@heroicons/react/24/outline';
+// import {
+//   HandThumbDownIcon,
+//   HandThumbUpIcon,
+//   SparklesIcon,
+// } from '@heroicons/react/24/outline';
 
 import { FeedbackViewComponentProps, Renderer } from './types';
 import { cx } from './utils';
@@ -33,12 +33,12 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                 props.classNames?.labelWrapper
               )}
             >
-              <SparklesIcon
+              {/* <Sparkles
                 className={cx(
                   'ais-Feedback-labelIcon',
                   props.classNames?.labelIcon
                 )}
-              />
+              /> */}
               <span className={cx('ais-NoWrap', props.classNames?.noWrap)}>
                 Give us feedback
               </span>
@@ -60,12 +60,12 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                   );
                 }}
               >
-                <HandThumbUpIcon
+                {/* <HandThumbUpIcon
                   className={cx(
                     'ais-Feedback-buttonIcon',
                     props.classNames?.buttonIcon
                   )}
-                />
+                /> */}
                 <span
                   className={cx(
                     'ais-ScreenReaderOnly',
@@ -86,12 +86,12 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                   );
                 }}
               >
-                <HandThumbDownIcon
+                {/* <HandThumbDownIcon
                   className={cx(
                     'ais-Feedback-buttonIcon',
                     props.classNames?.buttonIcon
                   )}
-                />
+                /> */}
                 <span
                   className={cx(
                     'ais-ScreenReaderOnly',
