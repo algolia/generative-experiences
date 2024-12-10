@@ -1,22 +1,21 @@
 /** @jsxRuntime classic */
 /** @jsx h */
 
+import { ShoppingGuideHeadlinesOptions } from '@algolia/generative-experiences-api-client';
 import {
   createShoppingGuidesHeadlinesComponent,
   HeadlinesComponentProps as HeadlinesComponentVDOMProps,
 } from '@algolia/generative-experiences-vdom';
-import { ShoppingGuideHeadlinesOptions } from '@algolia/generative-experiences-api-client';
-
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
+import { useShoppingGuidesFeedback, useShoppingGuidesHeadlines } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
   UseShoppingGuidesFeedbackProps,
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
-import { useShoppingGuidesFeedback, useShoppingGuidesHeadlines } from './hooks';
 
 const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesComponent(
   {

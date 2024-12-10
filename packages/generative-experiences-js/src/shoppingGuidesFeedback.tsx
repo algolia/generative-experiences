@@ -5,17 +5,16 @@ import {
   createShoppingGuidesFeedbackComponent,
   FeedbackComponentProps as FeedbackComponentVDOMProps,
 } from '@algolia/generative-experiences-vdom';
-
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
+import { useShoppingGuidesFeedback } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
   UseShoppingGuidesFeedbackProps,
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
-import { useShoppingGuidesFeedback } from './hooks';
 
 const UncontrolledShoppingGuidesFeedback = createShoppingGuidesFeedbackComponent(
   {

@@ -1,9 +1,13 @@
+/** @jsxRuntime classic */
+/** @jsx h */
+
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
   shoppingGuidesContent,
   shoppingGuidesFeedback,
   shoppingGuidesHeadlines,
 } from '@algolia/generative-experiences-js';
+import { h } from 'preact';
 
 const options = {
   appId: import.meta.env.VITE_EXAMPLES_APP_ID ?? '',
