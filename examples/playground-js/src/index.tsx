@@ -1,5 +1,6 @@
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
+  shoppingGuidesContent,
   shoppingGuidesFeedback,
   shoppingGuidesHeadlines,
 } from '@algolia/generative-experiences-js';
@@ -26,5 +27,17 @@ shoppingGuidesFeedback({
   container: '#feedback',
   client: commerceClient,
   objectIDs: ['e4a55f48-19d9-49b0-aed9-2f1aca7e717a'],
+  userToken: 'test-user',
+});
+
+shoppingGuidesContent({
+  container: '#content',
+  client: commerceClient,
+  onlyPublished: false,
+  itemComponent({ hit }) {
+    // @ts-expect-error
+    return <div>{hit.title}</div>;
+  },
+  objectID: 'e4a55f48-19d9-49b0-aed9-2f1aca7e717a',
   userToken: 'test-user',
 });

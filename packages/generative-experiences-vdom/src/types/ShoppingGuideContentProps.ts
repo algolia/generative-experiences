@@ -120,11 +120,13 @@ export type ContentItemComponentProps = {
   getters: CommerceGetters;
 } & Renderer;
 
-export type ContentComponentProps = {
+export type ContentComponentProps<
+  TComponentProps extends Record<string, unknown> = {}
+> = {
   itemComponent(props: ContentItemComponentProps): JSX.Element;
   item: GSEContentRecord;
   classNames?: ContentClassNames;
-  children?(props: ContentChildrenProps): JSX.Element;
+  children?(props: ContentChildrenProps & TComponentProps): JSX.Element;
   castFeedback: (
     voteType: 'upvote' | 'downvote',
     objectIDs?: string[],
