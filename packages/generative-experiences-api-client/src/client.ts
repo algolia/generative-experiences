@@ -16,6 +16,7 @@ import {
   ShoppingGuideHeadlinesOptionsForIndex,
   TasksResponse,
 } from './types';
+import { version } from './version';
 
 export type CreateClientOptions = {
   /**
@@ -61,8 +62,7 @@ export function createClient(opts: CreateClientOptions) {
 
   const searchClient = algoliasearch(opts.appId, opts.searchOnlyAPIKey);
 
-  // to-do make the npm version dynamic
-  searchClient.addAlgoliaAgent('generative-experiences-api-client', '1.0.0');
+  searchClient.addAlgoliaAgent('generative-experiences-api-client', version);
 
   return {
     options: {

@@ -1,6 +1,6 @@
 {
   "name": "@algolia/generative-experiences-api-client",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.2",
   "description": "GSE API client methods",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
@@ -30,8 +30,8 @@
     "test:ci": "yarn vitest --run --reporter=junit --outputFile ../../test_results/generative-experiences-api-client.xml"
   },
   "dependencies": {
+    "@algolia/client-search": "5.8.1",
     "algoliasearch": "5.7.0",
-    "algoliasearch-helper": "3.22.5",
-    "@algolia/client-search": "5.8.1"
+    "algoliasearch-helper": "3.22.5"
   }
 }

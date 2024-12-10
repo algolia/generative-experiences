@@ -30,8 +30,8 @@
     "test:ci": "yarn vitest --run --environment=happy-dom --reporter=junit --outputFile ../../test_results/generative-experiences-js.xml"
   },
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "0.0.0",
-    "@algolia/generative-experiences-vdom": "0.0.0"
+    "@algolia/generative-experiences-api-client": "1.0.0-alpha.2",
+    "@algolia/generative-experiences-vdom": "1.0.0-alpha.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.9.2",
