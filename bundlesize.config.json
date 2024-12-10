@@ -23,6 +23,14 @@
     {
       "path": "packages/generative-experiences-react/dist/index.umd.cjs",
       "maxSize": "15.9 kB"
+    },
+    {
+      "path": "packages/generative-experiences-js/dist/index.js",
+      "maxSize": "19.6 kB"
+    },
+    {
+      "path": "packages/generative-experiences-js/dist/index.umd.cjs",
+      "maxSize": "15.9 kB"
     }
   ]
 }
