@@ -54,7 +54,7 @@ const options = {
 
 const gseClient = createClient(options);
 
-function App({ currentObjectID, userToken, category }) {
+function App({ userToken, category }) {
     //...
 
     return (
