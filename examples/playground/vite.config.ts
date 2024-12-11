@@ -1,9 +1,9 @@
 import * as path from 'path';
 
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@vituum/vite-plugin-tailwindcss';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import tailwindcss from '@vituum/vite-plugin-tailwindcss';
 
 export default defineConfig({
   plugins: [
