@@ -5,6 +5,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 
 import { UseShoppingGuidesContentProps } from './ShoppingGuidesContent';
+import { version } from './version';
 
 const defaultState: ShoppingGuideType = {
   objectID: '',
@@ -34,7 +35,7 @@ export function useShoppingGuidesContent({
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
-  commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
+  commerceClient.addAlgoliaAgent('generative-experiences-react', version);
 
   const abortController = useRef(new AbortController());
 

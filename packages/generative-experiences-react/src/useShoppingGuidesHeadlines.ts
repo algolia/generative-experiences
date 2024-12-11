@@ -2,6 +2,7 @@ import { ShoppingGuideHeadline } from '@algolia/generative-experiences-api-clien
 import { useEffect, useRef, useState } from 'react';
 
 import { UseShoppingGuidesHeadlinesProps } from './ShoppingGuidesHeadlines';
+import { version } from './version';
 
 export function useShoppingGuidesHeadlines({
   client: commerceClient,
@@ -12,7 +13,7 @@ export function useShoppingGuidesHeadlines({
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
-  commerceClient.addAlgoliaAgent('generative-experiences-react', '1.0.0');
+  commerceClient.addAlgoliaAgent('generative-experiences-react', version);
 
   const abortController = useRef(new AbortController());
 
