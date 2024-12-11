@@ -23,17 +23,19 @@ const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
 });
 
 export type ShoppingGuidesContentProps<
+  TObject = {},
   TComponentProps extends Record<string, unknown> = {}
 > = ShoppingGuideContentOptions &
   Omit<
-    ContentComponentPropsVDOMProps<TComponentProps>,
+    ContentComponentPropsVDOMProps<TObject, TComponentProps>,
     'item' | 'status' | 'castFeedback' | 'alreadyCast'
   > &
   Omit<UseShoppingGuidesFeedbackProps, 'client'>;
 
 function ShoppingGuidesContent<
+  TObject = {},
   TComponentProps extends Record<string, unknown> = {}
->(props: ShoppingGuidesContentProps<TComponentProps>) {
+>(props: ShoppingGuidesContentProps<TObject, TComponentProps>) {
   const { content, status } = useShoppingGuidesContent(props);
   const { castFeedback, alreadyCast } = useShoppingGuidesFeedback(props);
 
@@ -48,7 +50,7 @@ function ShoppingGuidesContent<
   );
 }
 
-export function shoppingGuidesContent({
+export function shoppingGuidesContent<TObject = {}>({
   container,
   environment = window,
   itemComponent,
@@ -56,9 +58,9 @@ export function shoppingGuidesContent({
   view,
   children,
   ...props
-}: ShoppingGuidesContentProps<HTMLTemplate> & EnvironmentProps) {
+}: ShoppingGuidesContentProps<TObject, HTMLTemplate> & EnvironmentProps) {
   const vnode = (
-    <ShoppingGuidesContent<HTMLTemplate>
+    <ShoppingGuidesContent<TObject, HTMLTemplate>
       {...props}
       view={view && withHtml(view)}
       itemComponent={itemComponent && withHtml(itemComponent)}

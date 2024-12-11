@@ -1,9 +1,9 @@
 import * as path from 'path';
 
 import react from '@vitejs/plugin-react';
-import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import tailwindcss from '@vituum/vite-plugin-tailwindcss';
 
 export default defineConfig({
   plugins: [
@@ -12,12 +12,8 @@ export default defineConfig({
       rollupTypes: true,
     }),
     react({ jsxRuntime: 'classic' }),
+    tailwindcss(),
   ],
-  css: {
-    postcss: {
-      plugins: [tailwindcss()],
-    },
-  },
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {
     lib: {

@@ -11,9 +11,11 @@ import { useShoppingGuidesFeedback } from './useShoppingGuidesFeedback';
 
 export type UseShoppingGuidesContentProps = ShoppingGuideContentOptions;
 
-export type ShoppingGuidesContentProps = UseShoppingGuidesContentProps &
+export type ShoppingGuidesContentProps<
+  TObject = {}
+> = UseShoppingGuidesContentProps &
   Omit<
-    ContentComponentPropsVDOMProps,
+    ContentComponentPropsVDOMProps<TObject>,
     | 'item'
     | 'status'
     | 'createElement'
@@ -29,7 +31,9 @@ const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
   Fragment,
 });
 
-export function ShoppingGuidesContent(props: ShoppingGuidesContentProps) {
+export function ShoppingGuidesContent<TObject = {}>(
+  props: ShoppingGuidesContentProps<TObject>
+) {
   const { content, status } = useShoppingGuidesContent(props);
   const { castFeedback, alreadyCast } = useShoppingGuidesFeedback(props);
 
