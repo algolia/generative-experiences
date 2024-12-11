@@ -38,7 +38,7 @@ export function useShoppingGuidesContent({
   const abortController = useRef(new AbortController());
 
   async function showContent(options = {}) {
-    const { objectID, source = 'index', onlyPublished, generateParams } = {
+    const { objectID, source = 'index', onlyPublished } = {
       ...defaultOptions,
       ...options,
     };
@@ -46,7 +46,6 @@ export function useShoppingGuidesContent({
     if (status === 'loading') {
       abortController.current.abort();
     }
-    const { signal } = abortController.current;
 
     if (source === 'index' || source === 'combined') {
       const retrievedContent = await commerceClient
@@ -59,32 +58,6 @@ export function useShoppingGuidesContent({
         setStatus('idle');
         setContent(retrievedContent);
         return;
-      }
-    }
-
-    if (source === 'generated' || source === 'combined') {
-      setStatus('loading');
-
-      if (!objectID) {
-        throw new Error('objectID is required when using generated content');
-      }
-
-      try {
-        const data = await commerceClient.generateContent(
-          {
-            objectID,
-            ...generateParams,
-          },
-          { signal }
-        );
-        setStatus('idle');
-        setContent(data);
-        abortController.current = new AbortController();
-      } catch (err) {
-        if ((err as Error).name !== 'AbortError') {
-          setStatus('idle');
-          setError(err as Error);
-        }
       }
     }
   }

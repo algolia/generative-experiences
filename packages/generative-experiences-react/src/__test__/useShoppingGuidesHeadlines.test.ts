@@ -2,11 +2,7 @@ import { waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { vi, describe, it, afterEach, expect } from 'vitest';
 
-import {
-  GeneratedHeadline,
-  SingleHeadline,
-  createTestClient,
-} from '../../../../test/utils';
+import { SingleHeadline, createTestClient } from '../../../../test/utils';
 import { useShoppingGuidesHeadlines } from '../useShoppingGuidesHeadlines';
 
 describe('useShoppingGuidesHeadlines', () => {
@@ -34,23 +30,6 @@ describe('useShoppingGuidesHeadlines', () => {
       await waitForNextUpdate();
       await waitFor(() => {
         expect(result.current.headlines).toEqual(SingleHeadline);
-      });
-    });
-
-    it('should generate one headline', async () => {
-      const { result, waitForNextUpdate } = renderHook(() =>
-        useShoppingGuidesHeadlines({
-          client,
-          showImmediate: true,
-          source: 'generated',
-          category: 'some-category',
-          nbHeadlines: 1,
-        })
-      );
-
-      await waitForNextUpdate();
-      await waitFor(() => {
-        expect(result.current.headlines).toEqual(GeneratedHeadline);
       });
     });
   });

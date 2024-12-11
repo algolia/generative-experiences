@@ -80,7 +80,6 @@ shoppingGuidesHeadlines({
 | `children` | `ReactNode` | N/A | The children to render. | - |
 | `object` | `object \| undefined` | N/A | The object to use for the headlines. | - |
 | `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
-| `source` | `'combined' \| 'generated' \| 'index' \| undefined` | `'index'` | The source of the headlines. | - |
 | `itemComponent` | `ReactNode` | Widget with title, description, image and link to full guide. | Component to display the headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
@@ -126,7 +125,6 @@ shoppingGuidesContent({
 | `objectID` | `string` | N/A | The objectID for the guide to be retrieved/generated. | `required` |
 | `itemComponent` | `ReactNode` | N/A | Component to display items (from an algolia index) listed throughout the guide. | `required` |
 | `children` | `ReactNode` | N/A | The children to render. | - |
-| `source` | `'combined' \| 'generated' \| 'index' \| undefined` | `'index'` | The source of the guides. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |

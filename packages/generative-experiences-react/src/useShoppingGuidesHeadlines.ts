@@ -24,7 +24,6 @@ export function useShoppingGuidesHeadlines({
       nbHeadlines = 4,
       source = 'index',
       searchParams,
-      generateParams,
       onlyPublished,
     } = {
       ...defaultOptions,
@@ -34,7 +33,6 @@ export function useShoppingGuidesHeadlines({
     if (status === 'loading') {
       abortController.current.abort();
     }
-    const { signal } = abortController.current;
 
     if (source === 'index' || source === 'combined') {
       const hits = await commerceClient
@@ -46,44 +44,14 @@ export function useShoppingGuidesHeadlines({
           searchParams,
           onlyPublished,
         })
-        .catch(() => {
-          // eslint-disable-next-line no-console
-          console.warn(
-            '[commerce-ai]: error while fetching headlines from Algolia, falling back to generated headlines'
-          );
+        .catch((err) => {
+          setError(err as Error);
         });
 
       if (hits && hits.length === nbHeadlines) {
         setStatus('idle');
         setHeadlines(hits);
         return;
-      }
-    }
-
-    if (source === 'generated' || source === 'combined') {
-      setStatus('loading');
-
-      if (!category) {
-        throw new Error('category is required when using generated headlines');
-      }
-
-      try {
-        const { data } = await commerceClient.generateHeadlines(
-          {
-            category,
-            nbHeadlines,
-            ...generateParams,
-          },
-          { signal }
-        );
-        setStatus('idle');
-        setHeadlines(data);
-        abortController.current = new AbortController();
-      } catch (err) {
-        if ((err as Error).name !== 'AbortError') {
-          setStatus('idle');
-          setError(err as Error);
-        }
       }
     }
   }
