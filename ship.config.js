@@ -1,4 +1,3 @@
-/* eslint-disable no-warning-comments */
 const fs = require('fs');
 const path = require('path');
 
