@@ -114,17 +114,20 @@ export type ContentViewProps<TClassNames extends Record<string, string>> = {
   getters: CommerceGetters;
 };
 
-export type ContentItemComponentProps = {
-  hit: Hit;
+export type ContentItemComponentProps<TObject = {}> = {
+  hit: Hit<TObject>;
   classNames?: ContentClassNames;
   getters: CommerceGetters;
 } & Renderer;
 
-export type ContentComponentProps = {
-  itemComponent(props: ContentItemComponentProps): JSX.Element;
+export type ContentComponentProps<
+  TObject = {},
+  TComponentProps extends Record<string, unknown> = {}
+> = {
+  itemComponent(props: ContentItemComponentProps<TObject>): JSX.Element;
   item: GSEContentRecord;
   classNames?: ContentClassNames;
-  children?(props: ContentChildrenProps): JSX.Element;
+  children?(props: ContentChildrenProps & TComponentProps): JSX.Element;
   castFeedback: (
     voteType: 'upvote' | 'downvote',
     objectIDs?: string[],

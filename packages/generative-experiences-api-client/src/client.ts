@@ -93,8 +93,8 @@ export function createClient(opts: CreateClientOptions) {
           ...(body ? { 'Content-Type': 'application/json' } : {}),
           'X-Algolia-Application-Id': this.options.appId,
           'X-Algolia-API-Key': body?.output_api_key
-            ? this.options.writeAPIKey ?? ''
-            : this.options.searchOnlyAPIKey,
+            ? String(body?.output_api_key)
+            : '',
           ...options.headers,
         },
       });
@@ -376,7 +376,7 @@ export function createClient(opts: CreateClientOptions) {
         body: {
           index_name: this.options.indexName,
           output_application_id: this.options.appId,
-          // make sure it works with read key
+          // replace with searchOnly Key after BE patch
           output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           object_ids: objectIDs,
@@ -455,8 +455,8 @@ export function createClient(opts: CreateClientOptions) {
         body: {
           object_id: objectID,
           data,
-          application_id: this.options.appId,
-          api_key: this.options.writeAPIKey,
+          output_application_id: this.options.appId,
+          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
         options: {

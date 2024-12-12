@@ -1,0 +1,46 @@
+{
+  "name": "@algolia/generative-experiences-js",
+  "version": "0.0.0",
+  "description": "GSE JavaScript components",
+  "license": "MIT",
+  "repository": "algolia/generative-experiences",
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "homepage": "https://github.com/algolia/generative-experiences#readme",
+  "author": {
+    "name": "Algolia, Inc.",
+    "url": "https://www.algolia.com"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "main": "dist/index.umd.cjs",
+  "umd:main": "dist/index.umd.cjs",
+  "unpkg": "dist/index.umd.cjs",
+  "jsdelivr": "dist/index.umd.cjs",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "yarn vitest --run --environment=happy-dom",
+    "test:ci": "yarn vitest --run --environment=happy-dom --reporter=junit --outputFile ../../test_results/generative-experiences-js.xml"
+  },
+  "dependencies": {
+    "@algolia/generative-experiences-api-client": "1.0.0-alpha.2",
+    "@algolia/generative-experiences-vdom": "1.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.2",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@types/react": "^18.3.9",
+    "happy-dom": "^15.7.4",
+    "htm": "^3.1.1",
+    "preact": "^10.25.1",
+    "vitest": "2.1.2"
+  }
+}

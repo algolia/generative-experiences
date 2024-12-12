@@ -1,7 +1,6 @@
 import * as path from 'path';
 
-import react from '@vitejs/plugin-react';
-import tailwindcss from '@vituum/vite-plugin-tailwindcss';
+import preact from '@preact/preset-vite';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -11,15 +10,17 @@ export default defineConfig({
       outDir: ['dist'],
       rollupTypes: true,
     }),
-    react({ jsxRuntime: 'classic' }),
-    tailwindcss(),
+    preact(),
   ],
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/index.tsx'),
-      name: 'playground',
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: '@algolia/generative-experiences-js',
       fileName: 'index',
+    },
+    rollupOptions: {
+      external: ['react', 'react/jsx-runtime'],
     },
   },
 });

@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'preact/hooks';
 
-import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
-import { version } from './version';
+import { UseShoppingGuidesFeedbackProps } from '../types';
+import { version } from '../version';
 
 export function useShoppingGuidesFeedback({
   client: commerceClient,
@@ -13,7 +13,7 @@ export function useShoppingGuidesFeedback({
   const [error, setError] = useState<Error | undefined>(undefined);
   const [alreadyCast, setAlreadyCast] = useState<boolean | undefined>(false);
 
-  commerceClient.addAlgoliaAgent('generative-experiences-react', version);
+  commerceClient.addAlgoliaAgent('generative-experiences-js', version);
 
   async function castFeedback(
     voteType: 'upvote' | 'downvote',

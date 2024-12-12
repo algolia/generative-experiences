@@ -65,7 +65,9 @@ export type ChildrenProps = ComponentProps & {
   View(props: unknown): JSX.Element;
 };
 
-export type HeadlinesComponentProps = {
+export type HeadlinesComponentProps<
+  TComponentProps extends Record<string, unknown> = {}
+> = {
   itemComponent?(props: ItemComponentProps): JSX.Element;
   items: GSEHeadlineRecord[];
   castFeedback: (
@@ -76,7 +78,7 @@ export type HeadlinesComponentProps = {
   alreadyCast?: boolean;
   showFeedback?: boolean;
   classNames?: HeadlinesButtonClassNames;
-  children?(props: ChildrenProps): JSX.Element;
+  children?(props: ChildrenProps & TComponentProps): JSX.Element;
   status: 'loading' | 'stalled' | 'idle';
   view?(
     props: ViewProps<GSEHeadlineRecord, Record<string, string>> & Renderer

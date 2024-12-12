@@ -7,11 +7,11 @@ import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
 import { ContentComponentProps, Renderer, defaultState } from './types';
 
-export function createShoppingGuideContentComponent({
+export function createShoppingGuideContentComponent<TObject>({
   createElement,
   Fragment,
 }: Renderer) {
-  return function ShoppingGuideContent(props: ContentComponentProps) {
+  return function ShoppingGuideContent(props: ContentComponentProps<TObject>) {
     const classNames = props.classNames ?? {};
 
     const children =

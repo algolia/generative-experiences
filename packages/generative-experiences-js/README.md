@@ -1,18 +1,26 @@
-# `@algolia/generative-experiences-react`
+# `@algolia/generative-experiences-js`
 
-React package for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
+JS package for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
 
 ## Installation
 
 All Generative Experiences packages are available on the [npm](https://www.npmjs.com/) registry.
 
 ```bash
-yarn add @algolia/generative-experiences-react
+yarn add @algolia/generative-experiences-js
 # or
-npm install @algolia/generative-experiences-react
+npm install @algolia/generative-experiences-js
 ```
 
 ## Usage
+
+To get started, you need a container for your headlines or content to go in. If you don't have containers already, you can insert them into your markup:
+
+```html
+<div id="shoppingGuidesHeadlines"></div>
+<div id="shoppingGuidesContent"></div>
+<div id="shoppingGuidesFeedback"></div>
+```
 
 ### Initialize the algolia generative experiences client
 
@@ -36,37 +44,33 @@ Parameters:
 
 ### Headlines
 
-Generate, retrieve and display headlines for shopping guides using the `useShoppingGuidesHeadlines` hook or `ShoppingGuidesHeadlines` widget.
+Insert your headlines by calling the [`shoppingGuidesHeadlines`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
-import React from 'react';
-import { createClient } from '@algolia/generative-experiences-api-client';
+/** @jsx h */
+import { h } from 'preact';
 import {
-  ShoppingGuidesContent,
-} from '@algolia/generative-experiences-react';
+  shoppingGuidesHeadlines
+} from '@algolia/generative-experiences-js';
+import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-  appId: 'YourApplicationID',
-  indexName: 'your_index_name',
-  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
+    appId: 'YourApplicationID',
+    indexName: 'your_index_name',
+    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+    writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
 
-function App({ userToken, category }) {
-    //...
-
-    return (
-        <ShoppingGuidesHeadlines
-            showFeedback
-            userToken={userToken}
-            client={gseClient}
-            category={category}
-            showImmediate
-        />
-    )
-}
+shoppingGuidesHeadlines({
+  container: '#shoppingGuidesHeadlines',
+  client: gseClient,
+  userToken: 'user-token',
+  showImmediate: true,
+  showFeedback: true,
+  category: 'some-category',
+});
 ```
 
 | Prop name | Type | Default | Description | Notes |
@@ -84,43 +88,35 @@ function App({ userToken, category }) {
 
 ### Shopping Guide Content
 
-Generate, retrieve and display the content for shopping guides using the `useShoppingGuidesContent` hook or `ShoppingGuidesContent` widget.
+Insert a guide's content by calling the [`shoppingGuidesContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
-import React from 'react';
-import { createClient } from '@algolia/generative-experiences-api-client';
+/** @jsx h */
+import { h } from 'preact';
 import {
-  ShoppingGuidesContent,
-} from '@algolia/generative-experiences-react';
+  shoppingGuidesContent
+} from '@algolia/generative-experiences-js';
+import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-  appId: 'YourApplicationID',
-  indexName: 'your_index_name',
-  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
+    appId: 'YourApplicationID',
+    indexName: 'your_index_name',
+    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+    writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
 
-function App({ currentObjectID, userToken }) {
-    //...
-
-    return (
-        <ShoppingGuidesContent
-            client={gseClient}
-            showFeedback
-            userToken={userToken}
-            objectID={currentObjectID}
-            itemComponent={({ hit }) => {
-                return (
-                <pre>
-                    <code>{JSON.stringify(hit)}</code>
-                </pre>
-                );
-             }}
-        />
-    )
-}
+shoppingGuidesContent({
+  container: '#shoppingGuidesContent',
+  client: gseClient,
+  userToken: 'user-token',
+  showFeedback: true,
+  objectID: '123',
+  itemComponent({ hit }) {
+    return <div>{hit.name}</div>;
+  },
+});
 ```
 
 | Prop name | Type | Default | Description | Notes |
@@ -136,35 +132,32 @@ function App({ currentObjectID, userToken }) {
 
 ### Shopping Guide Feedback
 
-Provide user feedback for shopping guides using the `useShoppingGuidesFeedback` hook or `ShoppingGuidesFeedback` widget.
+Insert the feedback component by calling the [`shoppingGuidesFeedback`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
-import React from 'react';
-import { createClient } from '@algolia/generative-experiences-api-client';
+/** @jsx h */
+import { h } from 'preact';
 import {
-  ShoppingGuidesFeedback,
-} from '@algolia/generative-experiences-react';
+  shoppingGuidesFeedback
+} from '@algolia/generative-experiences-js';
+import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-  appId: 'YourApplicationID',
-  indexName: 'your_index_name',
-  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
+    appId: 'YourApplicationID',
+    indexName: 'your_index_name',
+    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+    writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
 
-function App({ currentObjectID, userToken, category }) {
-    //...
-
-    return (
-        <ShoppingGuidesFeedback
-            client={commerceClient}
-            objectIDs={currentObjectID}
-            userToken={userToken}
-        />
-    )
-}
+shoppingGuidesFeedback({
+  container: '#shoppingGuidesFeedback',
+  client: gseClient,
+  userToken: 'user-token',
+  objectIDs: ['123'],
+  voteTarget: 'content'
+});
 ```
 
 | Prop name | Type | Default | Description | Notes |

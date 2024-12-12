@@ -28,8 +28,7 @@
     "test": "yarn vitest --run"
   },
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "1.0.0-alpha.2",
-    "@heroicons/react": "^2.0.17"
+    "@algolia/generative-experiences-api-client": "1.0.0-alpha.2"
   },
   "devDependencies": {
     "@algolia/client-search": "^5.8.1",

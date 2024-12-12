@@ -26,10 +26,12 @@ aliases:
       mkdir -p packages/generative-experiences-api-client/dist
       mkdir -p packages/generative-experiences-vdom/dist
       mkdir -p packages/generative-experiences-react/dist
+      mkdir -p packages/generative-experiences-js/dist
 
       cp -R /tmp/workspace/packages/generative-experiences-api-client/dist packages/generative-experiences-api-client/
       cp -R /tmp/workspace/packages/generative-experiences-vdom/dist packages/generative-experiences-vdom/
       cp -R /tmp/workspace/packages/generative-experiences-react/dist packages/generative-experiences-react/
+      cp -R /tmp/workspace/packages/generative-experiences-js/dist packages/generative-experiences-js/
 
 defaults: &defaults
   working_directory: ~/generative-experiences
@@ -62,10 +64,12 @@ jobs:
             mkdir -p /tmp/workspace/packages/generative-experiences-api-client/dist
             mkdir -p /tmp/workspace/packages/generative-experiences-vdom/dist
             mkdir -p /tmp/workspace/packages/generative-experiences-react/dist
+            mkdir -p /tmp/workspace/packages/generative-experiences-js/dist
 
             cp -R packages/generative-experiences-api-client/dist /tmp/workspace/packages/generative-experiences-api-client
             cp -R packages/generative-experiences-vdom/dist /tmp/workspace/packages/generative-experiences-vdom
             cp -R packages/generative-experiences-react/dist /tmp/workspace/packages/generative-experiences-react
+            cp -R packages/generative-experiences-js/dist /tmp/workspace/packages/generative-experiences-js
       - persist_to_workspace:
           root: *workspace_root
           paths:
@@ -79,6 +83,9 @@ jobs:
       - store_artifacts:
           path: packages/generative-experiences-react/dist
           destination: generative-experiences-react
+      - store_artifacts:
+          path: packages/generative-experiences-js/dist
+          destination: generative-experiences-js
   test_lint:
     <<: *defaults
     steps:
