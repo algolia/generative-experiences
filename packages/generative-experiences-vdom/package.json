@@ -1,6 +1,6 @@
 {
   "name": "@algolia/generative-experiences-vdom",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
@@ -28,7 +28,7 @@
     "test": "yarn vitest --run"
   },
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "1.0.0-alpha.2"
+    "@algolia/generative-experiences-api-client": "1.0.0"
   },
   "devDependencies": {
     "@algolia/client-search": "^5.8.1",
