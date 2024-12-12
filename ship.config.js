@@ -10,8 +10,7 @@ module.exports = {
       'packages/generative-experiences-api-client',
       'packages/generative-experiences-vdom',
       'packages/generative-experiences-react',
-      // TODO
-      // 'packages/generative-experiences-js',
+      'packages/generative-experiences-js',
     ],
   },
   publishCommand({ tag }) {
@@ -52,14 +51,13 @@ module.exports = {
           'src',
           'version.ts'
         ),
-        // TODO
-        // path.resolve(
-        //   dir,
-        //   'packages',
-        //   'generative-experiences-js',
-        //   'src',
-        //   'version.ts'
-        // ),
+        path.resolve(
+          dir,
+          'packages',
+          'generative-experiences-js',
+          'src',
+          'version.ts'
+        ),
       ],
     });
   },
