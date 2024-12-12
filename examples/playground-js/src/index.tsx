@@ -26,13 +26,13 @@ shoppingGuidesHeadlines({
   userToken: 'test-user',
   showImmediate: true,
   //   showFeedback: true,
-  category: 'On view in Gallery Prince Willem V',
+  category: 'category',
 });
 
 shoppingGuidesFeedback({
   container: '#feedback',
   client: commerceClient,
-  objectIDs: ['e4a55f48-19d9-49b0-aed9-2f1aca7e717a'],
+  objectIDs: ['123'],
   userToken: 'test-user',
 });
 
@@ -43,6 +43,6 @@ shoppingGuidesContent<RecordType>({
   itemComponent({ hit }) {
     return <div>{hit.title}</div>;
   },
-  objectID: 'e4a55f48-19d9-49b0-aed9-2f1aca7e717a',
+  objectID: '123',
   userToken: 'test-user',
 });

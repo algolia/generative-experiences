@@ -26,7 +26,7 @@ const commerceClient = createClient(options);
 // test getHeadlines method
 // commerceClient
 //   .getHeadlines({
-//     category: 'On view in Gallery Prince Willem V',
+//     category: 'category',
 //   })
 //   // eslint-disable-next-line no-console
 //   .then((response) => console.log(response));
@@ -34,21 +34,21 @@ const commerceClient = createClient(options);
 // test getContent method
 // commerceClient
 //   .getContent({
-//     objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+//     objectID: '123',
 //   })
 //   // eslint-disable-next-line no-console
 //   .then((response) => console.log(response));
 
 // test generate headlines
 // commerceClient.generateHeadlines({
-//   category: 'Giovanni Antonio Pellegrini',
+//   category: 'category',
 //   tone: 'natural',
 //   language_code: 'en_US',
 // });
 
 // test generate content for a headline
 // commerceClient.generateContent({
-//   objectID: '2ec1d87e-9776-4103-af77-1c9ff960db68',
+//   objectID: '123',
 // });
 
 const HitComponent = ({ hit }: { hit: any }) => {
@@ -59,13 +59,12 @@ function ComponentTest() {
   const { headlines, status } = useShoppingGuidesHeadlines({
     client: commerceClient,
     showImmediate: true,
-    category: 'On view in Gallery Prince Willem V',
+    category: 'category',
   });
 
   const { content, status: contentStatus } = useShoppingGuidesContent({
     client: commerceClient,
-    objectID: 'e4a55f48-19d9-49b0-aed9-2f1aca7e717a',
-    // objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
+    objectID: '123',
     showImmediate: true,
     onlyPublished: false,
   });
@@ -76,16 +75,14 @@ function ComponentTest() {
   // } = useShoppingGuidesHeadlines({
   //   client: commerceClient,
   //   showImmediate: true,
-  //   category: 'On view in Room 14',
-  //   source: 'generated',
+  //   category: 'category',
   // });
   // const {
   //   content: generatedContent,
   //   status: generatedStatus,
   // } = useShoppingGuidesContent({
   //   client: commerceClient,
-  //   objectID: 'f47e71e5-44cd-49c9-97eb-8dc7b0527c1b',
-  //   source: 'generated',
+  //   objectID: '123',
   //   onlyPublished: false,
   //   showImmediate: true,
   // });
@@ -102,19 +99,19 @@ function ComponentTest() {
         showFeedback
         userToken="aabc"
         client={commerceClient}
-        category="On view in Gallery Prince Willem V"
+        category="category"
         showImmediate
       />
       <ShoppingGuidesFeedback
         client={commerceClient}
-        objectIDs={['e4a55f48-19d9-49b0-aed9-2f1aca7e717a']}
+        objectIDs={['123']}
         userToken="abc"
       />
       <ShoppingGuidesContent
         client={commerceClient}
         showFeedback
         userToken="aabc"
-        objectID="5b176f34-2bb6-4fe5-b836-7aee7ea4007d"
+        objectID="123"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

@@ -402,8 +402,8 @@ export function createClient(opts: CreateClientOptions) {
         path: '/delete/shopping_guides/',
         body: {
           object_ids: objectIDs,
-          application_id: this.options.appId,
-          api_key: this.options.writeAPIKey,
+          output_application_id: this.options.appId,
+          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
         options: {
@@ -425,8 +425,8 @@ export function createClient(opts: CreateClientOptions) {
         path: '/delete/shopping_guides_content/',
         body: {
           object_ids: objectIDs,
-          application_id: this.options.appId,
-          api_key: this.options.writeAPIKey,
+          output_application_id: this.options.appId,
+          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
         options: {
