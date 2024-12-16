@@ -115,7 +115,7 @@ function App({ currentObjectID, userToken }) {
 }
 ```
 
-You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package](<(/packages/generative-experiences-react/README.md)>)
+You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package](/packages/generative-experiences-react/README.md)
 
 ## 🙋 FAQ
 
