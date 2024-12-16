@@ -26,19 +26,33 @@ npm install @algolia/generative-experiences-react@${version}
 ### Without a package manager (CommonJS)
 
 \`\`\`html
-// for the API Client
+// API Client
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@${version}/dist/index.umd.js"></script>
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
+
+  const commerceClient = createClient({
+    appId: 'YourApplicationID',
+    indexName: 'YourIndexName',
+    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+    writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
+  });
 </script>
 
-// for the JavaScript UI library
+// JavaScript UI library
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@${version}/dist/index.umd.js"></script>
 <script>
-  // TODO
+  const generativeExperiences = window['@algolia/generative-experiences-js'];
+
+  generativeExperiences.shoppingGuidesHeadlines({
+    client: commerceClient,
+    container: '#headlines',
+    userToken: 'user_token',
+    category: 'category',
+  });
 </script>
 
-// for the React UI library
+// React UI library
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@${version}/dist/index.umd.js"></script>
 <script>
   // TODO

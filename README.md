@@ -41,19 +41,33 @@ npm install @algolia/generative-experiences-react@1.0.0
 ### Without a package manager (CommonJS)
 
 ```html
-// for the API Client
+// API Client
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@1.0.0/dist/index.umd.js"></script>
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
+
+  const commerceClient = createClient({
+    appId: 'YourApplicationID',
+    indexName: 'YourIndexName',
+    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+    writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
+  });
 </script>
 
-// for the JavaScript UI library
+// JavaScript UI library
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@1.0.0/dist/index.umd.js"></script>
 <script>
-  // TODO
+  const generativeExperiences = window['@algolia/generative-experiences-js'];
+
+  generativeExperiences.shoppingGuidesHeadlines({
+    client: commerceClient,
+    container: '#headlines',
+    userToken: 'user_token',
+    category: 'category',
+  });
 </script>
 
-// for the React UI library
+// React UI library
 <script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@1.0.0/dist/index.umd.js"></script>
 <script>
   // TODO
@@ -77,30 +91,24 @@ import {
 
 const options = {
  appId: 'YourApplicationID',
- indexName: 'your_index_name',
+ indexName: 'YourIndexName',
  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
- writeAPIKey: 'YourWriteAPIKey',
+ writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
 };
 
-const gseClient = createClient(options);
+const commerceClient = createClient(options);
 
 function App({ currentObjectID, userToken }) {
-
  // ...
-
  return (
    <ShoppingGuidesContent
-     client={gseClient}
+     client={commerceClient}
      showFeedback
      userToken={userToken}
      objectID={currentObjectID}
      onlyPublished
      itemComponent={({ hit }) => {
-       return (
-         <pre>
-           <code>{JSON.stringify(hit)}</code>
-         </pre>
-       );
+       return (<code>{JSON.stringify(hit)}</code>);
      }}
    />
  )
@@ -111,17 +119,17 @@ You can find more examples and implementation details in the [Algolia Docs](http
 
 ## 🙋 FAQ
 
-- Can I use Algolia Generative Experiences with another UI framework (Svelte, Vue, Lit, etc...)
+- **Can I use Algolia Generative Experiences with another UI framework (Svelte, Vue, Lit, etc...)**
 
 Yes, you can use the API client `@algolia/generative-experiences-api-client` to call the service and build your UI around it.
 
-- Can I use Algolia Generative Experiences with SSR (Server Side Rendering)
+- **Can I use Algolia Generative Experiences with SSR (Server Side Rendering)**
 
 Yes, you can use the API client `@algolia/generative-experiences-api-client` and wrap any custom SSR logic around it. However, the UI libraries don't currently support SSR.
 
-- Can I sue Algolia Generative Experiences with custom implementation? (Swift, Go, Java, Kotlin, etc..)
+- **Can I sue Algolia Generative Experiences with custom implementation? (Swift, Go, Java, Kotlin, etc..)**
 
-Currently on a JavaScript API client is provided. If want to integrate Algolia Generative Experiences using another language, you can use the [REST API](https://todo.link).
+Currently only a JavaScript API client is provided. If want to integrate Algolia Generative Experiences using another language, please open an [issue](https://github.com/algolia/generative-experiences/issues/new) and we will consider adding it.
 
 ## ❓ Troubleshooting
 
