@@ -31,11 +31,11 @@ All of the packages comes with type definition, and are available for both brows
 
 ```bash
 # for the API Client
-npm install @algolia/generative-experiences-api-client@0.0.0
+npm install @algolia/generative-experiences-api-client@1.0.0
 # for the JavaScript UI library
-npm install @algolia/generative-experiences-js@0.0.0
+npm install @algolia/generative-experiences-js@1.0.0
 # for the React UI library
-npm install @algolia/generative-experiences-react@0.0.0
+npm install @algolia/generative-experiences-react@1.0.0
 ```
 
 ### Without a package manager (CommonJS)
