@@ -42,19 +42,19 @@ npm install @algolia/generative-experiences-react@0.0.0
 
 ```html
 // for the API Client
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@0.0.0/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@1.0.0/dist/index.umd.js"></script>
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
 </script>
 
 // for the JavaScript UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@0.0.0/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@1.0.0/dist/index.umd.js"></script>
 <script>
   // TODO
 </script>
 
 // for the React UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@0.0.0/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@1.0.0/dist/index.umd.js"></script>
 <script>
   // TODO
 </script>
@@ -68,46 +68,46 @@ npm install @algolia/generative-experiences-react@0.0.0
 
 Displaying a shopping guide:
 
- ```JSX
+```JSX
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  ShoppingGuidesContent,
+ ShoppingGuidesContent,
 } from '@algolia/generative-experiences-react';
 
 const options = {
-  appId: 'YourApplicationID',
-  indexName: 'your_index_name',
-  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
+ appId: 'YourApplicationID',
+ indexName: 'your_index_name',
+ searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+ writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
 
 function App({ currentObjectID, userToken }) {
 
-  // ...
+ // ...
 
-  return (
-    <ShoppingGuidesContent
-      client={gseClient}
-      showFeedback
-      userToken={userToken}
-      objectID={currentObjectID}
-      onlyPublished
-      itemComponent={({ hit }) => {
-        return (
-          <pre>
-            <code>{JSON.stringify(hit)}</code>
-          </pre>
-        );
-      }}
-    />
-  )
+ return (
+   <ShoppingGuidesContent
+     client={gseClient}
+     showFeedback
+     userToken={userToken}
+     objectID={currentObjectID}
+     onlyPublished
+     itemComponent={({ hit }) => {
+       return (
+         <pre>
+           <code>{JSON.stringify(hit)}</code>
+         </pre>
+       );
+     }}
+   />
+ )
 }
 ```
 
-You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package]((/packages/generative-experiences-react/README.md))
+You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package](<(/packages/generative-experiences-react/README.md)>)
 
 ## 🙋 FAQ
 

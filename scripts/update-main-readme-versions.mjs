@@ -27,19 +27,19 @@ npm install @algolia/generative-experiences-react@${version}
 
 \`\`\`html
 // for the API Client
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@${version}/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@${version}/dist/index.umd.js"></script>
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
 </script>
 
 // for the JavaScript UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@${version}/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@${version}/dist/index.umd.js"></script>
 <script>
   // TODO
 </script>
 
 // for the React UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@${version}/dist/index.umd.cjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@${version}/dist/index.umd.js"></script>
 <script>
   // TODO
 </script>

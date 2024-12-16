@@ -5,7 +5,7 @@
       "maxSize": "27.46 kB"
     },
     {
-      "path": "packages/generative-experiences-api-client/dist/index.umd.cjs",
+      "path": "packages/generative-experiences-api-client/dist/index.umd.js",
       "maxSize": "11.43 kB"
     },
     {
@@ -13,7 +13,7 @@
       "maxSize": "18.3 kB"
     },
     {
-      "path": "packages/generative-experiences-vdom/dist/index.umd.cjs",
+      "path": "packages/generative-experiences-vdom/dist/index.umd.js",
       "maxSize": "14.9 kB"
     },
     {
@@ -21,7 +21,7 @@
       "maxSize": "19.6 kB"
     },
     {
-      "path": "packages/generative-experiences-react/dist/index.umd.cjs",
+      "path": "packages/generative-experiences-react/dist/index.umd.js",
       "maxSize": "15.9 kB"
     },
     {
@@ -29,7 +29,7 @@
       "maxSize": "19.6 kB"
     },
     {
-      "path": "packages/generative-experiences-js/dist/index.umd.cjs",
+      "path": "packages/generative-experiences-js/dist/index.umd.js",
       "maxSize": "15.9 kB"
     }
   ]
