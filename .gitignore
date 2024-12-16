@@ -11,7 +11,9 @@ dist/
 .nx/cache
 .nx/workspace-data
 .env
+rollup-plugin-visualizer.html
 
 # IDE
 .vscode/
 .idea/
+y

@@ -1,4 +1,4 @@
-import { Hit } from '@algolia/client-search';
+import type { Hit } from '@algolia/client-search';
 
 export type BaseShoppingGuide = {
   objectID: string;

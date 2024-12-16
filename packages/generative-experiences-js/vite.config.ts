@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import preact from '@preact/preset-vite';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -11,6 +12,9 @@ export default defineConfig({
       rollupTypes: true,
     }),
     preact(),
+    visualizer({
+      filename: 'rollup-plugin-visualizer.html',
+    }),
   ],
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {

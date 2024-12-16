@@ -1,6 +1,6 @@
-import { algoliasearch } from 'algoliasearch';
 import type { FacetFilters } from 'algoliasearch';
 import type { PlainSearchParameters } from 'algoliasearch-helper';
+import { liteClient } from 'algoliasearch/lite';
 
 import {
   GenerationSource,
@@ -60,7 +60,7 @@ export function createClient(opts: CreateClientOptions) {
     throw new Error('Missing searchOnlyAPIKey');
   }
 
-  const searchClient = algoliasearch(opts.appId, opts.searchOnlyAPIKey);
+  const searchClient = liteClient(opts.appId, opts.searchOnlyAPIKey);
 
   searchClient.addAlgoliaAgent('generative-experiences-api-client', version);
 
@@ -70,7 +70,7 @@ export function createClient(opts: CreateClientOptions) {
       host: opts.host || DEFAULT_HOST,
     },
     transporter: searchClient.transporter,
-    searchSingleIndex: searchClient.searchSingleIndex,
+    search: searchClient.searchForHits,
     appId: searchClient.appId,
     addAlgoliaAgent: searchClient.addAlgoliaAgent,
     async clearCache() {
@@ -233,28 +233,34 @@ export function createClient(opts: CreateClientOptions) {
         return acc;
       }, []);
 
-      const res = await this.searchSingleIndex<ShoppingGuideHeadline>({
-        indexName: this._outputIndexName(),
-        searchParams: {
-          facetFilters: [
-            category ? [`category:${category}`] : undefined,
-            onlyPublished ? ['status:published'] : [],
-          ].filter(Boolean) as FacetFilters,
-          hitsPerPage: nbHeadlines,
-          optionalFilters: [
-            ...(object
-              ? [[`objects.objectID:${object.objectID}<score=${paths.length}>`]]
-              : []),
-            ...paths.map((facet, i) => [`category:${facet}<score=${i + 1}>`]),
-          ],
-          attributesToHighlight: [],
-          getRankingInfo: true,
-          ...searchParams,
-          ...requestOptions,
+      const response = await this.search<ShoppingGuideHeadline>([
+        {
+          indexName: this._outputIndexName(),
+          params: {
+            facetFilters: [
+              category ? [`category:${category}`] : undefined,
+              onlyPublished ? ['status:published'] : [],
+            ].filter(Boolean) as FacetFilters,
+            hitsPerPage: nbHeadlines,
+            optionalFilters: [
+              ...(object
+                ? [
+                    [
+                      `objects.objectID:${object.objectID}<score=${paths.length}>`,
+                    ],
+                  ]
+                : []),
+              ...paths.map((facet, i) => [`category:${facet}<score=${i + 1}>`]),
+            ],
+            attributesToHighlight: [],
+            getRankingInfo: true,
+            ...searchParams,
+            ...requestOptions,
+          },
         },
-      });
+      ]);
 
-      return res?.hits ?? [];
+      return response?.results?.at(0)?.hits ?? [];
     },
 
     async getContent(
@@ -264,19 +270,21 @@ export function createClient(opts: CreateClientOptions) {
       }: Omit<ShoppingGuideContentOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
-      const res = await this.searchSingleIndex<ShoppingGuide>({
-        indexName: this._outputIndexName(),
-        searchParams: {
-          facetFilters: [
-            `objectID:${objectID}`,
-            onlyPublished ? 'status:published' : undefined,
-          ].filter(Boolean) as FacetFilters,
-          hitsPerPage: 1,
-          ...requestOptions,
+      const res = await this.search<ShoppingGuide>([
+        {
+          indexName: this._outputIndexName(),
+          params: {
+            facetFilters: [
+              `objectID:${objectID}`,
+              onlyPublished ? 'status:published' : undefined,
+            ].filter(Boolean) as FacetFilters,
+            hitsPerPage: 1,
+            ...requestOptions,
+          },
         },
-      });
+      ]);
 
-      const record = res?.hits?.at(0);
+      const record = res?.results?.at(0)?.hits?.at(0);
       if (record?.content) {
         return record;
       }

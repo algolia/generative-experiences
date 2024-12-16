@@ -2,35 +2,35 @@
   "files": [
     {
       "path": "packages/generative-experiences-api-client/dist/index.js",
-      "maxSize": "27.46 kB"
+      "maxSize": "7.20 kB"
     },
     {
       "path": "packages/generative-experiences-api-client/dist/index.umd.cjs",
-      "maxSize": "11.43 kB"
+      "maxSize": "5.40 kB"
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.js",
-      "maxSize": "18.3 kB"
+      "maxSize": "3.18 kB"
     },
     {
       "path": "packages/generative-experiences-vdom/dist/index.umd.cjs",
-      "maxSize": "14.9 kB"
+      "maxSize": "2.74 kB"
     },
     {
       "path": "packages/generative-experiences-react/dist/index.js",
-      "maxSize": "19.6 kB"
+      "maxSize": "4.13 kB"
     },
     {
       "path": "packages/generative-experiences-react/dist/index.umd.cjs",
-      "maxSize": "15.9 kB"
+      "maxSize": "3.45 kB"
     },
     {
       "path": "packages/generative-experiences-js/dist/index.js",
-      "maxSize": "19.6 kB"
+      "maxSize": "10.58 kB"
     },
     {
       "path": "packages/generative-experiences-js/dist/index.umd.cjs",
-      "maxSize": "15.9 kB"
+      "maxSize": "9.27 kB"
     }
   ]
 }
