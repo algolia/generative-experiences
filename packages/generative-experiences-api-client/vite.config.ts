@@ -17,5 +17,20 @@ export default defineConfig({
       name: '@algolia/generative-experiences-api-client',
       fileName: 'index',
     },
+    rollupOptions: {
+      output: [
+        {
+          format: 'umd',
+          dir: path.resolve(__dirname, 'dist/'),
+          entryFileNames: 'index.umd.js',
+          name: '@algolia/generative-experiences-api-client',
+        },
+        {
+          format: 'esm',
+          dir: path.resolve(__dirname, 'dist/'),
+          entryFileNames: 'index.js',
+        },
+      ],
+    },
   },
 });

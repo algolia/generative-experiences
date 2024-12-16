@@ -19,8 +19,22 @@ export default defineConfig({
       name: '@algolia/generative-experiences-js',
       fileName: 'index',
     },
+
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
+      output: [
+        {
+          format: 'umd',
+          dir: path.resolve(__dirname, 'dist/'),
+          entryFileNames: 'index.umd.js',
+          name: '@algolia/generative-experiences-js',
+        },
+        {
+          format: 'esm',
+          dir: path.resolve(__dirname, 'dist/'),
+          entryFileNames: 'index.js',
+        },
+      ],
     },
   },
 });
