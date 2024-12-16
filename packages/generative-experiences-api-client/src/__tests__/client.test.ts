@@ -13,12 +13,12 @@ import {
 import { createClient, DEFAULT_HOST } from '../client';
 
 const addAlgoliaAgent = vi.fn();
-const searchSingleIndex = vi.fn();
+const searchForHits = vi.fn();
 
-vi.mock('algoliasearch', () => ({
-  algoliasearch: vi.fn(() => ({
+vi.mock('algoliasearch/lite', () => ({
+  liteClient: vi.fn(() => ({
     addAlgoliaAgent,
-    searchSingleIndex,
+    searchForHits,
   })),
 }));
 
@@ -81,12 +81,14 @@ describe('createClient', () => {
         nbHeadlines: 2,
       });
 
-      expect(searchSingleIndex).toHaveBeenCalledTimes(1);
+      expect(searchForHits).toHaveBeenCalledTimes(1);
 
-      expect(searchSingleIndex).toHaveBeenCalledWith(
-        expect.objectContaining({
-          indexName: 'shopping_guides_indexName',
-        })
+      expect(searchForHits).toHaveBeenCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            indexName: 'shopping_guides_indexName',
+          }),
+        ])
       );
     });
   });
@@ -103,12 +105,14 @@ describe('createClient', () => {
         objectID: '333683a3-8038-42bd-9988-2eb97e46ddfd',
       });
 
-      expect(searchSingleIndex).toHaveBeenCalledTimes(1);
+      expect(searchForHits).toHaveBeenCalledTimes(1);
 
-      expect(searchSingleIndex).toHaveBeenCalledWith(
-        expect.objectContaining({
-          indexName: 'shopping_guides_indexName',
-        })
+      expect(searchForHits).toHaveBeenCalledWith(
+        expect.arrayContaining([
+          expect.objectContaining({
+            indexName: 'shopping_guides_indexName',
+          }),
+        ])
       );
     });
   });
