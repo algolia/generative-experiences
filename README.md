@@ -50,7 +50,7 @@ npm install @algolia/generative-experiences-react@1.0.0
     appId: 'YourApplicationID',
     indexName: 'YourIndexName',
     searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-    writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
+    writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for dynamic generation
   });
 </script>
 
@@ -93,7 +93,6 @@ const options = {
  appId: 'YourApplicationID',
  indexName: 'YourIndexName',
  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
- writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
 };
 
 const commerceClient = createClient(options);
@@ -115,13 +114,43 @@ function App({ currentObjectID, userToken }) {
 }
 ```
 
-You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) or in the [React package](/packages/generative-experiences-react/README.md)
+You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/guides/using-shopping-guides/) or in the [React package](/packages/generative-experiences-react/README.md)
+
+#### Example with [JavaScript](/packages/generative-experiences-js)
+
+Displaying a shopping guide:
+
+```JSX
+import { createClient } from '@algolia/generative-experiences-api-client';
+import {
+  shoppingGuidesContent,
+} from '@algolia/generative-experiences-js';
+
+const commerceClient = createClient({
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+});
+
+shoppingGuidesContent({
+  container: '#content',
+  client: commerceClient,
+  userToken: 'test-user',
+  showFeedback: true,
+  itemComponent({ hit }) {
+    return <div>{hit.title}</div>;
+  },
+  objectID: objectID,
+});
+```
+
+You can find more examples and implementation details in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/guides/using-shopping-guides/) or in the [JavaScript package](/packages/generative-experiences-js/README.md)
 
 ## 🙋 FAQ
 
 - **Can I use Algolia Generative Experiences with another UI framework (Svelte, Vue, Lit, etc...)**
 
-Yes, you can use the API client `@algolia/generative-experiences-api-client` to call the service and build your UI around it.
+Yes, you can use the API client `@algolia/generative-experiences-api-client` to call the service and build your UI around it. You can learn more in the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/)
 
 - **Can I use Algolia Generative Experiences with SSR (Server Side Rendering)**
 
