@@ -1,7 +1,7 @@
 {
   "name": "@algolia/generative-experiences-react",
   "version": "1.0.0",
-  "description": "GSE React components",
+  "description": "React components for Algolia Generative Experiences",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
   "bugs": {

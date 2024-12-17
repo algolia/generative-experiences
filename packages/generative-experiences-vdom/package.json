@@ -1,7 +1,6 @@
 {
   "name": "@algolia/generative-experiences-vdom",
   "version": "1.0.0",
-  "description": "> TODO: description",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
   "bugs": {
