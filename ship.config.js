@@ -25,6 +25,9 @@ module.exports = {
     // which causes a lint error in the `lerna.json` file.
     exec('yarn eslint lerna.json --fix');
 
+    // update reade-me version
+    exec(`node scripts/update-main-readme-versions.mjs ${version}`);
+
     // Update version files
     updatePackagesVersionFile({
       version,
