@@ -27,7 +27,7 @@ To get started, you need a container for your headlines or content to go in. If 
 ```jsx
 const options = {
   appId: 'YourApplicationID',
-  indexName: 'your_index_name',
+  indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
   writeAPIKey: 'YourWriteAPIKey',
 };
@@ -37,10 +37,10 @@ const gseClient = createClient(options);
 
 Parameters:
 
-* **appId** The Algolia Application ID
-* **indexName** The Algolia Index used for generating and displaying shopping guides
-* **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
-* **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
+- **appId** The Algolia Application ID
+- **indexName** The Algolia Index used for generating and displaying shopping guides
+- **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
+- **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
 
 ### Headlines
 
@@ -49,16 +49,14 @@ Insert your headlines by calling the [`shoppingGuidesHeadlines`](hhttps://www.al
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import {
-  shoppingGuidesHeadlines
-} from '@algolia/generative-experiences-js';
+import { shoppingGuidesHeadlines } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-    appId: 'YourApplicationID',
-    indexName: 'your_index_name',
-    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-    writeAPIKey: 'YourWriteAPIKey',
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
@@ -84,7 +82,7 @@ shoppingGuidesHeadlines({
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
-| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true`|
+| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
 
 ### Shopping Guide Content
 
@@ -93,16 +91,14 @@ Insert a guide's content by calling the [`shoppingGuidesContent`](hhttps://www.a
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import {
-  shoppingGuidesContent
-} from '@algolia/generative-experiences-js';
+import { shoppingGuidesContent } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-    appId: 'YourApplicationID',
-    indexName: 'your_index_name',
-    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-    writeAPIKey: 'YourWriteAPIKey',
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
@@ -128,7 +124,7 @@ shoppingGuidesContent({
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
-| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true`|
+| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
 
 ### Shopping Guide Feedback
 
@@ -137,16 +133,14 @@ Insert the feedback component by calling the [`shoppingGuidesFeedback`](hhttps:/
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import {
-  shoppingGuidesFeedback
-} from '@algolia/generative-experiences-js';
+import { shoppingGuidesFeedback } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
-    appId: 'YourApplicationID',
-    indexName: 'your_index_name',
-    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-    writeAPIKey: 'YourWriteAPIKey',
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const gseClient = createClient(options);
@@ -156,7 +150,7 @@ shoppingGuidesFeedback({
   client: gseClient,
   userToken: 'user-token',
   objectIDs: ['123'],
-  voteTarget: 'content'
+  voteTarget: 'content',
 });
 ```
 

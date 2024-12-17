@@ -19,7 +19,7 @@ npm install @algolia/generative-experiences-react
 ```jsx
 const options = {
   appId: 'YourApplicationID',
-  indexName: 'your_index_name',
+  indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
   writeAPIKey: 'YourWriteAPIKey',
 };
@@ -29,10 +29,10 @@ const gseClient = createClient(options);
 
 Parameters:
 
-* **appId** The Algolia Application ID
-* **indexName** The Algolia Index used for generating and displaying shopping guides
-* **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
-* **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
+- **appId** The Algolia Application ID
+- **indexName** The Algolia Index used for generating and displaying shopping guides
+- **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
+- **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
 
 ### Headlines
 
@@ -41,13 +41,11 @@ Generate, retrieve and display headlines for shopping guides using the `useShopp
 ```jsx
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import {
-  ShoppingGuidesContent,
-} from '@algolia/generative-experiences-react';
+import { ShoppingGuidesContent } from '@algolia/generative-experiences-react';
 
 const options = {
   appId: 'YourApplicationID',
-  indexName: 'your_index_name',
+  indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
   writeAPIKey: 'YourWriteAPIKey',
 };
@@ -55,17 +53,17 @@ const options = {
 const gseClient = createClient(options);
 
 function App({ userToken, category }) {
-    //...
+  //...
 
-    return (
-        <ShoppingGuidesHeadlines
-            showFeedback
-            userToken={userToken}
-            client={gseClient}
-            category={category}
-            showImmediate
-        />
-    )
+  return (
+    <ShoppingGuidesHeadlines
+      showFeedback
+      userToken={userToken}
+      client={gseClient}
+      category={category}
+      showImmediate
+    />
+  );
 }
 ```
 
@@ -80,7 +78,7 @@ function App({ userToken, category }) {
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
-| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true`|
+| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
 
 ### Shopping Guide Content
 
@@ -89,13 +87,11 @@ Generate, retrieve and display the content for shopping guides using the `useSho
 ```jsx
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import {
-  ShoppingGuidesContent,
-} from '@algolia/generative-experiences-react';
+import { ShoppingGuidesContent } from '@algolia/generative-experiences-react';
 
 const options = {
   appId: 'YourApplicationID',
-  indexName: 'your_index_name',
+  indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
   writeAPIKey: 'YourWriteAPIKey',
 };
@@ -103,23 +99,23 @@ const options = {
 const gseClient = createClient(options);
 
 function App({ currentObjectID, userToken }) {
-    //...
+  //...
 
-    return (
-        <ShoppingGuidesContent
-            client={gseClient}
-            showFeedback
-            userToken={userToken}
-            objectID={currentObjectID}
-            itemComponent={({ hit }) => {
-                return (
-                <pre>
-                    <code>{JSON.stringify(hit)}</code>
-                </pre>
-                );
-             }}
-        />
-    )
+  return (
+    <ShoppingGuidesContent
+      client={gseClient}
+      showFeedback
+      userToken={userToken}
+      objectID={currentObjectID}
+      itemComponent={({ hit }) => {
+        return (
+          <pre>
+            <code>{JSON.stringify(hit)}</code>
+          </pre>
+        );
+      }}
+    />
+  );
 }
 ```
 
@@ -132,7 +128,7 @@ function App({ currentObjectID, userToken }) {
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
-| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true`|
+| `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
 
 ### Shopping Guide Feedback
 
@@ -141,13 +137,11 @@ Provide user feedback for shopping guides using the `useShoppingGuidesFeedback` 
 ```jsx
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import {
-  ShoppingGuidesFeedback,
-} from '@algolia/generative-experiences-react';
+import { ShoppingGuidesFeedback } from '@algolia/generative-experiences-react';
 
 const options = {
   appId: 'YourApplicationID',
-  indexName: 'your_index_name',
+  indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
   writeAPIKey: 'YourWriteAPIKey',
 };
@@ -155,15 +149,15 @@ const options = {
 const gseClient = createClient(options);
 
 function App({ currentObjectID, userToken, category }) {
-    //...
+  //...
 
-    return (
-        <ShoppingGuidesFeedback
-            client={commerceClient}
-            objectIDs={currentObjectID}
-            userToken={userToken}
-        />
-    )
+  return (
+    <ShoppingGuidesFeedback
+      client={commerceClient}
+      objectIDs={currentObjectID}
+      userToken={userToken}
+    />
+  );
 }
 ```
 
