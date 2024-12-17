@@ -67,7 +67,7 @@ Parameters:
 - **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
 - **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
 
-### Headlines
+### Shopping Guides Headlines
 
 Insert your headlines by calling the [`shoppingGuidesHeadlines`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
