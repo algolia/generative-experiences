@@ -62,12 +62,6 @@ npm install @algolia/generative-experiences-react@1.0.0
     category: 'category',
   });
 </script>
-
-// React UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@1.0.0/dist/index.umd.js"></script>
-<script>
-  // TODO
-</script>
 ```
 
 ### Usage
