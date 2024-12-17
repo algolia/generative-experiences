@@ -1,9 +1,9 @@
 {
   "name": "playground",
   "version": "1.0.0",
-  "private": true,
   "description": "playground for testing library",
   "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/algolia/generative-experiences.git"
