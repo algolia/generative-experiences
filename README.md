@@ -122,7 +122,7 @@ const commerceClient = createClient({
 
 shoppingGuidesContent({
   client: commerceClient,
-    objectID: objectID,
+  objectID: objectID,
   container: '#content',
   userToken: 'MyUserToken',
   showFeedback: true,

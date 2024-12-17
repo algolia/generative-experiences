@@ -43,7 +43,7 @@ Parameters:
 - **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
 - **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
 
-### Headlines
+### Shopping Guides Headlines
 
 Generate, retrieve and display headlines for shopping guides using the `useShoppingGuidesHeadlines` hook or `ShoppingGuidesHeadlines` widget.
 
@@ -142,7 +142,7 @@ function App({ currentObjectID, userToken }) {
 | `view` | `ViewProps` | - | The view component into which your guide content will be rendered. | - |
 | `classNames` | `ContentClassNames` | - | The class names for the component. | - |
 
-### Shopping Guide Feedback
+### Shopping Guides Feedback
 
 Provide user feedback for shopping guides using the `useShoppingGuidesFeedback` hook or `ShoppingGuidesFeedback` widget.
 

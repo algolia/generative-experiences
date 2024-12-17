@@ -154,7 +154,7 @@ shoppingGuidesContent({
 | `view` | `ViewProps` | - | The view component into which your guide content will be rendered. | - |
 | `classNames` | `ContentClassNames` | - | The class names for the component. | - |
 
-### Shopping Guide Feedback
+### Shopping Guides Feedback
 
 Insert the feedback component by calling the [`shoppingGuidesFeedback`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
