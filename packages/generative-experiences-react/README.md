@@ -1,6 +1,16 @@
 # `@algolia/generative-experiences-react`
 
-React package for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
+[![generative-experiences-react](https://img.shields.io/npm/v/@algolia/generative-experiences-react.svg?label=generative-experiences-react)](https://www.npmjs.com/package/@algolia/generative-experiences-react) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+React components for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
+
+> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
+
+## ✨ Features
+
+- UI library for _React_ to use Algolia's Generative Experiences
+- **UMD and ESM compatible**, you can use it with any module loader
+- Built with TypeScript
 
 ## Installation
 

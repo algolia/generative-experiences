@@ -1,6 +1,16 @@
 # `@algolia/generative-experiences-js`
 
-JS package for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
+[![generative-experiences-js](https://img.shields.io/npm/v/@algolia/generative-experiences-js.svg?label=generative-experiences-js)](https://www.npmjs.com/package/@algolia/generative-experiences-js) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+JavaScript UI components for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
+
+> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
+
+## ✨ Features
+
+- UI library for _JavaScript_ templating to use Algolia's Generative Experiences
+- **UMD and ESM compatible**, you can use it with any module loader
+- Built with TypeScript
 
 ## Installation
 
@@ -10,6 +20,22 @@ All Generative Experiences packages are available on the [npm](https://www.npmjs
 yarn add @algolia/generative-experiences-js
 # or
 npm install @algolia/generative-experiences-js
+```
+
+### Without a package manager (CommonJS)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js/dist/index.umd.js"></script>
+<script>
+  const generativeExperiences = window['@algolia/generative-experiences-js'];
+
+  generativeExperiences.shoppingGuidesHeadlines({
+    client: commerceClient,
+    container: '#headlines',
+    userToken: 'MyUserToken',
+    category: 'category',
+  });
+</script>
 ```
 
 ## Usage
@@ -64,10 +90,10 @@ const gseClient = createClient(options);
 shoppingGuidesHeadlines({
   container: '#shoppingGuidesHeadlines',
   client: gseClient,
-  userToken: 'user-token',
+  userToken: 'MyUserToken',
   showImmediate: true,
   showFeedback: true,
-  category: 'some-category',
+  category: 'category',
 });
 ```
 
@@ -106,7 +132,7 @@ const gseClient = createClient(options);
 shoppingGuidesContent({
   container: '#shoppingGuidesContent',
   client: gseClient,
-  userToken: 'user-token',
+  userToken: 'MyUserToken',
   showFeedback: true,
   objectID: '123',
   itemComponent({ hit }) {
@@ -148,7 +174,7 @@ const gseClient = createClient(options);
 shoppingGuidesFeedback({
   container: '#shoppingGuidesFeedback',
   client: gseClient,
-  userToken: 'user-token',
+  userToken: 'MyUserToken',
   objectIDs: ['123'],
   voteTarget: 'content',
 });
@@ -165,3 +191,11 @@ shoppingGuidesFeedback({
 ## Styling
 
 // TBD
+
+## ❓ Troubleshooting
+
+Encountering an issue? Before reaching out to support, we recommend checking the [GitHub Discussions](https://github.com/algolia/generative-experiences/discussions). You can also open a [Github issue](https://github.com/algolia/generative-experiences/issues/new?assignees=&labels=&projects=&template=Bug_report.md).
+
+## 📄 License
+
+The project is an open-sourced software, licensed under the [MIT license](LICENSE).
