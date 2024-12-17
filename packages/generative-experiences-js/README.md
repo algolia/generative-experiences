@@ -55,7 +55,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -82,7 +81,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -101,14 +99,16 @@ shoppingGuidesHeadlines({
 | --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
-| `object` | `object \| undefined` | N/A | The object to use for the headlines. | - |
 | `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
-| `itemComponent` | `ReactNode` | Widget with title, description, image and link to full guide. | Component to display the headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
+| `getters` | `CommersGetters` | - | The custom gathers that help you fetch images and add links. | - |
+| `itemComponent` | `ReactNode` | Widget with title, description, image and link to full guide. | Component to display the headlines. | - |
+| `view` | `ViewProps` | - | The view component into which your shopping guide headlines will be rendered. | - |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `classNames` | `HeadlinesButtonClassNames` | - | The class names for the component. | - |
 
 ### Shopping Guide Content
 
@@ -124,7 +124,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -146,11 +145,14 @@ shoppingGuidesContent({
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectID` | `string` | N/A | The objectID for the guide to be retrieved/generated. | `required` |
 | `itemComponent` | `ReactNode` | N/A | Component to display items (from an algolia index) listed throughout the guide. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
+| `getters` | `CommersGetters` | - | The custom gathers that help you fetch images and add links. | - |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `view` | `ViewProps` | - | The view component into which your guide content will be rendered. | - |
+| `classNames` | `ContentClassNames` | - | The class names for the component. | - |
 
 ### Shopping Guide Feedback
 
@@ -166,7 +168,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -184,9 +185,58 @@ shoppingGuidesFeedback({
 | --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectIDs` | `string` | N/A | Array of objectIDs for gathering feedback. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` |
 | `voteTarget` | `'content' \| 'headline'` | `content` | The target of the feedback. | `required` |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `view` | `ViewProps` | - | The view component to render your feedback widget. | - |
+| `classNames` | `FeedbackClassNames` | - | The class names for the component. | - |
+
+## Customisation with `getters`
+
+Some of the generated shopping guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
+
+To replace these placeholders with your website-specific content, use the `getters` parameter for `shoppingGuidesHeadlines()` or `shoppingGuidesContent()`.
+
+```JSX
+/** @jsx h */
+import { h } from 'preact';
+import { shoppingGuidesHeadlines } from '@algolia/generative-experiences-js';
+import { createClient } from '@algolia/generative-experiences-api-client';
+
+const options = {
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+};
+
+const client = createClient(options);
+
+const customGetters = {
+  /**
+  * URL for a specific guide.
+  */
+  guideURL: (objectID) => `/shopping-guide/${objectID}`,
+  /**
+   * URL for a specific product.
+   */
+  objectURL: (objectID) => `/product/${objectID}`,
+  /**
+   * List of images for a product.
+   */
+  images: (object) =>
+    object.images.map((image) => ({ src: image.url, alt: image.alt })),
+};
+
+shoppingGuidesHeadlines({
+    container: '#shoppingGuidesHeadlines',
+    client: client,
+    userToken: 'MyUserToken',
+    showImmediate: true,
+    showFeedback: true,
+    getters: customGetters,
+    category: 'category',
+});
+```
 
 ## Styling
 

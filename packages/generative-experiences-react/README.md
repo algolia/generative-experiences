@@ -231,7 +231,6 @@ function App({ userToken, category }) {
     />
   );
 }
-
 ```
 
 ## Styling
