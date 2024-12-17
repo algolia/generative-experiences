@@ -31,7 +31,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -51,13 +50,12 @@ Generate, retrieve and display headlines for shopping guides using the `useShopp
 ```jsx
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import { ShoppingGuidesContent } from '@algolia/generative-experiences-react';
+import { ShoppingGuidesHeadlines } from '@algolia/generative-experiences-react';
 
 const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -81,14 +79,16 @@ function App({ userToken, category }) {
 | --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
-| `object` | `object \| undefined` | N/A | The object to use for the headlines. | - |
 | `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
-| `itemComponent` | `ReactNode` | Widget with title, description, image and link to full guide. | Component to display the headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
+| `getters` | `CommersGetters` | - | The custom gathers that help you fetch images and add links. | - |
+| `itemComponent` | `ReactNode` | Widget with title, description, image and link to full guide. | Component to display the headlines. | - |
+| `view` | `ViewProps` | - | The view component into which your shopping guide headlines will be rendered. | - |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `classNames` | `HeadlinesButtonClassNames` | - | The class names for the component. | - |
 
 ### Shopping Guide Content
 
@@ -103,7 +103,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -114,9 +113,9 @@ function App({ currentObjectID, userToken }) {
   return (
     <ShoppingGuidesContent
       client={client}
+      objectID={currentObjectID}
       showFeedback
       userToken={userToken}
-      objectID={currentObjectID}
       itemComponent={({ hit }) => {
         return (
           <pre>
@@ -134,11 +133,14 @@ function App({ currentObjectID, userToken }) {
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectID` | `string` | N/A | The objectID for the guide to be retrieved/generated. | `required` |
 | `itemComponent` | `ReactNode` | N/A | Component to display items (from an algolia index) listed throughout the guide. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` if `showFeedback` is `true` |
+| `getters` | `CommersGetters` | - | The custom gathers that help you fetch images and add links. | - |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `view` | `ViewProps` | - | The view component into which your guide content will be rendered. | - |
+| `classNames` | `ContentClassNames` | - | The class names for the component. | - |
 
 ### Shopping Guide Feedback
 
@@ -153,7 +155,6 @@ const options = {
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey',
 };
 
 const client = createClient(options);
@@ -175,13 +176,180 @@ function App({ currentObjectID, userToken, category }) {
 | --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectIDs` | `string` | N/A | Array of objectIDs for gathering feedback. | `required` |
-| `children` | `ReactNode` | N/A | The children to render. | - |
 | `userToken` | `string` | N/A | The user token needed for computing feedback. | `required` |
 | `voteTarget` | `'content' \| 'headline'` | `content` | The target of the feedback. | `required` |
+| `children` | `ReactNode` | - | The children to render. | - |
+| `view` | `ViewProps` | - | The view component to render your feedback widget. | - |
+| `classNames` | `FeedbackClassNames` | - | The class names for the component. | - |
+
+## Customisation with `getters`
+
+Some of the generated shopping guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
+
+To replace these placeholders with your website-specific content, use the `getters` parameter for `<ShoppingGuidesHeadlines />` or `<ShoppingGuidesContent />`.
+
+```JSX
+import { createClient } from '@algolia/generative-experiences-api-client';
+import {
+  ShoppingGuidesHeadlines,
+} from '@algolia/generative-experiences-react';
+
+const options = {
+  appId: 'YourApplicationID',
+  indexName: 'YourIndexName',
+  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
+};
+
+const client = createClient(options);
+
+const customGetters = {
+  /**
+   * URL for a specific guide.
+   */
+  guideURL: (objectID) => `/shopping-guide/${objectID}`,
+  /**
+   * URL for a specific product.
+   */
+  objectURL: (objectID) => `/product/${objectID}`,
+  /**
+   * List of images for a product.
+   */
+  images: (object) =>
+    object.images.map((image) => ({ src: image.url, alt: image.alt })),
+};
+
+function App({ userToken, category }) {
+  //...
+
+  return (
+    <ShoppingGuidesHeadlines
+      showFeedback
+      userToken={userToken}
+      client={client}
+      category={category}
+      showImmediate
+    />
+  );
+}
+
+```
 
 ## Styling
 
-// TBD
+### Using `classNames`
+
+Use the `classNames` property to add classes to the widgets, e.g.:
+
+```JSX
+<ShoppingGuideHeadlines
+  classNames={{
+    wrapper: 'YOUR_WRAPPER_CLASS',
+    container: 'YOUR_CONTAINER_CLASS',
+    item: 'YOUR_ITEM_CLASS',
+  }}
+/>
+```
+
+### Using Tailwind CSS
+
+To integrate the widgets with Tailwind, include the `@tailwindcss/typography` plugin in your `tailwind.config.js` and add the following CSS to your project:
+
+```css
+.ais-NoWrap {
+  @apply whitespace-nowrap;
+}
+
+.ais-ScreenReaderOnly {
+  @apply sr-only;
+}
+
+/* display headlines */
+.ais-ShoppingGuideHeadlinesContent-wrapper {
+  @apply flex flex-col items-end rounded p-4 border border-gray-200 shadow gap-2;
+}
+
+.ais-ShoppingGuideHeadlinesContent-container {
+  @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.ais-ShoppingGuideHeadlinesContent-readMore {
+  @apply text-orange-500 font-semibold;
+}
+
+.ais-ShoppingGuideHeadlinesContent-item {
+  @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
+}
+
+.ais-ShoppingGuideHeadlinesContent-itemContent {
+  @apply space-y-3;
+}
+
+.ais-ShoppingGuideHeadlinesContent-itemTitle {
+  @apply text-orange-500 font-semibold;
+}
+
+.ais-ShoppingGuideHeadlinesContent-itemImage {
+  @apply relative aspect-video overflow-hidden;
+}
+
+/* display content */
+.ais-ShoppingGuideContent-contentSection {
+  @apply prose max-w-prose mx-auto px-4;
+}
+
+.ais-ShoppingGuideContent-feedbackContainer {
+  @apply flex flex-col;
+}
+
+.ais-ShoppingGuideContent .ais-Feedback {
+  @apply self-end;
+}
+
+.ais-ShoppingGuideContent-relatedItemsSection {
+  @apply prose max-w-none;
+}
+
+.ais-ShoppingGuideContent-relatedItemsTitle {
+  @apply max-w-prose mx-auto px-4;
+}
+
+.ais-ShoppingGuideContent-relatedItemsListContainer {
+  @apply max-w-none px-4;
+}
+
+.ais-ShoppingGuideContent-relatedItemsList {
+  @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
+}
+
+/* display feedback */
+.ais-Feedback {
+  @apply text-gray-500 text-sm flex items-center space-x-4;
+}
+
+.ais-Feedback-thanksWrapper {
+  @apply flex space-x-2 items-center;
+}
+
+.ais-Feedback-labelWrapper {
+  @apply flex space-x-2 items-center;
+}
+
+.ais-Feedback-labelIcon {
+  @apply h-6 w-6 flex-shrink-0;
+}
+
+.ais-Feedback-button {
+  @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
+}
+
+.ais-Feedback-buttonsWrapper {
+  @apply flex space-x-3 items-center;
+}
+
+.ais-Feedback-buttonIcon {
+  @apply h-5 w-5 stroke-2 flex-shrink-0;
+}
+```
 
 ## ❓ Troubleshooting
 
