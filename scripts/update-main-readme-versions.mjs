@@ -8,60 +8,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const readMe = fs.readFileSync(path.resolve(__dirname, '../README.md'), 'utf8');
-
-const setupContent = (version) => `<!-- BEGIN PACKAGE SETUP -->
-
-### With a package manager (ESModules)
-
-\`\`\`bash
-# for the API Client
-npm install @algolia/generative-experiences-api-client@${version}
-# for the JavaScript UI library
-npm install @algolia/generative-experiences-js@${version}
-# for the React UI library
-npm install @algolia/generative-experiences-react@${version}
-\`\`\`
-
-### Without a package manager (CommonJS)
-
-\`\`\`html
-// API Client
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@${version}/dist/index.umd.js"></script>
-<script>
-  const { createClient } = window['@algolia/generative-experiences-api-client'];
-
-  const commerceClient = createClient({
-    appId: 'YourApplicationID',
-    indexName: 'YourIndexName',
-    searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-    writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for feedback collection
-  });
-</script>
-
-// JavaScript UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@${version}/dist/index.umd.js"></script>
-<script>
-  const generativeExperiences = window['@algolia/generative-experiences-js'];
-
-  generativeExperiences.shoppingGuidesHeadlines({
-    client: commerceClient,
-    container: '#headlines',
-    userToken: 'user_token',
-    category: 'category',
-  });
-</script>
-
-// React UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-react@${version}/dist/index.umd.js"></script>
-<script>
-  // TODO
-</script>
-\`\`\`
-
-<!-- END PACKAGE SETUP -->`;
-
-// Main script
 if (argv.length < 3) {
   console.error('Usage: node update-main-readme-versions.mjs <version>');
   process.exit(1);
@@ -74,10 +20,9 @@ if (!versionRegex.test(version)) {
   process.exit(1);
 }
 
-const updatedReadMe = readMe.replace(
-  /<!-- BEGIN PACKAGE SETUP -->[\s\S]*<!-- END PACKAGE SETUP -->/,
-  setupContent(version)
-);
+const readMe = fs.readFileSync(path.resolve(__dirname, '../README.md'), 'utf8');
+
+const updatedReadMe = readMe.replace(/(\d+\.\d+\.\d+)/g, version);
 
 fs.writeFileSync(
   path.resolve(__dirname, '../README.md'),
