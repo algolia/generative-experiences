@@ -1,7 +1,6 @@
 {
   "name": "@algolia/generative-experiences-vdom",
   "version": "1.0.0",
-  "description": "> TODO: description",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
   "bugs": {
@@ -13,20 +12,20 @@
     "url": "https://www.algolia.com"
   },
   "type": "module",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.js",
   "files": [
     "dist"
   ],
-  "source": "src/index.ts",
-  "types": "dist/index.d.ts",
-  "module": "dist/index.js",
-  "main": "dist/index.umd.js",
-  "umd:main": "dist/index.umd.js",
-  "unpkg": "dist/index.umd.js",
-  "jsdelivr": "dist/index.umd.js",
   "scripts": {
     "build": "tsc && vite build",
     "test": "yarn vitest --run"
   },
+  "jsdelivr": "dist/index.umd.js",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "umd:main": "dist/index.umd.js",
+  "unpkg": "dist/index.umd.js",
   "dependencies": {
     "@algolia/generative-experiences-api-client": "1.0.0"
   },
