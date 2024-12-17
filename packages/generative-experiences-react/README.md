@@ -8,7 +8,7 @@ React components for [Algolia Generative Experiences](https://www.algolia.com/do
 
 ## ✨ Features
 
-- UI library for _React_ to use Algolia's Generative Experiences
+- _React_ library to use Algolia's Generative Experiences
 - **UMD and ESM compatible**, you can use it with any module loader
 - Built with TypeScript
 
@@ -34,7 +34,7 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 ```
 
 Parameters:
@@ -60,7 +60,7 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 function App({ userToken, category }) {
   //...
@@ -69,7 +69,7 @@ function App({ userToken, category }) {
     <ShoppingGuidesHeadlines
       showFeedback
       userToken={userToken}
-      client={gseClient}
+      client={client}
       category={category}
       showImmediate
     />
@@ -106,14 +106,14 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 function App({ currentObjectID, userToken }) {
   //...
 
   return (
     <ShoppingGuidesContent
-      client={gseClient}
+      client={client}
       showFeedback
       userToken={userToken}
       objectID={currentObjectID}
@@ -156,14 +156,14 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 function App({ currentObjectID, userToken, category }) {
   //...
 
   return (
     <ShoppingGuidesFeedback
-      client={commerceClient}
+      client={client}
       objectIDs={currentObjectID}
       userToken={userToken}
     />
@@ -182,3 +182,11 @@ function App({ currentObjectID, userToken, category }) {
 ## Styling
 
 // TBD
+
+## ❓ Troubleshooting
+
+Encountering an issue? Before reaching out to support, we recommend checking the [GitHub Discussions](https://github.com/algolia/generative-experiences/discussions). You can also open a [Github issue](https://github.com/algolia/generative-experiences/issues/new?assignees=&labels=&projects=&template=Bug_report.md).
+
+## 📄 License
+
+The project is an open-sourced software, licensed under the [MIT license](LICENSE).

@@ -32,7 +32,7 @@ npm install @algolia/generative-experiences-api-client
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
 
-  const commerceClient = createClient({
+  const client = createClient({
     appId: 'YourApplicationID',
     indexName: 'YourIndexName',
     searchOnlyAPIKey: 'YourSearchOnlyAPIKey',

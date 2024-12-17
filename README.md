@@ -10,7 +10,6 @@ A repository packaging the API client and UI components for Algolia Generative E
 
 - Thin & **minimal low-level HTTP client** to interact with Algolia's Generative Experiences API
 - UI libraries for _JavaScript_ and _React_ templating
-- Works both on the **browser** and **node.js**
 - **UMD and ESM compatible**, you can use it with any module loader
 - Built with TypeScript
 
@@ -43,7 +42,7 @@ npm install @algolia/generative-experiences-react@1.1.0
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
 
-  const commerceClient = createClient({
+  const client = createClient({
     appId: 'YourApplicationID',
     indexName: 'YourIndexName',
     searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
@@ -57,7 +56,7 @@ npm install @algolia/generative-experiences-react@1.1.0
   const generativeExperiences = window['@algolia/generative-experiences-js'];
 
   generativeExperiences.shoppingGuidesHeadlines({
-    client: commerceClient,
+    client: client,
     container: '#headlines',
     userToken: 'MyUserToken',
     category: 'category',
@@ -90,13 +89,13 @@ const options = {
  searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
 };
 
-const commerceClient = createClient(options);
+const client = createClient(options);
 
 function App({ currentObjectID, userToken }) {
  // ...
  return (
    <ShoppingGuidesContent
-     client={commerceClient}
+     client={client}
      showFeedback
      userToken={userToken}
      objectID={currentObjectID}

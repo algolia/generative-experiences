@@ -10,7 +10,6 @@ import {
   ShoppingGuidesFeedback,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
-// @ts-expect-error
 import { createRoot } from 'react-dom/client';
 import '../index.css';
 
@@ -21,7 +20,7 @@ const options = {
   writeAPIKey: import.meta.env.VITE_EXAMPLES_WRITE_API_KEY ?? '',
 };
 
-const commerceClient = createClient(options);
+const client = createClient(options);
 
 // test getHeadlines method
 // commerceClient
@@ -57,13 +56,13 @@ const HitComponent = ({ hit }: { hit: any }) => {
 
 function ComponentTest() {
   const { headlines, status } = useShoppingGuidesHeadlines({
-    client: commerceClient,
+    client,
     showImmediate: true,
     category: 'category',
   });
 
   const { content, status: contentStatus } = useShoppingGuidesContent({
-    client: commerceClient,
+    client,
     objectID: '123',
     showImmediate: true,
     onlyPublished: false,
@@ -98,17 +97,17 @@ function ComponentTest() {
       <ShoppingGuidesHeadlines
         showFeedback
         userToken="aabc"
-        client={commerceClient}
+        client={client}
         category="category"
         showImmediate
       />
       <ShoppingGuidesFeedback
-        client={commerceClient}
+        client={client}
         objectIDs={['123']}
         userToken="abc"
       />
       <ShoppingGuidesContent
-        client={commerceClient}
+        client={client}
         showFeedback
         userToken="aabc"
         objectID="123"

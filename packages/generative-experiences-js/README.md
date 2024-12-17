@@ -8,7 +8,7 @@ JavaScript UI components for [Algolia Generative Experiences](https://www.algoli
 
 ## ✨ Features
 
-- UI library for _JavaScript_ templating to use Algolia's Generative Experiences
+- _JavaScript_ UI library to use Algolia's Generative Experiences
 - **UMD and ESM compatible**, you can use it with any module loader
 - Built with TypeScript
 
@@ -58,7 +58,7 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 ```
 
 Parameters:
@@ -85,11 +85,11 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 shoppingGuidesHeadlines({
   container: '#shoppingGuidesHeadlines',
-  client: gseClient,
+  client: client,
   userToken: 'MyUserToken',
   showImmediate: true,
   showFeedback: true,
@@ -127,11 +127,11 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 shoppingGuidesContent({
   container: '#shoppingGuidesContent',
-  client: gseClient,
+  client: client,
   userToken: 'MyUserToken',
   showFeedback: true,
   objectID: '123',
@@ -169,11 +169,11 @@ const options = {
   writeAPIKey: 'YourWriteAPIKey',
 };
 
-const gseClient = createClient(options);
+const client = createClient(options);
 
 shoppingGuidesFeedback({
   container: '#shoppingGuidesFeedback',
-  client: gseClient,
+  client: client,
   userToken: 'MyUserToken',
   objectIDs: ['123'],
   voteTarget: 'content',
