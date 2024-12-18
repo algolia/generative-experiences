@@ -376,8 +376,7 @@ export function createClient(opts: CreateClientOptions) {
         body: {
           index_name: this.options.indexName,
           output_application_id: this.options.appId,
-          // replace with searchOnly Key after BE patch
-          output_api_key: this.options.writeAPIKey,
+          output_api_key: this.options.searchOnlyAPIKey,
           output_index_name: this._outputIndexName(),
           object_ids: objectIDs,
           vote_type: voteType,
