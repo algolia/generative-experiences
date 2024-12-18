@@ -27,18 +27,18 @@ All of the packages comes with type definition, and are available for both brows
 
 ```bash
 # for the API Client
-npm install @algolia/generative-experiences-api-client@1.0.0
+npm install @algolia/generative-experiences-api-client@1.1.0
 # for the JavaScript UI library
-npm install @algolia/generative-experiences-js@1.0.0
+npm install @algolia/generative-experiences-js@1.1.0
 # for the React UI library
-npm install @algolia/generative-experiences-react@1.0.0
+npm install @algolia/generative-experiences-react@1.1.0
 ```
 
 ### Without a package manager (CommonJS)
 
 ```html
 // API Client
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@1.0.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-api-client@1.1.0/dist/index.umd.js"></script>
 <script>
   const { createClient } = window['@algolia/generative-experiences-api-client'];
 
@@ -51,7 +51,7 @@ npm install @algolia/generative-experiences-react@1.0.0
 </script>
 
 // JavaScript UI library
-<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@1.0.0/dist/index.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@algolia/generative-experiences-js@1.1.0/dist/index.umd.js"></script>
 <script>
   const generativeExperiences = window['@algolia/generative-experiences-js'];
 
