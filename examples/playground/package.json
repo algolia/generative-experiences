@@ -1,9 +1,9 @@
 {
   "name": "playground",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.1.0",
   "description": "playground for testing library",
   "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/algolia/generative-experiences.git"
@@ -21,9 +21,9 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "1.0.0",
-    "@algolia/generative-experiences-react": "1.0.0",
-    "@algolia/generative-experiences-vdom": "1.0.0",
+    "@algolia/generative-experiences-api-client": "1.1.0",
+    "@algolia/generative-experiences-react": "1.1.0",
+    "@algolia/generative-experiences-vdom": "1.1.0",
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",

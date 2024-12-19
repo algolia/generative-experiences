@@ -18,11 +18,11 @@ const options = {
   writeAPIKey: import.meta.env.VITE_EXAMPLES_WRITE_API_KEY ?? '',
 };
 
-const commerceClient = createClient(options);
+const client = createClient(options);
 
 shoppingGuidesHeadlines({
   container: '#headlines',
-  client: commerceClient,
+  client,
   userToken: 'test-user',
   showImmediate: true,
   //   showFeedback: true,
@@ -31,14 +31,14 @@ shoppingGuidesHeadlines({
 
 shoppingGuidesFeedback({
   container: '#feedback',
-  client: commerceClient,
+  client,
   objectIDs: ['123'],
   userToken: 'test-user',
 });
 
 shoppingGuidesContent<RecordType>({
   container: '#content',
-  client: commerceClient,
+  client,
   onlyPublished: false,
   itemComponent({ hit }) {
     return <div>{hit.title}</div>;
