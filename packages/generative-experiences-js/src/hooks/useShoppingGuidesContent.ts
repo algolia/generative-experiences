@@ -20,7 +20,7 @@ const defaultState: ShoppingGuideType = {
   content: [
     {
       title: '',
-      content: [],
+      content: '',
     },
   ],
   score_headline: 0,
