@@ -80,10 +80,12 @@ export function createClient(opts: CreateClientOptions) {
     async request({
       path,
       body,
+      headers = {},
       options = {},
     }: {
       path: string;
       body?: Record<string, unknown>;
+      headers: Record<string, unknown>;
       options?: RequestInit;
     }) {
       const response = await fetch(this.options.host + path, {
@@ -91,10 +93,11 @@ export function createClient(opts: CreateClientOptions) {
         ...options,
         headers: {
           ...(body ? { 'Content-Type': 'application/json' } : {}),
-          'X-Algolia-Application-Id': this.options.appId,
-          'X-Algolia-API-Key': body?.output_api_key
-            ? String(body?.output_api_key)
-            : '',
+          ...headers,
+          // 'X-Algolia-Application-Id': this.options.appId,
+          // 'X-Algolia-API-Key': body?.output_api_key
+          //   ? String(body?.output_api_key)
+          //   : '',
           ...options.headers,
         },
       });
@@ -113,6 +116,7 @@ export function createClient(opts: CreateClientOptions) {
 
     async waitTask(
       { taskID }: { taskID: string },
+      headers: Record<string, unknown>,
       requestOptions?: RequestParameters
     ) {
       do {
@@ -123,6 +127,7 @@ export function createClient(opts: CreateClientOptions) {
         (
           await this.request({
             path: `/task/${taskID}/status/`,
+            headers,
             options: requestOptions,
           })
         ).completed === false
@@ -130,6 +135,7 @@ export function createClient(opts: CreateClientOptions) {
 
       return await this.request({
         path: `/task/${taskID}/result/`,
+        headers,
         options: requestOptions,
       });
     },
@@ -142,22 +148,26 @@ export function createClient(opts: CreateClientOptions) {
         throw new Error('Missing writeAPIKey');
       }
 
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
+
       const { taskID } = await this.request({
         path: '/generate/shopping_guides_headlines/',
         body: {
           index_name: this.options.indexName,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           ...options,
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
         },
       });
 
-      return await this.waitTask({ taskID }, requestOptions);
+      return await this.waitTask({ taskID }, headers, requestOptions);
     },
 
     async generateContent(
@@ -171,23 +181,26 @@ export function createClient(opts: CreateClientOptions) {
       if (!this.options.writeAPIKey) {
         throw new Error('Missing writeAPIKey');
       }
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
 
       const { taskID } = await this.request({
         path: `/generate/${type}_content/${objectID}/`,
         body: {
           index_name: this.options.indexName,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           ...options,
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
         },
       });
 
-      return await this.waitTask({ taskID }, requestOptions);
+      return await this.waitTask({ taskID }, headers, requestOptions);
     },
 
     async generateComparison(
@@ -198,23 +211,27 @@ export function createClient(opts: CreateClientOptions) {
         throw new Error('Missing writeAPIKey');
       }
 
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
+
       const { taskID } = await this.request({
         path: '/generate/products_comparison/',
         body: {
           object_ids: objectIDs,
           index_name: this.options.indexName,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           output_index_name: this._outputIndexName(),
           ...options,
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
         },
       });
 
-      return await this.waitTask({ taskID }, requestOptions);
+      return await this.waitTask({ taskID }, headers, requestOptions);
     },
 
     async getHeadlines(
@@ -371,18 +388,22 @@ export function createClient(opts: CreateClientOptions) {
       voteTarget: 'content' | 'headline';
       userToken: string;
     }) {
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.searchOnlyAPIKey,
+      };
+
       return await this.request({
         path: '/vote/',
         body: {
           index_name: this.options.indexName,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.searchOnlyAPIKey,
           output_index_name: this._outputIndexName(),
           object_ids: objectIDs,
           vote_type: voteType,
           vote_target: voteTarget,
           user_token: userToken,
         },
+        headers,
         options: {
           method: 'POST',
         },
@@ -397,14 +418,18 @@ export function createClient(opts: CreateClientOptions) {
         throw new Error('Missing writeAPIKey');
       }
 
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
+
       return await this.request({
         path: '/delete/shopping_guides/',
         body: {
           object_ids: objectIDs,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
@@ -420,14 +445,18 @@ export function createClient(opts: CreateClientOptions) {
         throw new Error('Missing writeAPIKey');
       }
 
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
+
       return await this.request({
         path: '/delete/shopping_guides_content/',
         body: {
           object_ids: objectIDs,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
@@ -448,16 +477,18 @@ export function createClient(opts: CreateClientOptions) {
       if (!this.options.writeAPIKey) {
         throw new Error('Missing writeAPIKey');
       }
-
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
       return await this.request({
         path: '/update/shopping_guide/',
         body: {
           object_id: objectID,
           data,
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           index_name: this._outputIndexName(),
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
@@ -472,14 +503,17 @@ export function createClient(opts: CreateClientOptions) {
       if (!this.options.writeAPIKey) {
         throw new Error('Missing writeAPIKey');
       }
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
 
       return await this.request({
         path: '/create/shopping_guides_index/',
         body: {
-          output_application_id: this.options.appId,
-          output_api_key: this.options.writeAPIKey,
           index_name: indexName,
         },
+        headers,
         options: {
           method: 'POST',
           ...requestOptions,
@@ -491,8 +525,13 @@ export function createClient(opts: CreateClientOptions) {
       _args: unknown,
       requestOptions?: RequestParameters
     ): Promise<TasksResponse> {
+      const headers = {
+        'X-Algolia-Application-Id': this.options.appId,
+        'X-Algolia-API-Key': this.options.writeAPIKey,
+      };
       return await this.request({
         path: '/tasks/',
+        headers,
         options: {
           ...requestOptions,
         },
