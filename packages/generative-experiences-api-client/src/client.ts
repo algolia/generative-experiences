@@ -94,10 +94,6 @@ export function createClient(opts: CreateClientOptions) {
         headers: {
           ...(body ? { 'Content-Type': 'application/json' } : {}),
           ...headers,
-          // 'X-Algolia-Application-Id': this.options.appId,
-          // 'X-Algolia-API-Key': body?.output_api_key
-          //   ? String(body?.output_api_key)
-          //   : '',
           ...options.headers,
         },
       });
