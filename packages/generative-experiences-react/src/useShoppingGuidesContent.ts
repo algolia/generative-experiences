@@ -17,6 +17,7 @@ const defaultState: ShoppingGuideType = {
   description: '',
   category: '',
   objects: [],
+  objectIDs: [],
   content: [
     {
       title: '',
