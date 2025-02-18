@@ -1,6 +1,6 @@
 {
   "name": "@algolia/generative-experiences-vdom",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
   "bugs": {
@@ -27,7 +27,7 @@
   "umd:main": "dist/index.umd.js",
   "unpkg": "dist/index.umd.js",
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "1.1.0"
+    "@algolia/generative-experiences-api-client": "1.2.0"
   },
   "devDependencies": {
     "@algolia/client-search": "^5.8.1",
