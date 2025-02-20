@@ -1,3 +1,9 @@
+## 1.3.0 (2025-02-20)
+
+* add basic search (#46) ([7989521](https://github.com/algolia/generative-experiences/commit/7989521)), closes [#46](https://github.com/algolia/generative-experiences/issues/46)
+
+
+
 ## 1.2.0 (2025-02-18)
 
 * feat: fetch objects on the client side (#43) ([4d8b25d](https://github.com/algolia/generative-experiences/commit/4d8b25d)), closes [#43](https://github.com/algolia/generative-experiences/issues/43)
