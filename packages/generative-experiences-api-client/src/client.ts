@@ -72,6 +72,7 @@ export function createClient(opts: CreateClientOptions) {
     },
     transporter: searchClient.transporter,
     searchSingleIndex: searchClient.searchSingleIndex,
+    search: searchClient.search,
     appId: searchClient.appId,
     addAlgoliaAgent: searchClient.addAlgoliaAgent,
     async clearCache() {
