@@ -124,7 +124,7 @@ export function createClient(opts: CreateClientOptions) {
       } while (
         (
           await this.request({
-            path: `/task/${taskID}/status/`,
+            path: `/task/${taskID}/status`,
             headers,
             options: requestOptions,
           })
@@ -132,7 +132,7 @@ export function createClient(opts: CreateClientOptions) {
       );
 
       return await this.request({
-        path: `/task/${taskID}/result/`,
+        path: `/task/${taskID}/result`,
         headers,
         options: requestOptions,
       });
@@ -152,7 +152,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: '/generate/shopping_guides_headlines/',
+        path: '/generate/shopping_guides_headlines',
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -185,7 +185,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: `/generate/${type}_content/${objectID}/`,
+        path: `/generate/${type}_content/${objectID}`,
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -215,7 +215,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: '/generate/products_comparison/',
+        path: '/generate/product_comparisons/',
         body: {
           object_ids: objectIDs,
           index_name: this.options.indexName,
@@ -413,7 +413,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/vote/',
+        path: '/vote',
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -443,7 +443,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/delete/shopping_guides/',
+        path: '/delete/shopping_guides',
         body: {
           object_ids: objectIDs,
           index_name: this._outputIndexName(),
@@ -470,7 +470,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/delete/shopping_guides_content/',
+        path: '/delete/shopping_guides_content',
         body: {
           object_ids: objectIDs,
           index_name: this._outputIndexName(),
@@ -501,7 +501,7 @@ export function createClient(opts: CreateClientOptions) {
         'X-Algolia-API-Key': this.options.writeAPIKey,
       };
       return await this.request({
-        path: '/update/shopping_guide/',
+        path: '/update/shopping_guide',
         body: {
           object_id: objectID,
           data,
@@ -549,7 +549,7 @@ export function createClient(opts: CreateClientOptions) {
         'X-Algolia-API-Key': this.options.writeAPIKey,
       };
       return await this.request({
-        path: '/tasks/',
+        path: '/tasks',
         headers,
         options: {
           ...requestOptions,
