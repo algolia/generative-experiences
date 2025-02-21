@@ -17,10 +17,11 @@ const defaultState: ShoppingGuideType = {
   description: '',
   category: '',
   objects: [],
+  objectIDs: [],
   content: [
     {
       title: '',
-      content: [],
+      content: '',
     },
   ],
   score_headline: 0,

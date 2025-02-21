@@ -1,3 +1,17 @@
+## 1.3.0 (2025-02-20)
+
+* add basic search (#46) ([7989521](https://github.com/algolia/generative-experiences/commit/7989521)), closes [#46](https://github.com/algolia/generative-experiences/issues/46)
+
+
+
+## 1.2.0 (2025-02-18)
+
+* feat: fetch objects on the client side (#43) ([4d8b25d](https://github.com/algolia/generative-experiences/commit/4d8b25d)), closes [#43](https://github.com/algolia/generative-experiences/issues/43)
+* fix: fix Shopping/Comparison guide content type (#41) ([d72e1b6](https://github.com/algolia/generative-experiences/commit/d72e1b6)), closes [#41](https://github.com/algolia/generative-experiences/issues/41)
+* fix: re-export types from vdom [CEC-361] (#38) ([c9b986c](https://github.com/algolia/generative-experiences/commit/c9b986c)), closes [#38](https://github.com/algolia/generative-experiences/issues/38)
+
+
+
 ## 1.1.0 (2024-12-18)
 
 * chore: remove packageManager from package.json ([77a27ea](https://github.com/algolia/generative-experiences/commit/77a27ea))

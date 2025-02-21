@@ -13,10 +13,11 @@ export type CategoryGuide = BaseShoppingGuide & {
   description: string;
   category: string;
   objects: Hit[];
+  objectIDs: string[];
   content: Array<{
     type: 'conclusion' | 'factor' | 'introduction';
     title: string;
-    content: string[];
+    content: string;
   }>;
   score_headline: number;
 };
@@ -26,18 +27,20 @@ export type ShoppingGuideType = BaseShoppingGuide & {
   description: string;
   category: string;
   objects: Hit[];
-  content: Array<{ title: string; content: string[] }>;
+  objectIDs: string[];
+  content: Array<{ title: string; content: string }>;
   score_headline: number;
 };
 
 export type ComparisonGuide = BaseShoppingGuide & {
   type: 'comparison';
   objects: Hit[];
+  objectIDs: string[];
   content: Array<{
     title: string;
     type: 'conclusion' | 'introduction' | 'product';
     objectID?: string;
-    content: string[];
+    content: string;
   }>;
   comparedObjectIDs: string[];
 };

@@ -14,10 +14,11 @@ export const defaultState: ShoppingGuideType = {
   description: '',
   category: '',
   objects: [],
+  objectIDs: [],
   content: [
     {
       title: '',
-      content: [],
+      content: '',
     },
   ],
   score_headline: 0,
@@ -52,7 +53,7 @@ export type GSEContentRecord = {
       content: Array<{
         type: 'conclusion' | 'factor' | 'introduction';
         title: string;
-        content: string[];
+        content: string;
       }>;
       score_headline: number;
     }
@@ -63,7 +64,7 @@ export type GSEContentRecord = {
         title: string;
         type: 'conclusion' | 'introduction' | 'product';
         objectID?: string;
-        content: string[];
+        content: string;
       }>;
       comparedObjectIDs: string[];
     }
@@ -72,7 +73,7 @@ export type GSEContentRecord = {
       description: string;
       category: string;
       objects: Hit[];
-      content: Array<{ title: string; content: string[] }>;
+      content: Array<{ title: string; content: string }>;
       score_headline: number;
     }
 );

@@ -2,6 +2,7 @@ import { algoliasearch } from 'algoliasearch';
 import type { FacetFilters } from 'algoliasearch';
 import type { PlainSearchParameters } from 'algoliasearch-helper';
 
+import { getObjectIDs, getObjects } from './helpers/records';
 import {
   GenerationSource,
   ProductsComparisonOptions,
@@ -71,6 +72,7 @@ export function createClient(opts: CreateClientOptions) {
     },
     transporter: searchClient.transporter,
     searchSingleIndex: searchClient.searchSingleIndex,
+    search: searchClient.search,
     appId: searchClient.appId,
     addAlgoliaAgent: searchClient.addAlgoliaAgent,
     async clearCache() {
@@ -290,9 +292,30 @@ export function createClient(opts: CreateClientOptions) {
       });
 
       const record = res?.hits?.at(0);
+
       if (record?.content) {
+        /**
+         * For backward compatibility, we need to ensure that the objectIDs array is filled.
+         * This can be dropped at the next major release.
+         */
+        if (Boolean(record.objects?.length) && !record.objectIDs?.length) {
+          record.objectIDs = getObjectIDs(record.objects);
+        }
+
+        /**
+         * Fetch records from objectIDs, this used to be done on the API side. But the records could get too large, so this logic is now done on the client side.
+         */
+        if (Boolean(record.objectIDs?.length) && !record.objects?.length) {
+          record.objects = await getObjects(
+            record.objectIDs,
+            this.options.indexName,
+            searchClient
+          );
+        }
+
         return record;
       }
+
       return null;
     },
 
