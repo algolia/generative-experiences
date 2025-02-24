@@ -91,7 +91,7 @@ client
 | `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
 | `source` | `'combined' \| 'generated' \| 'index'` | `index` | The source of the headlines. | - |
 | `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |
-| `language_code` | `'en_US' \| 'de_DE' \| 'fr_FR'` | `en_US` | The language code used for generating headlines. | - |
+| `language_code` | `'english' \| 'german' \| 'french'` | `english` | The language code used for generating headlines. | - |
 | `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 
@@ -143,7 +143,7 @@ client
 | `source` | `'combined' \| 'generated' \| 'index'` | `index` | The source of the content. | - |
 | `type` | `'shopping_guide' \| 'category_guide'` | `shopping_guide` | The type of guide to generate. | Used if `source` is `generated` |
 | `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |
-| `language_code` | `'en_US' \| 'de_DE' \| 'fr_FR'` | `en_US` | The language code used for generating content. | - |
+| `language_code` | `'english' \| 'german' \| 'french'` | `english` | The language code used for generating content. | - |
 | `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 

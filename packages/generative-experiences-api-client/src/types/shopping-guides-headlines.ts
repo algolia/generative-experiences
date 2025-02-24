@@ -26,7 +26,7 @@ export type ShoppingGuideHeadlinesRequestParameters = {
    */
   search_parameters?: PlainSearchParameters;
   /**
-   * @default 'en_US'
+   * @default 'english'
    */
   language_code?: string;
   /**
