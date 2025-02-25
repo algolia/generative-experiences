@@ -48,7 +48,7 @@ export type CreateClientOptions = {
   writeAPIKey?: string;
 };
 
-export const DEFAULT_HOST = 'https://generative-ai.algolia.com';
+export const DEFAULT_HOST = 'https://conversational-ai-prod.algolia.com';
 
 export function createClient(opts: CreateClientOptions) {
   if (!opts.appId) {
