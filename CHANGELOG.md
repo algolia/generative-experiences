@@ -1,3 +1,9 @@
+## 1.4.0 (2025-02-25)
+
+* fix(client): remove sensitive data from body (#42) ([b1ff69e](https://github.com/algolia/generative-experiences/commit/b1ff69e)), closes [#42](https://github.com/algolia/generative-experiences/issues/42)
+
+
+
 ## 1.3.0 (2025-02-20)
 
 * add basic search (#46) ([7989521](https://github.com/algolia/generative-experiences/commit/7989521)), closes [#46](https://github.com/algolia/generative-experiences/issues/46)
