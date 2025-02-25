@@ -5,7 +5,7 @@ export type ProductsComparisonOptions = {
    */
   generated_at?: number;
   /**
-   * @default 'en_US'
+   * @default 'english'
    */
   language_code?: string;
   /**

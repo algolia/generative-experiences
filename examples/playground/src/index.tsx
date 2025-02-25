@@ -39,10 +39,10 @@ const client = createClient(options);
 //   .then((response) => console.log(response));
 
 // test generate headlines
-// commerceClient.generateHeadlines({
+// client.generateHeadlines({
 //   category: 'category',
 //   tone: 'natural',
-//   language_code: 'en_US',
+//   language_code: 'english',
 // });
 
 // test generate content for a headline
@@ -63,7 +63,7 @@ function ComponentTest() {
 
   const { content, status: contentStatus } = useShoppingGuidesContent({
     client,
-    objectID: '123',
+    objectID: '1234',
     showImmediate: true,
     onlyPublished: false,
   });
