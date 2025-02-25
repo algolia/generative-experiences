@@ -215,7 +215,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: '/generate/product_comparisons/',
+        path: '/generate/products_comparison',
         body: {
           object_ids: objectIDs,
           index_name: this.options.indexName,
