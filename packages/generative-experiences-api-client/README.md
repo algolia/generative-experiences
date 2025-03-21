@@ -37,6 +37,7 @@ npm install @algolia/generative-experiences-api-client
     indexName: 'YourIndexName',
     searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
     writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for dynamic generation
+    region: 'us' // (optional) region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
   });
 </script>
 ```
