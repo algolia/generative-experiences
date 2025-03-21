@@ -42,7 +42,7 @@ Parameters:
 - **appId** The Algolia Application ID
 - **indexName** The Algolia Index used for generating and displaying shopping guides
 - **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
-- **writeAPIKey** The Algolia Write API Key needed for generating guides or sending feedback
+- **writeAPIKey** The Algolia Write API Key needed for generating guides
 - **region** The Region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
 
 ### Shopping Guides Headlines
