@@ -1,3 +1,9 @@
+## 1.5.0 (2025-03-25)
+
+* feat(client-api): add region on host (#49) ([e5b8d05](https://github.com/algolia/generative-experiences/commit/e5b8d05)), closes [#49](https://github.com/algolia/generative-experiences/issues/49)
+
+
+
 ## 1.4.0 (2025-02-25)
 
 * fix(client): remove sensitive data from body (#42) ([b1ff69e](https://github.com/algolia/generative-experiences/commit/b1ff69e)), closes [#42](https://github.com/algolia/generative-experiences/issues/42)
