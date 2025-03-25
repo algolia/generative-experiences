@@ -46,9 +46,11 @@ export type CreateClientOptions = {
    * https://www.algolia.com/doc/guides/security/api-keys/#rights-and-restrictions
    */
   writeAPIKey?: string;
+  /**
+   * Region of the Algolia Application. Either 'us' or 'eu'.
+   */
+  region?: 'us' | 'eu';
 };
-
-export const DEFAULT_HOST = 'https://conversational-ai-prod.algolia.com';
 
 export function createClient(opts: CreateClientOptions) {
   if (!opts.appId) {
@@ -65,10 +67,12 @@ export function createClient(opts: CreateClientOptions) {
 
   searchClient.addAlgoliaAgent('generative-experiences-api-client', version);
 
+  const region = opts.region ?? 'us';
+
   return {
     options: {
       ...opts,
-      host: opts.host || DEFAULT_HOST,
+      host: opts.host || `https://generative-${region}.algolia.com/`,
     },
     transporter: searchClient.transporter,
     searchSingleIndex: searchClient.searchSingleIndex,

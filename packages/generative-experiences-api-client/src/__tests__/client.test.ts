@@ -10,7 +10,7 @@ import {
   afterAll,
 } from 'vitest';
 
-import { createClient, DEFAULT_HOST } from '../client';
+import { createClient } from '../client';
 
 const addAlgoliaAgent = vi.fn();
 const searchSingleIndex = vi.fn();
@@ -23,9 +23,12 @@ vi.mock('algoliasearch', () => ({
 }));
 
 const server = setupServer(
-  http.post(`${DEFAULT_HOST}/delete/shopping_guides/`, () => {
-    return HttpResponse.json({ status: 'success' });
-  })
+  http.post(
+    `https://generative-us.algolia.com//delete/shopping_guides/`,
+    () => {
+      return HttpResponse.json({ status: 'success' });
+    }
+  )
 );
 
 describe('createClient', () => {
