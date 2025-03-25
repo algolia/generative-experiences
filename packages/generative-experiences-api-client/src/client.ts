@@ -49,7 +49,7 @@ export type CreateClientOptions = {
   /**
    * Region of the Algolia Application. Either 'us' or 'eu'.
    */
-  region?: string;
+  region?: 'us' | 'eu';
 };
 
 export function createClient(opts: CreateClientOptions) {
