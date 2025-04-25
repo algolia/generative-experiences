@@ -2,44 +2,40 @@
 /** @jsx h */
 
 import {
-  createShoppingGuidesFeedbackComponent,
+  createGuidesFeedbackComponent,
   FeedbackComponentProps as FeedbackComponentVDOMProps,
 } from '@algolia/generative-experiences-vdom';
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
-import { useShoppingGuidesFeedback } from './hooks';
+import { useGuidesFeedback } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
-  UseShoppingGuidesFeedbackProps,
+  UseGuidesFeedbackProps,
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
 
-const UncontrolledShoppingGuidesFeedback = createShoppingGuidesFeedbackComponent(
-  {
-    createElement,
-    Fragment,
-  }
-);
+const UncontrolledGuidesFeedback = createGuidesFeedbackComponent({
+  createElement,
+  Fragment,
+});
 
-export type ShoppingGuidesFeedbackProps<
+export type GuidesFeedbackProps<
   TComponentProps extends Record<string, unknown> = {}
-> = UseShoppingGuidesFeedbackProps &
+> = UseGuidesFeedbackProps &
   Omit<
     FeedbackComponentVDOMProps<TComponentProps>,
     'status' | 'castFeedback' | 'alreadyCast'
   >;
 
-function ShoppingGuidesFeedback<
-  TComponentProps extends Record<string, unknown> = {}
->(props: ShoppingGuidesFeedbackProps<TComponentProps>) {
-  const { castFeedback, alreadyCast, status } = useShoppingGuidesFeedback(
-    props
-  );
+function GuidesFeedback<TComponentProps extends Record<string, unknown> = {}>(
+  props: GuidesFeedbackProps<TComponentProps>
+) {
+  const { castFeedback, alreadyCast, status } = useGuidesFeedback(props);
 
   return (
-    <UncontrolledShoppingGuidesFeedback
+    <UncontrolledGuidesFeedback
       {...props}
       castFeedback={castFeedback}
       alreadyCast={alreadyCast}
@@ -48,22 +44,19 @@ function ShoppingGuidesFeedback<
   );
 }
 
-export function shoppingGuidesFeedback({
+export function guidesFeedback({
   container,
   environment = window,
   view,
   children,
   ...props
-}: ShoppingGuidesFeedbackProps<HTMLTemplate> & EnvironmentProps) {
+}: GuidesFeedbackProps<HTMLTemplate> & EnvironmentProps) {
   const vnode = (
-    <ShoppingGuidesFeedback<HTMLTemplate>
-      {...props}
-      view={view && withHtml(view)}
-    >
+    <GuidesFeedback<HTMLTemplate> {...props} view={view && withHtml(view)}>
       {children
         ? (childrenProps) => children({ ...childrenProps, html })
         : undefined}
-    </ShoppingGuidesFeedback>
+    </GuidesFeedback>
   );
 
   if (!container) {

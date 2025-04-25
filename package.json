@@ -1,6 +1,6 @@
 {
   "name": "@algolia/generative-experiences",
-  "description": "Algolia Generative Shopping Experiences monorepo",
+  "description": "Algolia Generative AI Experiences monorepo",
   "private": true,
   "engines": {
     "node": ">=20.17.0 <22"

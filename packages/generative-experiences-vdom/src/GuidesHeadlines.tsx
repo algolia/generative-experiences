@@ -1,28 +1,33 @@
 /** @jsxRuntime classic */
 /** @jsx createElement */
 
-import { createArticleViewComponent } from './DefaultArticleView';
-import { createDefaultContentChildrenComponent } from './DefaultContentChildren';
 import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { defaultGetters } from './DefaultGetters';
-import { ContentComponentProps, Renderer, defaultState } from './types';
+import { createDefaultHeadlineComponent } from './DefaultHeadlineComponent';
+import { createDefaultHeadlinesChildrenComponent } from './DefaultHeadlinesChildren';
+import { createListViewComponent } from './DefaultListView';
+import { HeadlinesComponentProps, Renderer } from './types';
 
-export function createShoppingGuideContentComponent<TObject>({
+export function createGuidesHeadlinesComponent({
   createElement,
   Fragment,
 }: Renderer) {
-  return function ShoppingGuideContent(props: ContentComponentProps<TObject>) {
+  return function GuidesHeadlines(props: HeadlinesComponentProps) {
     const classNames = props.classNames ?? {};
 
     const children =
       props.children ??
-      createDefaultContentChildrenComponent({
+      createDefaultHeadlinesChildrenComponent({
         createElement,
         Fragment,
       });
 
+    const itemComponent =
+      props.itemComponent ??
+      createDefaultHeadlineComponent({ createElement, Fragment });
+
     const ViewComponent =
-      props.view ?? createArticleViewComponent({ createElement, Fragment });
+      props.view ?? createListViewComponent({ createElement, Fragment });
 
     const feedbackComponent =
       props.showFeedback &&
@@ -34,8 +39,8 @@ export function createShoppingGuideContentComponent<TObject>({
       <ViewComponent
         classNames={classNames}
         Fragment={Fragment}
-        itemComponent={props.itemComponent}
-        item={props.item}
+        itemComponent={itemComponent}
+        items={props.items}
         createElement={createElement}
         castFeedback={props.castFeedback}
         alreadyCast={props.alreadyCast}
@@ -48,7 +53,7 @@ export function createShoppingGuideContentComponent<TObject>({
 
     return children({
       classNames,
-      content: defaultState,
+      headlines: [],
       status: props.status,
       View,
     });

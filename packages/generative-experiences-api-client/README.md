@@ -37,16 +37,16 @@ npm install @algolia/generative-experiences-api-client
     indexName: 'YourIndexName',
     searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
     writeAPIKey: 'YourWriteAPIKey', // (optional) only needed for dynamic generation
-    region: 'us' // (optional) region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
+    region: 'us', // (optional) region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
   });
 </script>
 ```
 
 ## Usage
 
-### Shopping Guides Headlines
+### Generative AI Guides Headlines
 
-Retrieve your shopping guides headlines using the [`getHeadlines()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-headlines) method.
+Retrieve your guides headlines using the [`getHeadlines()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-headlines) method.
 
 ```javascript
 import { createClient } from '@algolia/generative-experiences-api-client';
@@ -75,7 +75,7 @@ const client = createClient({
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey'
+  writeAPIKey: 'YourWriteAPIKey',
 });
 
 client
@@ -96,9 +96,9 @@ client
 | `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 
-### Shopping Guide Content
+### Generative AI Guide Content
 
-Retrieve your shopping guide content using the [`getContent()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-content) method.
+Retrieve your guide's content using the [`getContent()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-content) method.
 
 ```javascript
 import { createClient } from '@algolia/generative-experiences-api-client';
@@ -127,7 +127,7 @@ const client = createClient({
   appId: 'YourApplicationID',
   indexName: 'YourIndexName',
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
-  writeAPIKey: 'YourWriteAPIKey'
+  writeAPIKey: 'YourWriteAPIKey',
 });
 
 client
@@ -161,13 +161,12 @@ const client = createClient({
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
 });
 
-client
-  .vote({
-    objectID: guideID,
-    voteType: 'upvote',
-    voteTarget: 'content',
-    userToken: userToken
-  })
+client.vote({
+  objectID: guideID,
+  voteType: 'upvote',
+  voteTarget: 'content',
+  userToken: userToken,
+});
 ```
 
 | Prop name | Type | Default | Description | Notes |

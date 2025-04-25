@@ -11,7 +11,7 @@ type TaskBaseArgs = {
 
 export type ComparisonTaskArgs = TaskBaseArgs & { object_ids?: string[] };
 
-export type ShoppingGuideTaskArgs = TaskBaseArgs & {
+export type GuideTaskArgs = TaskBaseArgs & {
   search_parameters?: PlainSearchParameters;
 };
 
@@ -19,7 +19,7 @@ export type Task = {
   /**
    * Arguments passed to the task.
    */
-  args: ComparisonTaskArgs | ShoppingGuideTaskArgs;
+  args: ComparisonTaskArgs | GuideTaskArgs;
   /**
    * Id of the task.
    */

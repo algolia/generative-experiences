@@ -11,13 +11,13 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
       <div>
         <div
           className={cx(
-            'ais-ShoppingGuideHeadlinesContent-itemContent',
+            'ais-GenerativeAiGuideHeadlinesContent-itemContent',
             props.classNames?.itemContent
           )}
         >
           <h3
             className={cx(
-              'ais-ShoppingGuideHeadlinesContent-itemTitle',
+              'ais-GenerativeAiGuideHeadlinesContent-itemTitle',
               props.classNames?.itemTitle
             )}
           >
@@ -26,7 +26,7 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
           <p>{props.item.description}</p>
           <a
             className={cx(
-              'ais-ShoppingGuideHeadlinesContent-readMore',
+              'ais-GenerativeAiGuideHeadlinesContent-readMore',
               props.classNames?.readMore
             )}
             href={props.getters.guideURL(props.item.objectID)}
@@ -37,7 +37,7 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
         {image && (
           <div
             className={cx(
-              'ais-ShoppingGuideHeadlinesContent-itemImage',
+              'ais-GenerativeAiGuideHeadlinesContent-itemImage',
               props.classNames?.itemImage
             )}
           >

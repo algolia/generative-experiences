@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-import { UseShoppingGuidesFeedbackProps } from './ShoppingGuidesFeedback';
+import { UseGuidesFeedbackProps } from './GuidesFeedback';
 import { version } from './version';
 
-export function useShoppingGuidesFeedback({
+export function useGuidesFeedback({
   client: commerceClient,
   objectIDs: userObjectIDs = [],
   voteTarget: userTarget = 'content',
   userToken,
-}: UseShoppingGuidesFeedbackProps) {
+}: UseGuidesFeedbackProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
   const [alreadyCast, setAlreadyCast] = useState<boolean | undefined>(false);

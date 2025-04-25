@@ -1,10 +1,8 @@
-# Algolia Generative Experiences
+# Algolia Generative AI Experiences
 
 [![generative-experiences-api-client](https://img.shields.io/npm/v/@algolia/generative-experiences-api-client.svg?label=generative-experiences-api-client)](https://www.npmjs.com/package/@algolia/generative-experiences-api-client) [![generative-experiences-js](https://img.shields.io/npm/v/@algolia/generative-experiences-js.svg?label=generative-experiences-js)](https://www.npmjs.com/package/@algolia/generative-experiences-js) [![generative-experiences-react](https://img.shields.io/npm/v/@algolia/generative-experiences-react.svg?label=generative-experiences-react)](https://www.npmjs.com/package/@algolia/generative-experiences-react) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A repository packaging the API client and UI components for Algolia Generative Experiences. For the full documentation of this feature, please check the [Algolia Docs](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/)
-
-> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
 
 ## ✨ Features
 
@@ -55,7 +53,7 @@ npm install @algolia/generative-experiences-react@1.5.0
 <script>
   const generativeExperiences = window['@algolia/generative-experiences-js'];
 
-  generativeExperiences.shoppingGuidesHeadlines({
+  generativeExperiences.guidesHeadlines({
     client: client,
     container: '#headlines',
     userToken: 'MyUserToken',
@@ -68,14 +66,12 @@ npm install @algolia/generative-experiences-react@1.5.0
 
 #### Example with [React](/packages/generative-experiences-react)
 
-Displaying a shopping guide:
+Displaying a guide:
 
 ```JSX
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import {
- ShoppingGuidesContent,
-} from '@algolia/generative-experiences-react';
+import { GuidesContent } from '@algolia/generative-experiences-react';
 
 const options = {
  appId: 'YourApplicationID',
@@ -88,7 +84,7 @@ const client = createClient(options);
 function App({ currentObjectID, userToken }) {
  // ...
  return (
-   <ShoppingGuidesContent
+   <GuidesContent
      client={client}
      showFeedback
      userToken={userToken}
@@ -106,13 +102,11 @@ You can find more examples and implementation details in the [Algolia Docs](http
 
 #### Example with [JavaScript](/packages/generative-experiences-js)
 
-Displaying a shopping guide:
+Displaying a Generative AI guide:
 
 ```JSX
 import { createClient } from '@algolia/generative-experiences-api-client';
-import {
-  shoppingGuidesContent,
-} from '@algolia/generative-experiences-js';
+import { guidesContent } from '@algolia/generative-experiences-js';
 
 const commerceClient = createClient({
   appId: 'YourApplicationID',
@@ -120,7 +114,7 @@ const commerceClient = createClient({
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
 });
 
-shoppingGuidesContent({
+guidesContent({
   client: commerceClient,
   objectID: objectID,
   container: '#content',

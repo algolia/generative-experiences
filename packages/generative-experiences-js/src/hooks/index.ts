@@ -1,3 +1,3 @@
-export * from './useShoppingGuidesContent';
-export * from './useShoppingGuidesFeedback';
-export * from './useShoppingGuidesHeadlines';
+export * from './useGuidesContent';
+export * from './useGuidesFeedback';
+export * from './useGuidesHeadlines';

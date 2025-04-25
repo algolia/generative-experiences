@@ -1,46 +1,44 @@
 /** @jsxRuntime classic */
 /** @jsx h */
 
-import { ShoppingGuideHeadlinesOptions } from '@algolia/generative-experiences-api-client';
+import { GuideHeadlinesOptions } from '@algolia/generative-experiences-api-client';
 import {
-  createShoppingGuidesHeadlinesComponent,
+  createGuidesHeadlinesComponent,
   HeadlinesComponentProps as HeadlinesComponentVDOMProps,
 } from '@algolia/generative-experiences-vdom';
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
-import { useShoppingGuidesFeedback, useShoppingGuidesHeadlines } from './hooks';
+import { useGuidesFeedback, useGuidesHeadlines } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
-  UseShoppingGuidesFeedbackProps,
+  UseGuidesFeedbackProps,
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
 
-const UncontrolledShoppingGuidesHeadlines = createShoppingGuidesHeadlinesComponent(
-  {
-    createElement,
-    Fragment,
-  }
-);
+const UncontrolledGuidesHeadlines = createGuidesHeadlinesComponent({
+  createElement,
+  Fragment,
+});
 
-export type ShoppingGuidesHeadlinesProps<
+export type GuidesHeadlinesProps<
   TComponentProps extends Record<string, unknown> = {}
-> = ShoppingGuideHeadlinesOptions &
+> = GuideHeadlinesOptions &
   Omit<
     HeadlinesComponentVDOMProps<TComponentProps>,
     'items' | 'status' | 'castFeedback' | 'alreadyCast'
   > &
-  Omit<UseShoppingGuidesFeedbackProps, 'client'>;
+  Omit<UseGuidesFeedbackProps, 'client'>;
 
-function ShoppingGuidesHeadlines<
-  TComponentProps extends Record<string, unknown> = {}
->(props: ShoppingGuidesHeadlinesProps<TComponentProps>) {
-  const { headlines, status } = useShoppingGuidesHeadlines(props);
-  const { castFeedback, alreadyCast } = useShoppingGuidesFeedback(props);
+function GuidesHeadlines<TComponentProps extends Record<string, unknown> = {}>(
+  props: GuidesHeadlinesProps<TComponentProps>
+) {
+  const { headlines, status } = useGuidesHeadlines(props);
+  const { castFeedback, alreadyCast } = useGuidesFeedback(props);
 
   return (
-    <UncontrolledShoppingGuidesHeadlines
+    <UncontrolledGuidesHeadlines
       {...props}
       items={headlines}
       castFeedback={castFeedback}
@@ -50,7 +48,7 @@ function ShoppingGuidesHeadlines<
   );
 }
 
-export function shoppingGuidesHeadlines({
+export function guidesHeadlines({
   container,
   environment = window,
   itemComponent,
@@ -58,9 +56,9 @@ export function shoppingGuidesHeadlines({
   view,
   children,
   ...props
-}: ShoppingGuidesHeadlinesProps<HTMLTemplate> & EnvironmentProps) {
+}: GuidesHeadlinesProps<HTMLTemplate> & EnvironmentProps) {
   const vnode = (
-    <ShoppingGuidesHeadlines<HTMLTemplate>
+    <GuidesHeadlines<HTMLTemplate>
       {...props}
       view={view && withHtml(view)}
       itemComponent={itemComponent && withHtml(itemComponent)}
@@ -68,7 +66,7 @@ export function shoppingGuidesHeadlines({
       {children
         ? (childrenProps) => children({ ...childrenProps, html })
         : undefined}
-    </ShoppingGuidesHeadlines>
+    </GuidesHeadlines>
   );
 
   if (!container) {

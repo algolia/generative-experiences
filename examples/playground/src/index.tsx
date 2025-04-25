@@ -3,11 +3,11 @@
 
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  ShoppingGuidesHeadlines,
-  ShoppingGuidesContent,
-  useShoppingGuidesContent,
-  useShoppingGuidesHeadlines,
-  ShoppingGuidesFeedback,
+  GuidesHeadlines,
+  GuidesContent,
+  useGuidesContent,
+  useGuidesHeadlines,
+  GuidesFeedback,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -55,13 +55,13 @@ const HitComponent = ({ hit }: { hit: any }) => {
 };
 
 function ComponentTest() {
-  const { headlines, status } = useShoppingGuidesHeadlines({
+  const { headlines, status } = useGuidesHeadlines({
     client,
     showImmediate: true,
     category: 'category',
   });
 
-  const { content, status: contentStatus } = useShoppingGuidesContent({
+  const { content, status: contentStatus } = useGuidesContent({
     client,
     objectID: '1234',
     showImmediate: true,
@@ -71,7 +71,7 @@ function ComponentTest() {
   // const {
   //   headlines: generatedHeadlines,
   //   status: generatedHStatus,
-  // } = useShoppingGuidesHeadlines({
+  // } = useGuidesHeadlines({
   //   client: commerceClient,
   //   showImmediate: true,
   //   category: 'category',
@@ -79,7 +79,7 @@ function ComponentTest() {
   // const {
   //   content: generatedContent,
   //   status: generatedStatus,
-  // } = useShoppingGuidesContent({
+  // } = useGuidesContent({
   //   client: commerceClient,
   //   objectID: '123',
   //   onlyPublished: false,
@@ -94,19 +94,15 @@ function ComponentTest() {
 
   return (
     <>
-      <ShoppingGuidesHeadlines
+      <GuidesHeadlines
         showFeedback
         userToken="aabc"
         client={client}
         category="category"
         showImmediate
       />
-      <ShoppingGuidesFeedback
-        client={client}
-        objectIDs={['123']}
-        userToken="abc"
-      />
-      <ShoppingGuidesContent
+      <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
+      <GuidesContent
         client={client}
         showFeedback
         userToken="aabc"

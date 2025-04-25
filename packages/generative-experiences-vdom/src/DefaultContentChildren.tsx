@@ -11,7 +11,7 @@ export function createDefaultContentChildrenComponent({
     return (
       <section
         className={cx(
-          'ais-ShoppingGuidesContent-wrapper',
+          'ais-GenerativeAiGuidesContent-wrapper',
           props.classNames?.wrapper
         )}
       >

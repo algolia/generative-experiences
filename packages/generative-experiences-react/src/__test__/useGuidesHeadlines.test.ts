@@ -3,9 +3,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import { vi, describe, it, afterEach, expect } from 'vitest';
 
 import { SingleHeadline, createTestClient } from '../../../../test/utils';
-import { useShoppingGuidesHeadlines } from '../useShoppingGuidesHeadlines';
+import { useGuidesHeadlines } from '../useGuidesHeadlines';
 
-describe('useShoppingGuidesHeadlines', () => {
+describe('useGuidesHeadlines', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -19,7 +19,7 @@ describe('useShoppingGuidesHeadlines', () => {
 
     it('should retrieve one headline', async () => {
       const { result, waitForNextUpdate } = renderHook(() =>
-        useShoppingGuidesHeadlines({
+        useGuidesHeadlines({
           client,
           showImmediate: true,
           category: 'some-category',

@@ -1,19 +1,19 @@
-import {
-  ShoppingGuideHeadlinesOptions,
-  ShoppingGuideHeadline,
-} from '@algolia/generative-experiences-api-client';
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { GuideHeadline } from '@algolia/generative-experiences-api-client';
+import { useEffect, useRef, useState } from 'react';
 
-import { version } from '../version';
+import { UseHeadlinesProps } from './GuidesHeadlines';
+import { version } from './version';
 
-export function useShoppingGuidesHeadlines(
-  props: ShoppingGuideHeadlinesOptions
-) {
-  const [headlines, setHeadlines] = useState<ShoppingGuideHeadline[]>([]);
+export function useGuidesHeadlines({
+  client: commerceClient,
+  showImmediate = false,
+  ...defaultOptions
+}: UseHeadlinesProps) {
+  const [headlines, setHeadlines] = useState<GuideHeadline[]>([]);
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
-  props.client.addAlgoliaAgent('generative-experiences-js', version);
+  commerceClient.addAlgoliaAgent('generative-experiences-react', version);
 
   const abortController = useRef(new AbortController());
 
@@ -27,7 +27,7 @@ export function useShoppingGuidesHeadlines(
       searchParams,
       onlyPublished,
     } = {
-      ...props,
+      ...defaultOptions,
       ...options,
     };
 
@@ -36,7 +36,7 @@ export function useShoppingGuidesHeadlines(
     }
 
     if (source === 'index' || source === 'combined') {
-      const hits = await props.client
+      const hits = await commerceClient
         .getHeadlines({
           category,
           object,
@@ -58,7 +58,7 @@ export function useShoppingGuidesHeadlines(
   }
 
   useEffect(() => {
-    if (props.showImmediate) {
+    if (showImmediate) {
       showHeadlines();
     }
     return () => {

@@ -2,98 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
+.ais-NoWrap {
+  @apply whitespace-nowrap;
+}
 
-  .ais-NoWrap {
-    @apply whitespace-nowrap;
-  }
+.ais-ScreenReaderOnly {
+  @apply sr-only;
+}
 
-  .ais-ScreenReaderOnly {
-    @apply sr-only;
-  }
+/* display headlines */
+.ais-GenerativeAiGuideHeadlinesContent-wrapper {
+  @apply flex flex-col items-end rounded p-4 border border-gray-200 shadow gap-2;
+}
 
-  /* display headlines */
-  .ais-ShoppingGuideHeadlinesContent-wrapper {
-    @apply flex flex-col items-end rounded p-4 border border-gray-200 shadow gap-2;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-container {
+  @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-container {
-    @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-readMore {
+  @apply text-orange-500 font-semibold;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-readMore {
-    @apply text-orange-500 font-semibold;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-item {
+  @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-item {
-    @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-itemContent {
+  @apply space-y-3;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-itemContent {
-    @apply space-y-3;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-itemTitle {
+  @apply text-orange-500 font-semibold;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-itemTitle {
-    @apply text-orange-500 font-semibold;
-  }
+.ais-GenerativeAiGuideHeadlinesContent-itemImage {
+  @apply relative aspect-video overflow-hidden;
+}
 
-  .ais-ShoppingGuideHeadlinesContent-itemImage {
-    @apply relative aspect-video overflow-hidden;
-  }
+/* display content */
+.ais-GenerativeAiGuideContent-contentSection {
+  @apply prose max-w-prose mx-auto px-4;
+}
 
-  /* display content */
-  .ais-ShoppingGuideContent-contentSection {
-    @apply prose max-w-prose mx-auto px-4;
-  }
+.ais-GenerativeAiGuideContent-feedbackContainer {
+  @apply flex flex-col;
+}
 
-  .ais-ShoppingGuideContent-feedbackContainer {
-    @apply flex flex-col;
-  }
+.ais-GenerativeAiGuideContent .ais-Feedback {
+  @apply self-end;
+}
 
-  .ais-ShoppingGuideContent .ais-Feedback {
-    @apply self-end;
-  }
+.ais-GenerativeAiGuideContent-relatedItemsSection {
+  @apply prose max-w-none;
+}
 
-  .ais-ShoppingGuideContent-relatedItemsSection {
-    @apply prose max-w-none;
-  }
+.ais-GenerativeAiGuideContent-relatedItemsTitle {
+  @apply max-w-prose mx-auto px-4;
+}
 
-  .ais-ShoppingGuideContent-relatedItemsTitle {
-    @apply max-w-prose mx-auto px-4;
-  }
+.ais-GenerativeAiGuideContent-relatedItemsListContainer {
+  @apply max-w-none px-4;
+}
 
-  .ais-ShoppingGuideContent-relatedItemsListContainer {
-    @apply max-w-none px-4;
-  }
-  
-  .ais-ShoppingGuideContent-relatedItemsList {
-    @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
-  }
+.ais-GenerativeAiGuideContent-relatedItemsList {
+  @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
+}
 
-  /* display feedback */
-  .ais-Feedback {
-    @apply text-gray-500 text-sm flex items-center space-x-4;
-  }
+/* display feedback */
+.ais-Feedback {
+  @apply text-gray-500 text-sm flex items-center space-x-4;
+}
 
-  .ais-Feedback-thanksWrapper {
-    @apply flex space-x-2 items-center;
-  }
+.ais-Feedback-thanksWrapper {
+  @apply flex space-x-2 items-center;
+}
 
-  .ais-Feedback-labelWrapper {
-    @apply flex space-x-2 items-center;
-  }
+.ais-Feedback-labelWrapper {
+  @apply flex space-x-2 items-center;
+}
 
-  .ais-Feedback-labelIcon {
-    @apply h-6 w-6 flex-shrink-0;
-  }
+.ais-Feedback-labelIcon {
+  @apply h-6 w-6 flex-shrink-0;
+}
 
-  .ais-Feedback-button {
-    @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
-  }
+.ais-Feedback-button {
+  @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
+}
 
-  .ais-Feedback-buttonsWrapper {
-    @apply flex space-x-3 items-center;
-  }
+.ais-Feedback-buttonsWrapper {
+  @apply flex space-x-3 items-center;
+}
 
-  .ais-Feedback-buttonIcon {
-    @apply h-5 w-5 stroke-2 flex-shrink-0;
-  }
+.ais-Feedback-buttonIcon {
+  @apply h-5 w-5 stroke-2 flex-shrink-0;
+}

@@ -2,9 +2,9 @@
 
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  shoppingGuidesContent,
-  shoppingGuidesFeedback,
-  shoppingGuidesHeadlines,
+  guidesContent,
+  guidesFeedback,
+  guidesHeadlines,
 } from '@algolia/generative-experiences-js';
 
 type RecordType = {
@@ -20,7 +20,7 @@ const options = {
 
 const client = createClient(options);
 
-shoppingGuidesHeadlines({
+guidesHeadlines({
   container: '#headlines',
   client,
   userToken: 'test-user',
@@ -29,14 +29,14 @@ shoppingGuidesHeadlines({
   category: 'category',
 });
 
-shoppingGuidesFeedback({
+guidesFeedback({
   container: '#feedback',
   client,
   objectIDs: ['123'],
   userToken: 'test-user',
 });
 
-shoppingGuidesContent<RecordType>({
+guidesContent<RecordType>({
   container: '#content',
   client,
   onlyPublished: false,
