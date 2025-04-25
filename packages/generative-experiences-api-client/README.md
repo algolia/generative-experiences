@@ -2,8 +2,6 @@
 
 [![generative-experiences-api-client](https://img.shields.io/npm/v/@algolia/generative-experiences-api-client.svg?label=generative-experiences-api-client)](https://www.npmjs.com/package/@algolia/generative-experiences-api-client) [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
-
 ## ✨ Features
 
 - Thin & **minimal low-level HTTP client** to interact with Algolia's Generative Experiences API

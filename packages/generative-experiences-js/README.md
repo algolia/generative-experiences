@@ -4,8 +4,6 @@
 
 JavaScript UI components for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
 
-> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
-
 ## ✨ Features
 
 - _JavaScript_ UI library to use Algolia's Generative Experiences
