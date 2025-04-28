@@ -1,11 +1,11 @@
 import {
-  GenerativeAIGuide,
+  Guide,
+  GuideContentOptions,
   ShoppingGuideType,
 } from '@algolia/generative-experiences-api-client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
-import { UseGuidesContentProps } from './GuidesContent';
-import { version } from './version';
+import { version } from '../version';
 
 const defaultState: ShoppingGuideType = {
   objectID: '',
@@ -27,16 +27,16 @@ const defaultState: ShoppingGuideType = {
   score_headline: 0,
 };
 
-export function useGuidesContent({
+export function useGuideContent({
   client: commerceClient,
   showImmediate = true,
   ...defaultOptions
-}: UseGuidesContentProps) {
-  const [content, setContent] = useState<GenerativeAIGuide>(defaultState);
+}: GuideContentOptions) {
+  const [content, setContent] = useState<Guide>(defaultState);
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 
-  commerceClient.addAlgoliaAgent('generative-experiences-react', version);
+  commerceClient.addAlgoliaAgent('generative-experiences-js', version);
 
   const abortController = useRef(new AbortController());
 

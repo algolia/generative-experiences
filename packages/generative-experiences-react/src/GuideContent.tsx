@@ -6,12 +6,12 @@ import {
 import React, { createElement, Fragment } from 'react';
 
 import { UseGuidesFeedbackProps } from './GuidesFeedback';
-import { useGuidesContent } from './useGuidesContent';
+import { useGuideContent } from './useGuideContent';
 import { useGuidesFeedback } from './useGuidesFeedback';
 
-export type UseGuidesContentProps = GuideContentOptions;
+export type UseGuideContentProps = GuideContentOptions;
 
-export type GuidesContentProps<TObject = {}> = UseGuidesContentProps &
+export type GuideContentProps<TObject = {}> = UseGuideContentProps &
   Omit<
     ContentComponentPropsVDOMProps<TObject>,
     | 'item'
@@ -23,20 +23,18 @@ export type GuidesContentProps<TObject = {}> = UseGuidesContentProps &
   > &
   Omit<UseGuidesFeedbackProps, 'client'>;
 
-const UncontrolledGuidesContent = createGuideContentComponent({
+const UncontrolledGuideContent = createGuideContentComponent({
   // @ts-expect-error - Pragma issue
   createElement,
   Fragment,
 });
 
-export function GuidesContent<TObject = {}>(
-  props: GuidesContentProps<TObject>
-) {
-  const { content, status } = useGuidesContent(props);
+export function GuideContent<TObject = {}>(props: GuideContentProps<TObject>) {
+  const { content, status } = useGuideContent(props);
   const { castFeedback, alreadyCast } = useGuidesFeedback(props);
 
   return (
-    <UncontrolledGuidesContent
+    <UncontrolledGuideContent
       {...props}
       item={content}
       castFeedback={castFeedback}

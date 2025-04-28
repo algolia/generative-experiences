@@ -42,7 +42,7 @@ To get started, you need a container for your headlines or content to go in. If 
 
 ```html
 <div id="shoppingGuidesHeadlines"></div>
-<div id="shoppingGuidesContent"></div>
+<div id="shoppingGuideContent"></div>
 <div id="shoppingGuidesFeedback"></div>
 ```
 
@@ -112,12 +112,12 @@ shoppingGuidesHeadlines({
 
 ### Shopping Guide Content
 
-Insert a guide's content by calling the [`shoppingGuidesContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+Insert a guide's content by calling the [`shoppingGuideContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import { shoppingGuidesContent } from '@algolia/generative-experiences-js';
+import { shoppingGuideContent } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
@@ -128,8 +128,8 @@ const options = {
 
 const client = createClient(options);
 
-shoppingGuidesContent({
-  container: '#shoppingGuidesContent',
+shoppingGuideContent({
+  container: '#shoppingGuideContent',
   client: client,
   userToken: 'MyUserToken',
   showFeedback: true,
@@ -195,7 +195,7 @@ shoppingGuidesFeedback({
 
 Some of the generated shopping guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
 
-To replace these placeholders with your website-specific content, use the `getters` parameter for `shoppingGuidesHeadlines()` or `shoppingGuidesContent()`.
+To replace these placeholders with your website-specific content, use the `getters` parameter for `shoppingGuidesHeadlines()` or `shoppingGuideContent()`.
 
 ```JSX
 /** @jsx h */

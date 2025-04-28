@@ -7,7 +7,7 @@ import {
   GenerationSource,
   ProductsComparisonOptions,
   RequestParameters,
-  GenerativeAIGuide,
+  Guide,
   GuideContentOptions,
   GuideContentOptionsForGenerated,
   GuideContentOptionsForIndex,
@@ -283,7 +283,7 @@ export function createClient(opts: CreateClientOptions) {
       }: Omit<GuideContentOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
-      const res = await this.searchSingleIndex<GenerativeAIGuide>({
+      const res = await this.searchSingleIndex<Guide>({
         indexName: this._outputIndexName(),
         searchParams: {
           facetFilters: [
@@ -493,7 +493,7 @@ export function createClient(opts: CreateClientOptions) {
         data,
       }: {
         objectID: string;
-        data: Partial<Omit<GenerativeAIGuide, 'objectID'>>;
+        data: Partial<Omit<Guide, 'objectID'>>;
       },
       requestOptions?: RequestParameters
     ) {

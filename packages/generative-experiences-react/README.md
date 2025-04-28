@@ -38,14 +38,14 @@ const client = createClient(options);
 Parameters:
 
 - **appId** The Algolia Application ID
-- **indexName** The Algolia Index used for generating and displaying Generative AI guides
+- **indexName** The Algolia Index used for generating and displaying Guides
 - **searchOnlyAPIKey** The Algolia Search API Key needed for reading index data
 - **writeAPIKey** The Algolia Write API Key needed for generating guides
 - **region** The Region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
 
-### Generative AI Guides Headlines
+### Guides Headlines
 
-Generate, retrieve and display headlines for generative AI guides using the `useGuidesHeadlines` hook or `GuidesHeadlines` widget.
+Generate, retrieve and display headlines for Guides using the `useGuidesHeadlines` hook or `GuidesHeadlines` widget.
 
 ```jsx
 import React from 'react';
@@ -90,14 +90,14 @@ function App({ userToken, category }) {
 | `children` | `ReactNode` | - | The children to render. | - |
 | `classNames` | `HeadlinesButtonClassNames` | - | The class names for the component. | - |
 
-### Generative AI Guide Content
+### Guides Content
 
-Generate, retrieve and display the content for the guides using the `useGuidesContent` hook or `GuidesContent` widget.
+Generate, retrieve and display the content for the guides using the `useGuideContent` hook or `GuideContent` widget.
 
 ```jsx
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import { GuidesContent } from '@algolia/generative-experiences-react';
+import { GuideContent } from '@algolia/generative-experiences-react';
 
 const options = {
   appId: 'YourApplicationID',
@@ -111,7 +111,7 @@ function App({ currentObjectID, userToken }) {
   //...
 
   return (
-    <GuidesContent
+    <GuideContent
       client={client}
       objectID={currentObjectID}
       showFeedback
@@ -142,7 +142,7 @@ function App({ currentObjectID, userToken }) {
 | `view` | `ViewProps` | - | The view component into which your guide content will be rendered. | - |
 | `classNames` | `ContentClassNames` | - | The class names for the component. | - |
 
-### Generative AI Guides Feedback
+### Guides Feedback
 
 Provide user feedback for guides using the `useGuidesFeedback` hook or `GuidesFeedback` widget.
 
@@ -185,7 +185,7 @@ function App({ currentObjectID, userToken, category }) {
 
 Some of the generated guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
 
-To replace these placeholders with your website-specific content, use the `getters` parameter for `<GuidesHeadlines />` or `<GuidesContent />`.
+To replace these placeholders with your website-specific content, use the `getters` parameter for `<GuidesHeadlines />` or `<GuideContent />`.
 
 ```JSX
 import { createClient } from '@algolia/generative-experiences-api-client';
@@ -260,60 +260,60 @@ To integrate the widgets with Tailwind, include the `@tailwindcss/typography` pl
 }
 
 /* display headlines */
-.ais-GenerativeAiGuideHeadlinesContent-wrapper {
+.ais-GuideHeadlinesContent-wrapper {
   @apply flex flex-col items-end rounded p-4 border border-gray-200 shadow gap-2;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-container {
+.ais-GuideHeadlinesContent-container {
   @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-readMore {
+.ais-GuideHeadlinesContent-readMore {
   @apply text-orange-500 font-semibold;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-item {
+.ais-GuideHeadlinesContent-item {
   @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-itemContent {
+.ais-GuideHeadlinesContent-itemContent {
   @apply space-y-3;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-itemTitle {
+.ais-GuideHeadlinesContent-itemTitle {
   @apply text-orange-500 font-semibold;
 }
 
-.ais-GenerativeAiGuideHeadlinesContent-itemImage {
+.ais-GuideHeadlinesContent-itemImage {
   @apply relative aspect-video overflow-hidden;
 }
 
 /* display content */
-.ais-GenerativeAiGuideContent-contentSection {
+.ais-GuideContent-contentSection {
   @apply prose max-w-prose mx-auto px-4;
 }
 
-.ais-GenerativeAiGuideContent-feedbackContainer {
+.ais-GuideContent-feedbackContainer {
   @apply flex flex-col;
 }
 
-.ais-GenerativeAiGuideContent .ais-Feedback {
+.ais-GuideContent .ais-Feedback {
   @apply self-end;
 }
 
-.ais-GenerativeAiGuideContent-relatedItemsSection {
+.ais-GuideContent-relatedItemsSection {
   @apply prose max-w-none;
 }
 
-.ais-GenerativeAiGuideContent-relatedItemsTitle {
+.ais-GuideContent-relatedItemsTitle {
   @apply max-w-prose mx-auto px-4;
 }
 
-.ais-GenerativeAiGuideContent-relatedItemsListContainer {
+.ais-GuideContent-relatedItemsListContainer {
   @apply max-w-none px-4;
 }
 
-.ais-GenerativeAiGuideContent-relatedItemsList {
+.ais-GuideContent-relatedItemsList {
   @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
 }
 

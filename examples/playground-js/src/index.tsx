@@ -2,7 +2,7 @@
 
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  guidesContent,
+  guideContent,
   guidesFeedback,
   guidesHeadlines,
 } from '@algolia/generative-experiences-js';
@@ -36,7 +36,7 @@ guidesFeedback({
   userToken: 'test-user',
 });
 
-guidesContent<RecordType>({
+guideContent<RecordType>({
   container: '#content',
   client,
   onlyPublished: false,

@@ -3,9 +3,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import { vi, describe, it, afterEach, expect } from 'vitest';
 
 import { ShoppingGuide, createTestClient } from '../../../../test/utils';
-import { useGuidesContent } from '../useGuidesContent';
+import { useGuideContent } from '../useGuideContent';
 
-describe('useGuidesContent', () => {
+describe('useGuideContent', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -19,7 +19,7 @@ describe('useGuidesContent', () => {
 
     it('should retrieve one guide', async () => {
       const { result, waitForNextUpdate } = renderHook(() =>
-        useGuidesContent({
+        useGuideContent({
           client,
           objectID: '1',
         })

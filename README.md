@@ -71,7 +71,7 @@ Displaying a guide:
 ```JSX
 import React from 'react';
 import { createClient } from '@algolia/generative-experiences-api-client';
-import { GuidesContent } from '@algolia/generative-experiences-react';
+import { GuideContent } from '@algolia/generative-experiences-react';
 
 const options = {
  appId: 'YourApplicationID',
@@ -84,7 +84,7 @@ const client = createClient(options);
 function App({ currentObjectID, userToken }) {
  // ...
  return (
-   <GuidesContent
+   <GuideContent
      client={client}
      showFeedback
      userToken={userToken}
@@ -102,11 +102,11 @@ You can find more examples and implementation details in the [Algolia Docs](http
 
 #### Example with [JavaScript](/packages/generative-experiences-js)
 
-Displaying a Generative AI guide:
+Displaying a Guides:
 
 ```JSX
 import { createClient } from '@algolia/generative-experiences-api-client';
-import { guidesContent } from '@algolia/generative-experiences-js';
+import { guideContent } from '@algolia/generative-experiences-js';
 
 const commerceClient = createClient({
   appId: 'YourApplicationID',
@@ -114,7 +114,7 @@ const commerceClient = createClient({
   searchOnlyAPIKey: 'YourSearchOnlyAPIKey',
 });
 
-guidesContent({
+guideContent({
   client: commerceClient,
   objectID: objectID,
   container: '#content',

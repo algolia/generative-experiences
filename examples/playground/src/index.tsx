@@ -4,8 +4,8 @@
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
   GuidesHeadlines,
-  GuidesContent,
-  useGuidesContent,
+  GuideContent,
+  useGuideContent,
   useGuidesHeadlines,
   GuidesFeedback,
 } from '@algolia/generative-experiences-react';
@@ -61,7 +61,7 @@ function ComponentTest() {
     category: 'category',
   });
 
-  const { content, status: contentStatus } = useGuidesContent({
+  const { content, status: contentStatus } = useGuideContent({
     client,
     objectID: '1234',
     showImmediate: true,
@@ -79,7 +79,7 @@ function ComponentTest() {
   // const {
   //   content: generatedContent,
   //   status: generatedStatus,
-  // } = useGuidesContent({
+  // } = useGuideContent({
   //   client: commerceClient,
   //   objectID: '123',
   //   onlyPublished: false,
@@ -102,7 +102,7 @@ function ComponentTest() {
         showImmediate
       />
       <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
-      <GuidesContent
+      <GuideContent
         client={client}
         showFeedback
         userToken="aabc"

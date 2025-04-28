@@ -42,7 +42,7 @@ npm install @algolia/generative-experiences-api-client
 
 ## Usage
 
-### Generative AI Guides Headlines
+### Guides Headlines
 
 Retrieve your guides headlines using the [`getHeadlines()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-headlines) method.
 
@@ -94,7 +94,7 @@ client
 | `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 
-### Generative AI Guide Content
+### Guides Content
 
 Retrieve your guide's content using the [`getContent()`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/ui-library/alternatives/#shopping-guide-content) method.
 

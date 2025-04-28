@@ -9,7 +9,7 @@ import {
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
-import { useGuidesContent, useGuidesFeedback } from './hooks';
+import { useGuideContent, useGuidesFeedback } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
@@ -17,12 +17,12 @@ import {
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
 
-const UncontrolledGuidesContent = createGuideContentComponent({
+const UncontrolledGuideContent = createGuideContentComponent({
   createElement,
   Fragment,
 });
 
-export type GuidesContentProps<
+export type GuideContentProps<
   TObject = {},
   TComponentProps extends Record<string, unknown> = {}
 > = GuideContentOptions &
@@ -32,15 +32,15 @@ export type GuidesContentProps<
   > &
   Omit<UseGuidesFeedbackProps, 'client'>;
 
-function GuidesContent<
+function GuideContent<
   TObject = {},
   TComponentProps extends Record<string, unknown> = {}
->(props: GuidesContentProps<TObject, TComponentProps>) {
-  const { content, status } = useGuidesContent(props);
+>(props: GuideContentProps<TObject, TComponentProps>) {
+  const { content, status } = useGuideContent(props);
   const { castFeedback, alreadyCast } = useGuidesFeedback(props);
 
   return (
-    <UncontrolledGuidesContent
+    <UncontrolledGuideContent
       {...props}
       item={content}
       castFeedback={castFeedback}
@@ -50,7 +50,7 @@ function GuidesContent<
   );
 }
 
-export function guidesContent<TObject = {}>({
+export function guideContent<TObject = {}>({
   container,
   environment = window,
   itemComponent,
@@ -58,9 +58,9 @@ export function guidesContent<TObject = {}>({
   view,
   children,
   ...props
-}: GuidesContentProps<TObject, HTMLTemplate> & EnvironmentProps) {
+}: GuideContentProps<TObject, HTMLTemplate> & EnvironmentProps) {
   const vnode = (
-    <GuidesContent<TObject, HTMLTemplate>
+    <GuideContent<TObject, HTMLTemplate>
       {...props}
       view={view && withHtml(view)}
       itemComponent={itemComponent && withHtml(itemComponent)}
@@ -68,7 +68,7 @@ export function guidesContent<TObject = {}>({
       {children
         ? (childrenProps) => children({ ...childrenProps, html })
         : undefined}
-    </GuidesContent>
+    </GuideContent>
   );
 
   if (!container) {

@@ -45,7 +45,4 @@ export type ComparisonGuide = BaseGuide & {
   comparedObjectIDs: string[];
 };
 
-export type GenerativeAIGuide =
-  | CategoryGuide
-  | ShoppingGuideType
-  | ComparisonGuide;
+export type Guide = CategoryGuide | ShoppingGuideType | ComparisonGuide;
