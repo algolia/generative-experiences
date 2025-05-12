@@ -86,15 +86,16 @@ client
   .then((response) => console.log(response));
 ```
 
-| Prop name | Type | Default | Description | Notes |
-| --- | --- | --- | --- | --- |
-| `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
-| `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
-| `source` | `'combined' \| 'generated' \| 'index'` | `index` | The source of the headlines. | - |
-| `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |
-| `language_code` | `'english' \| 'german' \| 'french'` | `english` | The language code used for generating headlines. | - |
-| `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
-| `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
+| Prop name        | Type                                        | Default | Description                                                                               | Notes |
+|------------------|---------------------------------------------| --- |-------------------------------------------------------------------------------------------| --- |
+| `category`       | `string`                                    | N/A | The category to use for retrieving/generating the headlines.                              | `required` |
+| `nbHeadlines`    | `number \| undefined`                       | 4 | The number of headlines to display.                                                       | - |
+| `source`         | `'combined' \| 'generated' \| 'index'`      | `index` | The source of the headlines.                                                              | - |
+| `tone`           | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided.                                         | - |
+| `language_code`  | `'english' \| 'german' \| 'french'`         | `english` | The language code used for generating headlines.                                          | - |
+| `custom_content` | `string`                                    | - | The extended instrcutions that the model should take into account for generating content. | - |
+| `keywords`       | `string[]`                                  | - | A list of keywords that the model should highlight in the generated content.              | - |
+| `onlyPublished`  | `boolean`                                   | `true` | Only display published guides.                                                            | - |
 
 ### Shopping Guide Content
 
@@ -145,7 +146,8 @@ client
 | `type` | `'shopping_guide' \| 'category_guide'` | `shopping_guide` | The type of guide to generate. | Used if `source` is `generated` |
 | `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |
 | `language_code` | `'english' \| 'german' \| 'french'` | `english` | The language code used for generating content. | - |
-| `content_to_avoid` | `string` | - | The content that the model should avoid when generating headlines. | - |
+| `custom_content` | `string`                                    | - | The extended instrcutions that the model should take into account for generating content. | - |
+| `keywords`       | `string[]`                                  | - | A list of keywords that the model should highlight in the generated content.              | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 
 ### Gather Feedback

@@ -33,7 +33,8 @@ export type ShoppingGuideHeadlinesRequestParameters = {
    * @default 'natural'
    */
   tone?: string;
-  content_to_avoid?: string;
+  custom_content?: string;
+  keywords?: string[];
   wait?: boolean;
 };
 
