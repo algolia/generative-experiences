@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search';
 
-export type BaseShoppingGuide = {
+export type BaseGuide = {
   objectID: string;
   status: 'draft' | 'generating' | 'headline' | 'published';
   title: string;
@@ -8,7 +8,7 @@ export type BaseShoppingGuide = {
   generated_at: number;
 };
 
-export type CategoryGuide = BaseShoppingGuide & {
+export type CategoryGuide = BaseGuide & {
   type: 'category';
   description: string;
   category: string;
@@ -22,7 +22,7 @@ export type CategoryGuide = BaseShoppingGuide & {
   score_headline: number;
 };
 
-export type ShoppingGuideType = BaseShoppingGuide & {
+export type ShoppingGuideType = BaseGuide & {
   type: 'shopping_guide';
   description: string;
   category: string;
@@ -32,7 +32,7 @@ export type ShoppingGuideType = BaseShoppingGuide & {
   score_headline: number;
 };
 
-export type ComparisonGuide = BaseShoppingGuide & {
+export type ComparisonGuide = BaseGuide & {
   type: 'comparison';
   objects: Hit[];
   objectIDs: string[];
@@ -45,4 +45,4 @@ export type ComparisonGuide = BaseShoppingGuide & {
   comparedObjectIDs: string[];
 };
 
-export type ShoppingGuide = CategoryGuide | ShoppingGuideType | ComparisonGuide;
+export type Guide = CategoryGuide | ShoppingGuideType | ComparisonGuide;

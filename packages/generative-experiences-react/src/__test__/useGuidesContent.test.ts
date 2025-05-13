@@ -2,10 +2,10 @@ import { waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react-hooks';
 import { vi, describe, it, afterEach, expect } from 'vitest';
 
-import { SingleHeadline, createTestClient } from '../../../../test/utils';
-import { useShoppingGuidesHeadlines } from '../useShoppingGuidesHeadlines';
+import { ShoppingGuide, createTestClient } from '../../../../test/utils';
+import { useGuideContent } from '../useGuideContent';
 
-describe('useShoppingGuidesHeadlines', () => {
+describe('useGuideContent', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
@@ -17,19 +17,17 @@ describe('useShoppingGuidesHeadlines', () => {
       searchOnlyAPIKey: 'api-key',
     });
 
-    it('should retrieve one headline', async () => {
+    it('should retrieve one guide', async () => {
       const { result, waitForNextUpdate } = renderHook(() =>
-        useShoppingGuidesHeadlines({
+        useGuideContent({
           client,
-          showImmediate: true,
-          category: 'some-category',
-          nbHeadlines: 1,
+          objectID: '1',
         })
       );
 
       await waitForNextUpdate();
       await waitFor(() => {
-        expect(result.current.headlines).toEqual(SingleHeadline);
+        expect(result.current.content).toEqual(ShoppingGuide);
       });
     });
   });

@@ -20,7 +20,7 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
     return (
       <div
         className={cx(
-          'ais-ShoppingGuideHeadlinesContent-container',
+          'ais-GuideHeadlinesContent-container',
           props.classNames?.container
         )}
       >
@@ -28,7 +28,7 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
           <div
             key={item.objectID}
             className={cx(
-              'ais-ShoppingGuideHeadlinesContent-item',
+              'ais-GuideHeadlinesContent-item',
               props.classNames?.item
             )}
           >

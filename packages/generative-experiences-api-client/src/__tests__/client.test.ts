@@ -24,7 +24,7 @@ vi.mock('algoliasearch', () => ({
 
 const server = setupServer(
   http.post(
-    `https://generative-us.algolia.com//delete/shopping_guides/`,
+    'https://generative-us.algolia.com//delete/shopping_guides/',
     () => {
       return HttpResponse.json({ status: 'success' });
     }

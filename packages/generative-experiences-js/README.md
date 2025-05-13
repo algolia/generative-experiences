@@ -4,8 +4,6 @@
 
 JavaScript UI components for [Algolia Generative Experiences](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/).
 
-> Algolia Generative Experiences is a beta feature according to [Algolia’s Terms of Service (“Beta Services”](https://www.algolia.com/policies/terms/)).
-
 ## ✨ Features
 
 - _JavaScript_ UI library to use Algolia's Generative Experiences
@@ -29,7 +27,7 @@ npm install @algolia/generative-experiences-js
 <script>
   const generativeExperiences = window['@algolia/generative-experiences-js'];
 
-  generativeExperiences.shoppingGuidesHeadlines({
+  generativeExperiences.guidesHeadlines({
     client: commerceClient,
     container: '#headlines',
     userToken: 'MyUserToken',
@@ -43,9 +41,9 @@ npm install @algolia/generative-experiences-js
 To get started, you need a container for your headlines or content to go in. If you don't have containers already, you can insert them into your markup:
 
 ```html
-<div id="shoppingGuidesHeadlines"></div>
-<div id="shoppingGuidesContent"></div>
-<div id="shoppingGuidesFeedback"></div>
+<div id="headlines"></div>
+<div id="content"></div>
+<div id="feedback"></div>
 ```
 
 ### Initialize the algolia generative experiences client
@@ -69,14 +67,14 @@ Parameters:
 - **writeAPIKey** The Algolia Write API Key needed for generating guides
 - **region** The Region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
 
-### Shopping Guides Headlines
+### Guides Headlines
 
-Insert your headlines by calling the [`shoppingGuidesHeadlines`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+Insert your headlines by calling the [`guidesHeadlines`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import { shoppingGuidesHeadlines } from '@algolia/generative-experiences-js';
+import { guidesHeadlines } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
@@ -87,8 +85,8 @@ const options = {
 
 const client = createClient(options);
 
-shoppingGuidesHeadlines({
-  container: '#shoppingGuidesHeadlines',
+guidesHeadlines({
+  container: '#headlines',
   client: client,
   userToken: 'MyUserToken',
   showImmediate: true,
@@ -112,14 +110,14 @@ shoppingGuidesHeadlines({
 | `children` | `ReactNode` | - | The children to render. | - |
 | `classNames` | `HeadlinesButtonClassNames` | - | The class names for the component. | - |
 
-### Shopping Guide Content
+### Guide Content
 
-Insert a guide's content by calling the [`shoppingGuidesContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+Insert a guide's content by calling the [`guideContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import { shoppingGuidesContent } from '@algolia/generative-experiences-js';
+import { shoppingGuideContent } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
@@ -130,8 +128,8 @@ const options = {
 
 const client = createClient(options);
 
-shoppingGuidesContent({
-  container: '#shoppingGuidesContent',
+shoppingGuideContent({
+  container: '#content',
   client: client,
   userToken: 'MyUserToken',
   showFeedback: true,
@@ -158,12 +156,12 @@ shoppingGuidesContent({
 
 ### Shopping Guides Feedback
 
-Insert the feedback component by calling the [`shoppingGuidesFeedback`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+Insert the feedback component by calling the [`GuidesFeedback`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
 /** @jsx h */
 import { h } from 'preact';
-import { shoppingGuidesFeedback } from '@algolia/generative-experiences-js';
+import { GuidesFeedback } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
@@ -174,8 +172,8 @@ const options = {
 
 const client = createClient(options);
 
-shoppingGuidesFeedback({
-  container: '#shoppingGuidesFeedback',
+GuidesFeedback({
+  container: '#GuidesFeedback',
   client: client,
   userToken: 'MyUserToken',
   objectIDs: ['123'],
@@ -195,14 +193,14 @@ shoppingGuidesFeedback({
 
 ## Customisation with `getters`
 
-Some of the generated shopping guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
+Some of the generated guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
 
-To replace these placeholders with your website-specific content, use the `getters` parameter for `shoppingGuidesHeadlines()` or `shoppingGuidesContent()`.
+To replace these placeholders with your website-specific content, use the `getters` parameter for `guidesHeadlines()` or `guideContent()`.
 
 ```JSX
 /** @jsx h */
 import { h } from 'preact';
-import { shoppingGuidesHeadlines } from '@algolia/generative-experiences-js';
+import { guidesHeadlines } from '@algolia/generative-experiences-js';
 import { createClient } from '@algolia/generative-experiences-api-client';
 
 const options = {
@@ -229,8 +227,8 @@ const customGetters = {
     object.images.map((image) => ({ src: image.url, alt: image.alt })),
 };
 
-shoppingGuidesHeadlines({
-    container: '#shoppingGuidesHeadlines',
+guidesHeadlines({
+    container: '#headlines',
     client: client,
     userToken: 'MyUserToken',
     showImmediate: true,

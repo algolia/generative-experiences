@@ -1,46 +1,46 @@
 /** @jsxRuntime classic */
 /** @jsx h */
 
-import { ShoppingGuideContentOptions } from '@algolia/generative-experiences-api-client';
+import { GuideContentOptions } from '@algolia/generative-experiences-api-client';
 import {
-  createShoppingGuideContentComponent,
+  createGuideContentComponent,
   ContentComponentProps as ContentComponentPropsVDOMProps,
 } from '@algolia/generative-experiences-vdom';
 import { html } from 'htm/preact';
 import { createElement, Fragment, h, render } from 'preact';
 
-import { useShoppingGuidesContent, useShoppingGuidesFeedback } from './hooks';
+import { useGuideContent, useGuidesFeedback } from './hooks';
 import {
   EnvironmentProps,
   HTMLTemplate,
-  UseShoppingGuidesFeedbackProps,
+  UseGuidesFeedbackProps,
 } from './types';
 import { getHTMLElement, withHtml } from './utils';
 
-const UncontrolledShoppingGuidesContent = createShoppingGuideContentComponent({
+const UncontrolledGuideContent = createGuideContentComponent({
   createElement,
   Fragment,
 });
 
-export type ShoppingGuidesContentProps<
+export type GuideContentProps<
   TObject = {},
   TComponentProps extends Record<string, unknown> = {}
-> = ShoppingGuideContentOptions &
+> = GuideContentOptions &
   Omit<
     ContentComponentPropsVDOMProps<TObject, TComponentProps>,
     'item' | 'status' | 'castFeedback' | 'alreadyCast'
   > &
-  Omit<UseShoppingGuidesFeedbackProps, 'client'>;
+  Omit<UseGuidesFeedbackProps, 'client'>;
 
-function ShoppingGuidesContent<
+function GuideContent<
   TObject = {},
   TComponentProps extends Record<string, unknown> = {}
->(props: ShoppingGuidesContentProps<TObject, TComponentProps>) {
-  const { content, status } = useShoppingGuidesContent(props);
-  const { castFeedback, alreadyCast } = useShoppingGuidesFeedback(props);
+>(props: GuideContentProps<TObject, TComponentProps>) {
+  const { content, status } = useGuideContent(props);
+  const { castFeedback, alreadyCast } = useGuidesFeedback(props);
 
   return (
-    <UncontrolledShoppingGuidesContent
+    <UncontrolledGuideContent
       {...props}
       item={content}
       castFeedback={castFeedback}
@@ -50,7 +50,7 @@ function ShoppingGuidesContent<
   );
 }
 
-export function shoppingGuidesContent<TObject = {}>({
+export function guideContent<TObject = {}>({
   container,
   environment = window,
   itemComponent,
@@ -58,9 +58,9 @@ export function shoppingGuidesContent<TObject = {}>({
   view,
   children,
   ...props
-}: ShoppingGuidesContentProps<TObject, HTMLTemplate> & EnvironmentProps) {
+}: GuideContentProps<TObject, HTMLTemplate> & EnvironmentProps) {
   const vnode = (
-    <ShoppingGuidesContent<TObject, HTMLTemplate>
+    <GuideContent<TObject, HTMLTemplate>
       {...props}
       view={view && withHtml(view)}
       itemComponent={itemComponent && withHtml(itemComponent)}
@@ -68,7 +68,7 @@ export function shoppingGuidesContent<TObject = {}>({
       {children
         ? (childrenProps) => children({ ...childrenProps, html })
         : undefined}
-    </ShoppingGuidesContent>
+    </GuideContent>
   );
 
   if (!container) {

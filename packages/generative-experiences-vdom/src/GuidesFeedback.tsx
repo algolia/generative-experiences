@@ -5,11 +5,11 @@ import { createDefaultFeedbackChildrenComponent } from './DefaultFeedbackChildre
 import { createDefaultFeedbackComponent } from './DefaultFeedbackComponent';
 import { FeedbackComponentProps, Renderer } from './types';
 
-export function createShoppingGuidesFeedbackComponent({
+export function createGuidesFeedbackComponent({
   createElement,
   Fragment,
 }: Renderer) {
-  return function ShoppingGuidesFeedback(props: FeedbackComponentProps) {
+  return function GuidesFeedback(props: FeedbackComponentProps) {
     const classNames = props.classNames ?? {};
 
     const children =

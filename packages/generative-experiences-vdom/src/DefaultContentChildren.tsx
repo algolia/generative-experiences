@@ -10,10 +10,7 @@ export function createDefaultContentChildrenComponent({
   return function DefaultContentChildren(props: ContentChildrenProps) {
     return (
       <section
-        className={cx(
-          'ais-ShoppingGuidesContent-wrapper',
-          props.classNames?.wrapper
-        )}
+        className={cx('ais-GuideContent-wrapper', props.classNames?.wrapper)}
       >
         <props.View />
       </section>

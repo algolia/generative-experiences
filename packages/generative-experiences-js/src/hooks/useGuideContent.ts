@@ -1,6 +1,6 @@
 import {
-  ShoppingGuide,
-  ShoppingGuideContentOptions,
+  Guide,
+  GuideContentOptions,
   ShoppingGuideType,
 } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'preact/hooks';
@@ -27,12 +27,12 @@ const defaultState: ShoppingGuideType = {
   score_headline: 0,
 };
 
-export function useShoppingGuidesContent({
+export function useGuideContent({
   client: commerceClient,
   showImmediate = true,
   ...defaultOptions
-}: ShoppingGuideContentOptions) {
-  const [content, setContent] = useState<ShoppingGuide>(defaultState);
+}: GuideContentOptions) {
+  const [content, setContent] = useState<Guide>(defaultState);
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 

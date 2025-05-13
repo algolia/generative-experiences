@@ -1,10 +1,10 @@
 import {
-  ShoppingGuide,
+  Guide,
   ShoppingGuideType,
 } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'react';
 
-import { UseShoppingGuidesContentProps } from './ShoppingGuidesContent';
+import { UseGuideContentProps } from './GuideContent';
 import { version } from './version';
 
 const defaultState: ShoppingGuideType = {
@@ -27,12 +27,12 @@ const defaultState: ShoppingGuideType = {
   score_headline: 0,
 };
 
-export function useShoppingGuidesContent({
+export function useGuideContent({
   client: commerceClient,
   showImmediate = true,
   ...defaultOptions
-}: UseShoppingGuidesContentProps) {
-  const [content, setContent] = useState<ShoppingGuide>(defaultState);
+}: UseGuideContentProps) {
+  const [content, setContent] = useState<Guide>(defaultState);
   const [status, setStatus] = useState<'idle' | 'loading' | 'stalled'>('idle');
   const [error, setError] = useState<Error | undefined>(undefined);
 

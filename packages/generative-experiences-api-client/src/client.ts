@@ -7,14 +7,14 @@ import {
   GenerationSource,
   ProductsComparisonOptions,
   RequestParameters,
-  ShoppingGuide,
-  ShoppingGuideContentOptions,
-  ShoppingGuideContentOptionsForGenerated,
-  ShoppingGuideContentOptionsForIndex,
-  ShoppingGuideHeadline,
-  ShoppingGuideHeadlinesOptionsForCombined,
-  ShoppingGuideHeadlinesOptionsForGenerated,
-  ShoppingGuideHeadlinesOptionsForIndex,
+  Guide,
+  GuideContentOptions,
+  GuideContentOptionsForGenerated,
+  GuideContentOptionsForIndex,
+  GuideHeadline,
+  GuideHeadlinesOptionsForCombined,
+  GuideHeadlinesOptionsForGenerated,
+  GuideHeadlinesOptionsForIndex,
   TasksResponse,
 } from './types';
 import { version } from './version';
@@ -143,7 +143,7 @@ export function createClient(opts: CreateClientOptions) {
     },
 
     async generateHeadlines(
-      options: Omit<ShoppingGuideHeadlinesOptionsForGenerated, 'source'>,
+      options: Omit<GuideHeadlinesOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
     ) {
       if (!this.options.writeAPIKey) {
@@ -177,7 +177,7 @@ export function createClient(opts: CreateClientOptions) {
         objectID,
         type = 'shopping_guide',
         ...options
-      }: Omit<ShoppingGuideContentOptionsForGenerated, 'source'>,
+      }: Omit<GuideContentOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
     ) {
       if (!this.options.writeAPIKey) {
@@ -244,7 +244,7 @@ export function createClient(opts: CreateClientOptions) {
         nbHeadlines = 4,
         onlyPublished = true,
         searchParams,
-      }: Omit<ShoppingGuideHeadlinesOptionsForIndex, 'source'>,
+      }: Omit<GuideHeadlinesOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
       const paths = breadcrumbs.reduce<string[]>((acc, facet) => {
@@ -252,7 +252,7 @@ export function createClient(opts: CreateClientOptions) {
         return acc;
       }, []);
 
-      const res = await this.searchSingleIndex<ShoppingGuideHeadline>({
+      const res = await this.searchSingleIndex<GuideHeadline>({
         indexName: this._outputIndexName(),
         searchParams: {
           facetFilters: [
@@ -280,10 +280,10 @@ export function createClient(opts: CreateClientOptions) {
       {
         objectID,
         onlyPublished = true,
-      }: Omit<ShoppingGuideContentOptionsForIndex, 'source'>,
+      }: Omit<GuideContentOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
-      const res = await this.searchSingleIndex<ShoppingGuide>({
+      const res = await this.searchSingleIndex<Guide>({
         indexName: this._outputIndexName(),
         searchParams: {
           facetFilters: [
@@ -325,9 +325,9 @@ export function createClient(opts: CreateClientOptions) {
 
     async getOrGenerateHeadlines<TSource extends GenerationSource>(
       params: {
-        combined: ShoppingGuideHeadlinesOptionsForCombined;
-        generated: ShoppingGuideHeadlinesOptionsForGenerated;
-        index: ShoppingGuideHeadlinesOptionsForIndex;
+        combined: GuideHeadlinesOptionsForCombined;
+        generated: GuideHeadlinesOptionsForGenerated;
+        index: GuideHeadlinesOptionsForIndex;
       }[TSource] & {
         source?: TSource;
       },
@@ -351,7 +351,7 @@ export function createClient(opts: CreateClientOptions) {
           const {
             generateParams,
             ...combinedParams
-          } = params as ShoppingGuideHeadlinesOptionsForCombined;
+          } = params as GuideHeadlinesOptionsForCombined;
           return await this.generateHeadlines(
             {
               ...combinedParams,
@@ -371,7 +371,7 @@ export function createClient(opts: CreateClientOptions) {
       {
         source,
         ...args
-      }: ShoppingGuideContentOptions & {
+      }: GuideContentOptions & {
         source: TSource;
       },
       {
@@ -487,13 +487,13 @@ export function createClient(opts: CreateClientOptions) {
       });
     },
 
-    async updateShoppingGuide(
+    async updateGuide(
       {
         objectID,
         data,
       }: {
         objectID: string;
-        data: Partial<Omit<ShoppingGuide, 'objectID'>>;
+        data: Partial<Omit<Guide, 'objectID'>>;
       },
       requestOptions?: RequestParameters
     ) {
@@ -519,7 +519,7 @@ export function createClient(opts: CreateClientOptions) {
       });
     },
 
-    async createShoppingGuidesIndex(
+    async createGuidesIndex(
       { indexName }: { indexName: string },
       requestOptions?: RequestParameters
     ) {

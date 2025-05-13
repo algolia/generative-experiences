@@ -4,7 +4,7 @@ import { CommerceClient } from '../client';
 
 import { GenerationSource } from './utils';
 
-export type ShoppingGuideContentRequestParameters = {
+export type GuideContentRequestParameters = {
   /**
    * @default 'shopping_guide'
    */
@@ -35,7 +35,7 @@ export type ShoppingGuideContentRequestParameters = {
   keywords?: string[];
 };
 
-export type ShoppingGuideContentOptionsForIndex = {
+export type GuideContentOptionsForIndex = {
   objectID: string;
   source?: 'index';
   /**
@@ -44,15 +44,15 @@ export type ShoppingGuideContentOptionsForIndex = {
   onlyPublished?: boolean;
 };
 
-export type ShoppingGuideContentOptionsForGenerated = Partial<ShoppingGuideContentRequestParameters> & {
+export type GuideContentOptionsForGenerated = Partial<GuideContentRequestParameters> & {
   source: 'generated';
   objectID: string;
 };
 
-export type ShoppingGuideContentOptionsForCombined = {
+export type GuideContentOptionsForCombined = {
   source: 'combined';
   objectID: string;
-  generateParams?: ShoppingGuideContentRequestParameters;
+  generateParams?: GuideContentRequestParameters;
   /**
    * Only return headlines that have had their content generated and published.
    * This is only used when source is 'index' or 'combined'.
@@ -62,8 +62,8 @@ export type ShoppingGuideContentOptionsForCombined = {
   onlyPublished?: boolean;
 };
 
-export type ShoppingGuideContentOptions = Omit<
-  ShoppingGuideContentOptionsForCombined,
+export type GuideContentOptions = Omit<
+  GuideContentOptionsForCombined,
   'source'
 > & {
   source?: GenerationSource;

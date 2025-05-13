@@ -4,7 +4,7 @@ import { CommerceClient } from '../client';
 
 import { GenerationSource } from './utils';
 
-export type ShoppingGuideHeadline = {
+export type GuideHeadline = {
   objectID: string;
   title: string;
   description: string;
@@ -14,7 +14,7 @@ export type ShoppingGuideHeadline = {
   score_headline: number;
 };
 
-export type ShoppingGuideHeadlinesRequestParameters = {
+export type GuideHeadlinesRequestParameters = {
   category?: string;
   nb_headlines?: number;
   index_name?: string;
@@ -38,7 +38,7 @@ export type ShoppingGuideHeadlinesRequestParameters = {
   wait?: boolean;
 };
 
-export type ShoppingGuideHeadlinesOptionsForIndex = {
+export type GuideHeadlinesOptionsForIndex = {
   source?: 'index';
   nbHeadlines?: number;
   showFeedback?: boolean;
@@ -54,14 +54,14 @@ export type ShoppingGuideHeadlinesOptionsForIndex = {
    */
   onlyPublished?: boolean;
 };
-export type ShoppingGuideHeadlinesOptionsForGenerated = Partial<ShoppingGuideHeadlinesRequestParameters> & {
+export type GuideHeadlinesOptionsForGenerated = Partial<GuideHeadlinesRequestParameters> & {
   source: 'generated';
   nbHeadlines?: number;
   category: string;
   showFeedback?: boolean;
 };
 
-export type ShoppingGuideHeadlinesOptionsForCombined = {
+export type GuideHeadlinesOptionsForCombined = {
   source: 'combined';
   nbHeadlines?: number;
   category: string;
@@ -69,7 +69,7 @@ export type ShoppingGuideHeadlinesOptionsForCombined = {
   object?: { objectID: string };
   breadcrumbs?: string[];
   searchParams?: PlainSearchParameters;
-  generateParams?: ShoppingGuideHeadlinesRequestParameters;
+  generateParams?: GuideHeadlinesRequestParameters;
   /**
    * Only return headlines that have had their content generated and published.
    * This is only used when source is 'index' or 'combined'.
@@ -79,8 +79,8 @@ export type ShoppingGuideHeadlinesOptionsForCombined = {
   onlyPublished?: boolean;
 };
 
-export type ShoppingGuideHeadlinesOptions = Omit<
-  ShoppingGuideHeadlinesOptionsForCombined,
+export type GuideHeadlinesOptions = Omit<
+  GuideHeadlinesOptionsForCombined,
   'source'
 > & {
   source?: GenerationSource;

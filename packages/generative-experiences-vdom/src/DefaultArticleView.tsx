@@ -14,14 +14,11 @@ export function createArticleViewComponent({
       return (
         <article
           data-type="comparison"
-          className={cx(
-            'ais-ShoppingGuideContent',
-            props.classNames?.container
-          )}
+          className={cx('ais-GuideContent', props.classNames?.container)}
         >
           <section
             className={cx(
-              'ais-ShoppingGuideContent-contentSection',
+              'ais-GuideContent-contentSection',
               props.classNames?.contentSection
             )}
           >
@@ -44,7 +41,7 @@ export function createArticleViewComponent({
                   {section.type === 'product' && section.objectID ? (
                     <a
                       className={cx(
-                        'ais-ShoppingGuideContent-productLink',
+                        'ais-GuideContent-productLink',
                         props.classNames?.productLink
                       )}
                       href={props.getters.objectURL(section.objectID)}
@@ -68,13 +65,13 @@ export function createArticleViewComponent({
           )}
           <section
             className={cx(
-              'ais-ShoppingGuideContent-relatedItemsSection',
+              'ais-GuideContent-relatedItemsSection',
               props.classNames?.relatedItemsSection
             )}
           >
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsTitle',
+                'ais-GuideContent-relatedItemsTitle',
                 props.classNames?.relatedItemsTitle
               )}
             >
@@ -82,13 +79,13 @@ export function createArticleViewComponent({
             </div>
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsListContainer',
+                'ais-GuideContent-relatedItemsListContainer',
                 props.classNames?.relatedItemsListContainer
               )}
             >
               <ul
                 className={cx(
-                  'ais-ShoppingGuideContent-relatedItemsList',
+                  'ais-GuideContent-relatedItemsList',
                   props.classNames?.relatedItemsList
                 )}
               >
@@ -115,14 +112,11 @@ export function createArticleViewComponent({
       return (
         <article
           data-type="shopping_guide"
-          className={cx(
-            'ais-ShoppingGuideContent',
-            props.classNames?.container
-          )}
+          className={cx('ais-GuideContent', props.classNames?.container)}
         >
           <section
             className={cx(
-              'ais-ShoppingGuideContent-contentSection',
+              'ais-GuideContent-contentSection',
               props.classNames?.contentSection
             )}
           >
@@ -131,7 +125,7 @@ export function createArticleViewComponent({
             {image && (
               <img
                 className={cx(
-                  'ais-ShoppingGuideContent-heroImage',
+                  'ais-GuideContent-heroImage',
                   props.classNames?.heroImage
                 )}
                 src={image.src}
@@ -157,13 +151,13 @@ export function createArticleViewComponent({
           )}
           <section
             className={cx(
-              'ais-ShoppingGuideContent-relatedItemsSection',
+              'ais-GuideContent-relatedItemsSection',
               props.classNames?.relatedItemsSection
             )}
           >
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsTitle',
+                'ais-GuideContent-relatedItemsTitle',
                 props.classNames?.relatedItemsTitle
               )}
             >
@@ -171,13 +165,13 @@ export function createArticleViewComponent({
             </div>
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsListContainer',
+                'ais-GuideContent-relatedItemsListContainer',
                 props.classNames?.relatedItemsListContainer
               )}
             >
               <ul
                 className={cx(
-                  'ais-ShoppingGuideContent-relatedItemsList',
+                  'ais-GuideContent-relatedItemsList',
                   props.classNames?.relatedItemsList
                 )}
               >
@@ -204,14 +198,11 @@ export function createArticleViewComponent({
       return (
         <article
           data-type="category"
-          className={cx(
-            'ais-ShoppingGuideContent',
-            props.classNames?.container
-          )}
+          className={cx('ais-GuideContent', props.classNames?.container)}
         >
           <section
             className={cx(
-              'ais-ShoppingGuideContent-contentSection',
+              'ais-GuideContent-contentSection',
               props.classNames?.contentSection
             )}
           >
@@ -220,7 +211,7 @@ export function createArticleViewComponent({
             {image && (
               <img
                 className={cx(
-                  'ais-ShoppingGuideContent-heroImage',
+                  'ais-GuideContent-heroImage',
                   props.classNames?.heroImage
                 )}
                 src={image.src}
@@ -232,7 +223,7 @@ export function createArticleViewComponent({
                 key={i}
                 className={cx(
                   section.type === 'factor'
-                    ? 'ais-ShoppingGuideContent-factorSection'
+                    ? 'ais-GuideContent-factorSection'
                     : '',
                   section.type === 'factor'
                     ? props.classNames?.factorSection
@@ -263,13 +254,13 @@ export function createArticleViewComponent({
           )}
           <section
             className={cx(
-              'ais-ShoppingGuideContent-relatedItemsSection',
+              'ais-GuideContent-relatedItemsSection',
               props.classNames?.relatedItemsSection
             )}
           >
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsTitle',
+                'ais-GuideContent-relatedItemsTitle',
                 props.classNames?.relatedItemsTitle
               )}
             >
@@ -277,13 +268,13 @@ export function createArticleViewComponent({
             </div>
             <div
               className={cx(
-                'ais-ShoppingGuideContent-relatedItemsListContainer',
+                'ais-GuideContent-relatedItemsListContainer',
                 props.classNames?.relatedItemsListContainer
               )}
             >
               <ul
                 className={cx(
-                  'ais-ShoppingGuideContent-relatedItemsList',
+                  'ais-GuideContent-relatedItemsList',
                   props.classNames?.relatedItemsList
                 )}
               >

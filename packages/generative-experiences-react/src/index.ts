@@ -1,7 +1,7 @@
 export type * from '@algolia/generative-experiences-vdom';
-export * from './ShoppingGuidesHeadlines';
-export * from './ShoppingGuidesContent';
-export * from './ShoppingGuidesFeedback';
-export * from './useShoppingGuidesHeadlines';
-export * from './useShoppingGuidesContent';
-export * from './useShoppingGuidesFeedback';
+export * from './GuidesHeadlines';
+export * from './GuideContent';
+export * from './GuidesFeedback';
+export * from './useGuidesHeadlines';
+export * from './useGuideContent';
+export * from './useGuidesFeedback';
