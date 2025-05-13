@@ -67,7 +67,7 @@ Parameters:
 - **writeAPIKey** The Algolia Write API Key needed for generating guides
 - **region** The Region of the Algolia Application. Can be either `us` or `eu`. Default is `us`
 
-### Shopping Guides Headlines
+### Guides Headlines
 
 Insert your headlines by calling the [`guidesHeadlines`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
@@ -110,9 +110,9 @@ guidesHeadlines({
 | `children` | `ReactNode` | - | The children to render. | - |
 | `classNames` | `HeadlinesButtonClassNames` | - | The class names for the component. | - |
 
-### Shopping Guide Content
+### Guide Content
 
-Insert a guide's content by calling the [`shoppingGuideContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
+Insert a guide's content by calling the [`guideContent`](hhttps://www.algolia.com/doc/guides/algolia-ai/shopping-guides/) function and providing the [`container`](https://www.algolia.com/doc/guides/algolia-ai/shopping-guides/). It can be a [CSS selector](https://developer.mozilla.org/docs/Web/CSS/CSS_Selectors) or an [Element](https://developer.mozilla.org/docs/Web/API/HTMLElement).
 
 ```jsx
 /** @jsx h */
@@ -193,9 +193,9 @@ GuidesFeedback({
 
 ## Customisation with `getters`
 
-Some of the generated shopping guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
+Some of the generated guides may contain placeholders for website-specific content. These are used for the links to the product pages, guide pages as well as images.
 
-To replace these placeholders with your website-specific content, use the `getters` parameter for `guidesHeadlines()` or `shoppingGuideContent()`.
+To replace these placeholders with your website-specific content, use the `getters` parameter for `guidesHeadlines()` or `guideContent()`.
 
 ```JSX
 /** @jsx h */
