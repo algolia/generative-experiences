@@ -1,3 +1,9 @@
+## 1.6.0 (2025-05-13)
+
+* add the new attirbutes for content customisation (#56) ([17a6025](https://github.com/algolia/generative-experiences/commit/17a6025)), closes [#56](https://github.com/algolia/generative-experiences/issues/56)
+
+
+
 ## 1.5.0 (2025-03-25)
 
 * feat(client-api): add region on host (#49) ([e5b8d05](https://github.com/algolia/generative-experiences/commit/e5b8d05)), closes [#49](https://github.com/algolia/generative-experiences/issues/49)
