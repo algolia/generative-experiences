@@ -31,6 +31,7 @@ const UncontrolledGuideContent = createGuideContentComponent({
 
 export function GuideContent<TObject = {}>(props: GuideContentProps<TObject>) {
   const { content, status } = useGuideContent(props);
+
   const { castFeedback, alreadyCast } = useGuidesFeedback(props);
 
   return (

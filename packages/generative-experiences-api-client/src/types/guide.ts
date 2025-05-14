@@ -7,28 +7,42 @@ export type BaseGuide = {
   score_content: number;
   generated_at: number;
 };
-
-export type CategoryGuide = BaseGuide & {
-  type: 'category';
-  description: string;
-  category: string;
-  objects: Hit[];
-  objectIDs: string[];
-  content: Array<{
-    type: 'conclusion' | 'factor' | 'introduction';
-    title: string;
-    content: string;
-  }>;
-  score_headline: number;
+export type ContentBlock = {
+  type: 'conclusion' | 'factor' | 'introduction' | 'feature';
+  title?: string;
+  content: string;
 };
 
-export type ShoppingGuideType = BaseGuide & {
-  type: 'shopping_guide';
+export type FactorsContentBlock = {
+  type: 'factors';
+  title: string;
+  content: Array<{ name: string; description: string }>;
+};
+
+export type ProductDescriptionContent = {
+  type: 'description';
+  content: string;
+};
+
+export type ProductFactorsContent = {
+  type: 'product_factors';
+  content: Array<{ name: string; description: string }>;
+};
+
+export type ProductContentBlock = {
+  type: 'product';
+  title: string;
+  objectID: string;
+  content: Array<ProductDescriptionContent | ProductFactorsContent>;
+};
+
+export type GuideType = BaseGuide & {
+  type: 'shopping_guide' | 'category';
   description: string;
   category: string;
   objects: Hit[];
   objectIDs: string[];
-  content: Array<{ title: string; content: string }>;
+  content: Array<ContentBlock | FactorsContentBlock>;
   score_headline: number;
 };
 
@@ -36,13 +50,8 @@ export type ComparisonGuide = BaseGuide & {
   type: 'comparison';
   objects: Hit[];
   objectIDs: string[];
-  content: Array<{
-    title: string;
-    type: 'conclusion' | 'introduction' | 'product';
-    objectID?: string;
-    content: string;
-  }>;
+  content: Array<ContentBlock | FactorsContentBlock | ProductContentBlock>;
   comparedObjectIDs: string[];
 };
 
-export type Guide = CategoryGuide | ShoppingGuideType | ComparisonGuide;
+export type Guide = GuideType | ComparisonGuide;

@@ -1,14 +1,11 @@
-import {
-  Guide,
-  ShoppingGuideType,
-} from '@algolia/generative-experiences-api-client';
+import { Guide, GuideType } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'react';
 
 import { UseGuideContentProps } from './GuideContent';
 import { version } from './version';
 
-const defaultState: ShoppingGuideType = {
-  objectID: '',
+const defaultState: GuideType = {
+  objectID: 'default',
   status: 'draft',
   title: '',
   score_content: 0,
@@ -20,7 +17,7 @@ const defaultState: ShoppingGuideType = {
   objectIDs: [],
   content: [
     {
-      title: '',
+      type: 'introduction',
       content: '',
     },
   ],

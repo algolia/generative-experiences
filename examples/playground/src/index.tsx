@@ -3,11 +3,11 @@
 
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  GuidesHeadlines,
+  // GuidesHeadlines,
   GuideContent,
   useGuideContent,
   useGuidesHeadlines,
-  GuidesFeedback,
+  // GuidesFeedback,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -51,19 +51,19 @@ const client = createClient(options);
 // });
 
 const HitComponent = ({ hit }: { hit: any }) => {
-  return <div>{hit.title}</div>;
+  return <div>{hit.name.english}</div>;
 };
 
 function ComponentTest() {
   const { headlines, status } = useGuidesHeadlines({
     client,
     showImmediate: true,
-    category: 'category',
+    category: 'Bug',
   });
 
   const { content, status: contentStatus } = useGuideContent({
     client,
-    objectID: '1234',
+    objectID: '77a5b5c3-a714-4543-ae6a-5f8786602ae1',
     showImmediate: true,
     onlyPublished: false,
   });
@@ -94,19 +94,23 @@ function ComponentTest() {
 
   return (
     <>
-      <GuidesHeadlines
-        showFeedback
-        userToken="aabc"
-        client={client}
-        category="category"
-        showImmediate
-      />
-      <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
+      {/*<GuidesHeadlines*/}
+      {/*  showFeedback*/}
+      {/*  userToken="aabc"*/}
+      {/*  client={client}*/}
+      {/*  category="Bug"*/}
+      {/*  showImmediate*/}
+      {/*/>*/}
+      {/*<GuidesFeedback*/}
+      {/*  client={client}*/}
+      {/*  objectIDs={['154ad445-6739-4766-b9c7-acdac2918dd4']}*/}
+      {/*  userToken="abc"*/}
+      {/*/>*/}
       <GuideContent
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="123"
+        objectID="77a5b5c3-a714-4543-ae6a-5f8786602ae1"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />
