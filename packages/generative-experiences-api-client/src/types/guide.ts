@@ -1,14 +1,7 @@
 import { Hit } from '@algolia/client-search';
 
-export type BaseGuide = {
-  objectID: string;
-  status: 'draft' | 'generating' | 'headline' | 'published';
-  title: string;
-  score_content: number;
-  generated_at: number;
-};
 export type ContentBlock = {
-  type: 'conclusion' | 'factor' | 'introduction' | 'feature';
+  type?: 'conclusion' | 'factor' | 'introduction' | 'feature';
   title?: string;
   content: string;
 };
@@ -33,7 +26,15 @@ export type ProductContentBlock = {
   type: 'product';
   title: string;
   objectID: string;
-  content: Array<ProductDescriptionContent | ProductFactorsContent>;
+  content: Array<ProductDescriptionContent | ProductFactorsContent> | string;
+};
+
+export type BaseGuide = {
+  objectID: string;
+  status: 'draft' | 'generating' | 'headline' | 'published';
+  title: string;
+  score_content: number;
+  generated_at: number;
 };
 
 export type GuideType = BaseGuide & {

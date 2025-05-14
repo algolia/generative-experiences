@@ -1,6 +1,10 @@
 import { Hit } from '@algolia/client-search';
-
-import { Guide } from '@algolia/generative-experiences-api-client';
+import {
+  ContentBlock,
+  FactorsContentBlock,
+  Guide,
+  ProductContentBlock,
+} from '@algolia/generative-experiences-api-client';
 
 import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
@@ -32,9 +36,8 @@ export type ContentClassNames = Partial<{
   contentSection?: string;
   productLink?: string;
   heroImage?: string;
-  factorSection?: string;
   introSection?: string;
-  conclusionSection?: string;
+  articleContentSection?: string;
   factorsSection?: string;
   factorsList?: string;
   productSection?: string;
@@ -45,35 +48,6 @@ export type ContentClassNames = Partial<{
   relatedItemsList?: string;
   item?: string;
 }>;
-
-export type ContentBlock = {
-  type: 'conclusion' | 'factor' | 'introduction' | 'feature';
-  title?: string;
-  content: string;
-};
-
-export type FactorsContentBlock = {
-  type: 'factors';
-  title: string;
-  content: Array<{ name: string; description: string }>;
-};
-
-export type ProductDescriptionContent = {
-  type: 'description';
-  content: string;
-};
-
-export type ProductFactorsContent = {
-  type: 'product_factors';
-  content: Array<{ name: string; description: string }>;
-};
-
-export type ProductContentBlock = {
-  type: 'product';
-  title: string;
-  objectID: string;
-  content: Array<ProductDescriptionContent | ProductFactorsContent>;
-};
 
 export type GSEContentRecord = {
   objectID: string;

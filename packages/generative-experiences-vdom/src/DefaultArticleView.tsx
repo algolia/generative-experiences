@@ -79,19 +79,23 @@ export function createArticleViewComponent({
                       )}
                     >
                       <h3>{section.title}</h3>
-                      <div>
-                        <props.itemComponent
-                          hit={objects.find(
-                            (o) => o.objectID === section.objectID)
-                          }
-                          Fragment={Fragment}
-                          createElement={createElement}
-                        />
-                      </div>
+                      <props.itemComponent
+                        hit={objects.find(
+                          (o) => o.objectID === section.objectID
+                        )}
+                        Fragment={Fragment}
+                        createElement={createElement}
+                      />
+                      {typeof section.content === 'string' && (
+                        // provide backwards compatibility with the comparison guides that are not generated with the new structure
+                        <p>{section.content}</p>
+                      )}
                       <p>
-                        {section.content.find(
-                          (item) => item.type === 'description'
-                        )?.content ?? ''}
+                        {typeof section.content !== 'string'
+                          ? section.content?.find(
+                              (item) => item.type === 'description'
+                            )?.content ?? ''
+                          : ''}
                       </p>
                       <ul
                         className={cx(
@@ -99,22 +103,25 @@ export function createArticleViewComponent({
                           props.classNames?.productFactorsList
                         )}
                       >
-                        {section.content
-                          .find((item) => item.type === 'product_factors')
-                          ?.content?.map((factor, index) => (
-                            <li key={index}>
-                              <h3>{factor.name}</h3>
-                              <p>{factor.description}</p>
-                            </li>
-                          )) ?? ''}
+                        {typeof section.content !== 'string'
+                          ? section.content
+                              ?.find((item) => item.type === 'product_factors')
+                              ?.content?.map((factor, index) => (
+                                <li key={index}>
+                                  <h3>{factor.name}</h3>
+                                  <p>{factor.description}</p>
+                                </li>
+                              )) ?? ''
+                          : ''}
                       </ul>
                     </div>
                   )}
-                  {section.type === 'conclusion' && (
+                  {(section.type === 'conclusion' ||
+                    section.type === 'feature') && (
                     <div
                       className={cx(
-                        'ais-GuideContent-conclusionSection',
-                        props.classNames?.conclusionSection
+                        'ais-GuideContent-articleContentSection',
+                        props.classNames?.articleContentSection
                       )}
                     >
                       <h3>{section.title}</h3>
@@ -204,22 +211,24 @@ export function createArticleViewComponent({
                     </ul>
                   </div>
                 )}
-                {section.type === 'factor' && (
+                {!section.type && (
+                  // provide backwards compatibility with the shopping guides that are not generated with the new structure
                   <div
                     className={cx(
-                      'ais-GuideContent-factorSection',
-                      props.classNames?.factorSection
+                      'ais-GuideContent-articleContentSection',
+                      props.classNames?.articleContentSection
                     )}
                   >
                     <h3>{section.title}</h3>
                     <p>{section.content}</p>
                   </div>
                 )}
-                {section.type === 'conclusion' && (
+                {(section.type === 'factor' ||
+                  section.type === 'conclusion') && (
                   <div
                     className={cx(
-                      'ais-GuideContent-conclusionSection',
-                      props.classNames?.conclusionSection
+                      'ais-GuideContent-articleContentSection',
+                      props.classNames?.articleContentSection
                     )}
                   >
                     <h3>{section.title}</h3>
