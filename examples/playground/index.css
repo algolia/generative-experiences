@@ -120,3 +120,12 @@
 .ais-Feedback-buttonIcon {
   @apply h-4 w-4 stroke-2 flex-shrink-0;
 }
+
+/* error loading guide */
+.ais-GuideContentError {
+  @apply flex flex-col items-center text-center gap-y-4 max-w-prose mx-auto my-6;
+}
+
+.ais-GuideContentErrorTitle {
+  @apply text-lg font-semibold;
+}

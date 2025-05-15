@@ -58,12 +58,12 @@ function ComponentTest() {
   const { headlines, status } = useGuidesHeadlines({
     client,
     showImmediate: true,
-    category: 'Bug',
+    category: '',
   });
 
   const { content, status: contentStatus } = useGuideContent({
     client,
-    objectID: '77a5b5c3-a714-4543-ae6a-5f8786602ae1',
+    objectID: '',
     showImmediate: true,
     onlyPublished: false,
   });
@@ -110,7 +110,7 @@ function ComponentTest() {
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="749fef2b-a15d-4a27-813b-63131b6072e7"
+        objectID="123"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

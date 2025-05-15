@@ -39,6 +39,7 @@ export function createGuideContentComponent<TObject>({
         Fragment={Fragment}
         itemComponent={props.itemComponent}
         item={props.item}
+        error={props.error}
         featuredItemsTitle={featuredItemsTitle}
         createElement={createElement}
         castFeedback={props.castFeedback}

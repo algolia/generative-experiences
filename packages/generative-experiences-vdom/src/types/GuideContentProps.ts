@@ -33,6 +33,8 @@ export const defaultState: Guide = {
 export type ContentClassNames = Partial<{
   wrapper?: string;
   container?: string;
+  errorContainer?: string;
+  errorContainerTitle?: string;
   contentSection?: string;
   productLink?: string;
   heroImage?: string;
@@ -87,6 +89,7 @@ export type ContentViewProps<TClassNames extends Record<string, string>> = {
   classNames: TClassNames;
   item: GSEContentRecord;
   featuredItemsTitle?: string;
+  error?: Error | undefined;
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: { hit: Hit | undefined } & Renderer & TComponentProps
   ): JSX.Element;
@@ -124,6 +127,7 @@ export type ContentComponentProps<
   itemComponent(props: ContentItemComponentProps<TObject>): JSX.Element;
   featuredItemsTitle?: string;
   item: GSEContentRecord;
+  error?: Error | undefined;
   classNames?: ContentClassNames;
   children?(props: ContentChildrenProps & TComponentProps): JSX.Element;
   castFeedback: (

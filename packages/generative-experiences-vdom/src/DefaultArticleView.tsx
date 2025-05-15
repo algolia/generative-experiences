@@ -9,6 +9,29 @@ export function createArticleViewComponent({
   Fragment,
 }: Renderer) {
   return function ArticleView(props: ContentViewProps<ContentClassNames>) {
+    if (props.item.objectID === 'default' || props.error) {
+      return (
+        <div
+          className={cx(
+            'ais-GuideContentError',
+            props.classNames?.errorContainer
+          )}
+        >
+          <h3
+            className={cx(
+              'ais-GuideContentErrorTitle',
+              props.classNames?.errorContainerTitle
+            )}
+          >
+            We Hit a Snag!
+          </h3>
+          <p>
+            Our system encountered an unexpected error. Don&apos;t worry,
+            it&apos;s not your fault. Please try again later.
+          </p>
+        </div>
+      );
+    }
     if (props.item.type === 'comparison') {
       const { objectID, title, content, objects } = props.item;
       const image = props.getters.images(objects[0])[0];
