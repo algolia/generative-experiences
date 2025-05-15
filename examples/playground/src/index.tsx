@@ -110,7 +110,7 @@ function ComponentTest() {
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="7e8d9303-dab2-48ab-948d-aff51f3e46d7"
+        objectID="749fef2b-a15d-4a27-813b-63131b6072e7"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

@@ -44,6 +44,10 @@
   @apply prose max-w-prose mx-auto px-4;
 }
 
+.ais-GuideContent {
+  @apply mb-10;
+}
+
 .ais-GuideContent-heroImage {
   @apply mx-auto min-h-[200px] max-h-[250px] my-12;
 }

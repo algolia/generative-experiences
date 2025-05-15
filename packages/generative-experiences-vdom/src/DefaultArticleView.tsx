@@ -63,8 +63,14 @@ export function createArticleViewComponent({
                         )}
                       >
                         {section.content.map((factor, index) => (
-                          <li key={index}>
-                            <h3>{factor.name}</h3>
+                          <li
+                            key={index}
+                            className={cx(
+                              'ais-GuideContent-factorItem',
+                              props.classNames?.factorItem
+                            )}
+                          >
+                            <h4>{factor.name}</h4>
                             <p>{factor.description}</p>
                           </li>
                         ))}
@@ -108,7 +114,7 @@ export function createArticleViewComponent({
                               ?.find((item) => item.type === 'product_factors')
                               ?.content?.map((factor, index) => (
                                 <li key={index}>
-                                  <h3>{factor.name}</h3>
+                                  <h4>{factor.name}</h4>
                                   <p>{factor.description}</p>
                                 </li>
                               )) ?? ''
