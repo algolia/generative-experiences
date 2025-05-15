@@ -44,16 +44,32 @@
   @apply prose max-w-prose mx-auto px-4;
 }
 
+.ais-GuideContent-heroImage {
+  @apply mx-auto min-h-[200px] max-h-[250px] my-12;
+}
+
 .ais-GuideContent-feedbackContainer {
   @apply flex flex-col;
 }
 
-.ais-GuideContent .ais-Feedback {
-  @apply self-end;
+.ais-GuideContent .ais-feedbackContainer {
+  @apply justify-self-end;
+}
+
+.ais-GuideContent .ais-Feedback-thanksWrapper {
+  @apply justify-self-end;
+}
+
+.ais-GuideContent-factorsList {
+  @apply flex flex-wrap list-disc gap-x-2 justify-between w-full;
+}
+
+.ais-GuideContent-factorItem {
+  @apply w-[45%];
 }
 
 .ais-GuideContent-relatedItemsSection {
-  @apply prose max-w-none;
+  @apply prose max-w-none mx-auto px-4;
 }
 
 .ais-GuideContent-relatedItemsTitle {
@@ -61,20 +77,24 @@
 }
 
 .ais-GuideContent-relatedItemsListContainer {
-  @apply max-w-none px-4;
+  @apply max-w-prose mx-auto px-4;
 }
 
 .ais-GuideContent-relatedItemsList {
-  @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
+  @apply p-2 flex justify-between flex-wrap list-none;
 }
 
 /* display feedback */
 .ais-Feedback {
-  @apply text-gray-500 text-sm flex items-center space-x-4;
+  @apply text-gray-500 text-base max-w-prose mx-auto mt-10;
+}
+
+.ais-feedbackContainer {
+  @apply flex items-center gap-4;
 }
 
 .ais-Feedback-thanksWrapper {
-  @apply flex space-x-2 items-center;
+  @apply flex items-center;
 }
 
 .ais-Feedback-labelWrapper {
@@ -94,5 +114,5 @@
 }
 
 .ais-Feedback-buttonIcon {
-  @apply h-5 w-5 stroke-2 flex-shrink-0;
+  @apply h-4 w-4 stroke-2 flex-shrink-0;
 }

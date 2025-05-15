@@ -40,6 +40,7 @@ export type ContentClassNames = Partial<{
   articleContentSection?: string;
   factorsSection?: string;
   factorsList?: string;
+  factorItem?: string;
   productSection?: string;
   productFactorsList?: string;
   relatedItemsSection?: string;

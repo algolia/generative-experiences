@@ -80,7 +80,12 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
             </span>
           </div>
         ) : (
-          <div>
+          <div
+            className={cx(
+              'ais-feedbackContainer',
+              props.classNames?.feedbackContainer
+            )}
+          >
             <div
               className={cx(
                 'ais-Feedback-labelWrapper',
@@ -93,9 +98,9 @@ export function createDefaultFeedbackComponent({ createElement }: Renderer) {
                   props.classNames?.labelIcon
                 )}
               />
-              <span className={cx('ais-NoWrap', props.classNames?.noWrap)}>
+              <p className={cx('ais-NoWrap', props.classNames?.noWrap)}>
                 Give us feedback
-              </span>
+              </p>
             </div>
             <div
               className={cx(
