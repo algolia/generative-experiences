@@ -32,6 +32,7 @@ export function createArticleViewComponent({
         </div>
       );
     }
+
     if (props.item.type === 'comparison') {
       const { objectID, title, content, objects } = props.item;
       const image = props.getters.images(objects[0])[0];

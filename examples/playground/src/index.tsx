@@ -3,11 +3,11 @@
 
 import { createClient } from '@algolia/generative-experiences-api-client';
 import {
-  // GuidesHeadlines,
+  GuidesHeadlines,
   GuideContent,
   useGuideContent,
   useGuidesHeadlines,
-  // GuidesFeedback,
+  GuidesFeedback,
 } from '@algolia/generative-experiences-react';
 import React, { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -58,12 +58,12 @@ function ComponentTest() {
   const { headlines, status } = useGuidesHeadlines({
     client,
     showImmediate: true,
-    category: '',
+    category: 'category',
   });
 
   const { content, status: contentStatus } = useGuideContent({
     client,
-    objectID: '',
+    objectID: 'category',
     showImmediate: true,
     onlyPublished: false,
   });
@@ -94,18 +94,14 @@ function ComponentTest() {
 
   return (
     <>
-      {/*<GuidesHeadlines*/}
-      {/*  showFeedback*/}
-      {/*  userToken="aabc"*/}
-      {/*  client={client}*/}
-      {/*  category="Bug"*/}
-      {/*  showImmediate*/}
-      {/*/>*/}
-      {/*<GuidesFeedback*/}
-      {/*  client={client}*/}
-      {/*  objectIDs={['154ad445-6739-4766-b9c7-acdac2918dd4']}*/}
-      {/*  userToken="abc"*/}
-      {/*/>*/}
+      <GuidesHeadlines
+        showFeedback
+        userToken="aabc"
+        client={client}
+        category="Bug"
+        showImmediate
+      />
+      <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
       <GuideContent
         client={client}
         showFeedback

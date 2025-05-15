@@ -25,7 +25,7 @@ guidesHeadlines({
   client,
   userToken: 'test-user',
   showImmediate: true,
-  //   showFeedback: true,
+  // showFeedback: true,
   category: 'category',
 });
 
