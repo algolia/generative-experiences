@@ -30,12 +30,16 @@ export function createGuideContentComponent<TObject>({
 
     const getters = props.getters ?? defaultGetters;
 
+    const featuredItemsTitle =
+      props.featuredItemsTitle ?? 'Items featured in this article';
+
     const View = (viewProps: any) => (
       <ViewComponent
         classNames={classNames}
         Fragment={Fragment}
         itemComponent={props.itemComponent}
         item={props.item}
+        featuredItemsTitle={featuredItemsTitle}
         createElement={createElement}
         castFeedback={props.castFeedback}
         alreadyCast={props.alreadyCast}

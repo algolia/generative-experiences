@@ -150,7 +150,6 @@ export function createArticleViewComponent({
       props.item.type === 'category' ||
       props.item.type === 'shopping_guide'
     ) {
-      // TODO remove objects, GET THEM FROM HOOK
       const { objectID, title, content, objects } = props.item;
       const image = props.getters.images(objects[0])[0];
 
@@ -260,7 +259,7 @@ export function createArticleViewComponent({
                 props.classNames?.relatedItemsTitle
               )}
             >
-              <h3>Related products</h3>
+              <h3>{props.featuredItemsTitle}</h3>
             </div>
             <div
               className={cx(
@@ -274,7 +273,7 @@ export function createArticleViewComponent({
                   props.classNames?.relatedItemsList
                 )}
               >
-                {objects.map((hit) => (
+                {objects?.slice(0, 4)?.map((hit) => (
                   <li key={hit.objectID}>
                     <props.itemComponent
                       hit={hit}

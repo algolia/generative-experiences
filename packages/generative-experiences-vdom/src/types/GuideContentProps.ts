@@ -85,6 +85,7 @@ export type ContentChildrenProps = GSEContentComponentProps & {
 export type ContentViewProps<TClassNames extends Record<string, string>> = {
   classNames: TClassNames;
   item: GSEContentRecord;
+  featuredItemsTitle?: string;
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: { hit: Hit | undefined } & Renderer & TComponentProps
   ): JSX.Element;
@@ -120,6 +121,7 @@ export type ContentComponentProps<
   TComponentProps extends Record<string, unknown> = {}
 > = {
   itemComponent(props: ContentItemComponentProps<TObject>): JSX.Element;
+  featuredItemsTitle?: string;
   item: GSEContentRecord;
   classNames?: ContentClassNames;
   children?(props: ContentChildrenProps & TComponentProps): JSX.Element;
