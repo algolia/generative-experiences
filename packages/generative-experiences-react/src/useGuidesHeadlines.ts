@@ -49,7 +49,7 @@ export function useGuidesHeadlines({
           setError(err as Error);
         });
 
-      if (hits && hits.length <= nbHeadlines) {
+      if (hits && hits.length === nbHeadlines) {
         setStatus('idle');
         setHeadlines(hits);
         return;

@@ -9,6 +9,16 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
     const [image] = props.getters.images(props.item.objects[0]);
     return (
       <div>
+        {image && (
+          <div
+            className={cx(
+              'ais-GuideHeadlinesContent-itemImage',
+              props.classNames?.itemImage
+            )}
+          >
+            <img src={image.src} alt={image.alt} />
+          </div>
+        )}
         <div
           className={cx(
             'ais-GuideHeadlinesContent-itemContent',
@@ -23,27 +33,23 @@ export function createDefaultHeadlineComponent({ createElement }: Renderer) {
           >
             {props.item.title}
           </h3>
-          <p>{props.item.description}</p>
-          <a
+          <p
+            className={cx(
+              'ais-GuideHeadlinesContent-itemDescription',
+              props.classNames?.itemDescription
+            )}
+          >
+            {props.item.description}
+          </p>
+          <button
             className={cx(
               'ais-GuideHeadlinesContent-readMore',
               props.classNames?.readMore
             )}
-            href={props.getters.guideURL(props.item.objectID)}
           >
-            Read more
-          </a>
+            <a href={props.getters.guideURL(props.item.objectID)}>Read more</a>
+          </button>
         </div>
-        {image && (
-          <div
-            className={cx(
-              'ais-GuideHeadlinesContent-itemImage',
-              props.classNames?.itemImage
-            )}
-          >
-            <img src={image.src} alt={image.alt} />
-          </div>
-        )}
       </div>
     );
   };

@@ -24,10 +24,11 @@ guidesHeadlines({
   container: '#headlines',
   client,
   userToken: 'test-user',
+  nbHeadlines: 3,
   showImmediate: true,
   onlyPublished: false,
-  // showFeedback: true,
-  category: 'Bug',
+  showFeedback: true,
+  category: 'category',
 });
 
 guidesFeedback({
@@ -44,6 +45,7 @@ guideContent<RecordType>({
   itemComponent({ hit }) {
     return <div>{hit.title}</div>;
   },
-  objectID: '7e8d9303-dab2-48ab-948d-aff51f3e46d7',
+  showFeedback: true,
+  objectID: '123',
   userToken: 'test-user',
 });

@@ -98,7 +98,7 @@ function ComponentTest() {
         showFeedback
         userToken="aabc"
         client={client}
-        category="Bug"
+        category="cateogry"
         onlyPublished={false}
         showImmediate
       />
@@ -107,7 +107,7 @@ function ComponentTest() {
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="7e8d9303-dab2-48ab-948d-aff51f3e46d7"
+        objectID="123"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

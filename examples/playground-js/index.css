@@ -12,31 +12,39 @@
 
 /* display headlines */
 .ais-GuideHeadlinesContent-wrapper {
-    @apply flex flex items-end rounded p-4 border border-gray-100 shadow gap-2;
+    @apply rounded p-4 border border-gray-100 shadow gap-2;
 }
 
 .ais-GuideHeadlinesContent-container {
-    @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+    @apply flex flex-col items-end;
+}
+
+.ais-GuideHeadlinesContent-itemsContainer {
+    @apply flex items-center gap-6;
 }
 
 .ais-GuideHeadlinesContent-readMore {
-    @apply text-blue-800 font-semibold;
+    @apply flex text-white py-2 mt-8 border-2 bg-blue-700 rounded-md items-center w-full justify-center;
 }
 
 .ais-GuideHeadlinesContent-item {
-    @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
+    @apply bg-neutral-100 rounded p-4 space-y-3 flex justify-between min-h-[420px];
 }
 
 .ais-GuideHeadlinesContent-itemContent {
-    @apply space-y-3;
+    @apply mt-5;
 }
 
 .ais-GuideHeadlinesContent-itemTitle {
-    @apply text-blue-800 font-semibold;
+    @apply text-blue-800 font-semibold line-clamp-2 h-12;
+}
+
+.ais-GuideHeadlinesContent-itemDescription {
+    @apply line-clamp-4 text-base mt-2;
 }
 
 .ais-GuideHeadlinesContent-itemImage {
-    @apply relative aspect-video overflow-hidden;
+    @apply relative min-h-[120px] max-h-[120px] w-auto overflow-hidden mx-auto mt-4 aspect-square;
 }
 
 /* display content */
@@ -45,23 +53,15 @@
 }
 
 .ais-GuideContent {
-    @apply mb-10;
+    @apply mb-10 w-full;
 }
 
 .ais-GuideContent-heroImage {
     @apply mx-auto min-h-[200px] max-h-[250px] my-12;
 }
 
-.ais-GuideContent-feedbackContainer {
-    @apply flex flex-col;
-}
-
-.ais-GuideContent .ais-feedbackContainer {
-    @apply justify-self-end;
-}
-
-.ais-GuideContent .ais-Feedback-thanksWrapper {
-    @apply justify-self-end;
+.ais-GuideContent .ais-Feedback {
+    @apply flex items-end justify-end mx-auto;
 }
 
 .ais-GuideContent-factorsList {
@@ -90,7 +90,7 @@
 
 /* display feedback */
 .ais-Feedback {
-    @apply text-gray-500 text-base max-w-prose mx-auto mt-10;
+    @apply text-gray-500 text-base max-w-prose mt-10;
 }
 
 .ais-feedbackContainer {
