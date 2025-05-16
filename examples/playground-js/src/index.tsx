@@ -25,8 +25,9 @@ guidesHeadlines({
   client,
   userToken: 'test-user',
   showImmediate: true,
+  onlyPublished: false,
   // showFeedback: true,
-  category: 'category',
+  category: 'Bug',
 });
 
 guidesFeedback({
@@ -43,6 +44,6 @@ guideContent<RecordType>({
   itemComponent({ hit }) {
     return <div>{hit.title}</div>;
   },
-  objectID: '123',
+  objectID: '7e8d9303-dab2-48ab-948d-aff51f3e46d7',
   userToken: 'test-user',
 });

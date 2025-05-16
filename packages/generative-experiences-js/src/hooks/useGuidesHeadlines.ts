@@ -47,7 +47,7 @@ export function useGuidesHeadlines(props: GuideHeadlinesOptions) {
           setError(err as Error);
         });
 
-      if (hits && hits.length <= nbHeadlines) {
+      if (hits && hits.length === nbHeadlines) {
         setStatus('idle');
         setHeadlines(hits);
         return;

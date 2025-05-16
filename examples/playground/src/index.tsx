@@ -99,6 +99,7 @@ function ComponentTest() {
         userToken="aabc"
         client={client}
         category="Bug"
+        onlyPublished={false}
         showImmediate
       />
       <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
@@ -106,7 +107,7 @@ function ComponentTest() {
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="123"
+        objectID="7e8d9303-dab2-48ab-948d-aff51f3e46d7"
         onlyPublished={false}
         itemComponent={({ hit }) => <HitComponent hit={hit} />}
       />

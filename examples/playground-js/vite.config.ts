@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import preact from '@preact/preset-vite';
+import tailwindcss from '@vituum/vite-plugin-tailwindcss';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
@@ -11,6 +12,7 @@ export default defineConfig({
       rollupTypes: true,
     }),
     preact(),
+    tailwindcss(),
   ],
   optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
   build: {
