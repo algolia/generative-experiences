@@ -253,98 +253,131 @@ To integrate the widgets with Tailwind, include the `@tailwindcss/typography` pl
 
 ```css
 .ais-NoWrap {
-  @apply whitespace-nowrap;
+    @apply whitespace-nowrap;
 }
 
 .ais-ScreenReaderOnly {
-  @apply sr-only;
+    @apply sr-only;
 }
 
 /* display headlines */
 .ais-GuideHeadlinesContent-wrapper {
-  @apply flex flex-col items-end rounded p-4 border border-gray-200 shadow gap-2;
+    @apply rounded p-4 border border-gray-100 shadow gap-2;
 }
 
 .ais-GuideHeadlinesContent-container {
-  @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+    @apply flex flex-col items-end;
+}
+
+.ais-GuideHeadlinesContent-itemsContainer {
+    @apply flex items-center gap-6;
 }
 
 .ais-GuideHeadlinesContent-readMore {
-  @apply text-orange-500 font-semibold;
+    @apply flex text-white py-2 mt-8 border-2 bg-blue-700 rounded-md items-center w-full justify-center;
 }
 
 .ais-GuideHeadlinesContent-item {
-  @apply bg-gray-100 rounded p-4 space-y-3 flex flex-col justify-between;
+    @apply bg-neutral-100 rounded p-4 space-y-3 flex justify-between min-h-[420px];
 }
 
 .ais-GuideHeadlinesContent-itemContent {
-  @apply space-y-3;
+    @apply mt-5;
 }
 
 .ais-GuideHeadlinesContent-itemTitle {
-  @apply text-orange-500 font-semibold;
+    @apply text-blue-800 font-semibold line-clamp-2 h-12;
+}
+
+.ais-GuideHeadlinesContent-itemDescription {
+    @apply line-clamp-4 text-base mt-2;
 }
 
 .ais-GuideHeadlinesContent-itemImage {
-  @apply relative aspect-video overflow-hidden;
+    @apply relative min-h-[120px] max-h-[120px] w-auto overflow-hidden mx-auto mt-4 aspect-square;
 }
 
 /* display content */
 .ais-GuideContent-contentSection {
-  @apply prose max-w-prose mx-auto px-4;
+    @apply prose max-w-prose mx-auto px-4;
 }
 
-.ais-GuideContent-feedbackContainer {
-  @apply flex flex-col;
+.ais-GuideContent {
+    @apply mb-10 w-full;
+}
+
+.ais-GuideContent-heroImage {
+    @apply mx-auto min-h-[200px] max-h-[250px] my-12;
 }
 
 .ais-GuideContent .ais-Feedback {
-  @apply self-end;
+    @apply flex items-end justify-end mx-auto;
+}
+
+.ais-GuideContent-factorsList {
+    @apply flex flex-wrap list-disc gap-x-2 justify-between w-full;
+}
+
+.ais-GuideContent-factorItem {
+    @apply w-[45%];
 }
 
 .ais-GuideContent-relatedItemsSection {
-  @apply prose max-w-none;
+    @apply prose max-w-none mx-auto px-4;
 }
 
 .ais-GuideContent-relatedItemsTitle {
-  @apply max-w-prose mx-auto px-4;
+    @apply max-w-prose mx-auto px-4;
 }
 
 .ais-GuideContent-relatedItemsListContainer {
-  @apply max-w-none px-4;
+    @apply max-w-prose mx-auto px-4;
 }
 
 .ais-GuideContent-relatedItemsList {
-  @apply p-0 grid gap-6 grid-cols-2 md:grid-cols-2 lg:grid-cols-4;
+    @apply p-2 flex justify-between flex-wrap list-none;
 }
 
 /* display feedback */
 .ais-Feedback {
-  @apply text-gray-500 text-sm flex items-center space-x-4;
+    @apply text-gray-500 text-base max-w-prose mt-10;
+}
+
+.ais-feedbackContainer {
+    @apply flex items-center gap-4;
 }
 
 .ais-Feedback-thanksWrapper {
-  @apply flex space-x-2 items-center;
+    @apply flex items-center;
 }
 
 .ais-Feedback-labelWrapper {
-  @apply flex space-x-2 items-center;
+    @apply flex space-x-2 items-center;
 }
 
 .ais-Feedback-labelIcon {
-  @apply h-6 w-6 flex-shrink-0;
+    @apply h-6 w-6 flex-shrink-0;
 }
 
 .ais-Feedback-button {
-  @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
+    @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
 }
 
 .ais-Feedback-buttonsWrapper {
-  @apply flex space-x-3 items-center;
+    @apply flex space-x-3 items-center;
 }
 
 .ais-Feedback-buttonIcon {
-  @apply h-5 w-5 stroke-2 flex-shrink-0;
+    @apply h-4 w-4 stroke-2 flex-shrink-0;
+}
+
+/* error loading guide */
+.ais-GuideContentError {
+    @apply flex flex-col items-center text-center gap-y-4 max-w-prose mx-auto my-6;
+}
+
+.ais-GuideContentErrorTitle {
+    @apply text-lg font-semibold;
 }
 ```
 
