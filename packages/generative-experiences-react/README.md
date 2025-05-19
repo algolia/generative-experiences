@@ -128,19 +128,20 @@ function App({ currentObjectID, userToken }) {
 }
 ```
 
-| Prop name | Type | Default                        | Description                                                                     | Notes                                  |
-| --- | --- |--------------------------------|---------------------------------------------------------------------------------|----------------------------------------|
-| `client` | - | N/A                            | The Algolia Generative Experiences client.                                      | `required`                             |
-| `objectID` | `string` | N/A                            | The objectID for the guide to be retrieved/generated.                           | `required`                             |
-| `itemComponent` | `ReactNode` | N/A                            | Component to display items (from an algolia index) listed throughout the guide. | `required`                             |
-| `featuredItemsTitle` | `string` | Items featured in this article | The title of the realted items carousel found at the end of a guide.            | -                                      |
-| `onlyPublished` | `boolean` | `true`                         | Only display published guides.                                                  | -                                      |
-| `showImmediate` | `boolean` | `true`                         | Whether to generate/display the content on load.                                | -                                      |
-| `showFeedback` | `boolean` | `false`                        | Whether to show the feedback buttons.                                           | -                                      |
-| `userToken` | `string` | N/A                            | The user token needed for computing feedback.                                   | `required` if `showFeedback` is `true` |
-| `getters` | `CommersGetters` | -                              | The custom gathers that help you fetch images and add links.                    | -                                      |
-| `children` | `ReactNode` | -                              | The children to render.                                                         | -                                      |
-| `view` | `ViewProps` | -                              | The view component into which your guide content will be rendered.              | -                                      |
+| Prop name | Type                | Default                        | Description                                                                     | Notes                                  |
+| --- |---------------------|--------------------------------|---------------------------------------------------------------------------------|----------------------------------------|
+| `client` | -                   | N/A                            | The Algolia Generative Experiences client.                                      | `required`                             |
+| `objectID` | `string`            | N/A                            | The objectID for the guide to be retrieved/generated.                           | `required`                             |
+| `itemComponent` | `ReactNode`         | N/A                            | Component to display items (from an algolia index) listed throughout the guide. | `required`                             |
+| `featuredItemsTitle` | `string`            | Items featured in this article | The title of the realted items carousel found at the end of a guide.            | -                                      |
+| `maxFeaturedItems` | `number`            | 4                              | The number of featured items displayed at the end of a guide.                   | -                                      |
+| `onlyPublished` | `boolean`           | `true`                         | Only display published guides.                                                  | -                                      |
+| `showImmediate` | `boolean`           | `true`                         | Whether to generate/display the content on load.                                | -                                      |
+| `showFeedback` | `boolean`           | `false`                        | Whether to show the feedback buttons.                                           | -                                      |
+| `userToken` | `string`            | N/A                            | The user token needed for computing feedback.                                   | `required` if `showFeedback` is `true` |
+| `getters` | `CommersGetters`    | -                              | The custom gathers that help you fetch images and add links.                    | -                                      |
+| `children` | `ReactNode`         | -                              | The children to render.                                                         | -                                      |
+| `view` | `ViewProps`         | -                              | The view component into which your guide content will be rendered.              | -                                      |
 | `classNames` | `ContentClassNames` | -                              | The class names for the component.                                              | -                                      |
 
 ### Guides Feedback

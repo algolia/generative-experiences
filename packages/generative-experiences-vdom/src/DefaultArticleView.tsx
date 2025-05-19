@@ -309,7 +309,7 @@ export function createArticleViewComponent({
                   props.classNames?.relatedItemsList
                 )}
               >
-                {objects?.slice(0, 4)?.map((hit) => (
+                {objects?.slice(0, props.maxFeaturedItems)?.map((hit) => (
                   <li key={hit.objectID}>
                     <props.itemComponent
                       hit={hit}

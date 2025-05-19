@@ -89,6 +89,7 @@ export type ContentViewProps<TClassNames extends Record<string, string>> = {
   classNames: TClassNames;
   item: GSEContentRecord;
   featuredItemsTitle?: string;
+  maxFeaturedItems?: number;
   error?: Error | undefined;
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: { hit: Hit | undefined } & Renderer & TComponentProps
@@ -126,6 +127,7 @@ export type ContentComponentProps<
 > = {
   itemComponent(props: ContentItemComponentProps<TObject>): JSX.Element;
   featuredItemsTitle?: string;
+  maxFeaturedItems?: number;
   item: GSEContentRecord;
   error?: Error | undefined;
   classNames?: ContentClassNames;
