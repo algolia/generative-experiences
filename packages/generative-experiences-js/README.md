@@ -145,6 +145,8 @@ shoppingGuideContent({
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
 | `objectID` | `string` | N/A | The objectID for the guide to be retrieved/generated. | `required` |
 | `itemComponent` | `ReactNode` | N/A | Component to display items (from an algolia index) listed throughout the guide. | `required` |
+| `featuredItemsTitle` | `string` | Items featured in this article | The title of the realted items carousel found at the end of a guide.            | - |
+| `maxFeaturedItems` | `number`            | 4 | The number of featured items displayed at the end of a guide.                   | - |
 | `onlyPublished` | `boolean` | `true` | Only display published guides. | - |
 | `showImmediate` | `boolean` | `true` | Whether to generate/display the content on load. | - |
 | `showFeedback` | `boolean` | `false` | Whether to show the feedback buttons. | - |
@@ -240,7 +242,139 @@ guidesHeadlines({
 
 ## Styling
 
-// TBD
+### Using Tailwind CSS
+
+To integrate the widgets with Tailwind, include the `@tailwindcss/typography` plugin in your `tailwind.config.js` and add the following CSS to your project:
+
+```css
+.ais-NoWrap {
+    @apply whitespace-nowrap;
+}
+
+.ais-ScreenReaderOnly {
+    @apply sr-only;
+}
+
+/* display headlines */
+.ais-GuideHeadlinesContent-wrapper {
+    @apply rounded p-4 border border-gray-100 shadow gap-2;
+}
+
+.ais-GuideHeadlinesContent-container {
+    @apply flex flex-col items-end;
+}
+
+.ais-GuideHeadlinesContent-itemsContainer {
+    @apply flex items-center gap-6;
+}
+
+.ais-GuideHeadlinesContent-readMore {
+    @apply flex text-white py-2 mt-8 border-2 bg-blue-700 rounded-md items-center w-full justify-center;
+}
+
+.ais-GuideHeadlinesContent-item {
+    @apply bg-neutral-100 rounded p-4 space-y-3 flex justify-between min-h-[420px];
+}
+
+.ais-GuideHeadlinesContent-itemContent {
+    @apply mt-5;
+}
+
+.ais-GuideHeadlinesContent-itemTitle {
+    @apply text-blue-800 font-semibold line-clamp-2 h-12;
+}
+
+.ais-GuideHeadlinesContent-itemDescription {
+    @apply line-clamp-4 text-base mt-2;
+}
+
+.ais-GuideHeadlinesContent-itemImage {
+    @apply relative min-h-[120px] max-h-[120px] w-auto overflow-hidden mx-auto mt-4 aspect-square;
+}
+
+/* display content */
+.ais-GuideContent-contentSection {
+    @apply prose max-w-prose mx-auto px-4;
+}
+
+.ais-GuideContent {
+    @apply mb-10 w-full;
+}
+
+.ais-GuideContent-heroImage {
+    @apply mx-auto min-h-[200px] max-h-[250px] my-12;
+}
+
+.ais-GuideContent .ais-Feedback {
+    @apply flex items-end justify-end mx-auto;
+}
+
+.ais-GuideContent-factorsList {
+    @apply flex flex-wrap list-disc gap-x-2 justify-between w-full;
+}
+
+.ais-GuideContent-factorItem {
+    @apply w-[45%];
+}
+
+.ais-GuideContent-relatedItemsSection {
+    @apply prose max-w-none mx-auto px-4;
+}
+
+.ais-GuideContent-relatedItemsTitle {
+    @apply max-w-prose mx-auto px-4;
+}
+
+.ais-GuideContent-relatedItemsListContainer {
+    @apply max-w-prose mx-auto px-4;
+}
+
+.ais-GuideContent-relatedItemsList {
+    @apply p-2 flex justify-between flex-wrap list-none;
+}
+
+/* display feedback */
+.ais-Feedback {
+    @apply text-gray-500 text-base max-w-prose mt-10;
+}
+
+.ais-feedbackContainer {
+    @apply flex items-center gap-4;
+}
+
+.ais-Feedback-thanksWrapper {
+    @apply flex items-center;
+}
+
+.ais-Feedback-labelWrapper {
+    @apply flex space-x-2 items-center;
+}
+
+.ais-Feedback-labelIcon {
+    @apply h-6 w-6 flex-shrink-0;
+}
+
+.ais-Feedback-button {
+    @apply inline-block rounded font-semibold text-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 bg-white hover:bg-white border-2 border-gray-400 hover:border-gray-500 focus-visible:outline-gray-500 text-gray-400 hover:text-gray-500 px-2.5 py-1.5;
+}
+
+.ais-Feedback-buttonsWrapper {
+    @apply flex space-x-3 items-center;
+}
+
+.ais-Feedback-buttonIcon {
+    @apply h-4 w-4 stroke-2 flex-shrink-0;
+}
+
+/* error loading guide */
+.ais-GuideContentError {
+    @apply flex flex-col items-center text-center gap-y-4 max-w-prose mx-auto my-6;
+}
+
+.ais-GuideContentErrorTitle {
+    @apply text-lg font-semibold;
+}
+```
 
 ## ❓ Troubleshooting
 

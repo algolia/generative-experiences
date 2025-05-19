@@ -273,7 +273,49 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      return res?.hits ?? [];
+      const headlines: GuideHeadline[] = res?.hits ?? [];
+
+      if (res?.hits) {
+        /**
+         * For backward compatibility, we need to ensure that the objectIDs array is filled.
+         * This can be dropped at the next major release.
+         */
+
+        headlines?.map((hit) => {
+          if (Boolean(hit.objects?.length) && !hit.objectIDs?.length) {
+            hit.objectIDs = getObjectIDs(hit.objects);
+          }
+        });
+
+        /**
+         * Fetch records from objectIDs, this used to be done on the API side. But the records could get too large, so this logic is now done on the client side.
+         */
+        const objectIDs = Array.from(
+          new Set(res?.hits?.flatMap((hit) => hit.objectIDs) ?? [])
+        ).filter(Boolean);
+
+        const objects = await getObjects(
+          objectIDs,
+          this.options.indexName,
+          searchClient
+        );
+
+        headlines?.map((hit) => {
+          if (Boolean(hit.objectIDs?.length) && !hit.objects?.length) {
+            hit.objectIDs.forEach((objectID) => {
+              const object = objects.find(
+                (object) => object.objectID === objectID
+              );
+              if (!hit.objects) {
+                hit.objects = [];
+              }
+              hit.objects.push(object);
+            });
+          }
+        });
+      }
+
+      return headlines;
     },
 
     async getContent(

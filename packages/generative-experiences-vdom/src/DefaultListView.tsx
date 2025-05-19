@@ -24,23 +24,30 @@ export function createListViewComponent({ createElement, Fragment }: Renderer) {
           props.classNames?.container
         )}
       >
-        {props.items.map((item) => (
-          <div
-            key={item.objectID}
-            className={cx(
-              'ais-GuideHeadlinesContent-item',
-              props.classNames?.item
-            )}
-          >
-            <props.itemComponent
-              createElement={createElement}
-              Fragment={Fragment}
-              classNames={props.classNames}
-              item={item}
-              getters={props.getters}
-            />
-          </div>
-        ))}
+        <div
+          className={cx(
+            'ais-GuideHeadlinesContent-itemsContainer',
+            props.classNames?.itemsContainer
+          )}
+        >
+          {props.items.map((item) => (
+            <div
+              key={item.objectID}
+              className={cx(
+                'ais-GuideHeadlinesContent-item',
+                props.classNames?.item
+              )}
+            >
+              <props.itemComponent
+                createElement={createElement}
+                Fragment={Fragment}
+                classNames={props.classNames}
+                item={item}
+                getters={props.getters}
+              />
+            </div>
+          ))}
+        </div>
         {props.showFeedback && (
           <props.feedbackComponent
             castFeedback={props.castFeedback}

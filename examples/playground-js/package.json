@@ -22,7 +22,11 @@
   "dependencies": {
     "@algolia/generative-experiences-api-client": "1.6.0",
     "@algolia/generative-experiences-js": "1.6.0",
-    "@algolia/generative-experiences-vdom": "1.6.0"
+    "@algolia/generative-experiences-vdom": "1.6.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
     "preact": "^10.25.1"

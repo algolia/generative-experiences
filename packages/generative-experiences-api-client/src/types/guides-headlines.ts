@@ -9,6 +9,7 @@ export type GuideHeadline = {
   title: string;
   description: string;
   objects: any[];
+  objectIDs: string[];
   category: string;
   status: 'draft' | 'generating' | 'headline' | 'published';
   score_headline: number;

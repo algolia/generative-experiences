@@ -1,14 +1,14 @@
 import {
   Guide,
   GuideContentOptions,
-  ShoppingGuideType,
+  GuideType,
 } from '@algolia/generative-experiences-api-client';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 import { version } from '../version';
 
-const defaultState: ShoppingGuideType = {
-  objectID: '',
+const defaultState: GuideType = {
+  objectID: 'default',
   status: 'draft',
   title: '',
   score_content: 0,
@@ -20,6 +20,7 @@ const defaultState: ShoppingGuideType = {
   objectIDs: [],
   content: [
     {
+      type: 'introduction',
       title: '',
       content: '',
     },

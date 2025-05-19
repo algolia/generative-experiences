@@ -4,9 +4,11 @@ import { Renderer } from './Renderer';
 export type HeadlinesButtonClassNames = Partial<{
   wrapper?: string;
   container?: string;
+  itemsContainer?: string;
   item?: string;
   itemContent?: string;
   itemTitle?: string;
+  itemDescription?: string;
   itemImage?: string;
   list?: string;
   readMore?: string;

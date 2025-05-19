@@ -19,13 +19,15 @@ const options = {
 };
 
 const client = createClient(options);
+/* Test JS widgets, replace 'objectID', 'category' and 'userToken' parameters */
 
 guidesHeadlines({
   container: '#headlines',
   client,
   userToken: 'test-user',
   showImmediate: true,
-  //   showFeedback: true,
+  onlyPublished: false,
+  showFeedback: true,
   category: 'category',
 });
 
@@ -41,8 +43,10 @@ guideContent<RecordType>({
   client,
   onlyPublished: false,
   itemComponent({ hit }) {
+    /* Add custom itemComponent to reflect your use case */
     return <div>{hit.title}</div>;
   },
+  showFeedback: true,
   objectID: '123',
   userToken: 'test-user',
 });

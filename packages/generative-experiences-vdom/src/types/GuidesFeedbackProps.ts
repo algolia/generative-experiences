@@ -3,6 +3,7 @@ import { Renderer } from './Renderer';
 export type FeedbackClassNames = Partial<{
   wrapper?: string;
   container?: string;
+  feedbackContainer?: string;
   button?: string;
   buttonIcon?: string;
   buttonsWrapper?: string;

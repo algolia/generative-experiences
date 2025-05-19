@@ -1,11 +1,16 @@
 import { Hit } from '@algolia/client-search';
-import { ShoppingGuideType } from '@algolia/generative-experiences-api-client';
+import {
+  ContentBlock,
+  FactorsContentBlock,
+  Guide,
+  ProductContentBlock,
+} from '@algolia/generative-experiences-api-client';
 
 import { CommerceGetters } from './CommerceGetters';
 import { Renderer } from './Renderer';
 
-export const defaultState: ShoppingGuideType = {
-  objectID: '',
+export const defaultState: Guide = {
+  objectID: 'default',
   status: 'draft',
   title: '',
   score_content: 0,
@@ -17,6 +22,7 @@ export const defaultState: ShoppingGuideType = {
   objectIDs: [],
   content: [
     {
+      type: 'introduction',
       title: '',
       content: '',
     },
@@ -27,10 +33,18 @@ export const defaultState: ShoppingGuideType = {
 export type ContentClassNames = Partial<{
   wrapper?: string;
   container?: string;
+  errorContainer?: string;
+  errorContainerTitle?: string;
   contentSection?: string;
   productLink?: string;
   heroImage?: string;
-  factorSection?: string;
+  introSection?: string;
+  articleContentSection?: string;
+  factorsSection?: string;
+  factorsList?: string;
+  factorItem?: string;
+  productSection?: string;
+  productFactorsList?: string;
   relatedItemsSection?: string;
   relatedItemsListContainer?: string;
   relatedItemsTitle?: string;
@@ -46,35 +60,18 @@ export type GSEContentRecord = {
   generated_at: number;
 } & (
   | {
-      type: 'category';
+      type: 'category' | 'shopping_guide';
       description: string;
       category: string;
       objects: Hit[];
-      content: Array<{
-        type: 'conclusion' | 'factor' | 'introduction';
-        title: string;
-        content: string;
-      }>;
+      content: Array<ContentBlock | FactorsContentBlock>;
       score_headline: number;
     }
   | {
       type: 'comparison';
       objects: Hit[];
-      content: Array<{
-        title: string;
-        type: 'conclusion' | 'introduction' | 'product';
-        objectID?: string;
-        content: string;
-      }>;
+      content: Array<ContentBlock | FactorsContentBlock | ProductContentBlock>;
       comparedObjectIDs: string[];
-    }
-  | {
-      type: 'shopping_guide';
-      description: string;
-      category: string;
-      objects: Hit[];
-      content: Array<{ title: string; content: string }>;
-      score_headline: number;
     }
 );
 
@@ -91,8 +88,11 @@ export type ContentChildrenProps = GSEContentComponentProps & {
 export type ContentViewProps<TClassNames extends Record<string, string>> = {
   classNames: TClassNames;
   item: GSEContentRecord;
+  featuredItemsTitle?: string;
+  maxFeaturedItems?: number;
+  error?: Error | undefined;
   itemComponent<TComponentProps extends Record<string, unknown> = {}>(
-    props: { hit: Hit } & Renderer & TComponentProps
+    props: { hit: Hit | undefined } & Renderer & TComponentProps
   ): JSX.Element;
   feedbackComponent<TComponentProps extends Record<string, unknown> = {}>(
     props: {
@@ -126,7 +126,10 @@ export type ContentComponentProps<
   TComponentProps extends Record<string, unknown> = {}
 > = {
   itemComponent(props: ContentItemComponentProps<TObject>): JSX.Element;
+  featuredItemsTitle?: string;
+  maxFeaturedItems?: number;
   item: GSEContentRecord;
+  error?: Error | undefined;
   classNames?: ContentClassNames;
   children?(props: ContentChildrenProps & TComponentProps): JSX.Element;
   castFeedback: (
