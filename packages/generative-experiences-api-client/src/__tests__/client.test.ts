@@ -88,7 +88,7 @@ describe('createClient', () => {
 
       expect(searchSingleIndex).toHaveBeenCalledWith(
         expect.objectContaining({
-          indexName: 'shopping_guides_indexName',
+          indexName: 'guides_indexName',
         })
       );
     });
@@ -110,7 +110,7 @@ describe('createClient', () => {
 
       expect(searchSingleIndex).toHaveBeenCalledWith(
         expect.objectContaining({
-          indexName: 'shopping_guides_indexName',
+          indexName: 'guides_indexName',
         })
       );
     });
