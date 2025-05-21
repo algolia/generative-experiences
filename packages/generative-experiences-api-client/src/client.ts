@@ -604,7 +604,7 @@ export function createClient(opts: CreateClientOptions) {
     },
 
     _outputIndexName() {
-      return `shopping_guides_${this.options.indexName}`;
+      return `guides_${this.options.indexName}`;
     },
   };
 }
