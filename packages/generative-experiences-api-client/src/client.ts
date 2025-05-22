@@ -1,12 +1,10 @@
-import { algoliasearch } from 'algoliasearch';
 import type { FacetFilters } from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 import type { PlainSearchParameters } from 'algoliasearch-helper';
 
 import { getObjectIDs, getObjects } from './helpers/records';
 import {
   GenerationSource,
-  ProductsComparisonOptions,
-  RequestParameters,
   Guide,
   GuideContentOptions,
   GuideContentOptionsForGenerated,
@@ -15,6 +13,8 @@ import {
   GuideHeadlinesOptionsForCombined,
   GuideHeadlinesOptionsForGenerated,
   GuideHeadlinesOptionsForIndex,
+  ProductsComparisonOptions,
+  RequestParameters,
   TasksResponse,
 } from './types';
 import { version } from './version';
@@ -173,10 +173,7 @@ export function createClient(opts: CreateClientOptions) {
     },
 
     async generateContent(
-      {
-        objectID,
-        ...options
-      }: Omit<GuideContentOptionsForGenerated, 'source'>,
+      { objectID, ...options }: Omit<GuideContentOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
     ) {
       if (!this.options.writeAPIKey) {
