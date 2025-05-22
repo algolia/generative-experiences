@@ -128,7 +128,7 @@ export function createClient(opts: CreateClientOptions) {
       } while (
         (
           await this.request({
-            path: `/task/${taskID}/status`,
+            path: `/1/task/${taskID}/status`,
             headers,
             options: requestOptions,
           })
@@ -136,7 +136,7 @@ export function createClient(opts: CreateClientOptions) {
       );
 
       return await this.request({
-        path: `/task/${taskID}/result`,
+        path: `/1/task/${taskID}/result`,
         headers,
         options: requestOptions,
       });
@@ -595,7 +595,7 @@ export function createClient(opts: CreateClientOptions) {
         'X-Algolia-API-Key': this.options.writeAPIKey,
       };
       return await this.request({
-        path: '/tasks',
+        path: '/1/tasks',
         headers,
         options: {
           ...requestOptions,

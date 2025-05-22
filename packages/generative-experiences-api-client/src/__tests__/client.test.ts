@@ -23,12 +23,9 @@ vi.mock('algoliasearch', () => ({
 }));
 
 const server = setupServer(
-  http.post(
-    'https://generative-us.algolia.com//delete/shopping_guides/',
-    () => {
-      return HttpResponse.json({ status: 'success' });
-    }
-  )
+  http.post('https://generative-us.algolia.com/1/delete/guides/', () => {
+    return HttpResponse.json({ status: 'success' });
+  })
 );
 
 describe('createClient', () => {
