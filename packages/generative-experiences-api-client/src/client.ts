@@ -156,7 +156,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: '/generate/shopping_guides_headlines',
+        path: '/1/generate/headlines',
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -189,7 +189,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: `/generate/${type}_content/${objectID}`,
+        path: `/1/generate/guide_content/${objectID}`,
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -219,7 +219,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       const { taskID } = await this.request({
-        path: '/generate/products_comparison',
+        path: '/1/generate/products_comparison',
         body: {
           object_ids: objectIDs,
           index_name: this.options.indexName,
@@ -459,7 +459,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/vote',
+        path: '/1/vote',
         body: {
           index_name: this.options.indexName,
           output_index_name: this._outputIndexName(),
@@ -489,7 +489,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/delete/shopping_guides',
+        path: '/1/delete/guides',
         body: {
           object_ids: objectIDs,
           index_name: this._outputIndexName(),
@@ -516,7 +516,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/delete/shopping_guides_content',
+        path: '/1/delete/guides_content',
         body: {
           object_ids: objectIDs,
           index_name: this._outputIndexName(),
@@ -547,7 +547,7 @@ export function createClient(opts: CreateClientOptions) {
         'X-Algolia-API-Key': this.options.writeAPIKey,
       };
       return await this.request({
-        path: '/update/shopping_guide',
+        path: '/1/update/guide',
         body: {
           object_id: objectID,
           data,
@@ -574,7 +574,7 @@ export function createClient(opts: CreateClientOptions) {
       };
 
       return await this.request({
-        path: '/create/shopping_guides_index/',
+        path: '/1/create/guides_index/',
         body: {
           index_name: indexName,
         },
