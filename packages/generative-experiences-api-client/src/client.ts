@@ -175,7 +175,6 @@ export function createClient(opts: CreateClientOptions) {
     async generateContent(
       {
         objectID,
-        type = 'shopping_guide',
         ...options
       }: Omit<GuideContentOptionsForGenerated, 'source'>,
       requestOptions?: RequestParameters
