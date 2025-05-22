@@ -1,3 +1,12 @@
+## 2.0.0 (2025-05-22)
+
+* feat: rename guides index name (#59) ([4dbfb29](https://github.com/algolia/generative-experiences/commit/4dbfb29)), closes [#59](https://github.com/algolia/generative-experiences/issues/59)
+* feat(api): add new api v1 routes (#60) ([e8ed8eb](https://github.com/algolia/generative-experiences/commit/e8ed8eb)), closes [#60](https://github.com/algolia/generative-experiences/issues/60)
+* feat(components): add support for new guide structure (#58) ([67bac1e](https://github.com/algolia/generative-experiences/commit/67bac1e)), closes [#58](https://github.com/algolia/generative-experiences/issues/58)
+* chore: rename product name 'shopping guides' to 'guides' [CEC-536] (#55) ([068a2aa](https://github.com/algolia/generative-experiences/commit/068a2aa)), closes [#55](https://github.com/algolia/generative-experiences/issues/55)
+
+
+
 ## 1.6.0 (2025-05-13)
 
 * add the new attirbutes for content customisation (#56) ([17a6025](https://github.com/algolia/generative-experiences/commit/17a6025)), closes [#56](https://github.com/algolia/generative-experiences/issues/56)
