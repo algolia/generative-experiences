@@ -22,7 +22,7 @@ export function useGuidesHeadlines({
       object,
       category,
       breadcrumbs,
-      nbHeadlines = 4,
+      maxHeadlines = 4,
       source = 'index',
       searchParams,
       onlyPublished,
@@ -41,7 +41,7 @@ export function useGuidesHeadlines({
           category,
           object,
           breadcrumbs,
-          nbHeadlines,
+          maxHeadlines,
           searchParams,
           onlyPublished,
         })
@@ -49,7 +49,7 @@ export function useGuidesHeadlines({
           setError(err as Error);
         });
 
-      if (hits && hits.length === nbHeadlines) {
+      if (hits && hits.length) {
         setStatus('idle');
         setHeadlines(hits);
         return;

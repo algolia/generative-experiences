@@ -237,12 +237,17 @@ export function createClient(opts: CreateClientOptions) {
         category,
         object,
         breadcrumbs = [],
-        nbHeadlines = 4,
+        maxHeadlines = 4,
         onlyPublished = true,
         searchParams,
       }: Omit<GuideHeadlinesOptionsForIndex, 'source'>,
       requestOptions?: PlainSearchParameters
     ) {
+      if (maxHeadlines < 0 || maxHeadlines > 1000) {
+        throw new Error(
+          `maxHeadlines expected value between 1 and 1,000, maxHeadlines=${maxHeadlines}`
+        );
+      }
       const paths = breadcrumbs.reduce<string[]>((acc, facet) => {
         acc.push([acc.at(-1), facet].filter(Boolean).join(' > '));
         return acc;
@@ -255,7 +260,7 @@ export function createClient(opts: CreateClientOptions) {
             category ? [`category:${category}`] : undefined,
             onlyPublished ? ['status:published'] : [],
           ].filter(Boolean) as FacetFilters,
-          hitsPerPage: nbHeadlines,
+          hitsPerPage: maxHeadlines,
           optionalFilters: [
             ...(object
               ? [[`objects.objectID:${object.objectID}<score=${paths.length}>`]]
@@ -269,7 +274,10 @@ export function createClient(opts: CreateClientOptions) {
         },
       });
 
-      const headlines: GuideHeadline[] = res?.hits ?? [];
+      // slice is not necessary because of the search call uses hitsPerPage
+      // but it is helpful for tests
+      const headlines: GuideHeadline[] =
+        res?.hits?.slice(0, maxHeadlines) ?? [];
 
       if (res?.hits) {
         /**

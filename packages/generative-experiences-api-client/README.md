@@ -87,7 +87,7 @@ client
 | Prop name | Type | Default | Description | Notes |
 | --- | --- | --- | --- | --- |
 | `category` | `string \| undefined` | N/A | The category to use for retrieving/generating the headlines. | - |
-| `nbHeadlines` | `number \| undefined` | 4 | The number of headlines to display. | - |
+| `maxHeadlines` | `number \| undefined` | 4 | The maximum number of headlines to display. | Maximum 1,000 |
 | `source` | `'combined' \| 'generated' \| 'index'` | `index` | The source of the headlines. | - |
 | `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |
 | `language_code` | `'english' \| 'german' \| 'french'` | `english` | The language code used for generating headlines. | - |
