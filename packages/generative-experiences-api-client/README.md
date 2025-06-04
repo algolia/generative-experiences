@@ -86,7 +86,7 @@ client
 
 | Prop name | Type | Default | Description | Notes |
 | --- | --- | --- | --- | --- |
-| `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
+| `category` | `string \| undefined` | N/A | The category to use for retrieving/generating the headlines. | - |
 | `maxHeadlines` | `number \| undefined` | 4 | The maximum number of headlines to display. | Maximum 1,000 |
 | `source` | `'combined' \| 'generated' \| 'index'` | `index` | The source of the headlines. | - |
 | `tone` | `'natural' \| 'friendly' \| 'professional'` | `natural` | The model will use a specific tone when provided. | - |

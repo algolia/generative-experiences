@@ -98,7 +98,7 @@ guidesHeadlines({
 | Prop name | Type | Default | Description | Notes |
 | --- | --- | --- | --- | --- |
 | `client` | - | N/A | The Algolia Generative Experiences client. | `required` |
-| `category` | `string` | N/A | The category to use for retrieving/generating the headlines. | `required` |
+| `category` | `string \| undefined` | N/A | The category to use for retrieving/generating the headlines. | - |
 | `maxHeadlines` | `number \| undefined` | 4 | The maximum number of headlines to display. | Maximum 1,000 |
 | `onlyPublished` | `boolean` | `true` | Only return headlines that have had their content generated. | - |
 | `showImmediate` | `boolean` | `false` | Whether to generate/display the headlines on load. | - |
