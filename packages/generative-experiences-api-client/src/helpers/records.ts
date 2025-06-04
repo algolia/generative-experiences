@@ -14,7 +14,7 @@ export const getObjects = async (
     })),
   });
 
-  return response.results;
+  return response?.results ?? [];
 };
 
 export const getObjectIDs = (objects: Hit[]): Array<Hit['objectID']> =>
