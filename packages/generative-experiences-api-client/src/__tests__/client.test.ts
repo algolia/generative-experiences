@@ -92,7 +92,7 @@ describe('createClient', () => {
       );
     });
 
-    it.only.each([
+    it.each([
       {
         count: 0,
         maxHeadlines: 4,
