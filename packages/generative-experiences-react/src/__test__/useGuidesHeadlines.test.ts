@@ -23,7 +23,7 @@ describe('useGuidesHeadlines', () => {
           client,
           showImmediate: true,
           category: 'some-category',
-          nbHeadlines: 1,
+          maxHeadlines: 1,
         })
       );
 

@@ -237,7 +237,7 @@ export function createClient(opts: CreateClientOptions) {
         category,
         object,
         breadcrumbs = [],
-        nbHeadlines = 4,
+        maxHeadlines = 4,
         onlyPublished = true,
         searchParams,
       }: Omit<GuideHeadlinesOptionsForIndex, 'source'>,
@@ -255,7 +255,7 @@ export function createClient(opts: CreateClientOptions) {
             category ? [`category:${category}`] : undefined,
             onlyPublished ? ['status:published'] : [],
           ].filter(Boolean) as FacetFilters,
-          hitsPerPage: nbHeadlines,
+          hitsPerPage: maxHeadlines,
           optionalFilters: [
             ...(object
               ? [[`objects.objectID:${object.objectID}<score=${paths.length}>`]]

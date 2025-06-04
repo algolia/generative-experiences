@@ -78,7 +78,7 @@ describe('createClient', () => {
 
       await client.getHeadlines({
         category: 'some-category',
-        nbHeadlines: 2,
+        maxHeadlines: 2,
       });
 
       expect(searchSingleIndex).toHaveBeenCalledTimes(1);

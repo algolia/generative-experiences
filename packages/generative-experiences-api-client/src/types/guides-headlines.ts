@@ -41,7 +41,7 @@ export type GuideHeadlinesRequestParameters = {
 
 export type GuideHeadlinesOptionsForIndex = {
   source?: 'index';
-  nbHeadlines?: number;
+  maxHeadlines?: number;
   showFeedback?: boolean;
   category?: string;
   object?: { objectID: string };
@@ -57,14 +57,14 @@ export type GuideHeadlinesOptionsForIndex = {
 };
 export type GuideHeadlinesOptionsForGenerated = Partial<GuideHeadlinesRequestParameters> & {
   source: 'generated';
-  nbHeadlines?: number;
+  maxHeadlines?: number;
   category?: string;
   showFeedback?: boolean;
 };
 
 export type GuideHeadlinesOptionsForCombined = {
   source: 'combined';
-  nbHeadlines?: number;
+  maxHeadlines?: number;
   category?: string;
   showFeedback?: boolean;
   object?: { objectID: string };
