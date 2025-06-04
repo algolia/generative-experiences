@@ -14,11 +14,13 @@ import { createClient } from '../client';
 
 const addAlgoliaAgent = vi.fn();
 const searchSingleIndex = vi.fn();
+const getObjects = vi.fn();
 
 vi.mock('algoliasearch', () => ({
   algoliasearch: vi.fn(() => ({
     addAlgoliaAgent,
     searchSingleIndex,
+    getObjects,
   })),
 }));
 
@@ -89,6 +91,59 @@ describe('createClient', () => {
         })
       );
     });
+
+    it.only.each([
+      {
+        count: 0,
+        maxHeadlines: 4,
+        expected: 0,
+      },
+      {
+        count: 0,
+        maxHeadlines: 0,
+        expected: 0,
+      },
+      {
+        count: 10,
+        maxHeadlines: 0,
+        expected: 0,
+      },
+
+      {
+        count: 10,
+        maxHeadlines: 5,
+        expected: 5,
+      },
+      {
+        count: 10,
+        maxHeadlines: 10,
+        expected: 10,
+      },
+      {
+        count: 10,
+        maxHeadlines: 20,
+        expected: 10,
+      },
+    ])(
+      'should return the correct number of headlines ($expected)',
+      async ({ count, maxHeadlines, expected }) => {
+        searchSingleIndex.mockImplementation(() => ({
+          hits: Array(count).map((_, i) => ({ objectID: i + '' })),
+        }));
+        const client = createClient({
+          appId: 'app-id',
+          indexName: 'indexName',
+          searchOnlyAPIKey: 'api-key',
+        });
+
+        const headlines = await client.getHeadlines({
+          category: 'some-category',
+          maxHeadlines,
+        });
+
+        expect(headlines).toHaveLength(expected);
+      }
+    );
   });
 
   describe('getContent', () => {
