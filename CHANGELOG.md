@@ -1,3 +1,9 @@
+## 2.1.0 (2025-06-04)
+
+* fix: make category optional when fetching headlines [cec-594] (#64) ([9dee13d](https://github.com/algolia/generative-experiences/commit/9dee13d)), closes [#64](https://github.com/algolia/generative-experiences/issues/64)
+
+
+
 ## 2.0.0 (2025-05-22)
 
 * feat: rename guides index name (#59) ([4dbfb29](https://github.com/algolia/generative-experiences/commit/4dbfb29)), closes [#59](https://github.com/algolia/generative-experiences/issues/59)
