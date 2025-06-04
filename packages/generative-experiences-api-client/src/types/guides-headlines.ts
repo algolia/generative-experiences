@@ -58,14 +58,14 @@ export type GuideHeadlinesOptionsForIndex = {
 export type GuideHeadlinesOptionsForGenerated = Partial<GuideHeadlinesRequestParameters> & {
   source: 'generated';
   nbHeadlines?: number;
-  category: string;
+  category?: string;
   showFeedback?: boolean;
 };
 
 export type GuideHeadlinesOptionsForCombined = {
   source: 'combined';
   nbHeadlines?: number;
-  category: string;
+  category?: string;
   showFeedback?: boolean;
   object?: { objectID: string };
   breadcrumbs?: string[];

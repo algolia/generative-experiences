@@ -398,7 +398,6 @@ export function createClient(opts: CreateClientOptions) {
             requestParams
           );
         }
-        // @ts-expect-error - types for params clash
         return await this.generateHeadlines(params, requestParams);
       }
 
