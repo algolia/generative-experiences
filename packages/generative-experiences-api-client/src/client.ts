@@ -244,7 +244,9 @@ export function createClient(opts: CreateClientOptions) {
       requestOptions?: PlainSearchParameters
     ) {
       if (maxHeadlines < 0 || maxHeadlines > 1000) {
-        throw new Error(`maxHeadlines expected value between 1 and 1,000`);
+        throw new Error(
+          `maxHeadlines expected value between 1 and 1,000, maxHeadlines=${maxHeadlines}`
+        );
       }
       const paths = breadcrumbs.reduce<string[]>((acc, facet) => {
         acc.push([acc.at(-1), facet].filter(Boolean).join(' > '));
