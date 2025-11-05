@@ -16,6 +16,8 @@
     "playground:dev": "lerna run dev --scope playground",
     "playground-js:dev": "lerna run dev --scope playground-js",
     "playground-js:build": "lerna run build --scope playground-js",
+    "playground-node:dev": "lerna run dev --scope playground-node",
+    "playground-node:build": "lerna run build --scope playground-node",
     "release": "shipjs prepare",
     "test": "lerna run test --scope @algolia/generative-experiences-* --no-private",
     "test:ci": "lerna run test:ci --scope @algolia/generative-experiences-* --no-private",

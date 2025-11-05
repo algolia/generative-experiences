@@ -66,16 +66,20 @@ function PlaygroundApp() {
         showFeedback
         userToken="aabc"
         client={client}
-        category="cateogry"
+        category="Original Starter Pokemon"
         onlyPublished={false}
         showImmediate
       />
-      <GuidesFeedback client={client} objectIDs={['123']} userToken="abc" />
+      <GuidesFeedback
+        client={client}
+        objectIDs={['067e80a2-572a-4cf5-ae8c-e35eac450601']}
+        userToken="abc"
+      />
       <GuideContent
         client={client}
         showFeedback
         userToken="aabc"
-        objectID="123"
+        objectID="067e80a2-572a-4cf5-ae8c-e35eac450601"
         onlyPublished={false}
         itemComponent={({ hit }) => <ItemComponent hit={hit} />}
       />
@@ -84,7 +88,7 @@ function PlaygroundApp() {
 }
 
 const container = document.getElementById('root');
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+const root = createRoot(container!);
 root.render(
   <React.StrictMode>
     <PlaygroundApp />

@@ -28,13 +28,13 @@ guidesHeadlines({
   showImmediate: true,
   onlyPublished: false,
   showFeedback: true,
-  category: 'category',
+  category: 'Original Starter Pokemon',
 });
 
 guidesFeedback({
   container: '#feedback',
   client,
-  objectIDs: ['123'],
+  objectIDs: ['067e80a2-572a-4cf5-ae8c-e35eac450601'],
   userToken: 'test-user',
 });
 
@@ -47,6 +47,6 @@ guideContent<RecordType>({
     return <div>{hit.title}</div>;
   },
   showFeedback: true,
-  objectID: '123',
+  objectID: '067e80a2-572a-4cf5-ae8c-e35eac450601',
   userToken: 'test-user',
 });
