@@ -15,20 +15,44 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: '@algolia/generative-experiences-api-client',
-      fileName: 'index',
+      fileName: (format) => {
+        if (format === 'es') {
+          return 'index.js';
+        }
+        if (format === 'cjs') {
+          return 'index.cjs';
+        }
+        return 'index.umd.js';
+      },
     },
     rollupOptions: {
+      external: [
+        // Mark these as external to avoid bundling them
+        '@algolia/client-search',
+        'algoliasearch',
+        'algoliasearch-helper',
+      ],
       output: [
         {
           format: 'umd',
           dir: path.resolve(__dirname, 'dist/'),
           entryFileNames: 'index.umd.js',
-          name: '@algolia/generative-experiences-api-client',
+          name: 'AlgoliaGenerativeExperiencesApiClient',
+          globals: {
+            '@algolia/client-search': 'AlgoliaClientSearch',
+            algoliasearch: 'algoliasearch',
+            'algoliasearch-helper': 'algoliasearchHelper',
+          },
         },
         {
-          format: 'esm',
+          format: 'es',
           dir: path.resolve(__dirname, 'dist/'),
           entryFileNames: 'index.js',
+        },
+        {
+          format: 'cjs',
+          dir: path.resolve(__dirname, 'dist/'),
+          entryFileNames: 'index.cjs',
         },
       ],
     },

@@ -1,0 +1,26 @@
+{
+  "name": "playground-node",
+  "version": "2.1.0",
+  "description": "playground for testing library",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algolia/generative-experiences.git"
+  },
+  "bugs": {
+    "url": "https://github.com/algolia/generative-experiences/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node ./src/index.js",
+    "dev": "node ./src/index.js"
+  },
+  "dependencies": {
+    "@algolia/generative-experiences-api-client": "2.1.0"
+  }
+}
