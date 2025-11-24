@@ -298,11 +298,9 @@ export function createClient(opts: CreateClientOptions) {
           new Set(res?.hits?.flatMap((hit) => hit.objectIDs) ?? [])
         ).filter(Boolean);
 
-        const objects = await getObjects(
-          objectIDs,
-          this.options.indexName,
-          searchClient
-        );
+        const objects = (
+          await getObjects(objectIDs, this.options.indexName, searchClient)
+        ).filter(Boolean);
 
         headlines?.map((hit) => {
           if (Boolean(hit.objectIDs?.length) && !hit.objects?.length) {
@@ -313,7 +311,9 @@ export function createClient(opts: CreateClientOptions) {
               if (!hit.objects) {
                 hit.objects = [];
               }
-              hit.objects.push(object);
+              if (object) {
+                hit.objects.push(object);
+              }
             });
           }
         });
@@ -356,11 +356,13 @@ export function createClient(opts: CreateClientOptions) {
          * Fetch records from objectIDs, this used to be done on the API side. But the records could get too large, so this logic is now done on the client side.
          */
         if (Boolean(record.objectIDs?.length) && !record.objects?.length) {
-          record.objects = await getObjects(
-            record.objectIDs,
-            this.options.indexName,
-            searchClient
-          );
+          record.objects = (
+            await getObjects(
+              record.objectIDs,
+              this.options.indexName,
+              searchClient
+            )
+          ).filter(Boolean);
         }
 
         return record;
