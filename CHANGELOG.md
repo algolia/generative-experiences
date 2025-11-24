@@ -1,3 +1,9 @@
+## <small>2.2.1 (2025-11-24)</small>
+
+* fix: getHeadlines broken objects retrieval ([a44ebff](https://github.com/algolia/generative-experiences/commit/a44ebff))
+
+
+
 ## 2.2.0 (2025-11-06)
 
 * fix: allow api-client to be used in node (#73) ([450d41f](https://github.com/algolia/generative-experiences/commit/450d41f)), closes [#73](https://github.com/algolia/generative-experiences/issues/73)

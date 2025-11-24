@@ -1,6 +1,6 @@
 {
   "name": "@algolia/generative-experiences-react",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "React components for Algolia Generative Experiences",
   "license": "MIT",
   "repository": "algolia/generative-experiences",
@@ -30,8 +30,8 @@
   "umd:main": "dist/index.umd.js",
   "unpkg": "dist/index.umd.js",
   "dependencies": {
-    "@algolia/generative-experiences-api-client": "2.2.0",
-    "@algolia/generative-experiences-vdom": "2.2.0"
+    "@algolia/generative-experiences-api-client": "2.2.1",
+    "@algolia/generative-experiences-vdom": "2.2.1"
   },
   "peerDependencies": {
     "react": "^18.2.0",
